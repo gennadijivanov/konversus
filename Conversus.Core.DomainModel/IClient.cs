@@ -6,7 +6,8 @@ namespace Conversus.Core.DomainModel
     {
         Performing,
         Waiting,
-        Registered
+        Registered,
+        Late
     }
 
     public interface IClient : IEntity
