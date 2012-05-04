@@ -1,0 +1,7 @@
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\bin\Debug\Conversus.Core.Infrastructure.dll
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\bin\Debug\Conversus.Core.Infrastructure.pdb
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\bin\Debug\Conversus.Core.DomainModel.dll
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\bin\Debug\Conversus.Core.DomainModel.pdb
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\obj\Debug\Conversus.Core.Infrastructure.dll
+c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.Infrastructure\obj\Debug\Conversus.Core.Infrastructure.pdb
