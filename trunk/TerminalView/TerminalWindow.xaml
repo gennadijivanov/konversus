@@ -1,0 +1,14 @@
+﻿<Window x:Class="TerminalView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TerminalView.UserControls.ClientTerminal"
+        Title="MainWindow" Height="350" Width="525" WindowStyle="None" 
+        WindowState="Maximized" KeyDown="Window_KeyDown">
+    <Grid>
+        <!--Background-->
+        <local:BackGround></local:BackGround>
+        
+        <!--Menu-->
+        <local:HomeMenu></local:HomeMenu>
+    </Grid>
+</Window>
