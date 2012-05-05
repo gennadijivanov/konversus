@@ -1,7 +1,0 @@
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\bin\Debug\Conversus.Core.DTO.dll
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\bin\Debug\Conversus.Core.DTO.pdb
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\bin\Debug\Conversus.Core.DomainModel.dll
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\bin\Debug\Conversus.Core.DomainModel.pdb
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\obj\Debug\ResolveAssemblyReference.cache
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\obj\Debug\Conversus.Core.DTO.dll
-c:\users\алёна\documents\visual studio 2010\Projects\Conversus\Conversus.Core.DTO\obj\Debug\Conversus.Core.DTO.pdb
