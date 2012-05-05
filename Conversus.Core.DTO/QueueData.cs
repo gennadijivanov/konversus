@@ -11,16 +11,6 @@ namespace Conversus.Core.DTO
         public int Id;
         public QueueType Type;
 
-        public long Timestamp
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public long Timestamp { get; set; }
     }
 }

@@ -17,28 +17,25 @@ namespace Conversus.Core.Infrastructure.UnitOfWork
 
             using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead, Timeout = DefaultTimeout }))
             {
-                using (IDisposable context = ((IUnitOfWorkStorageRepository)_operations[0].Repository).CreateContext())
-                {
                     foreach (var operation in _operations)
                     {
                         IUnitOfWorkStorageRepository repository = (IUnitOfWorkStorageRepository)operation.Repository;
                         switch (operation.Type)
                         {
                             case TransactionType.Insert:
-                                repository.PersistNewItemInStorage(context, operation.Entity);
+                                repository.PersistNewItemInStorage(operation.Entity);
                                 break;
                             case TransactionType.Delete:
-                                repository.PersistDeletedItemInStorage(context, operation.Entity);
+                                repository.PersistDeletedItemInStorage(operation.Entity);
                                 break;
                             case TransactionType.Update:
-                                repository.PersistUpdatedItemInStorage(context, operation.Entity);
+                                repository.PersistUpdatedItemInStorage(operation.Entity);
                                 break;
                         }
                     }
 
                     // Commit the transaction
                     scope.Complete();
-                }
             }
 
             // Clear everything
