@@ -20,16 +20,6 @@ namespace Conversus.Core.DTO
 
         public string Ticket;
 
-        public long Timestamp
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public long Timestamp { get; set; }
     }
 }

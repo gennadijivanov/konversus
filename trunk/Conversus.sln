@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Core.DomainModel", "Conversus.Core.DomainModel\Conversus.Core.DomainModel.csproj", "{6358F485-88D8-4093-898B-3A4348D72CC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Core.Impl", "Conversus.Core.Impl\Conversus.Core.Impl.csproj", "{52F0DBB4-1C44-42FB-938D-71A2DE4BEC61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Impl", "Conversus.Impl\Conversus.Impl.csproj", "{52F0DBB4-1C44-42FB-938D-71A2DE4BEC61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Core.DTO", "Conversus.Core.DTO\Conversus.Core.DTO.csproj", "{A41B6FE4-69D7-4782-9E75-624D9A26E474}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Core.Infrastructure", "Conversus.Core.Infrastructure\Conversus.Core.Infrastructure.csproj", "{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Storage", "Conversus.Storage\Conversus.Storage.csproj", "{0A01855D-10DC-46D7-B2DF-7BA7C3380743}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{72505E67-CCF7-44E3-A7E4-BC00679AD47D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +35,17 @@ Global
 		{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A01855D-10DC-46D7-B2DF-7BA7C3380743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A01855D-10DC-46D7-B2DF-7BA7C3380743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A01855D-10DC-46D7-B2DF-7BA7C3380743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A01855D-10DC-46D7-B2DF-7BA7C3380743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6358F485-88D8-4093-898B-3A4348D72CC7} = {72505E67-CCF7-44E3-A7E4-BC00679AD47D}
+		{A41B6FE4-69D7-4782-9E75-624D9A26E474} = {72505E67-CCF7-44E3-A7E4-BC00679AD47D}
+		{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43} = {72505E67-CCF7-44E3-A7E4-BC00679AD47D}
 	EndGlobalSection
 EndGlobal

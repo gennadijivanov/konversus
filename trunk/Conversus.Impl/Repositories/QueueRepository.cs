@@ -7,11 +7,18 @@ using Conversus.Core.DTO;
 using Conversus.Core.Infrastructure;
 using Conversus.Core.Infrastructure.UnitOfWork;
 using Conversus.Core.Impl.Objects;
+using Conversus.Storage;
 
 namespace Conversus.Core.Impl.Repositories
 {
     public class QueueRepository : BaseRepository<QueueData, IQueue>, IUnitOfWorkStorageRepository, IQueueRepository
     {
+        private IQueueStorage _storage;
+        private IQueueStorage Storage
+        {
+            get { return _storage ?? (_storage = StorageLogicFactory.Instance.Get<IQueueStorage>()); }
+        }
+
         public QueueRepository()
             : this(null)
         { 
@@ -38,30 +45,24 @@ namespace Conversus.Core.Impl.Repositories
             return (item as Queue).GetData();
         }
 
-        // must be overriden in cache repository
         protected override QueueData? GetData(int id, long? timestamp)
         {
-            throw new NotImplementedException();
+            return Storage.Get(id);
         }
 
-        public IDisposable CreateContext()
+        public void PersistNewItemInStorage(IEntity item)
         {
-            throw new NotImplementedException();
+            Storage.Create((item as Queue).GetData());
         }
 
-        public void PersistNewItemInStorage(object context, IEntity item)
+        public void PersistUpdatedItemInStorage(IEntity item)
         {
-            throw new NotImplementedException();
+            Storage.Update((item as Queue).GetData());
         }
 
-        public void PersistUpdatedItemInStorage(object context, IEntity item)
+        public void PersistDeletedItemInStorage(IEntity item)
         {
-            throw new NotImplementedException();
-        }
-
-        public void PersistDeletedItemInStorage(object context, IEntity item)
-        {
-            throw new NotImplementedException();
+            Storage.Delete(item.Id);
         }
 
         public IQueue Get(int id)

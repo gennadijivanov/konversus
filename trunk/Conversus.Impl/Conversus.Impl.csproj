@@ -59,6 +59,10 @@
       <Project>{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}</Project>
       <Name>Conversus.Core.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Conversus.Storage\Conversus.Storage.csproj">
+      <Project>{0A01855D-10DC-46D7-B2DF-7BA7C3380743}</Project>
+      <Name>Conversus.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Factories\" />
