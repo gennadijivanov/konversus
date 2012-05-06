@@ -8,8 +8,8 @@
     <ProjectGuid>{6CEBE5A8-D727-4496-9A30-1C3AA6180730}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TerminalView</RootNamespace>
-    <AssemblyName>TerminalView</AssemblyName>
+    <RootNamespace>Conversus.TerminalView</RootNamespace>
+    <AssemblyName>Conversus.TerminalView</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
