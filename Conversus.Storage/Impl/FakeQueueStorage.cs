@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Conversus.Storage;
+using Conversus.Core.DTO;
 
-namespace Conversus.Core.Storage.Impl
+namespace Conversus.Storage.Impl
 {
     public class FakeQueueStorage : IQueueStorage
     {
-        private static Dictionary<int, DTO.QueueData> _list = new Dictionary<int, DTO.QueueData>();
+        private static readonly Dictionary<int, QueueData> _dict = new Dictionary<int, QueueData>();
 
-        public void Create(DTO.QueueData data)
+        public void Create(QueueData data)
         {
-            _list.Add(data.Id, data);
+            _dict.Add(data.Id, data);
         }
 
-        public void Update(DTO.QueueData data)
+        public void Update(QueueData data)
         {
-            _list[data.Id] = data;
+            _dict[data.Id] = data;
         }
 
-        public DTO.QueueData Get(int id)
+        public QueueData Get(int id)
         {
-            return _list[id];
+            return _dict[id];
         }
 
         public void Delete(int id)
         {
-            _list.Remove(id);
+            _dict.Remove(id);
+        }
+
+        public QueueData GetByClient(int clientId)
+        {
+            return _dict.Values.FirstOrDefault();
         }
     }
 }

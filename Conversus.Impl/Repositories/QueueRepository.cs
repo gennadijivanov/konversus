@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
-using Conversus.Core.Infrastructure;
+using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.Infrastructure.UnitOfWork;
 using Conversus.Core.Impl.Objects;
 using Conversus.Storage;
 
-namespace Conversus.Core.Impl.Repositories
+namespace Conversus.Impl.Repositories
 {
     public class QueueRepository : BaseRepository<QueueData, IQueue>, IUnitOfWorkStorageRepository, IQueueRepository
     {
@@ -68,6 +66,11 @@ namespace Conversus.Core.Impl.Repositories
         public IQueue Get(int id)
         {
             return Get(id, null) as IQueue;
+        }
+
+        public IQueue GetByClient(int clientId)
+        {
+            return CreateFromData(Storage.GetByClient(clientId));
         }
     }
 }

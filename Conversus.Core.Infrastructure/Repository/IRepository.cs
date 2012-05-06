@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Conversus.Core.DomainModel;
+﻿using Conversus.Core.DomainModel;
 
-namespace Conversus.Core.Infrastructure
+namespace Conversus.Core.Infrastructure.Repository
 {
     public interface IRepository
     {

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Core.Infrastructure.UnitOfWork
 {
@@ -24,7 +22,7 @@ namespace Conversus.Core.Infrastructure.UnitOfWork
 
         protected List<Operation> _operations;
 
-        public BaseUnitOfWork()
+        protected BaseUnitOfWork()
         {
             _operations = new List<Operation>();
         }

@@ -8,8 +8,8 @@
     <ProjectGuid>{52F0DBB4-1C44-42FB-938D-71A2DE4BEC61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Conversus.Core.Impl</RootNamespace>
-    <AssemblyName>Conversus.Core.Impl</AssemblyName>
+    <RootNamespace>Conversus.Impl</RootNamespace>
+    <AssemblyName>Conversus.Impl</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Objects\Client.cs" />
     <Compile Include="Objects\Queue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\IClientRepository.cs" />
     <Compile Include="Repositories\IQueueRepository.cs" />
     <Compile Include="Repositories\QueueRepository.cs" />
   </ItemGroup>
@@ -64,9 +67,7 @@
       <Name>Conversus.Storage</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
