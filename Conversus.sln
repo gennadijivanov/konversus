@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Storage", "Conver
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{72505E67-CCF7-44E3-A7E4-BC00679AD47D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalView", "TerminalView\TerminalView.csproj", "{6CEBE5A8-D727-4496-9A30-1C3AA6180730}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.TerminalView", "Conversus.TerminalView\Conversus.TerminalView.csproj", "{6CEBE5A8-D727-4496-9A30-1C3AA6180730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
