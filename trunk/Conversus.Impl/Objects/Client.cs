@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
+using Conversus.Impl.Factories;
 
 namespace Conversus.Core.Impl.Objects
 {
@@ -46,23 +44,31 @@ namespace Conversus.Core.Impl.Objects
             get { return _data.Id; }
         }
 
-        // build data from ctor parameters
-        public Client()
+        public Client(ClientData data)
         {
-            _data = new ClientData() {
-                Id = 0, // !!!
-                Name = "",
-                Deadline=DateTime.Now,
-                PIN=0,
-                Status = ClientStatus.Waiting,
-                Ticket=""
-            };
+            _data = data;
         }
 
-        // get from repository
+        public Client(string name, DateTime deadline, int pin, ClientStatus status, string ticket)
+            : this(new ClientData
+            {
+                Name = name,
+                Deadline = deadline,
+                PIN = pin,
+                Status = status,
+                Ticket = ticket
+            })
+        {
+        }
+
+        internal ClientData GetData()
+        {
+            return _data;
+        }
+
         public IQueue GetQueue()
         {
-            throw new NotImplementedException();
+            return RepositoryFactory.GetQueueRepository().GetByClient(_data.Id);
         }
     }
 }

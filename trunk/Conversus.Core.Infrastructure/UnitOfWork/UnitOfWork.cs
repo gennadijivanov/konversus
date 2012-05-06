@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Transactions;
+﻿using System.Transactions;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Core.Infrastructure.UnitOfWork
 {
-    public class UnitOfWork : BaseUnitOfWork, IUnitOfWork
+    public class UnitOfWork : BaseUnitOfWork
     {
         private static readonly System.TimeSpan DefaultTimeout = new System.TimeSpan(0, 2, 0);
 
@@ -15,11 +12,11 @@ namespace Conversus.Core.Infrastructure.UnitOfWork
             if (_operations.Count == 0)
                 return;
 
-            using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead, Timeout = DefaultTimeout }))
+            using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions { IsolationLevel = IsolationLevel.RepeatableRead, Timeout = DefaultTimeout }))
             {
                     foreach (var operation in _operations)
                     {
-                        IUnitOfWorkStorageRepository repository = (IUnitOfWorkStorageRepository)operation.Repository;
+                        var repository = (IUnitOfWorkStorageRepository)operation.Repository;
                         switch (operation.Type)
                         {
                             case TransactionType.Insert:

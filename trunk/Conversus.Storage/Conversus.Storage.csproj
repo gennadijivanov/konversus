@@ -8,8 +8,8 @@
     <ProjectGuid>{0A01855D-10DC-46D7-B2DF-7BA7C3380743}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Conversus.Core.Storage</RootNamespace>
-    <AssemblyName>Conversus.Core.Storage</AssemblyName>
+    <RootNamespace>Conversus.Storage</RootNamespace>
+    <AssemblyName>Conversus.Storage</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IClientStorage.cs" />
+    <Compile Include="Impl\FakeClientStorage.cs" />
     <Compile Include="Impl\FakeQueueStorage.cs" />
     <Compile Include="IQueueStorage.cs" />
     <Compile Include="IStorage.cs" />

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.UnitOfWork;
 
-namespace Conversus.Core.Infrastructure
+namespace Conversus.Core.Infrastructure.Repository
 {
     public abstract class BaseRepository<TEntityData, TEntity> : IRepository, IUnitOfWorkRepository
         where TEntityData : struct, ITimestampable
         where TEntity : class
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         protected BaseRepository()
             : this(null)

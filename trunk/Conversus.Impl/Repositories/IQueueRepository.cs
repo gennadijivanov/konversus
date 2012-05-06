@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Conversus.Core.Infrastructure;
-using Conversus.Core.DomainModel;
+﻿using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 
-namespace Conversus.Core.Impl.Repositories
+namespace Conversus.Impl.Repositories
 {
     public interface IQueueRepository : IRepository
     {
         IQueue Get(int id);
+        IQueue GetByClient(int clientId);
     }
 }

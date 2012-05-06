@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
+using Conversus.Impl.Factories;
 
 namespace Conversus.Core.Impl.Objects
 {
@@ -27,12 +26,8 @@ namespace Conversus.Core.Impl.Objects
             _data = data;
         }
 
-        // data from ctor params
-        public Queue():this(new QueueData()
-            {
-                Id = 0,
-                Type = QueueType.Type1
-            })
+        public Queue(QueueType type)
+            : this(new QueueData { Type = type })
         {
         }
 
@@ -44,7 +39,7 @@ namespace Conversus.Core.Impl.Objects
         // from repository
         public ICollection<IClient> GetClients()
         {
-            throw new NotImplementedException();
+            return RepositoryFactory.GetClientRepository().GetClients(_data.Id);
         }
     }
 }
