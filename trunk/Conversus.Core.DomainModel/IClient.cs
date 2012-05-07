@@ -24,4 +24,10 @@ namespace Conversus.Core.DomainModel
 
         IQueue GetQueue();
     }
+
+    public interface IClientFactory
+    {
+        //TODO: lotus or common queue?
+        IClient CreateNewClient(string name, QueueType queueType, int? pin);
+    }
 }
