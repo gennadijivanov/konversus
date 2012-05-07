@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Conversus.Core.DomainModel
 {
@@ -16,5 +13,10 @@ namespace Conversus.Core.DomainModel
         QueueType Type { get; set; }
 
         ICollection<IClient> GetClients();
+    }
+
+    public interface IQueueFactory
+    {
+        IQueue CreateNewQueue(QueueType queueType);
     }
 }

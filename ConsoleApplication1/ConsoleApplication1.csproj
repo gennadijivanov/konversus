@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{52F0DBB4-1C44-42FB-938D-71A2DE4BEC61}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{633C536F-D188-4544-910D-69D994CA6274}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Conversus.Impl</RootNamespace>
-    <AssemblyName>Conversus.Impl</AssemblyName>
+    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,18 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\ClientFactory.cs" />
-    <Compile Include="Factories\QueueFactory.cs" />
-    <Compile Include="Factories\RepositoryFactory.cs" />
-    <Compile Include="Objects\Client.cs" />
-    <Compile Include="Objects\Queue.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ClientRepository.cs" />
-    <Compile Include="Repositories\IClientRepository.cs" />
-    <Compile Include="Repositories\IQueueRepository.cs" />
-    <Compile Include="Repositories\QueueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Conversus.BusinessLogic\Conversus.BusinessLogic.csproj">
+      <Project>{2C8ED2AB-0434-4BB0-95F6-35AB3A0D433E}</Project>
+      <Name>Conversus.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conversus.Core.DomainModel\Conversus.Core.DomainModel.csproj">
       <Project>{6358F485-88D8-4093-898B-3A4348D72CC7}</Project>
       <Name>Conversus.Core.DomainModel</Name>
@@ -69,7 +68,6 @@
       <Name>Conversus.Storage</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

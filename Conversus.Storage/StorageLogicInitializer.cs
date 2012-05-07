@@ -11,6 +11,7 @@ namespace Conversus.Storage
             var storageTypes = new Dictionary<Type, object>
             {
                 {typeof(IQueueStorage), new FakeQueueStorage()},
+                {typeof(IClientStorage), new FakeClientStorage()},
             };
 
             StorageLogicFactory.Instance.RegisterObjects(storageTypes);
