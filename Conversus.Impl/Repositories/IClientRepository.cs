@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
@@ -6,8 +7,8 @@ namespace Conversus.Impl.Repositories
 {
     public interface IClientRepository : IRepository
     {
-        IClient Get(int id);
+        IClient Get(Guid id);
 
-        ICollection<IClient> GetClients(int queueId);
+        ICollection<IClient> GetClients(Guid queueId);
     }
 }

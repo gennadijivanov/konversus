@@ -3,7 +3,7 @@ using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
 using Conversus.Impl.Factories;
 
-namespace Conversus.Core.Impl.Objects
+namespace Conversus.Impl.Objects
 {
     public class Client : IClient
     {
@@ -39,7 +39,7 @@ namespace Conversus.Core.Impl.Objects
             set { _data.Ticket = value; }
         }
 
-        public int Id
+        public Guid Id
         {
             get { return _data.Id; }
         }
@@ -52,6 +52,7 @@ namespace Conversus.Core.Impl.Objects
         public Client(string name, DateTime deadline, int pin, ClientStatus status, string ticket)
             : this(new ClientData
             {
+                Id = Guid.NewGuid(),
                 Name = name,
                 Deadline = deadline,
                 PIN = pin,

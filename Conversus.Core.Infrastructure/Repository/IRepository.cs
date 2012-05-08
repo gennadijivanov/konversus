@@ -1,11 +1,12 @@
-﻿using Conversus.Core.DomainModel;
+﻿using System;
+using Conversus.Core.DomainModel;
 
 namespace Conversus.Core.Infrastructure.Repository
 {
     public interface IRepository
     {
         long MaxTimestamp { get; }
-        IEntity Get(int id, long? timestamp);
+        IEntity Get(Guid id, long? timestamp);
         void Add(IEntity entity);
         void Update(IEntity entity);
         void Remove(IEntity entity);

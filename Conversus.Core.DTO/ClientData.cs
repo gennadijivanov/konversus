@@ -5,7 +5,7 @@ namespace Conversus.Core.DTO
 {
     public struct ClientData : ITimestampable
     {
-        public int Id;
+        public Guid Id;
 
         public string Name;
 

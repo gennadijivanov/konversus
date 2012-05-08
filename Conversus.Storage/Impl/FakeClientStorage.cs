@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Conversus.Core.DTO;
 
 namespace Conversus.Storage.Impl
@@ -7,7 +8,7 @@ namespace Conversus.Storage.Impl
     {
         #region Implementation of IStorage<ClientData>
 
-        private static readonly Dictionary<int, ClientData> _dict = new Dictionary<int, ClientData>();
+        private static readonly Dictionary<Guid, ClientData> _dict = new Dictionary<Guid, ClientData>();
 
         public void Create(ClientData data)
         {
@@ -19,17 +20,17 @@ namespace Conversus.Storage.Impl
             _dict[data.Id] = data;
         }
 
-        public ClientData Get(int id)
+        public ClientData Get(Guid id)
         {
             return _dict[id];
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _dict.Remove(id);
         }
 
-        public ICollection<ClientData> GetClients(int queueId)
+        public ICollection<ClientData> GetClients(Guid queueId)
         {
             return _dict.Values;
         }

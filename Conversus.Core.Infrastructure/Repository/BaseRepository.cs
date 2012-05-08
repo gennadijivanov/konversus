@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.UnitOfWork;
 
@@ -21,10 +22,9 @@ namespace Conversus.Core.Infrastructure.Repository
         }
 
         // abstract methods to implement in end classes
-        protected abstract Dictionary<int, TEntityData> FillCache();
         protected abstract TEntity CreateFromData(TEntityData data);
         protected abstract TEntityData GetDataFromEntity(TEntity item);
-        protected abstract TEntityData? GetData(int id, long? timestamp); // must be called only from GetEntityData
+        protected abstract TEntityData? GetData(Guid id, long? timestamp); // must be called only from GetEntityData
 
         // !!! factory !!!
         protected virtual IUnitOfWork GetUnitOfWork()
@@ -46,7 +46,7 @@ namespace Conversus.Core.Infrastructure.Repository
 
         #region Protected section
 
-        protected TEntityData? GetEntityData(int id, long? timestamp)
+        protected TEntityData? GetEntityData(Guid id, long? timestamp)
         {
             TEntityData? entityDataNullable = GetData(id, timestamp);
             if (!entityDataNullable.HasValue)
@@ -71,7 +71,7 @@ namespace Conversus.Core.Infrastructure.Repository
             _maxTimestamp = (entity as ITimestampable).Timestamp;
         }
 
-        public IEntity Get(int id, long? timestamp)
+        public IEntity Get(Guid id, long? timestamp)
         {
             TEntityData? entityDataNullable = GetEntityData(id, timestamp);
             return (IEntity)(entityDataNullable.HasValue ? CreateFromData(entityDataNullable.Value) : null);
