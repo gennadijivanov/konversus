@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DTO;
 using Conversus.Core.DomainModel;
-using Conversus.Core.Impl.Objects;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.Infrastructure.UnitOfWork;
+using Conversus.Impl.Objects;
 using Conversus.Storage;
 
 namespace Conversus.Impl.Repositories
@@ -28,12 +28,6 @@ namespace Conversus.Impl.Repositories
         {
         }
 
-        // all from storage. rename method
-        protected override Dictionary<int, ClientData> FillCache()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override IClient CreateFromData(ClientData data)
         {
             return new Client(data);
@@ -44,7 +38,7 @@ namespace Conversus.Impl.Repositories
             return (item as Client).GetData();
         }
 
-        protected override ClientData? GetData(int id, long? timestamp)
+        protected override ClientData? GetData(Guid id, long? timestamp)
         {
             return Storage.Get(id);
         }
@@ -64,12 +58,12 @@ namespace Conversus.Impl.Repositories
             Storage.Delete(item.Id);
         }
 
-        public IClient Get(int id)
+        public IClient Get(Guid id)
         {
             return Get(id, null) as IClient;
         }
 
-        public ICollection<IClient> GetClients(int queueId)
+        public ICollection<IClient> GetClients(Guid queueId)
         {
             return Storage.GetClients(queueId).Select(CreateFromData).ToList();
         }

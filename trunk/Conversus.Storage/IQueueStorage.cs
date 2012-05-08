@@ -1,9 +1,10 @@
-﻿using Conversus.Core.DTO;
+﻿using System;
+using Conversus.Core.DTO;
 
 namespace Conversus.Storage
 {
     public interface IQueueStorage : IStorage<QueueData>
     {
-        QueueData GetByClient(int clientId);
+        QueueData GetByClient(Guid clientId);
     }
 }

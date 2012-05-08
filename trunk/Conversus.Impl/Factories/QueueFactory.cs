@@ -1,5 +1,5 @@
 using Conversus.Core.DomainModel;
-using Conversus.Core.Impl.Objects;
+using Conversus.Impl.Objects;
 
 namespace Conversus.Impl.Factories
 {

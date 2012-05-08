@@ -4,7 +4,7 @@ using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
 using Conversus.Impl.Factories;
 
-namespace Conversus.Core.Impl.Objects
+namespace Conversus.Impl.Objects
 {
     public class Queue : IQueue
     {
@@ -16,7 +16,7 @@ namespace Conversus.Core.Impl.Objects
             set { _data.Type = value; }
         }
 
-        public int Id
+        public Guid Id
         {
             get { return _data.Id; }
         }
@@ -27,7 +27,7 @@ namespace Conversus.Core.Impl.Objects
         }
 
         public Queue(QueueType type)
-            : this(new QueueData { Type = type })
+            : this(new QueueData { Id = Guid.NewGuid(), Type = type })
         {
         }
 

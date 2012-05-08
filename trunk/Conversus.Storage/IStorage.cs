@@ -9,7 +9,7 @@ namespace Conversus.Storage
     {
         void Create(TEntityData data);
         void Update(TEntityData data);
-        TEntityData Get(int id);
-        void Delete(int id);
+        TEntityData Get(Guid id);
+        void Delete(Guid id);
     }
 }
