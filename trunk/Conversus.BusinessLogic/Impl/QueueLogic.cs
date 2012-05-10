@@ -14,6 +14,11 @@ namespace Conversus.BusinessLogic.Impl
             throw new NotImplementedException();
         }
 
+        public QueueData GetQueue(Guid clientId)
+        {
+            throw new NotImplementedException();
+        }
+
         public QueueData GetOrCreateQueue(QueueType queueType)
         {
             throw new NotImplementedException();

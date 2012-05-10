@@ -9,11 +9,17 @@ namespace Conversus.Core.DTO
 
         public string Name;
 
-        public DateTime Deadline;
+        public DateTime? BookingTime;
+
+        public DateTime? TakeTicket;
+
+        public DateTime? PerformStart;
+
+        public DateTime? PerformEnd;
 
         public ClientStatus Status;
 
-        public int PIN;
+        public int? PIN;
 
         public string Ticket;
 

@@ -14,25 +14,25 @@ namespace Conversus.Core.Infrastructure.UnitOfWork
 
             using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions { IsolationLevel = IsolationLevel.RepeatableRead, Timeout = DefaultTimeout }))
             {
-                    foreach (var operation in _operations)
+                foreach (var operation in _operations)
+                {
+                    var repository = (IUnitOfWorkStorageRepository)operation.Repository;
+                    switch (operation.Type)
                     {
-                        var repository = (IUnitOfWorkStorageRepository)operation.Repository;
-                        switch (operation.Type)
-                        {
-                            case TransactionType.Insert:
-                                repository.PersistNewItemInStorage(operation.Entity);
-                                break;
-                            case TransactionType.Delete:
-                                repository.PersistDeletedItemInStorage(operation.Entity);
-                                break;
-                            case TransactionType.Update:
-                                repository.PersistUpdatedItemInStorage(operation.Entity);
-                                break;
-                        }
+                        case TransactionType.Insert:
+                            repository.PersistNewItemInStorage(operation.Entity);
+                            break;
+                        case TransactionType.Delete:
+                            repository.PersistDeletedItemInStorage(operation.Entity);
+                            break;
+                        case TransactionType.Update:
+                            repository.PersistUpdatedItemInStorage(operation.Entity);
+                            break;
                     }
+                }
 
-                    // Commit the transaction
-                    scope.Complete();
+                // Commit the transaction
+                scope.Complete();
             }
 
             // Clear everything

@@ -15,10 +15,28 @@ namespace Conversus.Impl.Objects
             set { _data.Name = value; }
         }
 
-        public DateTime Deadline
+        public DateTime? BookingTime
         {
-            get { return _data.Deadline; }
-            set { _data.Deadline = value; }
+            get { return _data.BookingTime; }
+            set { _data.BookingTime = value; }
+        }
+
+        public DateTime? TakeTicket
+        {
+            get { return _data.TakeTicket; }
+            set { _data.TakeTicket = value; }
+        }
+
+        public DateTime? PerformStart
+        {
+            get { return _data.PerformStart; }
+            set { _data.PerformStart = value; }
+        }
+
+        public DateTime? PerformEnd
+        {
+            get { return _data.PerformEnd; }
+            set { _data.PerformEnd = value; }
         }
 
         public ClientStatus Status
@@ -27,7 +45,7 @@ namespace Conversus.Impl.Objects
             set { _data.Status = value; }
         }
 
-        public int PIN
+        public int? PIN
         {
             get { return _data.PIN; }
             set { _data.PIN = value; }
@@ -54,7 +72,7 @@ namespace Conversus.Impl.Objects
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                Deadline = deadline,
+                BookingTime = deadline,
                 PIN = pin,
                 Status = status,
                 Ticket = ticket
@@ -70,6 +88,39 @@ namespace Conversus.Impl.Objects
         public IQueue GetQueue()
         {
             return RepositoryFactory.GetQueueRepository().GetByClient(_data.Id);
+        }
+
+        public void ChangeStatus(ClientStatus newStatus)
+        {
+            _data.Status = newStatus;
+            switch (newStatus)
+            {
+                case ClientStatus.Performing:
+                    _data.PerformStart = DateTime.Now;
+                    break;
+                case ClientStatus.Waiting:
+                    _data.TakeTicket = DateTime.Now;
+                    break;
+                case ClientStatus.Done:
+                case ClientStatus.Absent:
+                    _data.PerformEnd = DateTime.Now;
+                    break;
+            }
+            RepositoryFactory.GetClientRepository().Update(this);
+        }
+
+        public string CreateTicket()
+        {
+            var queueType = GetQueue().Type;
+            string queueCode = PIN.HasValue
+                                   ? "C"
+                                   : (queueType == QueueType.Approvement ? "A" : "B");
+
+            string ticket =queueCode + " " + Id.ToString();
+
+            _data.Ticket = ticket;
+
+            return ticket;
         }
     }
 }
