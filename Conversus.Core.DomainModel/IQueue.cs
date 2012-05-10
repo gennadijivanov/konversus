@@ -4,8 +4,8 @@ namespace Conversus.Core.DomainModel
 {
     public enum QueueType
     {
-        Type1,
-        Type2
+        Approvement,
+        Taking
     }
 
     public interface IQueue : IEntity

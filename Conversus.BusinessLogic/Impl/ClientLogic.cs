@@ -13,29 +13,32 @@ namespace Conversus.BusinessLogic.Impl
     {
         #region Implementation of IClientLogic
 
-        public void CreateClient(string name, QueueType queueType, int? pin)
-        {
-            var rep = RepositoryFactory.GetClientRepository();
-            var client = RepositoryFactory.GetClientFactory().CreateNewClient(name, queueType, pin);
-            rep.Add(client);
-        }
-
-        public void SetTicket(int id)
+        public ClientData CreateForCommon(string name, QueueType queueType)
         {
             throw new NotImplementedException();
         }
 
-        public ClientData GetClient(int id)
+        public ClientData CreateFromLotus(string name, int pin)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<ClientData> GetClients(int? queueId)
+        public string GetTicket(Guid clientId)
+        {
+            return "42";
+        }
+
+        public ClientData GetClientByPin(int pin)
         {
             throw new NotImplementedException();
         }
 
-        public void ChangeStatus(int clientId, ClientStatus newStatus)
+        public void ChangeStatus(Guid clientId, ClientStatus status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<ClientData> GetClients(QueueType queue)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
 
@@ -6,20 +7,20 @@ namespace Conversus.BusinessLogic
 {
     public interface IClientLogic
     {
-        //TODO: разделять создаваемого из лотуса и по общей очереди
-        /// <summary>
-        /// Создание клиента
-        /// </summary>
-        void CreateClient(string name, QueueType queueType, int? pin);
-        
-        //TODO: установка номера тикета актуальна только для лотусовских. Пришедшему по общей очереди можно давать его сразу
-        void SetTicket(int id);
+        // for terminal
 
-        ClientData GetClient(int id);
+        ClientData CreateForCommon(string name, QueueType queueType);
 
-        //TODO: FilterParameters!!!
-        ICollection<ClientData> GetClients(int? queueId); 
+        ClientData CreateFromLotus(string name, int pin);
 
-        void ChangeStatus(int clientId, ClientStatus newStatus);
+        string GetTicket(Guid clientId);
+
+        ClientData GetClientByPin(int pin);
+
+        // for operator
+
+        void ChangeStatus(Guid clientId, ClientStatus status);
+
+        ICollection<ClientData> GetClients(QueueType queue);
     }
 }

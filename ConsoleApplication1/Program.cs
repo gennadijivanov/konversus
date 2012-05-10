@@ -12,7 +12,7 @@ namespace ConsoleApplication1
             StorageLogicInitializer.Initialize();
 
             var clientLogic = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            clientLogic.CreateClient("Vasya", QueueType.Type1, null);
+            //clientLogic.CreateClient("Vasya", QueueType.Approvement, null);
         }
     }
 }
