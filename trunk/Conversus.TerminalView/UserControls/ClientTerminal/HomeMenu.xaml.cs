@@ -31,7 +31,17 @@ namespace TerminalView.UserControls.ClientTerminal
             switch (senderName)
             {
                 case "ToAnotherDayLink":
+                    if (MainContainer.FindName("BrowserInstance") != null)
+                    {
+                        UIElement oldbrowser = (UIElement)MainContainer.FindName("BrowserInstance");
+                        MainContainer.Children.Remove(oldbrowser);
+                    }
+
                     var browser = new WebBrowser();
+                    browser.Name = "BrowserInstance";
+                    browser.Navigate("http://yandex.ru");
+
+                    MainContainer.Children.Add(browser);
                     break;   
             }
             
