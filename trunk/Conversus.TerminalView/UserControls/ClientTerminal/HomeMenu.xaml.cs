@@ -23,5 +23,19 @@ namespace TerminalView.UserControls.ClientTerminal
         {
             InitializeComponent();
         }
+
+        private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var senderName = ((Border)sender).Name;
+
+            switch (senderName)
+            {
+                case "ToAnotherDayLink":
+                    var browser = new WebBrowser();
+                    break;   
+            }
+            
+            MessageBox.Show(senderName);
+        }
     }
 }

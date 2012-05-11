@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <!--Green Button Style-->
-    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0" x:Key="GreenBtnBg">
+    <LinearGradientBrush Opacity=".85" EndPoint="1,1" StartPoint="0,0" x:Key="GreenBtnBg">
         <GradientStop Color="#FFC4F70D" Offset="0.5" />
         <GradientStop Color="#FF47A900" Offset="1" />
         <GradientStop Color="#FF47A900" Offset="0" />
@@ -16,8 +16,10 @@
     </Style>
 
     <Style x:Key="greenButtonStyle" TargetType="Border">
+        <Setter Property="BorderThickness" Value="3"></Setter>
+        <Setter Property="BorderBrush" Value="#B600B300"></Setter>
         <Setter Property="Background" Value="{StaticResource GreenBtnBg}"></Setter>
-        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="Margin" Value="20"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
         <Setter Property="Padding" Value="10"></Setter>
     </Style>

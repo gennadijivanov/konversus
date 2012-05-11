@@ -4,31 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="700">
+             d:DesignHeight="700" d:DesignWidth="700">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="700">
-            <Border Style="{StaticResource ResourceKey=greenButtonStyle}">
+            <Border Name="TakingLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonUp="Border_MouseLeftButtonUp">
                 <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     cдача документов на<LineBreak />
                     <Run FontSize="30">ПОЛУЧЕНИЕ</Run><LineBreak />
                     <Run FontSize="25">технических условий</Run>
                 </TextBlock>
             </Border>
-            <Border Style="{StaticResource ResourceKey=greenButtonStyle}">
+            <Border Name="ApprovementLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
                 <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     сдача документов на<LineBreak />
                     <Run FontSize="30">СОГЛАСОВАНИЕ</Run><LineBreak />
                     <Run FontSize="25">проектной документации</Run>
                 </TextBlock>
             </Border>
-            <Border Style="{StaticResource ResourceKey=greenButtonStyle}">
+            <Border Name="HasPinLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
                 <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     Получение талона<LineBreak />
                     электронной очереди<LineBreak />
                     <Run FontSize="30">по предварительной записи</Run>
                 </TextBlock>
             </Border>
-            <Border Style="{StaticResource ResourceKey=greenButtonStyle}">
+            <Border Name="ToAnotherDayLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
                 <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     <Run FontSize="30">Записаться на другой день</Run>
                 </TextBlock>
