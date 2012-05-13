@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
+using Conversus.Core.Infrastructure.Repository;
 using Conversus.Impl.Factories;
 
 namespace Conversus.Impl.Objects
@@ -87,7 +89,8 @@ namespace Conversus.Impl.Objects
 
         public IQueue GetQueue()
         {
-            return RepositoryFactory.GetQueueRepository().GetByClient(_data.Id);
+            return RepositoryFactory.GetQueueRepository()
+                .Get(new QueueFilterParameters() {ClientId = _data.Id}).Single();
         }
 
         public void ChangeStatus(ClientStatus newStatus)

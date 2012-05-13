@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.DTO;
 using Conversus.Core.Infrastructure.Repository;
@@ -36,9 +38,14 @@ namespace Conversus.Impl.Repositories
             return (item as Queue).GetData();
         }
 
-        protected override QueueData? GetData(Guid id, long? timestamp)
+        protected override QueueData? GetData(Guid id)
         {
             return Storage.Get(id);
+        }
+
+        public override ICollection<IEntity> GetCollection(IFilterParameters filter)
+        {
+            return Storage.Get(filter).Select(CreateFromData).Cast<IEntity>().ToList();
         }
 
         public void PersistNewItemInStorage(IEntity item)
@@ -56,9 +63,14 @@ namespace Conversus.Impl.Repositories
             Storage.Delete(item.Id);
         }
 
-        public IQueue Get(Guid id)
+        public new IQueue Get(Guid id)
         {
-            return Get(id, null) as IQueue;
+            return base.Get(id) as IQueue;
+        }
+
+        public ICollection<IQueue> Get(IFilterParameters filter)
+        {
+            throw new NotImplementedException();
         }
 
         public IQueue GetByClient(Guid clientId)

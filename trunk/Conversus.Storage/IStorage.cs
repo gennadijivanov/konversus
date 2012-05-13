@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Storage
 {
@@ -7,6 +9,7 @@ namespace Conversus.Storage
         void Create(TEntityData data);
         void Update(TEntityData data);
         TEntityData Get(Guid id);
+        ICollection<TEntityData> Get(IFilterParameters filter);
         void Delete(Guid id);
     }
 }

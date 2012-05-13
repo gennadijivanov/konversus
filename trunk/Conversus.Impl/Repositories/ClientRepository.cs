@@ -38,9 +38,14 @@ namespace Conversus.Impl.Repositories
             return (item as Client).GetData();
         }
 
-        protected override ClientData? GetData(Guid id, long? timestamp)
+        protected override ClientData? GetData(Guid id)
         {
             return Storage.Get(id);
+        }
+
+        public override ICollection<IEntity> GetCollection(IFilterParameters filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void PersistNewItemInStorage(IEntity item)
@@ -58,14 +63,14 @@ namespace Conversus.Impl.Repositories
             Storage.Delete(item.Id);
         }
 
-        public IClient Get(Guid id)
+        public new IClient Get(Guid id)
         {
-            return Get(id, null) as IClient;
+            return base.Get(id) as IClient;
         }
 
         public ICollection<IClient> GetClients(Guid queueId)
         {
-            return Storage.GetClients(queueId).Select(CreateFromData).ToList();
+            return Storage.Get(new ClientFilterParameters(){ QueueId = queueId}).Select(CreateFromData).ToList();
         }
     }
 }

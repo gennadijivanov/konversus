@@ -6,7 +6,7 @@ using Conversus.Core.Infrastructure.UnitOfWork;
 namespace Conversus.Core.Infrastructure.Repository
 {
     public abstract class BaseRepository<TEntityData, TEntity> : IRepository, IUnitOfWorkRepository
-        where TEntityData : struct, ITimestampable
+        where TEntityData : struct
         where TEntity : class
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -24,7 +24,7 @@ namespace Conversus.Core.Infrastructure.Repository
         // abstract methods to implement in end classes
         protected abstract TEntity CreateFromData(TEntityData data);
         protected abstract TEntityData GetDataFromEntity(TEntity item);
-        protected abstract TEntityData? GetData(Guid id, long? timestamp); // must be called only from GetEntityData
+        protected abstract TEntityData? GetData(Guid id); // must be called only from GetEntityData
 
         // !!! factory !!!
         protected virtual IUnitOfWork GetUnitOfWork()
@@ -46,36 +46,26 @@ namespace Conversus.Core.Infrastructure.Repository
 
         #region Protected section
 
-        protected TEntityData? GetEntityData(Guid id, long? timestamp)
+        protected TEntityData? GetEntityData(Guid id)
         {
-            TEntityData? entityDataNullable = GetData(id, timestamp);
-            if (!entityDataNullable.HasValue)
-                return null;
-
-            TEntityData entityData = entityDataNullable.Value;
-            entityData.Timestamp = timestamp.HasValue ? timestamp.Value : TimestampFactory.GetCurrentTimestamp();
-
-            return entityData;
+            return GetData(id);
         }
 
         #endregion
 
         #region IRepository
 
-        private static long _maxTimestamp;
-
-        public long MaxTimestamp { get { return _maxTimestamp; } }
-
         public void OnChange(IEntity entity)
         {
-            _maxTimestamp = (entity as ITimestampable).Timestamp;
         }
 
-        public IEntity Get(Guid id, long? timestamp)
+        public IEntity Get(Guid id)
         {
-            TEntityData? entityDataNullable = GetEntityData(id, timestamp);
+            TEntityData? entityDataNullable = GetEntityData(id);
             return (IEntity)(entityDataNullable.HasValue ? CreateFromData(entityDataNullable.Value) : null);
         }
+
+        public abstract ICollection<IEntity> GetCollection(IFilterParameters filter);
 
         public void Add(IEntity entity)
         {

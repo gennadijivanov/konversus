@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 
 namespace Conversus.Core.Infrastructure.Repository
 {
     public interface IRepository
     {
-        long MaxTimestamp { get; }
-        IEntity Get(Guid id, long? timestamp);
+        IEntity Get(Guid id);
+        ICollection<IEntity> GetCollection(IFilterParameters filter = null);
         void Add(IEntity entity);
         void Update(IEntity entity);
         void Remove(IEntity entity);
