@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Conversus.Core.DTO;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Storage.Impl
 {
@@ -25,6 +27,15 @@ namespace Conversus.Storage.Impl
             return _dict[id];
         }
 
+        public ICollection<ClientData> Get(IFilterParameters filter)
+        {
+            var f = filter as ClientFilterParameters;
+            var queue = _dict.Values.AsQueryable();
+            if (f.QueueId.HasValue)
+                queue = queue.Where(q => q.Id == f.QueueId.Value);
+            return queue.ToList();
+        }
+
         public void Delete(Guid id)
         {
             _dict.Remove(id);
@@ -32,7 +43,7 @@ namespace Conversus.Storage.Impl
 
         public ICollection<ClientData> GetClients(Guid queueId)
         {
-            return _dict.Values;
+            return Get(new ClientFilterParameters(){ QueueId = queueId });
         }
 
         #endregion

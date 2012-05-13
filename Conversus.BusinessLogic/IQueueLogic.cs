@@ -7,10 +7,8 @@ namespace Conversus.BusinessLogic
 {
     public interface IQueueLogic
     {
-        QueueData GetQueue(Guid clientId);
+        IQueue GetOrCreateQueue(QueueType queueType);
 
-        QueueData GetOrCreateQueue(QueueType queueType);
-
-        ICollection<QueueData> GetQueues();
+        ICollection<IQueue> GetQueues();
     }
 }

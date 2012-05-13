@@ -3,7 +3,7 @@ using Conversus.Core.DomainModel;
 
 namespace Conversus.Core.DTO
 {
-    public struct ClientData : ITimestampable
+    public struct ClientData
     {
         public Guid Id;
 
@@ -22,7 +22,5 @@ namespace Conversus.Core.DTO
         public int? PIN;
 
         public string Ticket;
-
-        public long Timestamp { get; set; }
     }
 }

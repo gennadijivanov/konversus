@@ -13,12 +13,12 @@ namespace Conversus.BusinessLogic.Impl
     {
         #region Implementation of IClientLogic
 
-        public ClientData CreateForCommon(string name, QueueType queueType)
+        public IClient CreateForCommon(string name, QueueType queueType)
         {
             throw new NotImplementedException();
         }
 
-        public ClientData CreateFromLotus(string name, int pin)
+        public IClient CreateFromLotus(string name, int pin)
         {
             throw new NotImplementedException();
         }
@@ -28,7 +28,7 @@ namespace Conversus.BusinessLogic.Impl
             return "42";
         }
 
-        public ClientData GetClientByPin(int pin)
+        public IClient GetClientByPin(int pin)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +38,7 @@ namespace Conversus.BusinessLogic.Impl
             throw new NotImplementedException();
         }
 
-        public ICollection<ClientData> GetClients(QueueType queue)
+        public ICollection<IClient> GetClients(QueueType queue)
         {
             throw new NotImplementedException();
         }

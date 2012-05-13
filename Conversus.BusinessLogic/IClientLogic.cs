@@ -9,18 +9,18 @@ namespace Conversus.BusinessLogic
     {
         // for terminal
 
-        ClientData CreateForCommon(string name, QueueType queueType);
+        IClient CreateForCommon(string name, QueueType queueType);
 
-        ClientData CreateFromLotus(string name, int pin);
+        IClient CreateFromLotus(string name, int pin);
 
         string GetTicket(Guid clientId);
 
-        ClientData GetClientByPin(int pin);
+        IClient GetClientByPin(int pin);
 
         // for operator
 
         void ChangeStatus(Guid clientId, ClientStatus status);
 
-        ICollection<ClientData> GetClients(QueueType queue);
+        ICollection<IClient> GetClients(QueueType queue);
     }
 }
