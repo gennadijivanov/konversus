@@ -58,11 +58,20 @@
     <Compile Include="QueueBoardWindow.xaml.cs">
       <DependentUpon>QueueBoardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ClientTerminal\BackGround.xaml.cs">
-      <DependentUpon>BackGround.xaml</DependentUpon>
+    <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
+      <DependentUpon>DefaultBackGround.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ClientTerminal\HomeMenu.xaml.cs">
-      <DependentUpon>HomeMenu.xaml</DependentUpon>
+    <Compile Include="Views\Terminal\ConfirmPIN.xaml.cs">
+      <DependentUpon>ConfirmPIN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Terminal\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Terminal\InputPIN.xaml.cs">
+      <DependentUpon>InputPIN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Terminal\InputName.xaml.cs">
+      <DependentUpon>InputName.xaml</DependentUpon>
     </Compile>
     <Page Include="QueueBoardWindow.xaml">
       <SubType>Designer</SubType>
@@ -84,11 +93,23 @@
       <DependentUpon>TerminalWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\ClientTerminal\BackGround.xaml">
+    <Page Include="Views\BackGrounds\DefaultBackGround.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ClientTerminal\HomeMenu.xaml">
+    <Page Include="Views\Terminal\ConfirmPIN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Terminal\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Terminal\InputPIN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Terminal\InputName.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,7 +143,7 @@
     <Resource Include="Content\images\bg\background_2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UserControls\QueueBoard\" />
+    <Folder Include="Views\QueueBoard\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
