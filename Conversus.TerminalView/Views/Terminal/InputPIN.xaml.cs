@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TerminalView.UserControls.ClientTerminal
+namespace Conversus.TerminalView.Views.Terminal
 {
     /// <summary>
-    /// Interaction logic for BackGround.xaml
+    /// Interaction logic for InputPIN.xaml
     /// </summary>
-    public partial class BackGround : UserControl
+    public partial class InputPIN : Page
     {
-        public BackGround()
+        public InputPIN()
         {
             InitializeComponent();
         }
