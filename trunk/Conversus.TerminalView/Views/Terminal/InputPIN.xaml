@@ -4,10 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" ShowsNavigationUI="False"
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="700" d:DesignWidth="700"
 	Title="InputPIN">
 
-    <Grid>
-        <TextBlock>Ввод ПИНА</TextBlock>
-    </Grid>
+    <StackPanel>
+        <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}"></Border>
+        <Border Height="440" Style="{StaticResource ResourceKey=greenPanel}"></Border>
+    </StackPanel>
 </Page>

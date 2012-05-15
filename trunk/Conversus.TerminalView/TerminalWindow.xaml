@@ -9,6 +9,6 @@
         <local:DefaultBackGround></local:DefaultBackGround>
         
         <!--Content-->
-        <Frame Name="ContentZone" Source="/Views/Terminal/HomePage.xaml"></Frame>
+        <Frame Name="ContentZone" Source="/Views/Terminal/HomePage.xaml" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
