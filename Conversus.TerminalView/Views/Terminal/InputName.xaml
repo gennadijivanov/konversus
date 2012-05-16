@@ -4,11 +4,33 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-      d:DesignHeight="900" d:DesignWidth="700"
-	Title="Input_Name" ShowsNavigationUI="False">
-    
+      d:DesignHeight="900" d:DesignWidth="1500" Loaded="Page_Loaded"
+	Title="Input_Name" ShowsNavigationUI="False" xmlns:my="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
     <StackPanel>
-        <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}"></Border>
+        <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">
+            <StackPanel>
+            <Grid VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="-170,70,0,0" TextAlignment="Center" Grid.Column="2" FontSize="24" FontFamily="Tahoma">
+                    Уважаемые посетители!<LineBreak />
+                    Прием и обслуживание производится в соответствии с<LineBreak />
+                    указанными Вами данными.<LineBreak />
+                    <LineBreak />
+                    ВАША ФАМИЛИЯ, ИМЯ И ОТЧЕСТВО:
+                </TextBlock>
+                    <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox Width="1030" Height="70"></TextBox>
+                    <Border Width="300" CornerRadius="5" BorderBrush="Gray">
+                        <TextBlock Background="#CCC" TextAlignment="Center" VerticalAlignment="Center" Margin="10" FontSize="18">Стереть</TextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
         <Border Height="440" Style="{StaticResource ResourceKey=greenPanel}"></Border>
     </StackPanel>
 </Page>
