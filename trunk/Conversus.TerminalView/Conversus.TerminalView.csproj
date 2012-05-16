@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -144,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\QueueBoard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\images\buttons\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
