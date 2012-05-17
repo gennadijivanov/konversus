@@ -27,8 +27,17 @@ namespace Conversus.Storage.Impl
 
         public ICollection<QueueData> Get(IFilterParameters filter)
         {
-            var f = filter as QueueFilterParameters;
-            throw new NotImplementedException();
+            var query = _dict.Values.AsQueryable();
+            if (filter != null && filter is QueueFilterParameters)
+            {
+                var f = (QueueFilterParameters)filter;
+                //TODO: !!!!!!!!!!!!!!
+                //if (f.ClientId.HasValue)
+                //    query = query.Where(q => q.Id == _clientStorage.Get(f.ClientId.Value).);
+                if (f.QueueType.HasValue)
+                    query = query.Where(q => q.Type == f.QueueType.Value);
+            }
+            return query.ToList();
         }
 
         public void Delete(Guid id)

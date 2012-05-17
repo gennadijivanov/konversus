@@ -70,7 +70,8 @@ namespace Conversus.Impl.Repositories
 
         public ICollection<IQueue> Get(IFilterParameters filter)
         {
-            throw new NotImplementedException();
+            var data = Storage.Get(filter);
+            return data.Select(CreateFromData).ToList();
         }
 
         public IQueue GetByClient(Guid clientId)
