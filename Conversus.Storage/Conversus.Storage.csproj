@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServiceStack">
+      <HintPath>..\Externals\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\Externals\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\Externals\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +52,7 @@
     <Compile Include="IClientStorage.cs" />
     <Compile Include="Impl\FakeClientStorage.cs" />
     <Compile Include="Impl\FakeQueueStorage.cs" />
+    <Compile Include="Impl\RedisQueueStorage.cs" />
     <Compile Include="IQueueStorage.cs" />
     <Compile Include="IStorage.cs" />
     <Compile Include="StorageLogicFactory.cs" />
