@@ -15,6 +15,7 @@ namespace Conversus.TerminalView.Views.Terminal
             InitializeComponent();
         }
 
+        private bool IsShiftPressed = true;
         private NavigationService navService = null;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -25,6 +26,43 @@ namespace Conversus.TerminalView.Views.Terminal
         private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void Page_Click(object sender, RoutedEventArgs e)
+        {
+            var targetSender = (Button)e.OriginalSource;
+
+            switch (targetSender.Name)
+            {
+                case "nextButton":
+                    navService.Navigate(new Uri("Views/Terminal/PrintPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case "r_shift":
+                case "l_shift" :
+                    IsShiftPressed = !IsShiftPressed;
+                    break;
+                case "deleteButton":
+                    deleteChar();
+                    break;
+                case "spaceButton":
+                    insertChar(" ");
+                    break;
+                default:
+                    insertChar(targetSender.Content.ToString());
+                    break;
+            }
+        }
+
+        private void insertChar(string insertChar)
+        {
+            insertChar = (IsShiftPressed) ? insertChar.ToUpper() : insertChar.ToLower();
+            nameInputBox.Text = nameInputBox.Text.Insert(nameInputBox.Text.Length, insertChar);
+        }
+
+        private void deleteChar()
+        {
+            if (!string.IsNullOrEmpty(nameInputBox.Text))
+                nameInputBox.Text = nameInputBox.Text.Remove(nameInputBox.Text.Length - 1);
         }
     }
 }

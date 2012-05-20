@@ -23,5 +23,17 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             InitializeComponent();
         }
+
+        private NavigationService navService = null;
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            navService = NavigationService.GetNavigationService(this);
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }

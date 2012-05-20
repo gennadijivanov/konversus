@@ -47,6 +47,5 @@ namespace Conversus.TerminalView.Views.Terminal
             navService.Navigate(new Uri(navigationURI, UriKind.RelativeOrAbsolute));
         }
 
-
     }
 }
