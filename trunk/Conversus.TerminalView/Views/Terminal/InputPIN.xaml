@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" ShowsNavigationUI="False"
       d:DesignHeight="1100" d:DesignWidth="1200"
-	Title="InputPIN" Loaded="Page_Loaded">
+	Title="InputPIN" Loaded="Page_Loaded" ButtonBase.Click="Page_Click">
 
     <StackPanel>
         <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">
@@ -21,8 +21,8 @@
                     <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
                 </Grid>
                 <StackPanel Orientation="Horizontal" Margin="40,30,40,0" HorizontalAlignment="Center">
-                    <TextBox Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
-                    <Button DockPanel.Dock="Right" Height="70" Margin="20,0,0,0" Width="300" Name="DeleteButton" Style="{StaticResource inputBoardBtnStyle}">⇐ Стереть</Button>
+                    <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
+                    <Button DockPanel.Dock="Right" Height="70" Margin="20,0,0,0" Width="300" Name="deleteButton" Style="{StaticResource inputBoardBtnStyle}">⇐ Стереть</Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
                     <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}">введите пять цифр</Label>
@@ -39,9 +39,9 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="550" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Button Style="{StaticResource inputBoardBtnStyle}">1</Button>
@@ -62,7 +62,7 @@
                     <Button Width="260" Style="{StaticResource inputBoardBtnStyle}">0</Button>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Margin="290,0,0,0" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Width="245" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
+                    <Button Width="245" Name="nextButton" Visibility="Collapsed" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
                 </StackPanel>
             </Grid>
         </Border>

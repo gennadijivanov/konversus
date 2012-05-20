@@ -45,18 +45,12 @@ namespace Conversus.TerminalView.Views.Terminal
                     deleteChar();
                     break;
                 case "spaceButton":
-                    insertChar(" ");
+                    nameInputBox.Text += " ";
                     break;
                 default:
-                    insertChar(targetSender.Content.ToString());
+                    nameInputBox.Text += targetSender.Content.ToString();
                     break;
             }
-        }
-
-        private void insertChar(string insertChar)
-        {
-            insertChar = (IsShiftPressed) ? insertChar.ToUpper() : insertChar.ToLower();
-            nameInputBox.Text = nameInputBox.Text.Insert(nameInputBox.Text.Length, insertChar);
         }
 
         private void deleteChar()
