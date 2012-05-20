@@ -4,9 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-      d:DesignHeight="900" d:DesignWidth="1500" Loaded="Page_Loaded"
-	Title="Input_Name" ShowsNavigationUI="False" xmlns:my="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
-    <StackPanel>
+      d:DesignHeight="1100" d:DesignWidth="1500" Loaded="Page_Loaded"
+	Title="Input_Name" ShowsNavigationUI="False" 
+      xmlns:my="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+      ButtonBase.Click="Page_Click">
+    <StackPanel Margin="0,-350,0,0">
         <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">
             <StackPanel>
             <Grid VerticalAlignment="Top">
@@ -24,30 +26,75 @@
                     <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
                 </Grid>
                 <DockPanel Margin="40,70,40,0" LastChildFill="True">
-                    <Border DockPanel.Dock="Right" Width="300" CornerRadius="10" Margin="20,0,0,0" Style="{StaticResource ResourceKey=inputButtonStyle}">
-                        <Label Style="{StaticResource inputButtonText}">⇐ Стереть</Label>
-                    </Border>
-                    <TextBox DockPanel.Dock="Left" HorizontalAlignment="Stretch" Background="White" Style="{StaticResource ResourceKey=inputStyle}" Height="70"></TextBox>  
+                    <Button DockPanel.Dock="Right" Margin="20,0,0,0" Width="300" Name="deleteButton" Style="{StaticResource inputBoardBtnStyle}">⇐ Стереть</Button>
+                    <TextBox Name="nameInputBox" DockPanel.Dock="Left" MaxLength="100" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>  
                 </DockPanel>
                 <StackPanel HorizontalAlignment="Stretch">
                     <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}">введите фамилию, имя и отчество</Label>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Border Height="440" Style="{StaticResource ResourceKey=greenPanel}">
-            <Grid>
-                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Й</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Ц</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">У</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">К</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Е</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Н</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Г</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Ш</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Щ</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">З</Label></Border>
-                    <Border Style="{StaticResource ResourceKey=inputBoardButtonStyle}"><Label Style="{StaticResource inputButtonText}">Х</Label></Border>
+        <Border Style="{StaticResource ResourceKey=greenPanel}">
+            <Grid Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1020" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Й</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ц</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">У</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">К</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Е</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Н</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Г</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ш</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Щ</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">З</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Х</Button>
+                </StackPanel>
+                <StackPanel Margin="30,0,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ф</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ы</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">В</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">А</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">П</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Р</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">О</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Л</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Д</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ж</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Э</Button>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ё</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Я</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ч</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">С</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">М</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">И</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Т</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ь</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Б</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ю</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">Ъ</Button>
+                </StackPanel>
+                <StackPanel Margin="30,0,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Name="l_shift" Width="135" Style="{StaticResource inputBoardBtnStyle}">↑</Button>
+                    <Button Style="{StaticResource inputBoardBtnStyle}">-</Button>
+                    <Button Width="600" Name="spaceButton" Style="{StaticResource inputBoardBtnStyle}"> </Button>
+                    <Button Name="r_shift" Width="135" Style="{StaticResource inputBoardBtnStyle}">↑</Button>
+                </StackPanel>
+                <StackPanel Margin="0,15,0,10" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Name="nextButton" Width="245" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
                 </StackPanel>
             </Grid>
         </Border>
