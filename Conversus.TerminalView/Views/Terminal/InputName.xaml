@@ -8,7 +8,7 @@
 	Title="Input_Name" ShowsNavigationUI="False" 
       xmlns:my="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
       ButtonBase.Click="Page_Click">
-    <StackPanel Margin="0,-350,0,0">
+    <StackPanel>
         <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">
             <StackPanel>
             <Grid VerticalAlignment="Top">

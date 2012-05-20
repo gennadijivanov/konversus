@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
+using System.Windows.Threading;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -22,6 +24,30 @@ namespace Conversus.TerminalView.Views.Terminal
         public PrintPage()
         {
             InitializeComponent();
+        }
+
+        private Timer backHomeTimer = new Timer();
+        private NavigationService navService = null;
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            navService = NavigationService.GetNavigationService(this);
+
+            backHomeTimer.Elapsed += new ElapsedEventHandler(goHomePage);
+            backHomeTimer.Interval = 2000;
+            backHomeTimer.Start();
+        }
+
+        private void goHomePage(object sender, ElapsedEventArgs e)
+        {
+            backHomeTimer.Elapsed -= new ElapsedEventHandler(goHomePage);
+
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate()
+            { navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));  });
+
+            // Place delegate on the Dispatcher.
+            //navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
+            //this.Dispatcher.BeginInvoke(navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute)) );
         }
     }
 }

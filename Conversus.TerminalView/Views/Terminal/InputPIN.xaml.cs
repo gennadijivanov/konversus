@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -35,5 +26,40 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void Page_Click(object sender, RoutedEventArgs e)
+        {
+            var targetSender = (Button)e.OriginalSource;
+
+            switch (targetSender.Name)
+            {
+                case "nextButton":
+                    navService.Navigate(new Uri("Views/Terminal/PrintPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case "deleteButton":
+                    deleteChar();
+                    break;
+                default:
+                    insetrChar(targetSender.Content.ToString());
+                    break;
+            }
+        }
+
+        private void insetrChar(string inputNumber)
+        {
+            if (pinInputBox.Text.Length < 5)
+                pinInputBox.Text += inputNumber;
+
+            nextButton.Visibility = (pinInputBox.Text.Length == 5) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void deleteChar()
+        {
+            if (!string.IsNullOrEmpty(pinInputBox.Text))
+                pinInputBox.Text = pinInputBox.Text.Remove(pinInputBox.Text.Length - 1);
+
+            nextButton.Visibility = (pinInputBox.Text.Length == 5) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
     }
 }
