@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.TerminalView.Views.BackGrounds"
         Title="MainWindow" Height="350" Width="525" WindowStyle="None" 
-        WindowState="Maximized" KeyDown="Window_KeyDown">
+        WindowState="Maximized" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
     <Grid>
         <!--Background-->
         <local:DefaultBackGround></local:DefaultBackGround>
