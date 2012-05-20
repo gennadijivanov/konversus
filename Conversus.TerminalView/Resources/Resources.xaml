@@ -40,6 +40,16 @@
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
     </Style>
+    <!--QueueBoard number style-->
+    <Style x:Key="performenNumberText" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="20"></Setter>
+        <Setter Property="FontSize" Value="48"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+    </Style>
     
     <!--Controls Styles-->
     <!--Borders-->
