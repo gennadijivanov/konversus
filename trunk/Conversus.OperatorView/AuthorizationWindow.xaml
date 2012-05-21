@@ -1,0 +1,23 @@
+﻿<Window x:Class="Conversus.OperatorView.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
+        Title="Вход в систему" ResizeMode="NoResize"  Height="239" Width="345">
+    <Grid>
+        <local:DefaultBackGround></local:DefaultBackGround>
+        <StackPanel>
+            <StackPanel>
+                <Label>Пожалуйста авторизуйтесь</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Имя:</Label>
+                <TextBox MaxLength="100" Width="200" HorizontalAlignment="Right"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label HorizontalAlignment="Left">Пароль:</Label>
+                <PasswordBox HorizontalAlignment="Right" Height="23" Width="200" Name="passwordBox" />
+            </StackPanel>
+            <Button HorizontalAlignment="Right" Width="100">Войти</Button>
+        </StackPanel>
+    </Grid>
+</Window>
