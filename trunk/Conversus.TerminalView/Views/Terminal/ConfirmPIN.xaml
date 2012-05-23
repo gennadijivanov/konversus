@@ -4,10 +4,49 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" ShowsNavigationUI="False"
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="800" d:DesignWidth="1200" ButtonBase.Click="Page_Click"
+      Loaded="Page_Loaded"
 	Title="ConfirmPIN">
 
-    <Grid>
-        <TextBlock>Подтверждение ПИНА</TextBlock>
-    </Grid>
+    <StackPanel>
+        <Border Height="700" Style="{StaticResource ResourceKey=grayPanel}">
+            <StackPanel>
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="-170,110,0,0" TextAlignment="Center" Grid.Column="2" FontSize="24" FontFamily="Tahoma">
+                        ВАШ ИДЕНТИФИКАЦИОННЫЙ НОМЕР:
+                    </TextBlock>
+                    <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="40,30,40,0" HorizontalAlignment="Center">
+                    <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch">
+                    <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}">введите пять цифр</Label>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Услуга:</Label>
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить услугу</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Данные посетителя:</Label>
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить ФИО</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Дата и время:</Label>
+                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить дату</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="100">
+                        <Button Name="cancelButton" Style="{StaticResource inputGreenBtnStyle}">ОТМЕНА</Button>
+                        <Button Name="approveButton" Style="{StaticResource inputGreenBtnStyle}">ПОДТВЕРДИТЬ</Button>
+                    </StackPanel>
+                    <Label HorizontalAlignment="Center" Style="{StaticResource greenTipTextStyle}">Проверьте свои данные и нажмите "ПОДТВЕРДИТЬ", если все данные верны</Label>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </Page>
