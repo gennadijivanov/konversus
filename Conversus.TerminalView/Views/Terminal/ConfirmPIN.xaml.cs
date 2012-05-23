@@ -23,5 +23,32 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             InitializeComponent();
         }
+
+        private NavigationService navService = null;
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            navService = NavigationService.GetNavigationService(this);
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void Page_Click(object sender, RoutedEventArgs e)
+        {
+            var targetSender = (Button)e.OriginalSource;
+
+            switch (targetSender.Name)
+            {
+                case "cancelButton":
+                    navService.Navigate(new Uri("Views/Terminal/InputPIN.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case "approveButton":
+                    navService.Navigate(new Uri("Views/Terminal/PrintPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+            }
+        }
     }
 }

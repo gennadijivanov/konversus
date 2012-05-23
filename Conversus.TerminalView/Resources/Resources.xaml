@@ -32,6 +32,13 @@
         <Setter Property="Foreground" Value="#777"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
     </Style>
+    <!--Green text tip-->
+    <Style x:Key="greenTipTextStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="23"></Setter>
+        <Setter Property="Foreground" Value="#090"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+    </Style>
     <!--Fullscreen Message-->
     <Style x:Key="fullscreenMessage" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center"></Setter>
@@ -60,6 +67,14 @@
         <Setter Property="Margin" Value="20"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
         <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="grayPanel" TargetType="Border">
@@ -104,6 +119,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <!--Board Button-->
@@ -128,6 +151,34 @@
                     <Border Style="{StaticResource inputBoardButtonStyle}">
                         <ContentPresenter HorizontalAlignment="Center" 
                                           VerticalAlignment="Center"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="inputGreenBtnStyle" TargetType="Button">
+        <Setter Property="Width" Value="450"></Setter>
+        <Setter Property="Height" Value="90"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Margin" Value="0,20,0,0"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border MinWidth="10" Style="{StaticResource greenPanel}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

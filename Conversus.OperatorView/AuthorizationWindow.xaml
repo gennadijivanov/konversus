@@ -2,22 +2,31 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
-        Title="Вход в систему" ResizeMode="NoResize"  Height="239" Width="345">
+        Title="Пульт оператора электронной очереди" ResizeMode="NoResize" Height="400" Width="500
+        ">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
-        <StackPanel>
-            <StackPanel>
-                <Label>Пожалуйста авторизуйтесь</Label>
+        <StackPanel Margin="10">
+            <StackPanel Margin="0,0,0,10">
+                <Label Style="{StaticResource titleStyle}">Пожалуйста авторизуйтесь</Label>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label>Имя:</Label>
-                <TextBox MaxLength="100" Width="200" HorizontalAlignment="Right"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Label HorizontalAlignment="Left">Пароль:</Label>
-                <PasswordBox HorizontalAlignment="Right" Height="23" Width="200" Name="passwordBox" />
-            </StackPanel>
-            <Button HorizontalAlignment="Right" Width="100">Войти</Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Имя:</Label>
+                <TextBox Grid.Column="1" Grid.Row="0" MaxLength="100" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource inputStyle}"></TextBox>
+                <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource loginLabelStyle}">Пароль:</Label>
+                <PasswordBox Grid.Column="1" Grid.Row="1" MaxLength="100" VerticalAlignment="Center" HorizontalAlignment="Stretch" Name="passwordBox" Style="{StaticResource inputPasswordBoxStyle}" />
+                <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="170" Click="Button_Click">Войти</Button>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

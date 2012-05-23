@@ -1,8 +1,8 @@
-﻿<Window x:Class="Conversus.OperatorView.MainWindow"
+﻿<Window x:Class="Conversus.OperatorView.OperatorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="500" Width="300">
+        Title="Operator window" Height="500" Width="300">
     <Grid>
-        
+        <Label>Рабочее окно оператора</Label>
     </Grid>
 </Window>

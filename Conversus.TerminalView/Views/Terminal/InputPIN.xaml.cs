@@ -34,7 +34,7 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (targetSender.Name)
             {
                 case "nextButton":
-                    navService.Navigate(new Uri("Views/Terminal/PrintPage.xaml", UriKind.RelativeOrAbsolute));
+                    navService.Navigate(new Uri("Views/Terminal/ConfirmPIN.xaml", UriKind.RelativeOrAbsolute));
                     break;
                 case "deleteButton":
                     deleteChar();
