@@ -1,14 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--//STYLES//-->
-    <!--Gradients, Brushes-->
-    <!--Green Gradient Style-->
-    <LinearGradientBrush Opacity=".9" EndPoint="1,1" StartPoint="0,0" x:Key="GreenGradientBg">
-        <GradientStop Color="#009933" Offset="1" />
-        <GradientStop Color="#759900" Offset="0.5" />
-        <GradientStop Color="#009933" Offset="0" />
-    </LinearGradientBrush>
-    
+
     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="GrayGradientBg">
         <GradientStop Color="#f2f2f2" Offset="0" />
         <GradientStop Color="#d1d1d1" Offset="1" />
@@ -22,19 +14,20 @@
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
     </Style>
 
-    <!--Small black label-->
-    <Style x:Key="smallLabelStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="12"></Setter>
-        <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="FontFamily" Value="Tahoma"></Setter>
-    </Style>
-
     <!--label Message-->
     <Style x:Key="loginLabelStyle" TargetType="Label">
         <Setter Property="FontSize" Value="22"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
+    </Style>
+    
+    <!--Board Button-->
+    <Style x:Key="inputBoardButtonStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="#c6c5c9"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="Background" Value="{StaticResource GrayGradientBg}"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
     </Style>
 
     <!--Input with rounded corners-->
@@ -92,15 +85,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <!--Button Style-->
-    <!--Board Button-->
-    <Style x:Key="inputBoardButtonStyle" TargetType="Border">
-        <Setter Property="BorderBrush" Value="#c6c5c9"></Setter>
-        <Setter Property="BorderThickness" Value="2"></Setter>
-        <Setter Property="Background" Value="{StaticResource GrayGradientBg}"></Setter>
-        <Setter Property="CornerRadius" Value="10"></Setter>
-    </Style>
+
     <Style x:Key="inputBoardBtnStyle" TargetType="Button">
         <Setter Property="MinWidth" Value="10"></Setter>
         <Setter Property="MinHeight" Value="10"></Setter>
@@ -128,36 +113,4 @@
         </Setter>
     </Style>
 
-    <Style x:Key="grayPanel" TargetType="Border">
-        <Setter Property="MinWidth" Value="10"></Setter>
-        <Setter Property="Margin" Value="30"></Setter>
-        <Setter Property="Background" Value="#EEEAEAEA"></Setter>
-        <Setter Property="BorderThickness" Value="2"></Setter>
-        <Setter Property="CornerRadius" Value="10"></Setter>
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect BlurRadius="30"
-                              Direction="290"
-                              Color="#FF872E2E"
-                              RenderingBias="Quality"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="greenPanel" TargetType="Border">
-        
-        <Setter Property="MinWidth" Value="10"></Setter>
-        <Setter Property="Margin" Value="30,0,30,30"></Setter>
-        <Setter Property="Background" Value="{StaticResource GreenGradientBg}"></Setter>
-        <Setter Property="BorderThickness" Value="2"></Setter>
-        <Setter Property="CornerRadius" Value="10"></Setter>
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect BlurRadius="30"
-                              Direction="290"
-                              Color="#FF872E2E"
-                              RenderingBias="Quality"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

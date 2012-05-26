@@ -40,7 +40,7 @@ namespace Conversus.TerminalView.Views.Terminal
                     navigationURI = "Views/Terminal/InputPIN.xaml";
                     break;
                 case "ToAnotherDayLink":
-                    navigationURI = "http://www.google.ru";
+                    navigationURI = "http://000-sp3.mog.ent.local/_layouts/LoginPersonalCabinet.aspx?ReturnUrl=%2fClientOrders%2fList.aspx";
                     break;
             }
 

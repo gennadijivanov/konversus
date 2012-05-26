@@ -83,6 +83,14 @@
         <Setter Property="Background" Value="#EEEAEAEA"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="greenPanel" TargetType="Border">
@@ -91,6 +99,14 @@
         <Setter Property="Background" Value="{StaticResource GreenGradientBg}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="inputBoardButtonStyle" TargetType="Border">

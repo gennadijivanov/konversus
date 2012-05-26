@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6CEBE5A8-D727-4496-9A30-1C3AA6180730}</ProjectGuid>
+    <ProjectGuid>{6B478ECD-375C-409D-846B-5ED8C147AAD7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Conversus.TerminalView</RootNamespace>
-    <AssemblyName>Conversus.TerminalView</AssemblyName>
+    <RootNamespace>Conversus.AdminView</RootNamespace>
+    <AssemblyName>Conversus.AdminView</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -36,7 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,36 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="QueueBoardWindow.xaml.cs">
-      <DependentUpon>QueueBoardWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
       <DependentUpon>DefaultBackGround.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Terminal\ConfirmPIN.xaml.cs">
-      <DependentUpon>ConfirmPIN.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Terminal\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Terminal\InputPIN.xaml.cs">
-      <DependentUpon>InputPIN.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Terminal\InputName.xaml.cs">
-      <DependentUpon>InputName.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Terminal\PrintPage.xaml.cs">
-      <DependentUpon>PrintPage.xaml</DependentUpon>
-    </Compile>
-    <Page Include="QueueBoardWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Resources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TerminalWindow.xaml">
+    <Page Include="AdminWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,36 +66,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TerminalWindow.xaml.cs">
-      <DependentUpon>TerminalWindow.xaml</DependentUpon>
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="AuthorizationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BackGrounds\DefaultBackGround.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Terminal\ConfirmPIN.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Terminal\HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Terminal\InputPIN.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Terminal\InputName.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Terminal\PrintPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizationWindow.xaml.cs">
+      <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -136,7 +100,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Content\video\1.wmv" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -149,14 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\images\bg\background_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Content\images\bg\background_2.jpg" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Content\images\buttons\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\video\2.wmv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

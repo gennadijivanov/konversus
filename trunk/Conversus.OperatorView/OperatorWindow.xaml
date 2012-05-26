@@ -1,8 +1,70 @@
 ﻿<Window x:Class="Conversus.OperatorView.OperatorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Operator window" Height="500" Width="300">
-    <Grid>
-        <Label>Рабочее окно оператора</Label>
+        xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
+        Title="Пульт оператора электронной очереди"
+        MinHeight="528" MinWidth="300" Height="528" Width="300" MaxHeight="528"
+        ButtonBase.Click="Window_Click">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <local:DefaultBackGround x:Name="defaultBackGround1" />
+        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+            <Border Margin="10" Style="{StaticResource grayPanel}" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                    <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызванный посетитель</Label>
+                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,30" FontFamily="Tahoma" FontWeight="Bold" FontSize="32">---</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
+                    <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Действия с вызванным посетителем</Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Button Name="absenceButton" Grid.Column="0" Grid.Row="0" Margin="5">Неявка</Button>
+                        <Button Name="delayButton" Grid.Column="1" Grid.Row="0" Margin="5">Отложить</Button>
+                        <Button Name="servedButton" Grid.Column="2" Grid.Row="0" Margin="5">Обслужен</Button>
+                        <Button Name="repeatButton" Grid.Column="0" Grid.Row="1" Margin="5">Повтор</Button>
+                        <Button Name="redirectButton" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">Перенаправить</Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
+                    <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызов посетителей</Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Button Name="callVisitorButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Height="40" FontWeight="Bold" Margin="5">Следующий</Button>
+                        <Button Name="callByNumberButton" Grid.Column="0" Grid.Row="1" Margin="5">Вызов по номеру</Button>
+                        <Button Name="callByListButton" Grid.Column="1" Grid.Row="1" Margin="5">Вызов из списка</Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
+                    <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Статистика</Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White">
+                        <Label FontWeight="Bold" Margin="5">ОЖ:0/0</Label>
+                        <Label FontWeight="Bold" Margin="5">ОТ:0/0</Label>
+                        <Label FontWeight="Bold" Margin="5">ВД:0/0</Label>
+                        <Label FontWeight="Bold" Margin="5">ДЛ:0/0</Label>
+                    </StackPanel>
+                    <Button Name="pauseButton" Grid.Column="1" Grid.Row="1" Margin="5">Сделать перерыв</Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </Window>

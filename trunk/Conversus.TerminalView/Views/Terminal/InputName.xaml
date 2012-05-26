@@ -94,7 +94,7 @@
                     <Button Name="r_shift" Width="135" Style="{StaticResource inputBoardBtnStyle}">↑</Button>
                 </StackPanel>
                 <StackPanel Margin="0,15,0,10" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Name="nextButton" Width="245" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
+                    <Button Visibility="Collapsed" Name="nextButton" Width="245" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
                 </StackPanel>
             </Grid>
         </Border>

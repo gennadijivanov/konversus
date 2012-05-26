@@ -41,8 +41,16 @@
                         <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить дату</Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="100">
-                        <Button Name="cancelButton" Style="{StaticResource inputGreenBtnStyle}">ОТМЕНА</Button>
-                        <Button Name="approveButton" Style="{StaticResource inputGreenBtnStyle}">ПОДТВЕРДИТЬ</Button>
+                        <Button Name="cancelButton" Content="ОТМЕНА" Style="{StaticResource inputGreenBtnStyle}">
+                            <Button.Effect>
+                                <DropShadowEffect Opacity="0"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button Name="approveButton" Content="ПОДТВЕРДИТЬ" Style="{StaticResource inputGreenBtnStyle}">
+                            <Button.Effect>
+                                <DropShadowEffect Opacity="0"/>
+                            </Button.Effect>
+                        </Button>
                     </StackPanel>
                     <Label HorizontalAlignment="Center" Style="{StaticResource greenTipTextStyle}">Проверьте свои данные и нажмите "ПОДТВЕРДИТЬ", если все данные верны</Label>
                 </StackPanel>
