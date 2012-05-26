@@ -42,12 +42,7 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             backHomeTimer.Elapsed -= new ElapsedEventHandler(goHomePage);
 
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate()
-            { navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));  });
-
-            // Place delegate on the Dispatcher.
-            //navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
-            //this.Dispatcher.BeginInvoke(navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute)) );
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate(){ navService.Navigate(new HomePage()); });
         }
     }
 }

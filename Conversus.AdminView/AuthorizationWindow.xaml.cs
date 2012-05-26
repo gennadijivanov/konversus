@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Conversus.OperatorView
+namespace Conversus.AdminView
 {
     /// <summary>
     /// Interaction logic for AuthorizationWindow.xaml
@@ -14,8 +14,8 @@ namespace Conversus.OperatorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OperatorWindow operatorWorkWin = new OperatorWindow();
-            operatorWorkWin.Show();
+            var adminWin = new AdminWindow();
+            adminWin.Show();
 
             this.Close();
         }

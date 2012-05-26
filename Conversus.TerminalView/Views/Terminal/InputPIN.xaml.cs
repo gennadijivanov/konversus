@@ -24,7 +24,7 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            navService.Navigate(new Uri("Views/Terminal/HomePage.xaml", UriKind.RelativeOrAbsolute));
+            navService.Navigate(new HomePage());
         }
 
         private void Page_Click(object sender, RoutedEventArgs e)
@@ -34,7 +34,7 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (targetSender.Name)
             {
                 case "nextButton":
-                    navService.Navigate(new Uri("Views/Terminal/ConfirmPIN.xaml", UriKind.RelativeOrAbsolute));
+                    navService.Navigate(new ConfirmPIN(pinInputBox.Text));
                     break;
                 case "deleteButton":
                     deleteChar();
