@@ -7,8 +7,7 @@
         <!--Background-->
         <local:DefaultBackGround></local:DefaultBackGround>
         
-        <!--WHY IT DOES'T WORK????????????????????????????????????-->
-        <MediaElement LoadedBehavior="Play" Stretch="Fill" Name="backgroundVideo" Source="/Content/video/1.wmv"></MediaElement>
+        <MediaElement LoadedBehavior="Play" Stretch="Fill" Name="backgroundVideo" Source="Content/video/1.wmv"></MediaElement>
         
         <StackPanel HorizontalAlignment="Stretch">
             <Border HorizontalAlignment="Right" Width="Auto" Margin="10" Height="100" Background="#AAA60000" CornerRadius="20">

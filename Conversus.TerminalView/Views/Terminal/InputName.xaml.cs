@@ -48,15 +48,29 @@ namespace Conversus.TerminalView.Views.Terminal
                     nameInputBox.Text += " ";
                     break;
                 default:
-                    nameInputBox.Text += (IsShiftPressed) ? targetSender.Content.ToString().ToUpper() : targetSender.Content.ToString().ToLower();
+                    appendChar(targetSender.Content.ToString());
+                    
                     break;
             }
+        }
+
+        private void appendChar(string charText)
+        {
+            nameInputBox.Text += (IsShiftPressed) ? charText.ToUpper() : charText.ToLower();
+
+            if (nameInputBox.Text.Length > 0)
+                nextButton.Visibility = System.Windows.Visibility.Visible;
+            else
+                nextButton.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void deleteChar()
         {
             if (!string.IsNullOrEmpty(nameInputBox.Text))
                 nameInputBox.Text = nameInputBox.Text.Remove(nameInputBox.Text.Length - 1);
+
+            if (nameInputBox.Text.Length < 1)
+                nextButton.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }
