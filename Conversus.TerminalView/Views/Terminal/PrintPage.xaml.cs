@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Timers;
 using System.Windows.Threading;
 
 namespace Conversus.TerminalView.Views.Terminal
@@ -36,6 +28,19 @@ namespace Conversus.TerminalView.Views.Terminal
             backHomeTimer.Elapsed += new ElapsedEventHandler(goHomePage);
             backHomeTimer.Interval = 2000;
             backHomeTimer.Start();
+
+            printTicket();
+        }
+
+        private void printTicket()
+        {
+            PrintDialog printDlg = new PrintDialog();
+
+            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Queue print test")));
+            doc.Name = "TicketPrint";
+
+            IDocumentPaginatorSource idpSource = doc;
+            printDlg.PrintDocument(idpSource.DocumentPaginator, "Print test");
         }
 
         private void goHomePage(object sender, ElapsedEventArgs e)
