@@ -27,24 +27,24 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var navigationURI = string.Empty;
             var borderSender = (Border)sender;
+            Page navigatePage = null;
 
             switch (borderSender.Name)
             {
                 case "TakingLink" :
                 case "ApprovementLink" :
-                    navigationURI = "Views/Terminal/InputName.xaml";
+                    navigatePage = new Input_Name();
                     break;
                 case "HasPinLink" :
-                    navigationURI = "Views/Terminal/InputPIN.xaml";
+                    navigatePage = new InputPIN();
                     break;
                 case "ToAnotherDayLink":
-                    navigationURI = "http://000-sp3.mog.ent.local/_layouts/LoginPersonalCabinet.aspx?ReturnUrl=%2fClientOrders%2fList.aspx";
+                    navigatePage = new OnlineRegisterPage();
                     break;
             }
 
-            navService.Navigate(new Uri(navigationURI, UriKind.RelativeOrAbsolute));
+            navService.Navigate(navigatePage);
         }
 
     }
