@@ -74,6 +74,9 @@
     <Compile Include="Views\Terminal\InputName.xaml.cs">
       <DependentUpon>InputName.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Terminal\OnlineRegisterPage.xaml.cs">
+      <DependentUpon>OnlineRegisterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Terminal\PrintPage.xaml.cs">
       <DependentUpon>PrintPage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Terminal\OnlineRegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Terminal\PrintPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +143,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Content\images\buttons\closeButton.png" />
     <Content Include="Content\video\1.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
