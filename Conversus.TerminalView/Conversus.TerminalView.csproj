@@ -144,6 +144,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Content\images\buttons\closeButton.png" />
+    <Resource Include="Content\images\logo\printLogo.bmp" />
     <Content Include="Content\video\1.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
