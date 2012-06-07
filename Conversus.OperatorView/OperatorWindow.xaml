@@ -11,7 +11,8 @@
             <Border Margin="10" Style="{StaticResource grayPanel}" VerticalAlignment="Stretch">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызванный посетитель</Label>
-                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,30" FontFamily="Tahoma" FontWeight="Bold" FontSize="32">---</TextBlock>
+                    <TextBlock Name="currentVisitorTextBox" HorizontalAlignment="Center" Margin="10,10,10,0" FontFamily="Tahoma" FontWeight="Bold" FontSize="32">---</TextBlock>
+                    <Label Name="timerLabel" Margin="4" HorizontalAlignment="Center">0:00</Label>
                 </StackPanel>
             </Border>
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">

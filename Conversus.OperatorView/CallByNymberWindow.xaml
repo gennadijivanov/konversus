@@ -1,0 +1,17 @@
+﻿<Window x:Class="Conversus.OperatorView.CallByNymberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
+        Title="CallByNymberWindow" Height="300" Width="400" ResizeMode="NoResize" >
+    <Grid>
+        <local:DefaultBackGround></local:DefaultBackGround>
+        <StackPanel Orientation="Vertical">
+            <Label Style="{StaticResource titleStyle}" HorizontalAlignment="Center">Номер клиента</Label>
+            <TextBox MaxLength="10" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource inputStyle}"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="okButton" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="150" Click="Button_Click">OK</Button>
+                <Button Name="cancelButton" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="150" Click="Button_Click">Отмена</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
