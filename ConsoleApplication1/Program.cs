@@ -4,6 +4,8 @@ using Conversus.Core.DTO;
 using Conversus.Core.DomainModel;
 using Conversus.Storage;
 using Conversus.Storage.Impl;
+using Conversus.Core.Infrastructure.Repository;
+using System.IO;
 
 namespace ConsoleApplication1
 {
@@ -17,14 +19,40 @@ namespace ConsoleApplication1
             //var clientLogic = BusinessLogicFactory.Instance.Get<IClientLogic>();
             //clientLogic.CreateClient("Vasya", QueueType.Approvement, null);
 
-            RedisQueueStorage st = new RedisQueueStorage();
+            string baseName = string.Format("base-{0}.db3", DateTime.Now.Second);
 
-            Guid id = Guid.NewGuid();
+            using (var baseManager = SQLiteBaseManager.GetInstance(baseName))
+            {
+                var qst = new SQLiteQueueStorage(baseManager);
+                var cst = new SQLiteClientStorage(baseManager);
 
-            st.Create(new QueueData() {Id = id, Type = QueueType.Approvement});
-            st.Update(new QueueData() {Id = id, Type = QueueType.Taking});
-            var q = st.Get(id);
-            st.Delete(id);
+                Guid id = Guid.NewGuid();
+
+                qst.Create(new QueueData() { Id = id, Type = QueueType.Approvement });
+                qst.Create(new QueueData() { Id = Guid.NewGuid(), Type = QueueType.Taking });
+                var q = qst.Get(new QueueFilterParameters());
+                //qst.Delete(id);
+
+                var clientId = Guid.NewGuid();
+
+                var client = new ClientData()
+                {
+                    Id = clientId,
+                    QueueId = id,
+                    Name = "Vasya",
+                    PIN = 0,
+                    Status = ClientStatus.Registered,
+                    BookingTime = DateTime.Now
+                };
+
+                cst.Create(client);
+
+                var queueByClient = qst.GetByClient(clientId);
+
+                var cl = cst.Get(clientId);
+            }
+
+            File.Delete(baseName);
         }
     }
 }

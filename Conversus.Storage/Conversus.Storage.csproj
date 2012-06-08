@@ -31,17 +31,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ServiceStack">
-      <HintPath>..\Externals\ServiceStack.dll</HintPath>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\Externals\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\Externals\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.ServiceInterface">
-      <HintPath>..\Externals\ServiceStack.ServiceInterface.dll</HintPath>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\Externals\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\Externals\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Externals\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\Externals\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +62,9 @@
     <Compile Include="IClientStorage.cs" />
     <Compile Include="Impl\FakeClientStorage.cs" />
     <Compile Include="Impl\FakeQueueStorage.cs" />
-    <Compile Include="Impl\RedisQueueStorage.cs" />
+    <Compile Include="Impl\SQLiteBaseManager.cs" />
+    <Compile Include="Impl\SQLiteClientStorage.cs" />
+    <Compile Include="Impl\SQLiteQueueStorage.cs" />
     <Compile Include="IQueueStorage.cs" />
     <Compile Include="IStorage.cs" />
     <Compile Include="StorageLogicFactory.cs" />
