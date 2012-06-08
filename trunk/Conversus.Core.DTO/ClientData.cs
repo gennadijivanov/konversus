@@ -7,6 +7,8 @@ namespace Conversus.Core.DTO
     {
         public Guid Id;
 
+        public Guid QueueId;
+
         public string Name;
 
         public DateTime? BookingTime;
