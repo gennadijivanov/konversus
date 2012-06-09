@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System;
 using System.Timers;
-using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace Conversus.OperatorView
@@ -31,10 +31,11 @@ namespace Conversus.OperatorView
 
         void servedTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate() {
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate()
+            {
                 TimeSpan timeSpan = e.SignalTime - startTime;
                 //TODO: Почему не работает timeSpan.ToString("HH:mm:ss") узнать у Гены
-                timerLabel.Content = timeSpan.ToString(); 
+                timerLabel.Content = timeSpan.ToString();
             });
         }
 
@@ -42,12 +43,16 @@ namespace Conversus.OperatorView
         {
             Button button = (Button)e.OriginalSource;
 
-            switch(button.Name)
+            //TODO:Когда будут реальные данные не забыть
+            //если текущий номер null или равен "---"
+            //задизаблить всю секцию кнопок "Действия с вызванным посетителем"
+
+            switch (button.Name)
             {
                 case "absenceButton":
                     MessageBox.Show("Клиент " + currentVisitorTextBox.Text + " отмечена неявка");
                     servedTimer.Stop();
-                    if(!pauseButton.IsEnabled) 
+                    if (!pauseButton.IsEnabled)
                         pauseButton.IsEnabled = true;
                     break;
                 case "postponedButton":
@@ -67,7 +72,9 @@ namespace Conversus.OperatorView
                     //TODO: Вызвать текущего клиента ещё раз
                     break;
                 case "redirectButton":
-                    //TODO: Вывести окно с доступными очередями
+                    //TODO: Вывести окно с доступными очередями и сотрудниками
+                    var redirect = new RedirectWindow();
+                    redirect.Show();
                     break;
                 case "callVisitorButton":
                     //TODO: Запросить нового в очереди
@@ -83,11 +90,10 @@ namespace Conversus.OperatorView
                     break;
                 case "pauseButton":
                     //TODO: приостановить работу
-                        servedTimer.Stop();
-                        MessageBox.Show("Система переведена в режим Перерыва");
+                    servedTimer.Stop();
+                    MessageBox.Show("Система переведена в режим Перерыва");
                     break;
             }
-            
         }
 
         private void refreshTimer()

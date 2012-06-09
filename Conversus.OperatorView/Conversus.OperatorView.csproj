@@ -64,6 +64,9 @@
     <Compile Include="CallByNymberWindow.xaml.cs">
       <DependentUpon>CallByNymberWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RedirectWindow.xaml.cs">
+      <DependentUpon>RedirectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
       <DependentUpon>DefaultBackGround.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <DependentUpon>OperatorWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RedirectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
