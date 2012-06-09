@@ -47,15 +47,21 @@ namespace Conversus.OperatorView
                 case "absenceButton":
                     MessageBox.Show("Клиент " + currentVisitorTextBox.Text + " отмечена неявка");
                     servedTimer.Stop();
+                    if(!pauseButton.IsEnabled) 
+                        pauseButton.IsEnabled = true;
                     break;
-                case "delayButton":
+                case "postponedButton":
                     servedTimer.Stop();
                     MessageBox.Show("Клиент " + currentVisitorTextBox.Text + " добавлен в список отложенных");
+                    if (!pauseButton.IsEnabled)
+                        pauseButton.IsEnabled = true;
                     break;
                 case "servedButton":
                     servedTimer.Stop();
                     MessageBox.Show("Обслуживание клиента " + currentVisitorTextBox.Text + " завершено");
                     currentVisitorTextBox.Text = CLEAN_CURRENT_VISITOR_TEXT;
+                    if (!pauseButton.IsEnabled)
+                        pauseButton.IsEnabled = true;
                     break;
                 case "repeatButton":
                     //TODO: Вызвать текущего клиента ещё раз
@@ -72,14 +78,13 @@ namespace Conversus.OperatorView
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
-                    //TODO: Вывести окно со списком ожидающих
+                    var callByListWindow = new CallByListWindow();
+                    callByListWindow.Show();
                     break;
                 case "pauseButton":
                     //TODO: приостановить работу
-                    //не забыть спросить что сделать с клиентом,
-                    //если он ещё обслуживается
-                    servedTimer.Stop();
-                    MessageBox.Show("Система переведена в режим Перерыва");
+                        servedTimer.Stop();
+                        MessageBox.Show("Система переведена в режим Перерыва");
                     break;
             }
             
@@ -88,6 +93,7 @@ namespace Conversus.OperatorView
         private void refreshTimer()
         {
             initTimer();
+            pauseButton.IsEnabled = false;
             timerLabel.Content = TIMER_ZERO_TEXT;
             startTime = DateTime.Now;
             servedTimer.Start();
