@@ -1,0 +1,25 @@
+﻿<Window x:Class="Conversus.OperatorView.CallByListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
+        Title="Вызов из списка" Height="400" Width="500" ResizeMode="NoResize"
+        Loaded="Window_Loaded">
+    <Grid>
+        <local:DefaultBackGround></local:DefaultBackGround>
+        <!--Когда будут данные сделать автоматическое заполнение через биндинг!-->
+        <Border Margin="10" Style="{StaticResource grayPanel}" Padding="20" VerticalAlignment="Stretch">
+            <StackPanel>
+                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" Name="postponedGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="250" SelectionChanged="postponedGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="№" />
+                        <DataGridTextColumn Header="Услуга" />
+                        <DataGridTextColumn Header="Отложен, раз" />
+                        <!--Хэддер просто 5 баллов)))-->
+                        <DataGridTextColumn Header="Время с момента откладывания" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Name="callButton" HorizontalAlignment="Right" Padding="10" Height="37" FontWeight="Bold" Margin="0,10,0,0" IsEnabled="False">Вызвать</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

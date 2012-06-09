@@ -29,7 +29,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Button Name="absenceButton" Grid.Column="0" Grid.Row="0" Margin="5">Неявка</Button>
-                        <Button Name="delayButton" Grid.Column="1" Grid.Row="0" Margin="5">Отложить</Button>
+                        <Button Name="postponedButton" Grid.Column="1" Grid.Row="0" Margin="5">Отложить</Button>
                         <Button Name="servedButton" Grid.Column="2" Grid.Row="0" Margin="5">Обслужен</Button>
                         <Button Name="repeatButton" Grid.Column="0" Grid.Row="1" Margin="5">Повтор</Button>
                         <Button Name="redirectButton" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">Перенаправить</Button>

@@ -58,6 +58,9 @@
     <Compile Include="AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CallByListWindow.xaml.cs">
+      <DependentUpon>CallByListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CallByNymberWindow.xaml.cs">
       <DependentUpon>CallByNymberWindow.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,10 @@
     <Page Include="AuthorizationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CallByListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CallByNymberWindow.xaml">
       <SubType>Designer</SubType>
