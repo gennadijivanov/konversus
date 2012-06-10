@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
         Title="Перенаправление посетителя" Height="400" Width="700" ResizeMode="NoResize"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded" ButtonBase.Click="Window_Click">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
         <!--Когда будут данные сделать автоматическое заполнение через биндинг!-->
@@ -17,19 +17,31 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
-                    <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Stretch">
-                        <Label>Список очередей:</Label>
-                        <ListBox Margin="10" Height="200"></ListBox>
-                    </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Stretch">
+                    <Label>Список очередей:</Label>
+                    <ListBox Name="queueList" Margin="10" Height="200" SelectionMode="Single" SelectionChanged="list_SelectionChanged"></ListBox>
+                </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
                     <Label>Список сотрудников:</Label>
-                    <ListBox Height="200" Margin="10"></ListBox>
+                    <ListBox Name="employeeList" Height="200" Margin="10" SelectionMode="Single" SelectionChanged="list_SelectionChanged"></ListBox>
                 </StackPanel>
-                <Button Name="redirectButton" 
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
+                    <Button Name="redirectButton" 
+                            Margin="0,0,10,0"
                         Grid.Column="1" Grid.Row="1" 
                         HorizontalAlignment="Right" Padding="10" 
-                        Height="37" FontWeight="Bold" Margin="0,10,0,0" 
+                        Height="50" FontWeight="Bold" 
                         IsEnabled="False">Перенаправить</Button>
+                    <Button Name="redirectAndReturnButton" 
+                        Grid.Column="1" Grid.Row="1" 
+                        HorizontalAlignment="Right" Padding="10" 
+                        Height="50" FontWeight="Bold" 
+                        IsEnabled="False">Перенаправить и вернуть</Button>
+                </StackPanel>
+                <Button Name="cancelButton" 
+                        Grid.Column="1" Grid.Row="1" 
+                        HorizontalAlignment="Right" Padding="10" 
+                        Height="50" FontWeight="Bold">Отмена</Button>
             </Grid>
         </Border>
     </Grid>
