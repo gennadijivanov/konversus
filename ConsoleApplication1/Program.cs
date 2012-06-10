@@ -28,9 +28,11 @@ namespace ConsoleApplication1
 
                 Guid id = Guid.NewGuid();
 
-                qst.Create(new QueueData() { Id = id, Type = QueueType.Approvement });
-                qst.Create(new QueueData() { Id = Guid.NewGuid(), Type = QueueType.Taking });
-                var q = qst.Get(new QueueFilterParameters());
+                var queue = new QueueData() { Id = id, Type = QueueType.Approvement };
+
+                qst.Create(queue);
+                //qst.Create(new QueueData() { Id = Guid.NewGuid(), Type = QueueType.Taking });
+                //var q = qst.Get(new QueueFilterParameters());
                 //qst.Delete(id);
 
                 var clientId = Guid.NewGuid();
@@ -47,9 +49,19 @@ namespace ConsoleApplication1
 
                 cst.Create(client);
 
-                var queueByClient = qst.GetByClient(clientId);
+                client.PIN = 125;
 
-                var cl = cst.Get(clientId);
+                cst.Update(client);
+
+                client.Id = Guid.NewGuid();
+
+                cst.Create(client);
+
+                var qClients = cst.Get(new ClientFilterParameters() { QueueId = id });
+
+                //var queueByClient = qst.GetByClient(clientId);
+
+                //var cl = cst.Get(clientId);
             }
 
             File.Delete(baseName);
