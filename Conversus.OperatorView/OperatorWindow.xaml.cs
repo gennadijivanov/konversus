@@ -104,5 +104,16 @@ namespace Conversus.OperatorView
             startTime = DateTime.Now;
             servedTimer.Start();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var currentWindow = (Window)sender;
+
+            if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение", 
+                MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
