@@ -69,7 +69,6 @@ namespace Conversus.BusinessLogic.Test
             Guid clientId = new Guid(); // TODO: инициализация подходящего значения
             ClientStatus status = new ClientStatus(); // TODO: инициализация подходящего значения
             target.ChangeStatus(clientId, status);
-            Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
         }
 
         /// <summary>
@@ -79,13 +78,11 @@ namespace Conversus.BusinessLogic.Test
         public void CreateForCommonTest()
         {
             IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            string name = string.Empty; // TODO: инициализация подходящего значения
+            string name = "Clent Name";
             QueueType queueType = new QueueType(); // TODO: инициализация подходящего значения
-            IClient expected = null; // TODO: инициализация подходящего значения
-            IClient actual;
-            actual = target.CreateForCommon(name, queueType);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Проверьте правильность этого метода теста.");
+            IClient actual = target.CreateForCommon(name, queueType);
+            Assert.AreEqual(queueType, actual.GetQueue().Type);
+            Assert.AreEqual(name, actual.Name);
         }
 
         /// <summary>
@@ -121,12 +118,14 @@ namespace Conversus.BusinessLogic.Test
         public void GetClientsTest()
         {
             IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            QueueType queue = new QueueType(); // TODO: инициализация подходящего значения
-            ICollection<IClient> expected = null; // TODO: инициализация подходящего значения
-            ICollection<IClient> actual;
-            actual = target.GetClients(queue);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Проверьте правильность этого метода теста.");
+            QueueType queueType = new QueueType();
+            IClient cl1 = target.CreateForCommon("1", queueType);
+            IClient cl2 = target.CreateForCommon("2", queueType);
+            IClient cl3 = target.CreateForCommon("3", queueType);
+            ICollection<IClient> actual = target.GetClients(queueType);
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(actual.Count, 0);
+            //Assert.AreEqual(3, actual.Count);
         }
 
         /// <summary>
@@ -136,12 +135,10 @@ namespace Conversus.BusinessLogic.Test
         public void GetTicketTest()
         {
             IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            Guid clientId = new Guid(); // TODO: инициализация подходящего значения
+            var client = target.GetClients(QueueType.Approvement).First(); // TODO: инициализация подходящего значения
             string expected = string.Empty; // TODO: инициализация подходящего значения
-            string actual;
-            actual = target.GetTicket(clientId);
+            string actual = target.GetTicket(client.Id);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Проверьте правильность этого метода теста.");
         }
     }
 }

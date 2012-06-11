@@ -68,6 +68,12 @@ namespace Conversus.Impl.Repositories
             return base.Get(id) as IClient;
         }
 
+        public ICollection<IClient> Get(IFilterParameters filter)
+        {
+            var data = Storage.Get(filter);
+            return data.Select(CreateFromData).ToList();
+        }
+
         public ICollection<IClient> GetClients(Guid queueId)
         {
             return Storage.Get(new ClientFilterParameters(){ QueueId = queueId}).Select(CreateFromData).ToList();

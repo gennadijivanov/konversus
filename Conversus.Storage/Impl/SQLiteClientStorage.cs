@@ -14,6 +14,11 @@ namespace Conversus.Storage.Impl
     {
         private SQLiteBaseManager _baseManager;
 
+        public SQLiteClientStorage()
+            : this(SQLiteBaseManager.GetInstance())
+        {
+        }
+
         public SQLiteClientStorage(SQLiteBaseManager baseManager)
         {
             _baseManager = baseManager;
@@ -25,14 +30,17 @@ namespace Conversus.Storage.Impl
                 [PerformStart], [PerformEnd], [Status], [PIN], [Ticket])
                 VALUES('{0}', '{1}', '{2}', {3}, {4}, {5}, {6}, {7}, {8}, '{9}');";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using(var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(createCommandTpl, data.Id, data.QueueId, data.Name,
                     GetDBdatetime(data.BookingTime),
                     GetDBdatetime(data.TakeTicket),
                     GetDBdatetime(data.PerformStart),
                     GetDBdatetime(data.PerformEnd),
-                    (int)data.Status, data.PIN, data.Ticket);
+                    (int)data.Status,
+                    data.PIN.HasValue ? data.PIN.Value.ToString() : "NULL",
+                    data.Ticket);
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
@@ -44,14 +52,17 @@ namespace Conversus.Storage.Impl
                 [TakeTicket]={4}, [PerformStart]={5}, [PerformEnd]={6}, [Status]={7}, [PIN]={8}, [Ticket]='{9}'
                 WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(updateCommandTpl, data.Id, data.QueueId, data.Name,
                     GetDBdatetime(data.BookingTime),
                     GetDBdatetime(data.TakeTicket),
                     GetDBdatetime(data.PerformStart),
                     GetDBdatetime(data.PerformEnd), 
-                    (int)data.Status, data.PIN,  data.Ticket);
+                    (int)data.Status,
+                    data.PIN.HasValue ? data.PIN.Value.ToString() : "NULL",
+                    data.Ticket);
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
@@ -62,7 +73,8 @@ namespace Conversus.Storage.Impl
             const string selectCommandTpl = @"SELECT [Id], [QueueId], [Name], [BookingTime], [TakeTicket],
                 [PerformStart], [PerformEnd], [Status], [PIN], [Ticket] FROM [Clients] WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(selectCommandTpl, id);
                 command.CommandType = CommandType.Text;
@@ -90,18 +102,26 @@ namespace Conversus.Storage.Impl
         public ICollection<ClientData> Get(IFilterParameters filter)
         {
             List<ClientData> result = new List<ClientData>();
-            ClientFilterParameters f = filter as ClientFilterParameters;
+            ClientFilterParameters f = filter != null ? filter as ClientFilterParameters : null;
 
             string selectCommand = @"SELECT [c].[Id], [c].[QueueId], [c].[Name], [c].[BookingTime], [c].[TakeTicket],
                 [c].[PerformStart], [c].[PerformEnd], [c].[Status], [c].[PIN], [c].[Ticket] FROM [Clients] [c] {0};";
             string where = string.Empty;
 
-            if (f.QueueId.HasValue)
-                where = string.Format("WHERE [c].[QueueId]='{0}'", f.QueueId.Value);
+            if (f != null && (f.QueueId.HasValue || f.PIN.HasValue))
+            {
+                where = "WHERE ";
+                if (f.QueueId.HasValue)
+                    where += string.Format("[c].[QueueId]='{0}' ", f.QueueId.Value);
+                
+                if (f.PIN.HasValue)
+                    where += string.Format("[c].[PIN]='{0}' ", f.PIN.Value);
+            }
 
             selectCommand = string.Format(selectCommand, where);
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = selectCommand;
                 command.CommandType = CommandType.Text;
@@ -130,7 +150,8 @@ namespace Conversus.Storage.Impl
         {
             const string deleteCommandTpl = @"DELETE FROM [Clients] WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(deleteCommandTpl, id);
                 command.CommandType = CommandType.Text;

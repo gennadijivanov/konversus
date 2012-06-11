@@ -9,5 +9,6 @@ namespace Conversus.Impl.Repositories
     {
         IQueue Get(Guid id);
         ICollection<IQueue> Get(IFilterParameters filter);
+        IQueue GetByClient(Guid clientId);
     }
 }

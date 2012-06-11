@@ -12,7 +12,6 @@ namespace Conversus.Storage.Impl
     {
         public const string DefaultBaseName = "conversus.db3";
         private string _baseName;
-        private SQLiteConnection _connection;
 
         private static SQLiteBaseManager _instance;
 
@@ -23,7 +22,12 @@ namespace Conversus.Storage.Impl
 
         public SQLiteConnection Connection
         {
-            get { return _connection ?? (_connection = new SQLiteConnection("Data Source = " + _baseName)); }
+            get 
+            {
+                var conn = new SQLiteConnection("Data Source = " + _baseName);
+                conn.Open();
+                return conn;
+            }
         }
 
         private SQLiteBaseManager(string baseName)
@@ -35,15 +39,11 @@ namespace Conversus.Storage.Impl
         private void CreateDatabase()
         {
             if (File.Exists(_baseName))
-            {
-                Connection.Open();
                 return;
-            }
 
             SQLiteConnection.CreateFile(_baseName);
 
-            Connection.Open();
-
+            using (var connection = Connection)
             using (var command = new SQLiteCommand(Connection))
             {
                 command.CommandType = CommandType.Text;
