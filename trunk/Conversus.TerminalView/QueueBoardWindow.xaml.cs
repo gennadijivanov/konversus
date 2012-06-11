@@ -16,6 +16,8 @@ namespace TerminalView
 
         private string VIDEO_DIRECTORY_PATH = Path.GetDirectoryName("Content/video/");
         private string[] fileEntries;
+        private int currentIndex = 0;
+        private DateTime lastChangeDirectory;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -24,13 +26,24 @@ namespace TerminalView
 
         private void checkeForModificationVideoDirectory()
         {
-            //TODO: ПОЧЕМУ тут только 1 файл! Спросить у Гены
-            fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH);
+            var currentChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
+
+            if (lastChangeDirectory == null || lastChangeDirectory != currentChangeDirectory)
+            {
+                lastChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
+                fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH);
+                currentIndex = 0;
+            }
 
             if (fileEntries.Length > 0)
             {
-                backgroundVideo.Source = new Uri(fileEntries[0], UriKind.Relative);
+                backgroundVideo.Source = new Uri(fileEntries[currentIndex], UriKind.Relative);
                 backgroundVideo.Play();
+
+                if (currentIndex < fileEntries.Length - 1)
+                    currentIndex++;
+                else
+                    currentIndex = 0;
             }
             else
             {
