@@ -69,17 +69,28 @@ namespace Conversus.Impl.Objects
             _data = data;
         }
 
-        public Client(string name, DateTime deadline, int pin, ClientStatus status, string ticket)
-            : this(new ClientData
+        public Client(string name, QueueType queueType, DateTime deadline, int pin, ClientStatus status, string ticket)
+        {
+            // copied from QueueLogic! Achtung!!!
+            var rep = RepositoryFactory.GetQueueRepository();
+            IQueue queue = rep.Get(new QueueFilterParameters() { QueueType = queueType }).SingleOrDefault();
+
+            if (queue == null)
+            {
+                queue = RepositoryFactory.GetQueueFactory().CreateNewQueue(queueType);
+                rep.Add(queue);
+            }
+
+            _data = new ClientData
             {
                 Id = Guid.NewGuid(),
+                QueueId = queue.Id,
                 Name = name,
                 BookingTime = deadline,
                 PIN = pin,
                 Status = status,
                 Ticket = ticket
-            })
-        {
+            };
         }
 
         internal ClientData GetData()
@@ -89,8 +100,7 @@ namespace Conversus.Impl.Objects
 
         public IQueue GetQueue()
         {
-            return RepositoryFactory.GetQueueRepository()
-                .Get(new QueueFilterParameters() {ClientId = _data.Id}).Single();
+            return RepositoryFactory.GetQueueRepository().GetByClient(_data.Id);
         }
 
         public void ChangeStatus(ClientStatus newStatus)

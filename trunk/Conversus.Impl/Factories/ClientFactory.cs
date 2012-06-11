@@ -11,7 +11,7 @@ namespace Conversus.Impl.Factories
         public IClient CreateNewClient(string name, QueueType queueType, int? pin)
         {
             //TODO: Achtung!!!
-            return new Client(name, DateTime.Now, pin ?? 0, ClientStatus.Registered, "");
+            return new Client(name, queueType, DateTime.Now, pin ?? 0, ClientStatus.Registered, "");
         }
 
         #endregion

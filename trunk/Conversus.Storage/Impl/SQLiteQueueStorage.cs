@@ -17,6 +17,11 @@ namespace Conversus.Storage.Impl
     {
         private SQLiteBaseManager _baseManager;
 
+        public SQLiteQueueStorage()
+            : this(SQLiteBaseManager.GetInstance())
+        {
+        }
+
         public SQLiteQueueStorage(SQLiteBaseManager baseManager)
         {
             _baseManager = baseManager;
@@ -26,7 +31,8 @@ namespace Conversus.Storage.Impl
         {
             const string createCommandTpl = @"INSERT INTO [Queues]([Id], [Type]) VALUES('{0}', {1});";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(createCommandTpl, data.Id, (int)data.Type);
                 command.CommandType = CommandType.Text;
@@ -38,7 +44,8 @@ namespace Conversus.Storage.Impl
         {
             const string updateCommandTpl = @"UPDATE [Queues] SET [Type]='{1}' WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(updateCommandTpl, data.Id, (int)data.Type);
                 command.CommandType = CommandType.Text;
@@ -50,7 +57,8 @@ namespace Conversus.Storage.Impl
         {
             const string selectCommandTpl = @"SELECT [Id], [Type] FROM [Queues] WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(selectCommandTpl, id);
                 command.CommandType = CommandType.Text;
@@ -74,7 +82,8 @@ namespace Conversus.Storage.Impl
                 INNER JOIN [Clients] [c] ON [q].[Id]=[c].[QueueId]
                 WHERE [c].[Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(selectCommandTpl, clientId);
                 command.CommandType = CommandType.Text;
@@ -94,17 +103,17 @@ namespace Conversus.Storage.Impl
         public ICollection<QueueData> Get(IFilterParameters filter)
         {
             List<QueueData> result = new List<QueueData>();
-            QueueFilterParameters f = filter as QueueFilterParameters;
+            QueueFilterParameters f = filter != null ? filter as QueueFilterParameters : null;
 
             string selectCommand = @"SELECT [q].[Id], [q].[Type] FROM [Queues] [q] {0} {1}";
             string joins = "";
             string where = "";
 
-            if (f.ClientId.HasValue || f.QueueType.HasValue) 
+            if (f != null && (f.ClientId.HasValue || f.QueueType.HasValue))
             {
                 where = "WHERE";
 
-                if (f.ClientId.HasValue) 
+                if (f.ClientId.HasValue)
                 {
                     joins = " INNER JOIN [Clients] [c] ON [q].[Id]=[c].[QueueId]";
                     where += string.Format(" [c].[Id]='{0}'", f.ClientId.Value);
@@ -118,7 +127,8 @@ namespace Conversus.Storage.Impl
 
             selectCommand = string.Format(selectCommand, joins, where);
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = selectCommand;
                 command.CommandType = CommandType.Text;
@@ -139,7 +149,8 @@ namespace Conversus.Storage.Impl
         {
             const string deleteCommandTpl = @"DELETE FROM [Queues] WHERE [Id]='{0}';";
 
-            using (var command = new SQLiteCommand(_baseManager.Connection))
+            using (var connection = _baseManager.Connection)
+            using (var command = new SQLiteCommand(connection))
             {
                 command.CommandText = string.Format(deleteCommandTpl, id);
                 command.CommandType = CommandType.Text;
