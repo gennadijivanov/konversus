@@ -31,7 +31,7 @@ namespace TerminalView
             if (lastChangeDirectory == null || lastChangeDirectory != currentChangeDirectory)
             {
                 lastChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
-                fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH);
+                fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH, "*.wmv");
                 currentIndex = 0;
             }
 
