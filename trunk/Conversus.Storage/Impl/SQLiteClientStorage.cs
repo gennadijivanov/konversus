@@ -26,6 +26,13 @@ namespace Conversus.Storage.Impl
 
         public void Create(ClientData data)
         {
+            if (data.PIN.HasValue)
+            {
+                var allWithSamePin = Get(new ClientFilterParameters(){PIN = data.PIN.Value});
+                if (allWithSamePin.Count > 0)
+                    throw new InvalidOperationException("Client with same PIN already exists");
+            }
+
             const string createCommandTpl = @"INSERT INTO [Clients]([Id], [QueueId], [Name], [BookingTime], [TakeTicket], 
                 [PerformStart], [PerformEnd], [Status], [PIN], [Ticket])
                 VALUES('{0}', '{1}', '{2}', {3}, {4}, {5}, {6}, {7}, {8}, '{9}');";

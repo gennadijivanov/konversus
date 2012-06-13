@@ -3,6 +3,7 @@ using Conversus.Core.DomainModel;
 
 namespace Conversus.Core.DTO
 {
+    [Serializable]
     public struct ClientData
     {
         public Guid Id;
