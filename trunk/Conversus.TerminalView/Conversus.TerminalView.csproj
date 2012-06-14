@@ -39,6 +39,8 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,6 +81,9 @@
     </Compile>
     <Compile Include="Views\Terminal\PrintPage.xaml.cs">
       <DependentUpon>PrintPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Terminal\TicketPage.xaml.cs">
+      <DependentUpon>TicketPage.xaml</DependentUpon>
     </Compile>
     <Page Include="QueueBoardWindow.xaml">
       <SubType>Designer</SubType>
@@ -128,6 +133,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Terminal\TicketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -144,7 +153,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Content\images\buttons\closeButton.png" />
-    <Resource Include="Content\images\logo\printLogo.bmp" />
+    <Content Include="Content\images\logo\printLogo.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\callVisitorSound.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\video\1.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
