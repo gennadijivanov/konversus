@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.AdminView.Views.BackGrounds"
         xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
-        Title="MainWindow" MinHeight="500" MinWidth="570" Width="500" Height="500" >
+        Title="MainWindow" MinHeight="500" MinWidth="570" Width="500" Height="500">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
         <Label>Окно админиа/для отчетов</Label>
@@ -23,17 +23,17 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Имя:</Label>
-                    <TextBox Grid.Column="1" Style="{StaticResource inputStyle}"></TextBox>
+                    <TextBox Name="nameTextBox" Grid.Column="1" Style="{StaticResource inputStyle}"></TextBox>
                     <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Логин:</Label>
-                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource inputStyle}"></TextBox>
+                    <TextBox Name="loginTextBox" Grid.Column="1" Grid.Row="1" Style="{StaticResource inputStyle}"></TextBox>
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Пароль:</Label>
-                    <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource inputStyle}"></TextBox>
+                    <TextBox Name="passTextBox" Grid.Column="1" Grid.Row="2" Style="{StaticResource inputStyle}"></TextBox>
                     <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Роль:</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="3" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" Name="roleType" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
+                    <ComboBox Name="roleComboBox" Grid.Column="1" Grid.Row="3" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
                         <ComboBoxItem Content="Администратор" />
                         <ComboBoxItem Content="Оператор" />
                     </ComboBox>
-                    <Button Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270">Зарегистрировать</Button>
+                    <Button Name="registerButton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270" Click="registerButton_Click">Зарегистрировать</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Отчеты">
@@ -43,14 +43,14 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="3*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Тип отчета:</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="0" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" Name="reportType" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
+                    <ComboBox Name="reportTypeComboBox" Grid.Column="1" Grid.Row="0" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
                         <ComboBoxItem Content="По услугам" />
                         <ComboBoxItem Content="По посетителям" />
                         <ComboBoxItem Content="По рабочим местам" />
@@ -60,10 +60,12 @@
                         <ComboBoxItem Content="По состоянию РМ" />
                     </ComboBox>
                     <Label Style="{StaticResource loginLabelStyle}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">C:</Label>
-                    <wpfx:DateTimePicker Grid.Column="1" Grid.Row="1" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center"></wpfx:DateTimePicker>
+                    <wpfx:DateTimePicker Name="fromDateTime" Grid.Column="1" Grid.Row="1" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center"></wpfx:DateTimePicker>
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">ПО:</Label>
-                    <wpfx:DateTimePicker Grid.Column="1" Grid.Row="2" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center"></wpfx:DateTimePicker>
-                    <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270">Сформировать</Button>
+                    <wpfx:DateTimePicker Name="toDateTime" Grid.Column="1" Grid.Row="2" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center"></wpfx:DateTimePicker>
+                    <Button Grid.Column="1" Name="exportButton" Grid.Row="4" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="250" Click="exportButton_Click">Експорт в EXCEL</Button>
+                    <Button Grid.Column="0" Name="buildReportButton" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="230" Click="buildReportButton_Click">Сформировать</Button>
+                    <DataGrid Name="reportGrid" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"></DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
