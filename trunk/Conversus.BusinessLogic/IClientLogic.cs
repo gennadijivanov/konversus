@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Conversus.Core.DomainModel;
-using Conversus.Core.DTO;
 
 namespace Conversus.BusinessLogic
 {

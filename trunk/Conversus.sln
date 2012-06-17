@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Service.Contract"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Service.Host", "Conversus.Service.Host\Conversus.Service.Host.csproj", "{E93136D3-54BE-48D3-8A18-E42D92F366EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Service.Helpers", "Conversus.Service.Helpers\Conversus.Service.Helpers.csproj", "{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Conversus.vsmdi
@@ -198,6 +200,16 @@ Global
 		{E93136D3-54BE-48D3-8A18-E42D92F366EA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E93136D3-54BE-48D3-8A18-E42D92F366EA}.Release|x86.ActiveCfg = Release|x86
 		{E93136D3-54BE-48D3-8A18-E42D92F366EA}.Release|x86.Build.0 = Release|x86
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,5 +224,6 @@ Global
 		{66916797-8124-437B-8EEE-720109E9AD70} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 		{5BE9C694-8B57-4626-97DB-23175C47E77D} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 		{E93136D3-54BE-48D3-8A18-E42D92F366EA} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
+		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 	EndGlobalSection
 EndGlobal
