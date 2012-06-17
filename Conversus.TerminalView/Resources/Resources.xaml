@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <!--//STYLES//-->
     <!--Gradients, Brushes-->
     <!--Green Gradient Style-->
@@ -16,7 +16,9 @@
         <GradientStop Color="#d1d1d1" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="queueBordListIlemBG" Color="#02a4df" />
 
+     
     <!--Font Styles-->
     <!--Main menu buttons font style-->
     <Style x:Key="greenButtonTextStyle" TargetType="TextBlock">
@@ -47,6 +49,13 @@
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
     </Style>
+    <!--Fullscreen Message-->
+    <Style x:Key="listItemsLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+    </Style>
     <!--QueueBoard number style-->
     <Style x:Key="performenNumberText" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center"></Setter>
@@ -57,7 +66,25 @@
         <Setter Property="Foreground" Value="Black"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
     </Style>
-    
+    <!--QueueBoard number style-->
+    <Style x:Key="queueBoardVerticalText" TargetType="Label">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <RotateTransform Angle="-90"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--DATAGRID Center Header Style-->
+    <Style x:Key="CenterAlignmentColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
     <!--Controls Styles-->
     <!--Borders-->
     <Style x:Key="greenButtonStyle" TargetType="Border">
@@ -66,6 +93,23 @@
         <Setter Property="Background" Value="{StaticResource GreenGradientBg}"></Setter>
         <Setter Property="Margin" Value="20"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30"
+                              Direction="290"
+                              Color="#FF872E2E"
+                              RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="queueBordListIlemBorder" TargetType="Border">
+        <Setter Property="BorderThickness" Value="3"></Setter>
+        <Setter Property="BorderBrush" Value="#5fb7cc"></Setter>
+        <Setter Property="Background" Value="{StaticResource queueBordListIlemBG}"></Setter>
+        <Setter Property="Margin" Value="20"></Setter>
+        <Setter Property="CornerRadius" Value="1"></Setter>
         <Setter Property="Padding" Value="10"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
@@ -144,7 +188,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Board Button-->
     <Style x:Key="inputBoardBtnStyle" TargetType="Button">
         <Setter Property="MinWidth" Value="80"></Setter>
