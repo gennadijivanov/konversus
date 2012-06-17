@@ -4,18 +4,86 @@
         xmlns:local="clr-namespace:Conversus.TerminalView.Views.BackGrounds"
         Title="QueueBoardWindow" Height="800" Width="800" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="2*" MinWidth="50"/>
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
         <!--Background-->
+
+        <!--Раскоментировать Грид, если понадобится бегущая строка-->
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>-->
         <local:DefaultBackGround></local:DefaultBackGround>
-        
         <MediaElement Name="backgroundVideo" LoadedBehavior="Manual" Stretch="Fill" MediaEnded="backgroundVideo_MediaEnded"></MediaElement>
         <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound.wav"></MediaElement>
+        <!--<Rectangle Grid.Row="1">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#606060"></SolidColorBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>-->
+
+        <Rectangle Grid.Column="1">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#ed891a"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource queueBoardVerticalText}">ПЛИТЫ</Label>
+            <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource queueBoardVerticalText}">ГАЗОВЫЕ КОТЛЫ</Label>
+            <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource queueBoardVerticalText}">БОЙЛЕРЫ</Label>
+            <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource queueBoardVerticalText}">КОТЛЫ</Label>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="190*"></RowDefinition>
+                <RowDefinition Height="41*"></RowDefinition>
+                <RowDefinition Height="530*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <local:QueueboardListBG Grid.RowSpan="3" Grid.ColumnSpan="2"></local:QueueboardListBG>
+
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,5,0" Style="{StaticResource queueBordListIlemBorder}" MinWidth="10" Opacity=".9"></Border>
+            <Label Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,3" Style="{StaticResource listItemsLabel}">КЛИЕНТ</Label>
+            <Label Grid.Row="1" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Style="{StaticResource listItemsLabel}">ОКНО</Label>
+
+            <ListView Grid.ColumnSpan="2" Grid.Row="2" BorderBrush="Transparent"  Background="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource queueBordListIlemBorder}">
+
+                            <Button HorizontalAlignment="Left" FontSize="20">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <Label Content="{Binding clientNumber}" Style="{StaticResource listItemsLabel}" HorizontalAlignment="Left"></Label>
+                                    <Label Content="{Binding clientWindow}" Style="{StaticResource listItemsLabel}" HorizontalAlignment="Right"></Label>
+                                </StackPanel>
+                            </Button>
+
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--ПОТОМ УБРАТЬ ЭТО ДЛЯ ТЕСТА-->
+                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
+                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
+                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
+                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
+            </ListView>
+        </Grid>
         
-        <StackPanel HorizontalAlignment="Stretch">
-            <Border HorizontalAlignment="Right" Width="Auto" Margin="10" Height="100" Background="#AAA60000" CornerRadius="20">
-                <TextBlock Style="{StaticResource performenNumberText}">
-                    A120 -> 3
-                </TextBlock>
-            </Border>
-        </StackPanel>
     </Grid>
 </Window>

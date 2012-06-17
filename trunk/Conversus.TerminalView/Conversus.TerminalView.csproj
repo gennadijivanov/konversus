@@ -64,6 +64,9 @@
     <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
       <DependentUpon>DefaultBackGround.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BackGrounds\QueueboardListBG.xaml.cs">
+      <DependentUpon>QueueboardListBG.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Terminal\ConfirmPIN.xaml.cs">
       <DependentUpon>ConfirmPIN.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\BackGrounds\DefaultBackGround.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BackGrounds\QueueboardListBG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +160,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Content\images\buttons\closeButton.png" />
+    <Resource Include="Content\images\bg\queueBoardBG.jpg" />
     <Content Include="Content\images\logo\printLogo.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
