@@ -20,6 +20,11 @@ namespace Conversus.Service.Helpers
             get { return ClientServiceBase<IClientService>.GetClient("ClientService"); }
         }
 
+        public static IQueueService QueueService
+        {
+            get { return ClientServiceBase<IQueueService>.GetClient("QueueService"); }
+        }
+
         private ServiceHelper()
         {
         }

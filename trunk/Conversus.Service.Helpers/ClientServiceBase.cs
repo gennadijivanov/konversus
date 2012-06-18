@@ -1,4 +1,8 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
+using Conversus.Service.Impl;
 
 namespace Conversus.Service.Helpers
 {
@@ -13,9 +17,26 @@ namespace Conversus.Service.Helpers
             if (Initialized)
                 return Channel;
 
-            var factory = new ChannelFactory<T>(endPoint);
-            Channel = factory.CreateChannel();
+            const bool isJoined = true;
 
+            if (isJoined)
+            {
+                Assembly implementationAssembly = Assembly.GetAssembly(typeof(QueueService));
+                var types = implementationAssembly.GetTypes();
+                foreach (Type type in types)
+                {
+                    if (type.GetInterfaces().Contains(typeof(T)) && type.IsClass)
+                    {
+                        ConstructorInfo ci = type.GetConstructor(new Type[] { });
+                        Channel = (T)ci.Invoke(new Object[] { });
+                    }
+                }
+            }
+            else
+            {
+                var factory = new ChannelFactory<T>(endPoint);
+                Channel = factory.CreateChannel();
+            }
             Initialized = true;
 
             return Channel;
