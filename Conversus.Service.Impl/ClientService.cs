@@ -12,7 +12,6 @@ using Conversus.Service.Contract;
 
 namespace Conversus.Service.Impl
 {
-    // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
     public class ClientService : IClientService
     {
         private IClientLogic _clientLogic;
