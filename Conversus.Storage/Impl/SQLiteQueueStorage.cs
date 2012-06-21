@@ -29,158 +29,96 @@ namespace Conversus.Storage.Impl
 
         public void Create(QueueData data)
         {
-            const string createCommandTpl = @"INSERT INTO [Queues]([Id], [Type]) VALUES('{0}', {1});";
-
-            using (var connection = _baseManager.GetConnection())
+            
+                var allWithSamePin = Get(new QueueFilterParameters() { QueueType = data.Type });
+                if (allWithSamePin.Count > 0)
+                    throw new InvalidOperationException("Client with same PIN already exists");
+         
+            using (var db = new ConversusDataContext())
             {
-                using (var command = new SQLiteCommand(connection))
+                var client = new Queues()
                 {
-                    command.CommandText = string.Format(createCommandTpl, data.Id, (int)data.Type);
-                    command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
+                    Id = data.Id,
+                    Type = (int)data.Type
+                };
+                db.AddToQueues(client);
+                db.SaveChanges();
             }
         }
 
         public void Update(QueueData data)
         {
-            const string updateCommandTpl = @"UPDATE [Queues] SET [Type]='{1}' WHERE [Id]='{0}';";
-
-            using (var connection = _baseManager.GetConnection())
+            using (var db = new ConversusDataContext())
             {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = string.Format(updateCommandTpl, data.Id, (int)data.Type);
-                    command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
+                var dbCl = db.Queues.SingleOrDefault(c => c.Id == data.Id);
+
+                if (dbCl == null)
+                    return;
+
+                //TODO: set field of data obj
+                db.SaveChanges();
             }
         }
 
         public QueueData Get(Guid id)
         {
-            const string selectCommandTpl = @"SELECT [Id], [Type] FROM [Queues] WHERE [Id]='{0}';";
-
-            QueueData result = default(QueueData);
-
-            using (var connection = _baseManager.GetConnection())
+            using (var db = new ConversusDataContext())
             {
-                using (var command = new SQLiteCommand(connection))
+                var dbCl = db.Queues.SingleOrDefault(c => c.Id == id);
+
+                if (dbCl == null)
+                    return default(QueueData);
+
+                //TODO: set all properties
+                return new QueueData()
                 {
-                    command.CommandText = string.Format(selectCommandTpl, id);
-                    command.CommandType = CommandType.Text;
-                    var reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        result = new QueueData()
-                        {
-                            Id = reader.GetGuid(0),
-                            Type = (QueueType)reader.GetInt32(1)
-                        };
-                    }
-                    reader.Close();
-                }
-                connection.Close();
+                    Id = dbCl.Id,
+                    Type = (QueueType)dbCl.Type
+                };
             }
-            return result;
         }
 
         public QueueData GetByClient(Guid clientId)
         {
-            const string selectCommandTpl =
-                @"SELECT [q].[Id], [q].[Type] FROM [Queues] [q]
-                INNER JOIN [Clients] [c] ON [q].[Id]=[c].[QueueId]
-                WHERE [c].[Id]='{0}';";
-
-            QueueData result = default(QueueData);
-
-            using (var connection = _baseManager.GetConnection())
-            {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = string.Format(selectCommandTpl, clientId);
-                    command.CommandType = CommandType.Text;
-                    var reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        result = new QueueData()
-                        {
-                            Id = reader.GetGuid(0),
-                            Type = (QueueType) reader.GetInt32(1)
-                        };
-                    }
-                    reader.Close();
-                }
-                connection.Close();
-            }
-            return result;
+            return Get(new QueueFilterParameters() {ClientId = clientId}).SingleOrDefault();
         }
 
         public ICollection<QueueData> Get(IFilterParameters filter)
         {
-            List<QueueData> result = new List<QueueData>();
             QueueFilterParameters f = filter != null ? filter as QueueFilterParameters : null;
 
-            string selectCommand = @"SELECT [q].[Id], [q].[Type] FROM [Queues] [q] {0} {1}";
-            string joins = "";
-            string where = "";
-
-            if (f != null && (f.ClientId.HasValue || f.QueueType.HasValue))
+            using (var db = new ConversusDataContext())
             {
-                where = "WHERE";
+                IQueryable<Queues> query = db.Queues.AsQueryable();
 
-                if (f.ClientId.HasValue)
+                if (f != null && (f.ClientId.HasValue || f.QueueType.HasValue))
                 {
-                    joins = " INNER JOIN [Clients] [c] ON [q].[Id]=[c].[QueueId]";
-                    where += string.Format(" [c].[Id]='{0}'", f.ClientId.Value);
+                    if (f.ClientId.HasValue)
+                        query = query.Where(q => q.Clients.Any(c => c.Id == f.ClientId.Value));
+                
+                    if (f.QueueType.HasValue)
+                        query = query.Where(q => q.Type == (int)f.QueueType.Value);
                 }
 
-                if (f.QueueType.HasValue)
-                {
-                    where += string.Format(" [q].[Type]={0}", (int)f.QueueType.Value);
-                }
+                var list = query.ToList();
+
+                //TODO: set all properties
+                return list.Select(c => new QueueData()
+                                             {
+                                                 Id = c.Id,
+                                                 Type = (QueueType)c.Type,
+                                             }).ToList();
             }
-
-            selectCommand = string.Format(selectCommand, joins, where);
-
-            using (var connection = _baseManager.GetConnection())
-            {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = selectCommand;
-                    command.CommandType = CommandType.Text;
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        result.Add(new QueueData()
-                                       {
-                                           Id = reader.GetGuid(0),
-                                           Type = (QueueType) reader.GetInt32(1)
-                                       });
-                    }
-                    reader.Close();
-                }
-                connection.Close();
-            }
-            return result;
+            
         }
 
         public void Delete(Guid id)
         {
-            const string deleteCommandTpl = @"DELETE FROM [Queues] WHERE [Id]='{0}';";
-
-            using (var connection = _baseManager.GetConnection())
+            using (var db = new ConversusDataContext())
             {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = string.Format(deleteCommandTpl, id);
-                    command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
-                }
-
-                connection.Close();
+                var queue = db.Queues.SingleOrDefault(c => c.Id == id);
+                if (queue != null)
+                    db.Queues.DeleteObject(queue);
             }
         }
     }

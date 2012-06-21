@@ -84,6 +84,15 @@
                 <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
             </ListView>
         </Grid>
-        
+        <!--Потом проанимировать попап-->
+        <Border Name="callPopupBorder" Width="500" Height="100" 
+                Grid.ColumnSpan="3" Grid.RowSpan="2"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Visibility="Hidden"
+                Style="{StaticResource queueBordListIlemBorder}">
+            <Label Name="callPopupLabel" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Foreground="White" FontWeight="Bold" 
+                   FontFamily="Tahoma" FontSize="40">A303 -> 3 Окно</Label>
+        </Border>
     </Grid>
 </Window>

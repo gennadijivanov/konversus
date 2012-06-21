@@ -4,51 +4,50 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="conversusModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="conversusModelStoreContainer">
-          <EntitySet Name="Clients" EntityType="conversusModel.Store.Clients" store:Type="Tables" />
-          <EntitySet Name="Queues" EntityType="conversusModel.Store.Queues" store:Type="Tables" />
-          <AssociationSet Name="FK_Clients_0_0" Association="conversusModel.Store.FK_Clients_0_0">
-            <End Role="Queues" EntitySet="Queues" />
-            <End Role="Clients" EntitySet="Clients" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="QueueId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
-          <Property Name="BookingTime" Type="datetime" />
-          <Property Name="TakeTicket" Type="datetime" />
-          <Property Name="PerformStart" Type="datetime" />
-          <Property Name="PerformEnd" Type="datetime" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="PIN" Type="int" />
-          <Property Name="Ticket" Type="nvarchar" MaxLength="500" />
-        </EntityType>
-        <EntityType Name="Queues">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Type" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Clients_0_0">
-          <End Role="Queues" Type="conversusModel.Store.Queues" Multiplicity="1" />
-          <End Role="Clients" Type="conversusModel.Store.Clients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Queues">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clients">
-              <PropertyRef Name="QueueId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="conversusModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="conversusModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="conversusModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Queues" EntityType="conversusModel.Store.Queues" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Clients_0_0" Association="conversusModel.Store.FK_Clients_0_0">
+      <End Role="Queues" EntitySet="Queues" />
+      <End Role="Clients" EntitySet="Clients" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QueueId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="BookingTime" Type="datetime" Nullable="true" />
+    <Property Name="TakeTicket" Type="datetime" Nullable="true" />
+    <Property Name="PerformStart" Type="datetime" Nullable="true" />
+    <Property Name="PerformEnd" Type="datetime" Nullable="true" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="PIN" Type="int" Nullable="true" />
+    <Property Name="Ticket" Type="nvarchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Queues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Clients_0_0">
+    <End Role="Queues" Type="conversusModel.Store.Queues" Multiplicity="1" />
+    <End Role="Clients" Type="conversusModel.Store.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Queues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Clients">
+        <PropertyRef Name="QueueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="conversusModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -100,27 +99,34 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="conversusModelStoreContainer" CdmEntityContainer="conversusEntities">
-          <EntitySetMapping Name="Clients"><EntityTypeMapping TypeName="conversusModel.Clients"><MappingFragment StoreEntitySet="Clients">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="QueueId" ColumnName="QueueId" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
-            <ScalarProperty Name="TakeTicket" ColumnName="TakeTicket" />
-            <ScalarProperty Name="PerformStart" ColumnName="PerformStart" />
-            <ScalarProperty Name="PerformEnd" ColumnName="PerformEnd" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="PIN" ColumnName="PIN" />
-            <ScalarProperty Name="Ticket" ColumnName="Ticket" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Queues"><EntityTypeMapping TypeName="conversusModel.Queues"><MappingFragment StoreEntitySet="Queues">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="conversusModelStoreContainer" CdmEntityContainer="conversusEntities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(conversusModel.Clients)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QueueId" ColumnName="QueueId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+          <ScalarProperty Name="TakeTicket" ColumnName="TakeTicket" />
+          <ScalarProperty Name="PerformStart" ColumnName="PerformStart" />
+          <ScalarProperty Name="PerformEnd" ColumnName="PerformEnd" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Ticket" ColumnName="Ticket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Queues">
+      <EntityTypeMapping TypeName="IsTypeOf(conversusModel.Queues)">
+        <MappingFragment StoreEntitySet="Queues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
