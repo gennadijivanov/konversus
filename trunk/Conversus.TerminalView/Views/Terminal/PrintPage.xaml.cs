@@ -2,7 +2,6 @@
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 
@@ -34,13 +33,8 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void printTicket()
         {
-            PrintDialog printDlg = new PrintDialog();
-
-            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Queue print test")));
-            doc.Name = "TicketPrint";
-
-            IDocumentPaginatorSource idpSource = doc;
-            printDlg.PrintDocument(idpSource.DocumentPaginator, "Print test");
+            var printDlg = new PrintDialog();
+            printDlg.PrintVisual(ticketView, "Ticket");
         }
 
         private void goHomePage(object sender, ElapsedEventArgs e)
