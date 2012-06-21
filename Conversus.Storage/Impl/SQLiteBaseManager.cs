@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
@@ -8,10 +9,10 @@ using System.IO;
 
 namespace Conversus.Storage.Impl
 {
-    public class SQLiteBaseManager: IDisposable
+    public class SQLiteBaseManager
     {
         public const string DefaultBaseName = "conversus.db3";
-        private string _baseName;
+        private readonly string _baseName;
 
         private static SQLiteBaseManager _instance;
 
@@ -20,14 +21,15 @@ namespace Conversus.Storage.Impl
             return _instance ?? (_instance = new SQLiteBaseManager(baseName));
         }
 
-        public SQLiteConnection Connection
+        public SQLiteConnection GetConnection()
         {
-            get 
-            {
-                var conn = new SQLiteConnection("Data Source = " + _baseName);
-                conn.Open();
-                return conn;
-            }
+            SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+            SQLiteConnection conn = (SQLiteConnection)factory.CreateConnection();
+
+            conn.ConnectionString = "Data Source = " + _baseName;
+            //var conn = new SQLiteConnection("Data Source = " + _baseName);
+            conn.Open();
+            return conn;
         }
 
         private SQLiteBaseManager(string baseName)
@@ -43,18 +45,23 @@ namespace Conversus.Storage.Impl
 
             SQLiteConnection.CreateFile(_baseName);
 
-            using (var connection = Connection)
-            using (var command = new SQLiteCommand(Connection))
-            {
-                command.CommandType = CommandType.Text;
+            
 
-                command.CommandText = @"CREATE TABLE [Queues] (
+            using (var connection = GetConnection())
+            {
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText =
+                        @"CREATE TABLE [Queues] (
                     [Id] UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
                     [Type] int NOT NULL
                 );";
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
-                command.CommandText = @"CREATE TABLE [Clients] (
+                    command.CommandText =
+                        @"CREATE TABLE [Clients] (
                     [Id] UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
                     [QueueId] UNIQUEIDENTIFIER NOT NULL,
                     [Name] NVARCHAR(500) NOT NULL,
@@ -66,13 +73,11 @@ namespace Conversus.Storage.Impl
                     [PIN] INT NULL,
                     [Ticket] NVARCHAR(500) NULL
                 );";
-                command.ExecuteNonQuery();
-            }
-        }
+                    command.ExecuteNonQuery();
+                }
 
-        public void Dispose()
-        {
-            Connection.Close();
+                connection.Close();
+            }
         }
     }
 }

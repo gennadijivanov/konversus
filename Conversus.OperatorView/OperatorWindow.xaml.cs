@@ -34,8 +34,7 @@ namespace Conversus.OperatorView
             Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate()
             {
                 TimeSpan timeSpan = e.SignalTime - startTime;
-                //TODO: Почему не работает timeSpan.ToString("HH:mm:ss") узнать у Гены
-                timerLabel.Content = timeSpan.ToString();
+                timerLabel.Content = new TimeSpan(timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds).ToString("g");
             });
         }
 

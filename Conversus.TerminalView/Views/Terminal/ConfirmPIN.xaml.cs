@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Conversus.Core.DTO;
+using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -19,16 +12,21 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class ConfirmPIN : Page
     {
-        public ConfirmPIN(string pin)
+        public ConfirmPIN(ClientData clientData)
         {
             InitializeComponent();
-            pinInputBox.Text = pin;
+            pinInputBox.Text = clientData.PIN.Value.ToString();
         }
 
         private NavigationService navService = null;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ClientData client = ServiceHelper.Instance.ClientService.GetClientByPin(123);
+
+            if(client.PIN == 0)
+                throw new Exception();
+
             navService = NavigationService.GetNavigationService(this);
         }
 

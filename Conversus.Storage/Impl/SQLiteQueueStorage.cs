@@ -15,7 +15,7 @@ namespace Conversus.Storage.Impl
 {
     public class SQLiteQueueStorage : IQueueStorage
     {
-        private SQLiteBaseManager _baseManager;
+        private readonly SQLiteBaseManager _baseManager;
 
         public SQLiteQueueStorage()
             : this(SQLiteBaseManager.GetInstance())
@@ -31,12 +31,15 @@ namespace Conversus.Storage.Impl
         {
             const string createCommandTpl = @"INSERT INTO [Queues]([Id], [Type]) VALUES('{0}', {1});";
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = string.Format(createCommandTpl, data.Id, (int)data.Type);
-                command.CommandType = CommandType.Text;
-                command.ExecuteNonQuery();
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = string.Format(createCommandTpl, data.Id, (int)data.Type);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
             }
         }
 
@@ -44,12 +47,15 @@ namespace Conversus.Storage.Impl
         {
             const string updateCommandTpl = @"UPDATE [Queues] SET [Type]='{1}' WHERE [Id]='{0}';";
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = string.Format(updateCommandTpl, data.Id, (int)data.Type);
-                command.CommandType = CommandType.Text;
-                command.ExecuteNonQuery();
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = string.Format(updateCommandTpl, data.Id, (int)data.Type);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
             }
         }
 
@@ -57,47 +63,59 @@ namespace Conversus.Storage.Impl
         {
             const string selectCommandTpl = @"SELECT [Id], [Type] FROM [Queues] WHERE [Id]='{0}';";
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            QueueData result = default(QueueData);
+
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = string.Format(selectCommandTpl, id);
-                command.CommandType = CommandType.Text;
-                var reader = command.ExecuteReader();
-                if (reader.Read()) 
+                using (var command = new SQLiteCommand(connection))
                 {
-                    return new QueueData()
+                    command.CommandText = string.Format(selectCommandTpl, id);
+                    command.CommandType = CommandType.Text;
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
                     {
-                        Id = reader.GetGuid(0),
-                        Type = (QueueType)reader.GetInt32(1)
-                    };
+                        result = new QueueData()
+                        {
+                            Id = reader.GetGuid(0),
+                            Type = (QueueType)reader.GetInt32(1)
+                        };
+                    }
+                    reader.Close();
                 }
-                return new QueueData();
+                connection.Close();
             }
+            return result;
         }
 
         public QueueData GetByClient(Guid clientId)
         {
-            const string selectCommandTpl = 
+            const string selectCommandTpl =
                 @"SELECT [q].[Id], [q].[Type] FROM [Queues] [q]
                 INNER JOIN [Clients] [c] ON [q].[Id]=[c].[QueueId]
                 WHERE [c].[Id]='{0}';";
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            QueueData result = default(QueueData);
+
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = string.Format(selectCommandTpl, clientId);
-                command.CommandType = CommandType.Text;
-                var reader = command.ExecuteReader();
-                if (reader.Read())
+                using (var command = new SQLiteCommand(connection))
                 {
-                    return new QueueData()
+                    command.CommandText = string.Format(selectCommandTpl, clientId);
+                    command.CommandType = CommandType.Text;
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
                     {
-                        Id = reader.GetGuid(0),
-                        Type = (QueueType)reader.GetInt32(1)
-                    };
+                        result = new QueueData()
+                        {
+                            Id = reader.GetGuid(0),
+                            Type = (QueueType) reader.GetInt32(1)
+                        };
+                    }
+                    reader.Close();
                 }
-                return new QueueData();
+                connection.Close();
             }
+            return result;
         }
 
         public ICollection<QueueData> Get(IFilterParameters filter)
@@ -127,34 +145,42 @@ namespace Conversus.Storage.Impl
 
             selectCommand = string.Format(selectCommand, joins, where);
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = selectCommand;
-                command.CommandType = CommandType.Text;
-                var reader = command.ExecuteReader();
-                while (reader.Read())
+                using (var command = new SQLiteCommand(connection))
                 {
-                    result.Add(new QueueData()
+                    command.CommandText = selectCommand;
+                    command.CommandType = CommandType.Text;
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        Id = reader.GetGuid(0),
-                        Type = (QueueType)reader.GetInt32(1)
-                    });
+                        result.Add(new QueueData()
+                                       {
+                                           Id = reader.GetGuid(0),
+                                           Type = (QueueType) reader.GetInt32(1)
+                                       });
+                    }
+                    reader.Close();
                 }
-                return result;
+                connection.Close();
             }
+            return result;
         }
 
         public void Delete(Guid id)
         {
             const string deleteCommandTpl = @"DELETE FROM [Queues] WHERE [Id]='{0}';";
 
-            using (var connection = _baseManager.Connection)
-            using (var command = new SQLiteCommand(connection))
+            using (var connection = _baseManager.GetConnection())
             {
-                command.CommandText = string.Format(deleteCommandTpl, id);
-                command.CommandType = CommandType.Text;
-                command.ExecuteNonQuery();
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = string.Format(deleteCommandTpl, id);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
             }
         }
     }
