@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Conversus.Core.DTO;
+using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -34,7 +36,18 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (targetSender.Name)
             {
                 case "nextButton":
-                    navService.Navigate(new ConfirmPIN(pinInputBox.Text));
+
+                    ClientData client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
+
+                    if (!client.PIN.HasValue)
+                    {
+                        MessageBox.Show("Пользователь с таким пином не зарегистрирован в системе");
+                    }
+                    else
+                    {
+                        navService.Navigate(new ConfirmPIN(client));
+                    }
+
                     break;
                 case "deleteButton":
                     deleteChar();

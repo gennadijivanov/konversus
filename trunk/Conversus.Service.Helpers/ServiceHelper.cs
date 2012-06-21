@@ -15,12 +15,12 @@ namespace Conversus.Service.Helpers
             get { return _instance ?? (_instance = new ServiceHelper()); }
         }
 
-        public static IClientService ClientService
+        public IClientService ClientService
         {
             get { return ClientServiceBase<IClientService>.GetClient("ClientService"); }
         }
 
-        public static IQueueService QueueService
+        public IQueueService QueueService
         {
             get { return ClientServiceBase<IQueueService>.GetClient("QueueService"); }
         }

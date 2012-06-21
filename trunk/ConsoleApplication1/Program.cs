@@ -21,8 +21,8 @@ namespace ConsoleApplication1
 
             string baseName = string.Format("base-{0}.db3", DateTime.Now.Second);
 
-            using (var baseManager = SQLiteBaseManager.GetInstance(baseName))
-            {
+            var baseManager = SQLiteBaseManager.GetInstance(baseName);
+            
                 var qst = new SQLiteQueueStorage(baseManager);
                 var cst = new SQLiteClientStorage(baseManager);
 
@@ -62,7 +62,7 @@ namespace ConsoleApplication1
                 //var queueByClient = qst.GetByClient(clientId);
 
                 //var cl = cst.Get(clientId);
-            }
+            
 
             File.Delete(baseName);
         }
