@@ -85,8 +85,8 @@
     <Compile Include="Views\Terminal\PrintPage.xaml.cs">
       <DependentUpon>PrintPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Terminal\TicketPage.xaml.cs">
-      <DependentUpon>TicketPage.xaml</DependentUpon>
+    <Compile Include="Views\Terminal\TicketPrintControl.xaml.cs">
+      <DependentUpon>TicketPrintControl.xaml</DependentUpon>
     </Compile>
     <Page Include="QueueBoardWindow.xaml">
       <SubType>Designer</SubType>
@@ -140,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Terminal\TicketPage.xaml">
+    <Page Include="Views\Terminal\TicketPrintControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,9 +161,9 @@
     </Compile>
     <Resource Include="Content\images\buttons\closeButton.png" />
     <Resource Include="Content\images\bg\queueBoardBG.jpg" />
-    <Content Include="Content\images\logo\printLogo.bmp">
+    <Resource Include="Content\images\logo\printLogo.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
     <Content Include="Content\sounds\callVisitorSound.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
