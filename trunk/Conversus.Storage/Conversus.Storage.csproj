@@ -51,9 +51,6 @@
   <ItemGroup>
     <Compile Include="IClientStorage.cs" />
     <Compile Include="Impl\ConversusDataContext.cs" />
-    <Compile Include="Impl\FakeClientStorage.cs" />
-    <Compile Include="Impl\FakeQueueStorage.cs" />
-    <Compile Include="Impl\SQLiteBaseManager.cs" />
     <Compile Include="Impl\SQLiteClientStorage.cs" />
     <Compile Include="Impl\SQLiteQueueStorage.cs" />
     <Compile Include="IQueueStorage.cs" />

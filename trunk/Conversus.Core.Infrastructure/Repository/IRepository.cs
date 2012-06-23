@@ -20,8 +20,10 @@ namespace Conversus.Core.Infrastructure.Repository
 
     public interface IUnitOfWorkStorageRepository : IUnitOfWorkRepository
     {
-        void PersistNewItemInStorage(IEntity item);
-        void PersistUpdatedItemInStorage(IEntity item);
-        void PersistDeletedItemInStorage(IEntity item);
+        IDisposable CreateContext();
+
+        void PersistNewItemInStorage(object context, IEntity item);
+        void PersistUpdatedItemInStorage(object context, IEntity item);
+        void PersistDeletedItemInStorage(object context, IEntity item);
     }
 }
