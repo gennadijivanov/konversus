@@ -15,49 +15,39 @@ namespace Conversus.Storage.Impl
 {
     public class SQLiteQueueStorage : IQueueStorage
     {
-        private readonly SQLiteBaseManager _baseManager;
-
-        public SQLiteQueueStorage()
-            : this(SQLiteBaseManager.GetInstance())
+        public IDisposable CreateContext()
         {
+            return new ConversusDataContext();
         }
 
-        public SQLiteQueueStorage(SQLiteBaseManager baseManager)
+        public void Create(object context, QueueData data)
         {
-            _baseManager = baseManager;
+            var allWithSamePin = Get(new QueueFilterParameters() { QueueType = data.Type });
+            if (allWithSamePin.Count > 0)
+                throw new InvalidOperationException("Client with same PIN already exists");
+
+            var db = (ConversusDataContext)context;
+
+            var client = new Queues()
+                             {
+                                 Id = data.Id,
+                                 Type = (int)data.Type
+                             };
+            db.AddToQueues(client);
+            db.SaveChanges();
         }
 
-        public void Create(QueueData data)
+        public void Update(object context, QueueData data)
         {
-            
-                var allWithSamePin = Get(new QueueFilterParameters() { QueueType = data.Type });
-                if (allWithSamePin.Count > 0)
-                    throw new InvalidOperationException("Client with same PIN already exists");
-         
-            using (var db = new ConversusDataContext())
-            {
-                var client = new Queues()
-                {
-                    Id = data.Id,
-                    Type = (int)data.Type
-                };
-                db.AddToQueues(client);
-                db.SaveChanges();
-            }
-        }
+            var db = (ConversusDataContext)context;
 
-        public void Update(QueueData data)
-        {
-            using (var db = new ConversusDataContext())
-            {
-                var dbCl = db.Queues.SingleOrDefault(c => c.Id == data.Id);
+            var dbCl = db.Queues.SingleOrDefault(c => c.Id == data.Id);
 
-                if (dbCl == null)
-                    return;
+            if (dbCl == null)
+                return;
 
-                //TODO: set field of data obj
-                db.SaveChanges();
-            }
+            //TODO: set field of data obj
+            db.SaveChanges();
         }
 
         public QueueData Get(Guid id)
@@ -80,7 +70,7 @@ namespace Conversus.Storage.Impl
 
         public QueueData GetByClient(Guid clientId)
         {
-            return Get(new QueueFilterParameters() {ClientId = clientId}).SingleOrDefault();
+            return Get(new QueueFilterParameters() { ClientId = clientId }).SingleOrDefault();
         }
 
         public ICollection<QueueData> Get(IFilterParameters filter)
@@ -89,13 +79,13 @@ namespace Conversus.Storage.Impl
 
             using (var db = new ConversusDataContext())
             {
-                IQueryable<Queues> query = db.Queues.AsQueryable();
+                IEnumerable<Queues> query = db.Queues;
 
                 if (f != null && (f.ClientId.HasValue || f.QueueType.HasValue))
                 {
                     if (f.ClientId.HasValue)
                         query = query.Where(q => q.Clients.Any(c => c.Id == f.ClientId.Value));
-                
+
                     if (f.QueueType.HasValue)
                         query = query.Where(q => q.Type == (int)f.QueueType.Value);
                 }
@@ -109,17 +99,15 @@ namespace Conversus.Storage.Impl
                                                  Type = (QueueType)c.Type,
                                              }).ToList();
             }
-            
+
         }
 
-        public void Delete(Guid id)
+        public void Delete(object context, Guid id)
         {
-            using (var db = new ConversusDataContext())
-            {
-                var queue = db.Queues.SingleOrDefault(c => c.Id == id);
-                if (queue != null)
-                    db.Queues.DeleteObject(queue);
-            }
+            var db = (ConversusDataContext)context;
+            var queue = db.Queues.SingleOrDefault(c => c.Id == id);
+            if (queue != null)
+                db.Queues.DeleteObject(queue);
         }
     }
 }

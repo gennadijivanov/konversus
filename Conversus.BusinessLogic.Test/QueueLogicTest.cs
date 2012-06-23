@@ -70,7 +70,7 @@ namespace Conversus.BusinessLogic.Test
         public void GetOrCreateQueueTest()
         {
             IQueueLogic target = BusinessLogicFactory.Instance.Get<IQueueLogic>();
-            const QueueType queueType = QueueType.Approvement;
+            const QueueType queueType = QueueType.Taking;
             IQueue actual = target.GetOrCreateQueue(queueType);
             Assert.IsNotNull(actual);
             Assert.AreEqual(queueType, actual.Type);

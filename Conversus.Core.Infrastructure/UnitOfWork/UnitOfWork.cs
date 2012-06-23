@@ -1,11 +1,12 @@
-﻿using System.Transactions;
+﻿using System;
+using System.Transactions;
 using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Core.Infrastructure.UnitOfWork
 {
     public class UnitOfWork : BaseUnitOfWork
     {
-        private static readonly System.TimeSpan DefaultTimeout = new System.TimeSpan(0, 2, 0);
+        private static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 2, 0);
 
         public override void Commit()
         {
@@ -14,25 +15,28 @@ namespace Conversus.Core.Infrastructure.UnitOfWork
 
             using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions { IsolationLevel = IsolationLevel.RepeatableRead, Timeout = DefaultTimeout }))
             {
-                foreach (var operation in _operations)
+                using (IDisposable context = ((IUnitOfWorkStorageRepository) _operations[0].Repository).CreateContext())
                 {
-                    var repository = (IUnitOfWorkStorageRepository)operation.Repository;
-                    switch (operation.Type)
+                    foreach (var operation in _operations)
                     {
-                        case TransactionType.Insert:
-                            repository.PersistNewItemInStorage(operation.Entity);
-                            break;
-                        case TransactionType.Delete:
-                            repository.PersistDeletedItemInStorage(operation.Entity);
-                            break;
-                        case TransactionType.Update:
-                            repository.PersistUpdatedItemInStorage(operation.Entity);
-                            break;
+                        var repository = (IUnitOfWorkStorageRepository) operation.Repository;
+                        switch (operation.Type)
+                        {
+                            case TransactionType.Insert:
+                                repository.PersistNewItemInStorage(context, operation.Entity);
+                                break;
+                            case TransactionType.Delete:
+                                repository.PersistDeletedItemInStorage(context, operation.Entity);
+                                break;
+                            case TransactionType.Update:
+                                repository.PersistUpdatedItemInStorage(context, operation.Entity);
+                                break;
+                        }
                     }
-                }
 
-                // Commit the transaction
-                scope.Complete();
+                    // Commit the transaction
+                    scope.Complete();
+                }
             }
 
             // Clear everything

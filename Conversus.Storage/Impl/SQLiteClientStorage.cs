@@ -12,53 +12,45 @@ namespace Conversus.Storage.Impl
 {
     public class SQLiteClientStorage : IClientStorage
     {
-        private readonly SQLiteBaseManager _baseManager;
-
-        public SQLiteClientStorage()
-            : this(SQLiteBaseManager.GetInstance())
+        public IDisposable CreateContext()
         {
+            return new ConversusDataContext();
         }
 
-        public SQLiteClientStorage(SQLiteBaseManager baseManager)
-        {
-            _baseManager = baseManager;
-        }
-
-        public void Create(ClientData data)
+        public void Create(object context, ClientData data)
         {
             if (data.PIN.HasValue)
             {
-                var allWithSamePin = Get(new ClientFilterParameters(){PIN = data.PIN.Value});
+                var allWithSamePin = Get(new ClientFilterParameters() { PIN = data.PIN.Value });
                 if (allWithSamePin.Count > 0)
                     throw new InvalidOperationException("Client with same PIN already exists");
             }
 
-            using (var db = new ConversusDataContext())
-            {
-                Clients client = new Clients()
-                                     {
-                                         Id = data.Id,
-                                         Name = data.Name,
-                                         PIN = data.PIN,
-                                         QueueId = data.QueueId
-                                     };
-                db.AddToClients(client);
-                db.SaveChanges();
-            }
+            var db = (ConversusDataContext)context;
+
+            Clients client = new Clients()
+                                 {
+                                     Id = data.Id,
+                                     Name = data.Name,
+                                     PIN = data.PIN,
+                                     QueueId = data.QueueId,
+                                     Status = (int)data.Status
+                                 };
+            db.AddToClients(client);
+            db.SaveChanges();
         }
 
-        public void Update(ClientData data)
+        public void Update(object context, ClientData data)
         {
-            using (var db = new ConversusDataContext())
-            {
-                var dbCl = db.Clients.SingleOrDefault(c => c.Id == data.Id);
+            var db = (ConversusDataContext)context;
 
-                if (dbCl == null)
-                    return;
+            var dbCl = db.Clients.SingleOrDefault(c => c.Id == data.Id);
 
-                //TODO: set field of data obj
-                db.SaveChanges();
-            }
+            if (dbCl == null)
+                return;
+
+            //TODO: set field of data obj
+            db.SaveChanges();
         }
 
         public ClientData Get(Guid id)
@@ -71,7 +63,7 @@ namespace Conversus.Storage.Impl
                     return default(ClientData);
 
                 //TODO: set all properties
-                return  new ClientData()
+                return new ClientData()
                 {
                     Id = dbCl.Id,
                     Name = dbCl.Name,
@@ -93,7 +85,7 @@ namespace Conversus.Storage.Impl
                 {
                     if (f.QueueId.HasValue)
                         query = query.Where(c => c.QueueId == f.QueueId.Value);
-                
+
                     if (f.PIN.HasValue)
                         query = query.Where(c => c.PIN == f.PIN.Value);
                 }
@@ -109,21 +101,13 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(object context, Guid id)
         {
-            using (var db = new ConversusDataContext())
-            {
-                var client = db.Clients.SingleOrDefault(c => c.Id == id);
-                if (client != null)
-                    db.Clients.DeleteObject(client);
-            }
-        }
+            var db = (ConversusDataContext)context;
 
-        private static string GetDBdatetime(DateTime? dateTime) 
-        {
-            if (!dateTime.HasValue)
-                return "NULL";
-            return string.Format("'{0}'", dateTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
+            var client = db.Clients.SingleOrDefault(c => c.Id == id);
+            if (client != null)
+                db.Clients.DeleteObject(client);
         }
     }
 }

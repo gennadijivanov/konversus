@@ -48,19 +48,24 @@ namespace Conversus.Impl.Repositories
             return Storage.Get(filter).Select(CreateFromData).Cast<IEntity>().ToList();
         }
 
-        public void PersistNewItemInStorage(IEntity item)
+        public IDisposable CreateContext()
         {
-            Storage.Create((item as Queue).GetData());
+            return Storage.CreateContext();
         }
 
-        public void PersistUpdatedItemInStorage(IEntity item)
+        public void PersistNewItemInStorage(object context, IEntity item)
         {
-            Storage.Update((item as Queue).GetData());
+            Storage.Create(context, (item as Queue).GetData());
         }
 
-        public void PersistDeletedItemInStorage(IEntity item)
+        public void PersistUpdatedItemInStorage(object context, IEntity item)
         {
-            Storage.Delete(item.Id);
+            Storage.Update(context, (item as Queue).GetData());
+        }
+
+        public void PersistDeletedItemInStorage(object context, IEntity item)
+        {
+            Storage.Delete(context, item.Id);
         }
 
         public new IQueue Get(Guid id)

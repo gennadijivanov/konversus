@@ -48,19 +48,24 @@ namespace Conversus.Impl.Repositories
             throw new NotImplementedException();
         }
 
-        public void PersistNewItemInStorage(IEntity item)
+        public IDisposable CreateContext()
         {
-            Storage.Create((item as Client).GetData());
+            return Storage.CreateContext();
         }
 
-        public void PersistUpdatedItemInStorage(IEntity item)
+        public void PersistNewItemInStorage(object context, IEntity item)
         {
-            Storage.Update((item as Client).GetData());
+            Storage.Create(context, (item as Client).GetData());
         }
 
-        public void PersistDeletedItemInStorage(IEntity item)
+        public void PersistUpdatedItemInStorage(object context, IEntity item)
         {
-            Storage.Delete(item.Id);
+            Storage.Update(context, (item as Client).GetData());
+        }
+
+        public void PersistDeletedItemInStorage(object context, IEntity item)
+        {
+            Storage.Delete(context, item.Id);
         }
 
         public new IClient Get(Guid id)
