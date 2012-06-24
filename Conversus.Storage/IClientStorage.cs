@@ -1,8 +1,8 @@
-﻿using Conversus.Core.DTO;
+﻿using Conversus.Core.DomainModel;
 
 namespace Conversus.Storage
 {
-    public interface IClientStorage : IStorage<ClientData>
+    public interface IClientStorage : IStorage<IClient>
     {
     }
 }

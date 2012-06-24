@@ -1,13 +1,4 @@
-﻿using System;
-using Conversus.BusinessLogic;
-using Conversus.Core.DTO;
-using Conversus.Core.DomainModel;
-using Conversus.Storage;
-using Conversus.Storage.Impl;
-using Conversus.Core.Infrastructure.Repository;
-using System.IO;
-
-namespace ConsoleApplication1
+﻿namespace ConsoleApplication1
 {
     class Program
     {

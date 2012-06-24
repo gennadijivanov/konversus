@@ -1,33 +1,35 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
-using Conversus.Impl.Factories;
-using Conversus.Impl.Repositories;
+using Conversus.Impl.Objects;
+using Conversus.Storage;
 
 namespace Conversus.BusinessLogic.Impl
 {
     public class QueueLogic : IQueueLogic
     {
+        private readonly IQueueStorage Storage = StorageLogicFactory.Instance.Get<IQueueStorage>();
+
         #region Implementation of IQueueLogic
 
         public IQueue GetOrCreateQueue(QueueType queueType)
         {
-            var rep = RepositoryFactory.GetQueueRepository();
-            IQueue queue = rep.Get(new QueueFilterParameters(){ QueueType = queueType }).SingleOrDefault();
+            IQueue queueData = Storage.Get(new QueueFilterParameters(){ QueueType = queueType }).SingleOrDefault();
 
-            if (queue == null)
+            if (queueData == null)
             {
-                queue = RepositoryFactory.GetQueueFactory().CreateNewQueue(queueType);
-                rep.Add(queue);
+                queueData = new Queue(Guid.NewGuid(), queueType);
+                Storage.Create(queueData);
             }
 
-            return queue;
+            return queueData;
         }
 
         public ICollection<IQueue> GetQueues()
         {
-            return RepositoryFactory.GetQueueRepository().GetCollection().Cast<IQueue>().ToList();
+            return Storage.Get(new QueueFilterParameters());;
         }
 
         #endregion

@@ -63,10 +63,6 @@
       <Project>{6358F485-88D8-4093-898B-3A4348D72CC7}</Project>
       <Name>Conversus.Core.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Conversus.Core.DTO\Conversus.Core.DTO.csproj">
-      <Project>{A41B6FE4-69D7-4782-9E75-624D9A26E474}</Project>
-      <Name>Conversus.Core.DTO</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Conversus.Core.Infrastructure\Conversus.Core.Infrastructure.csproj">
       <Project>{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}</Project>
       <Name>Conversus.Core.Infrastructure</Name>

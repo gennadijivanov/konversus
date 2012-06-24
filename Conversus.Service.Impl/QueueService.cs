@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using Conversus.BusinessLogic;
-using Conversus.Core.DTO;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 
@@ -17,27 +16,16 @@ namespace Conversus.Service.Impl
 
         #region Implementation of IQueueService
 
-        public QueueData GetOrCreateQueue(QueueType queueType)
+        public IQueue GetOrCreateQueue(QueueType queueType)
         {
-            return GetData(QueueLogic.GetOrCreateQueue(queueType));
+            return QueueLogic.GetOrCreateQueue(queueType);
         }
 
-        public ICollection<QueueData> GetQueues()
+        public ICollection<IQueue> GetQueues()
         {
-            return QueueLogic.GetQueues().Select(GetData).ToList();
+            return QueueLogic.GetQueues();
         }
 
         #endregion
-
-        private QueueData GetData(IQueue queue)
-        {
-            if (queue == null)
-                return default(QueueData);
-            return new QueueData()
-            {
-                Id = queue.Id,
-                Type = queue.Type
-            };
-        }
     }
 }

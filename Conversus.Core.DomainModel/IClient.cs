@@ -32,7 +32,7 @@ namespace Conversus.Core.DomainModel
         /// <summary>
         /// время записи
         /// </summary>
-        DateTime? BookingTime { get; set; }
+        DateTime BookingTime { get; set; }
         /// <summary>
         /// время получения талона
         /// </summary>
@@ -52,17 +52,6 @@ namespace Conversus.Core.DomainModel
 
         string Ticket { get; set; }
 
-        IQueue GetQueue();
-
-        void ChangeStatus(ClientStatus newStatus);
-
-        // move to ticket factory
-        string CreateTicket();
-    }
-
-    public interface IClientFactory
-    {
-        //TODO: lotus or common queue?
-        IClient CreateNewClient(string name, QueueType queueType, int? pin);
+        Guid QueueId { get; set; }
     }
 }

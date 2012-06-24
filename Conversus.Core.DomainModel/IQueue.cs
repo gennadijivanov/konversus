@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Conversus.Core.DomainModel
+﻿namespace Conversus.Core.DomainModel
 {
     public enum QueueType
     {
@@ -11,12 +9,5 @@ namespace Conversus.Core.DomainModel
     public interface IQueue : IEntity
     {
         QueueType Type { get; set; }
-
-        ICollection<IClient> GetClients();
-    }
-
-    public interface IQueueFactory
-    {
-        IQueue CreateNewQueue(QueueType queueType);
     }
 }

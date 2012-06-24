@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Conversus.Core.DTO;
+using Conversus.Core.DomainModel;
 using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
@@ -37,9 +36,9 @@ namespace Conversus.TerminalView.Views.Terminal
             {
                 case "nextButton":
 
-                    ClientData client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
+                    IClient client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
 
-                    if (!client.PIN.HasValue)
+                    if (client == null)
                     {
                         MessageBox.Show("Пользователь с таким пином не зарегистрирован в системе");
                     }
