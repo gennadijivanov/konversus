@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Conversus.Core.DTO;
+using Conversus.Core.DomainModel;
 using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
@@ -12,7 +12,7 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class ConfirmPIN : Page
     {
-        public ConfirmPIN(ClientData clientData)
+        public ConfirmPIN(IClient clientData)
         {
             InitializeComponent();
             pinInputBox.Text = clientData.PIN.Value.ToString();
@@ -22,9 +22,9 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ClientData client = ServiceHelper.Instance.ClientService.GetClientByPin(123);
+            IClient client = ServiceHelper.Instance.ClientService.GetClientByPin(123);
 
-            if(client.PIN == 0)
+            if (client == null)
                 throw new Exception();
 
             navService = NavigationService.GetNavigationService(this);

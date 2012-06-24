@@ -1,37 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Conversus.Core.DTO;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
-using Conversus.Impl.Repositories;
-using Conversus.Impl.Factories;
+using Conversus.Impl.Objects;
+using Conversus.Storage;
 
 namespace Conversus.BusinessLogic.Impl
 {
     public class ClientLogic : IClientLogic
     {
-        private IClientRepository _clientRepository;
-        private IClientRepository ClientRepository { get { return _clientRepository ?? (_clientRepository = RepositoryFactory.GetClientRepository()); } }
+        private readonly IClientStorage Storage = StorageLogicFactory.Instance.Get<IClientStorage>();
 
         #region Implementation of IClientLogic
 
         public IClient CreateForCommon(string name, QueueType queueType)
         {
-            BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            var client = RepositoryFactory.GetClientFactory().CreateNewClient(name, queueType, null);
-            ClientRepository.Add(client);
+            IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null, ClientStatus.Waiting,
+                                        "");
+            Storage.Create(client);
             return client;
         }
 
         public IClient CreateFromLotus(string name, int pin)
         {
             //TODO: get Queue type from PIN or add parameter!!!!!!!!!!
-            BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(QueueType.Approvement);
-            var client = RepositoryFactory.GetClientFactory().CreateNewClient(name, QueueType.Approvement, pin);
-            client.Ticket = (new TicketFactory()).SetTicketForClient(QueueType.Approvement, pin);
-            ClientRepository.Add(client);
+            IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(QueueType.Approvement);
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, pin, ClientStatus.Registered,
+                                        "");
+            Storage.Create(client);
             return client;
         }
 
@@ -40,14 +38,16 @@ namespace Conversus.BusinessLogic.Impl
         {
             // must create ticket by factory, set to object and return
 
-            var client = ClientRepository.Get(clientId);
-            if (client.Id != clientId)
+            var client = Storage.Get(clientId);
+            if (client == null)
                 throw new InvalidOperationException("Client is not found");
 
             if (string.IsNullOrEmpty(client.Ticket))
             {
-                client.Ticket = (new TicketFactory()).SetTicketForClient(client.GetQueue().Type, client.PIN);
-                ClientRepository.Update(client);
+                var queue = StorageLogicFactory.Instance.Get<IQueueStorage>().GetByClient(clientId);
+
+                client.Ticket = (new TicketFactory()).SetTicketForClient(queue.Type, client.PIN);
+                Storage.Update(client);
             }
 
             return client.Ticket;
@@ -55,23 +55,24 @@ namespace Conversus.BusinessLogic.Impl
 
         public IClient GetClientByPin(int pin)
         {
-            return ClientRepository.Get(new ClientFilterParameters { PIN = pin }).SingleOrDefault();
+            return Storage.Get(new ClientFilterParameters { PIN = pin }).SingleOrDefault();
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
         {
-            var client = ClientRepository.Get(clientId);
-            //хак конечно, но пока метод Гет нулл не возвращает
-            if (client.Id != clientId)
+            var client = Storage.Get(clientId);
+            if (client == null)
                 throw new InvalidOperationException("Client is not found");
-            client.ChangeStatus(status);
+            client.Status = status;
+            Storage.Update(client);
         }
 
         public ICollection<IClient> GetClients(QueueType queueType)
         {
-            var queue = RepositoryFactory.GetQueueRepository()
-                .Get(new QueueFilterParameters {QueueType = queueType}).Single();
-            return ClientRepository.GetClients(queue.Id);
+            var queue =
+                StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters()
+                                                                          {QueueType = queueType}).Single();
+            return Storage.Get(new ClientFilterParameters(){QueueId = queue.Id});
         }
 
         #endregion

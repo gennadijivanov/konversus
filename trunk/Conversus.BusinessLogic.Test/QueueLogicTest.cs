@@ -27,8 +27,8 @@ namespace Conversus.BusinessLogic.Test
         [ClassInitialize]
         public static void MyClassInitialize(TestContext testContext)
         {
-            BusinessLogicInitializer.Initialize();
             StorageLogicInitializer.Initialize();
+            BusinessLogicInitializer.Initialize();
         }
         //
         //ClassCleanup используется для выполнения кода после завершения работы всех тестов в классе

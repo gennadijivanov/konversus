@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using Conversus.BusinessLogic;
-using Conversus.Core.DTO;
 using Conversus.Core.DomainModel;
-using Conversus.Impl.Factories;
 using Conversus.Service.Contract;
 
 namespace Conversus.Service.Impl
@@ -22,14 +16,14 @@ namespace Conversus.Service.Impl
 
         #region Implementation of IClientService
 
-        public ClientData CreateForCommon(string name, QueueType queueType)
+        public IClient CreateForCommon(string name, QueueType queueType)
         {
-            return GetData(ClientLogic.CreateForCommon(name, queueType));
+            return ClientLogic.CreateForCommon(name, queueType);
         }
 
-        public ClientData CreateFromLotus(string name, int pin)
+        public IClient CreateFromLotus(string name, int pin)
         {
-            return GetData(ClientLogic.CreateFromLotus(name, pin));
+            return ClientLogic.CreateFromLotus(name, pin);
         }
 
         public string GetTicket(Guid clientId)
@@ -37,9 +31,9 @@ namespace Conversus.Service.Impl
             return ClientLogic.GetTicket(clientId);
         }
 
-        public ClientData GetClientByPin(int pin)
+        public IClient GetClientByPin(int pin)
         {
-            return GetData(ClientLogic.GetClientByPin(pin));
+            return ClientLogic.GetClientByPin(pin);
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
@@ -47,30 +41,12 @@ namespace Conversus.Service.Impl
             ClientLogic.ChangeStatus(clientId, status);
         }
 
-        public ICollection<ClientData> GetClients(QueueType queue)
+        public ICollection<IClient> GetClients(QueueType queue)
         {
-            return ClientLogic.GetClients(queue).Select(GetData).ToList();
+            return ClientLogic.GetClients(queue);
         }
 
         #endregion
 
-        private ClientData GetData(IClient client)
-        {
-            if (client == null)
-                return default(ClientData);
-            return new ClientData()
-                       {
-                           Id = client.Id,
-                           QueueId = client.GetQueue().Id,
-                           Name = client.Name,
-                           PIN = client.PIN,
-                           Status = client.Status,
-                           BookingTime = client.BookingTime,
-                           PerformStart = client.PerformStart,
-                           PerformEnd = client.PerformEnd,
-                           TakeTicket = client.TakeTicket,
-                           Ticket = client.Ticket
-                       };
-        }
     }
 }
