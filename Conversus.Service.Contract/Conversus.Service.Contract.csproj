@@ -47,8 +47,10 @@
     <Compile Include="ClientInfo.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IQueueService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueInfo.cs" />
+    <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

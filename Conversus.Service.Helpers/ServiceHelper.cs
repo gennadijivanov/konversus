@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Conversus.Service.Contract;
+﻿using Conversus.Service.Contract;
 
 namespace Conversus.Service.Helpers
 {
@@ -23,6 +19,11 @@ namespace Conversus.Service.Helpers
         public IQueueService QueueService
         {
             get { return ClientServiceBase<IQueueService>.GetClient("QueueService"); }
+        }
+
+        public IUserService UserService
+        {
+            get { return ClientServiceBase<IUserService>.GetClient("UserService"); }
         }
 
         private ServiceHelper()
