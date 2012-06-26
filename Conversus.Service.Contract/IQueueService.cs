@@ -8,9 +8,9 @@ namespace Conversus.Service.Contract
     public interface IQueueService
     {
         [OperationContract]
-        IQueue GetOrCreateQueue(QueueType queueType);
+        QueueInfo GetOrCreateQueue(QueueType queueType);
 
         [OperationContract]
-        ICollection<IQueue> GetQueues();
+        ICollection<QueueInfo> GetQueues();
     }
 }
