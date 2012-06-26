@@ -17,8 +17,8 @@ namespace TerminalView
     {
         public App()
         {
-            BusinessLogicInitializer.Initialize();
             StorageLogicInitializer.Initialize();
+            BusinessLogicInitializer.Initialize();
 
             ServiceHelper.Instance.ClientService.CreateFromLotus("Vasyanya", 12345);
         }
