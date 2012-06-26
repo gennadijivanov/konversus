@@ -16,16 +16,28 @@ namespace Conversus.Service.Impl
 
         #region Implementation of IQueueService
 
-        public IQueue GetOrCreateQueue(QueueType queueType)
+        public QueueInfo GetOrCreateQueue(QueueType queueType)
         {
-            return QueueLogic.GetOrCreateQueue(queueType);
+            return ToQueueInfo(QueueLogic.GetOrCreateQueue(queueType));
         }
 
-        public ICollection<IQueue> GetQueues()
+        public ICollection<QueueInfo> GetQueues()
         {
-            return QueueLogic.GetQueues();
+            return QueueLogic.GetQueues().Select(ToQueueInfo).ToList();
         }
 
         #endregion
+
+        private QueueInfo ToQueueInfo(IQueue queue)
+        {
+            if (queue == null)
+                return null;
+
+            return new QueueInfo()
+                       {
+                           Id = queue.Id,
+                           Type = queue.Type
+                       };
+        }
     }
 }
