@@ -3,37 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.AdminView.Views.BackGrounds"
         xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
-        Title="MainWindow" MinHeight="500" MinWidth="570" Width="500" Height="500">
+        Title="MainWindow" MinHeight="500" MinWidth="570" Width="600" Height="500" Loaded="AdminWindow_OnLoaded">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
         <Label>Окно админиа/для отчетов</Label>
         <TabControl Name="tabControl1" MinHeight="400" MinWidth="400" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent">
-            <TabItem Header="Регистрация пользователей" Name="tabItem1">
+            <TabItem Header="Регистрация опреаторов" Name="tabItem1">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="70" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="5*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Имя:</Label>
-                    <TextBox Name="nameTextBox" Grid.Column="1" Style="{StaticResource inputStyle}"></TextBox>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Логин:</Label>
-                    <TextBox Name="loginTextBox" Grid.Column="1" Grid.Row="1" Style="{StaticResource inputStyle}"></TextBox>
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Пароль:</Label>
-                    <TextBox Name="passTextBox" Grid.Column="1" Grid.Row="2" Style="{StaticResource inputStyle}"></TextBox>
-                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Роль:</Label>
-                    <ComboBox Name="roleComboBox" Grid.Column="1" Grid.Row="3" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
-                        <ComboBoxItem Content="Администратор" />
-                        <ComboBoxItem Content="Оператор" />
-                    </ComboBox>
-                    <Button Name="registerButton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270" Click="registerButton_Click">Зарегистрировать</Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="operatorListGrid" Grid.ColumnSpan="3" 
+                              SelectionMode="Single" AutoGenerateColumns="True" 
+                              SelectionChanged="operatorListGrid_SelectionChanged"
+                              HorizontalAlignment="Stretch"
+                              CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"></DataGrid>
+                    <Button Name="registerButton"
+                            IsEnabled="False"
+                            Grid.Column="2" Grid.Row="1" 
+                            VerticalAlignment="Center" HorizontalAlignment="Right" 
+                            Style="{StaticResource inputBoardBtnStyle}" 
+                            Height="50" Width="149" 
+                            Click="addButton_Click" Margin="0,5,5,5">Добавить</Button>
+                    <Button Name="deleteButton"
+                            IsEnabled="False" Grid.Row="1" 
+                            VerticalAlignment="Center" HorizontalAlignment="Left" 
+                            Style="{StaticResource inputBoardBtnStyle}" 
+                            Height="50" Width="136" 
+                            Click="dellButton_Click" 
+                            Margin="0,9,0,11">Удалить</Button>
+                    <Button Name="saveButton" IsEnabled="False" 
+                            Grid.Row="1"  Grid.Column="1"
+                            VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            Style="{StaticResource inputBoardBtnStyle}" 
+                            Height="50" Width="162" 
+                            Click="saveButton_Click" 
+                            Margin="0,9,0,11">Сохранить</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Отчеты">

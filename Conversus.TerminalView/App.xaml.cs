@@ -20,7 +20,7 @@ namespace TerminalView
             StorageLogicInitializer.Initialize();
             BusinessLogicInitializer.Initialize();
 
-            ServiceHelper.Instance.ClientService.CreateFromLotus("Vasyanya", 12345);
+            //ServiceHelper.Instance.ClientService.CreateFromLotus("Vasyanya", 12345);
         }
     }
 }
