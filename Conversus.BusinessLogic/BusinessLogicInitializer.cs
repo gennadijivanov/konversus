@@ -12,6 +12,7 @@ namespace Conversus.BusinessLogic
             {
                 { typeof (IClientLogic), new ClientLogic() },
                 { typeof (IQueueLogic), new QueueLogic() },
+                { typeof (IUserLogic), new UserLogic() },
             };
 
             BusinessLogicFactory.Instance.RegisterObjects(logicTypes);

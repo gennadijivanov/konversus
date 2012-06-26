@@ -5,6 +5,7 @@ using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Impl.Objects;
 using Conversus.Storage;
+using Client = Conversus.Impl.Objects.Client;
 
 namespace Conversus.BusinessLogic.Impl
 {

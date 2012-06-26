@@ -45,7 +45,9 @@
     <Compile Include="IClientLogic.cs" />
     <Compile Include="Impl\ClientLogic.cs" />
     <Compile Include="Impl\QueueLogic.cs" />
+    <Compile Include="Impl\UserLogic.cs" />
     <Compile Include="IQueueLogic.cs" />
+    <Compile Include="IUserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

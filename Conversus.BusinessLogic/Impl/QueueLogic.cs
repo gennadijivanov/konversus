@@ -5,6 +5,7 @@ using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Impl.Objects;
 using Conversus.Storage;
+using Queue = Conversus.Impl.Objects.Queue;
 
 namespace Conversus.BusinessLogic.Impl
 {

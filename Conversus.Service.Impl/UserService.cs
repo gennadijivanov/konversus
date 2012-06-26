@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 
@@ -7,29 +9,53 @@ namespace Conversus.Service.Impl
 {
     public class UserService : IUserService
     {
+        private IUserLogic _userLogic;
+        private IUserLogic UserLogic
+        {
+            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IUserLogic>()); }
+        }
+
         public ICollection<UserInfo> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return UserLogic.GetAllUsers().Select(ToUserInfo).ToList();
         }
 
         public UserInfo Get(Guid id)
         {
-            throw new NotImplementedException();
+            return ToUserInfo(UserLogic.Get(id));
         }
 
         public void Create(Guid id, string name, string login, string password, QueueType queueType)
         {
-            throw new NotImplementedException();
+            UserLogic.Create(id, name, login, password, queueType);
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            UserLogic.Delete(id);
         }
 
         public void SetWindow(Guid id, string window)
         {
-            throw new NotImplementedException();
+            UserLogic.SetWindow(id, window);
+        }
+
+        public UserInfo ToUserInfo(IUser user)
+        {
+            if (user == null)
+                return null;
+
+            var queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().Get(user.QueueId);
+
+            return new UserInfo()
+                       {
+                           Id = user.Id,
+                           Name = user.Name,
+                           Login = user.Login,
+                           Password = user.Password,
+                           CurrentWindow = user.Window,
+                           Queue = new QueueInfo() { Id = queue.Id, Type = queue.Type }
+                       };
         }
     }
 }
