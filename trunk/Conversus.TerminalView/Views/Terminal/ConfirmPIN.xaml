@@ -30,15 +30,15 @@
                 <StackPanel HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Услуга:</Label>
-                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить услугу</Label>
+                        <Label Name="serviceLabel" HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Данные посетителя:</Label>
-                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить ФИО</Label>
+                        <Label Name="visitorNameLabel"  HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Дата и время:</Label>
-                        <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">прибиндить дату</Label>
+                        <Label Name="arrivedDateTimeLabel" HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="100">
                         <Button Name="cancelButton" Content="ОТМЕНА" Style="{StaticResource inputGreenBtnStyle}">

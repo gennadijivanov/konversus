@@ -13,22 +13,33 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class ConfirmPIN : Page
     {
+        private NavigationService navService = null;
+        private readonly ClientInfo client = null;
+
         public ConfirmPIN(ClientInfo clientData)
         {
             InitializeComponent();
-            pinInputBox.Text = clientData.PIN.Value.ToString();
+            
+            this.client = clientData;
+            //TODO: Получить тип очереди
         }
 
-        private NavigationService navService = null;
+        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ClientInfo client = ServiceHelper.Instance.ClientService.GetClientByPin(123);
-
             if (client == null)
                 throw new Exception();
 
             navService = NavigationService.GetNavigationService(this);
+
+            visitorNameLabel.Content = client.Name;
+
+            if (client.PIN != null) pinInputBox.Text = client.PIN.Value.ToString();
+            //TODO: Подставить реальное время и записать в базу
+            var nowTime = DateTime.Now;
+            arrivedDateTimeLabel.Content = nowTime.ToString();
+            if (client != null) serviceLabel.Content = client.Queue.Type;
         }
 
         private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

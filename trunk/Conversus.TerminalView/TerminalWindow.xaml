@@ -10,7 +10,7 @@
         <local:DefaultBackGround></local:DefaultBackGround>
         
         <!--Content-->
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Frame Name="ContentZone" Source="/Views/Terminal/HomePage.xaml" NavigationUIVisibility="Hidden"></Frame>
         </ScrollViewer>
     </Grid>
