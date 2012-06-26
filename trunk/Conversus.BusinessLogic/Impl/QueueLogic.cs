@@ -32,6 +32,11 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(new QueueFilterParameters());;
         }
 
+        public IQueue Get(Guid id)
+        {
+            return Storage.Get(id);
+        }
+
         #endregion
     }
 }

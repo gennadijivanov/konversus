@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Conversus.Core.DomainModel;
+using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
@@ -36,7 +37,7 @@ namespace Conversus.TerminalView.Views.Terminal
             {
                 case "nextButton":
 
-                    IClient client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
+                    ClientInfo client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
 
                     if (client == null)
                     {
