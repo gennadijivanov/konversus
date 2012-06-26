@@ -10,18 +10,24 @@ namespace Conversus.Service.Contract
     {
         // for terminal
 
-        IClient CreateForCommon(string name, QueueType queueType);
+        [OperationContract]
+        ClientInfo CreateForCommon(string name, QueueType queueType);
 
-        IClient CreateFromLotus(string name, int pin);
+        [OperationContract]
+        ClientInfo CreateFromLotus(string name, int pin);
 
+        [OperationContract]
         string GetTicket(Guid clientId);
 
-        IClient GetClientByPin(int pin);
+        [OperationContract]
+        ClientInfo GetClientByPin(int pin);
 
         // for operator
 
+        [OperationContract]
         void ChangeStatus(Guid clientId, ClientStatus status);
 
-        ICollection<IClient> GetClients(QueueType queue);
+        [OperationContract]
+        ICollection<ClientInfo> GetClients(QueueType queue);
     }
 }
