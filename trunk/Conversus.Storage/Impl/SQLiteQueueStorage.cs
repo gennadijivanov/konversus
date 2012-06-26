@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.DomainModel;
-using Conversus.Impl.Objects;
+using QueueImpl = Conversus.Impl.Objects.Queue;
+using QueueData = Conversus.Storage.Queue;
 
 namespace Conversus.Storage.Impl
 {
@@ -17,7 +18,7 @@ namespace Conversus.Storage.Impl
 
             using (var db = new ConversusDataContext())
             {
-                var client = new Queues()
+                var client = new QueueData()
                                  {
                                      Id = data.Id,
                                      Type = (int) data.Type
@@ -64,7 +65,7 @@ namespace Conversus.Storage.Impl
 
             using (var db = new ConversusDataContext())
             {
-                IEnumerable<Queues> query = db.Queues;
+                IEnumerable<QueueData> query = db.Queues;
 
                 if (f != null && (f.ClientId.HasValue || f.QueueType.HasValue))
                 {
@@ -92,9 +93,9 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        private IQueue ConvertFromData(Queues data)
+        private IQueue ConvertFromData(QueueData data)
         {
-            return new Queue(data.Id, (QueueType)data.Type);
+            return new QueueImpl(data.Id, (QueueType)data.Type);
         }
     }
 }

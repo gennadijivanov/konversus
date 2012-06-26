@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.DomainModel;
-using Conversus.Impl.Objects;
+using ClientImpl = Conversus.Impl.Objects.Client;
+using ClientData = Conversus.Storage.Client;
 
 namespace Conversus.Storage.Impl
 {
@@ -20,7 +21,7 @@ namespace Conversus.Storage.Impl
 
             using (var db = new ConversusDataContext())
             {
-                Clients client = new Clients()
+                var client = new ClientData()
                                      {
                                          Id = data.Id,
                                          Name = data.Name,
@@ -66,7 +67,7 @@ namespace Conversus.Storage.Impl
 
             using (var db = new ConversusDataContext())
             {
-                IQueryable<Clients> query = db.Clients.AsQueryable();
+                IQueryable<ClientData> query = db.Clients.AsQueryable();
 
                 if (f != null && (f.QueueId.HasValue || f.PIN.HasValue))
                 {
@@ -93,9 +94,9 @@ namespace Conversus.Storage.Impl
         }
 
         //TODO: set all properties
-        private IClient ConvertFromData(Clients data)
+        private IClient ConvertFromData(ClientData data)
         {
-            return new Client(data.Id, data.Name, data.QueueId, data.BookingTime, data.PIN, (ClientStatus)data.Status,
+            return new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.PIN, (ClientStatus)data.Status,
                               data.Ticket);
         }
     }
