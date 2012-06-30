@@ -15,6 +15,12 @@ namespace Conversus.Service.Impl
             get { return _clientLogic ?? (_clientLogic = BusinessLogicFactory.Instance.Get<IClientLogic>()); }
         }
 
+        private IQueueLogic _queueLogic;
+        private IQueueLogic QueueLogic
+        {
+            get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
+        }
+
         #region Implementation of IClientService
 
         public ClientInfo CreateForCommon(string name, QueueType queueType)
@@ -61,7 +67,7 @@ namespace Conversus.Service.Impl
             if (client == null)
                 return null;
 
-            var queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().Get(client.QueueId);
+            var queue = QueueLogic.Get(client.QueueId);
 
             var clientInfo = new ClientInfo()
                                  {
@@ -74,7 +80,7 @@ namespace Conversus.Service.Impl
                                      TakeTicket = client.TakeTicket,
                                      PerformStart = client.PerformStart,
                                      PerformEnd = client.PerformEnd,
-                                     Queue = new QueueInfo() {Id = queue.Id, Type = queue.Type}
+                                     Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type))
                                  };
             return clientInfo;
         }

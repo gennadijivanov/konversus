@@ -33,11 +33,7 @@ namespace Conversus.Service.Impl
             if (queue == null)
                 return null;
 
-            return new QueueInfo()
-                       {
-                           Id = queue.Id,
-                           Type = queue.Type
-                       };
+            return new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type));
         }
     }
 }
