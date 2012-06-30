@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace TerminalView
 {
@@ -14,16 +16,25 @@ namespace TerminalView
         public QueueBoardWindow()
         {
             InitializeComponent();
-            
-            //TODO: Заюзать когда будет вызов посетителя
-            //проигрывает звук вызова
-            //callSound.Play();
         }
 
         private string VIDEO_DIRECTORY_PATH = Path.GetDirectoryName("Content/video/");
         private string[] fileEntries;
         private int currentIndex = 0;
         private DateTime lastChangeDirectory;
+
+        //TODO УЗНАТЬ У ГЕНЫ КАК БУДЕТ ЭТО ВЫЗЫВАТЬСЯ ИЗ ИНТЕРФЕЙСА ОПЕРАТОРА
+        //Вызов нового Визитера. Проигрывает звук анимацию и самое главное!
+        //заполняет листвью текущей очередью по событию вызова оператором
+        private void nextVizitorAnimation(ICollection items)
+        {
+            callSound.Play();
+            
+            var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
+            if (storyBoard != null) storyBoard.Begin();
+
+            clientWindowListView.ItemsSource = items;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
