@@ -14,7 +14,7 @@ namespace Conversus.Storage.Impl
         {
             using (var db = new ConversusDataContext())
             {
-                var user = new UserData()
+                var user = new UserData
                 {
                     Id = data.Id,
                     Name = data.Name,
@@ -62,11 +62,20 @@ namespace Conversus.Storage.Impl
 
         public ICollection<IUser> Get(IFilterParameters filter)
         {
-            //QueueFilterParameters f = filter != null ? filter as QueueFilterParameters : null;
+            UserFilterParameters f = filter != null ? filter as UserFilterParameters : null;
 
             using (var db = new ConversusDataContext())
             {
                 IEnumerable<UserData> query = db.Users;
+
+                if (f != null)
+                {
+                    if (!string.IsNullOrEmpty(f.Login))
+                        query = query.Where(u => u.Login == f.Login);
+
+                    if (!string.IsNullOrEmpty(f.Password))
+                        query = query.Where(u => u.Password == f.Password);
+                }
 
                 var list = query.ToList();
 

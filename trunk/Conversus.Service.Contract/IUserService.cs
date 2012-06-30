@@ -12,10 +12,12 @@ namespace Conversus.Service.Contract
 
         UserInfo Get(Guid id);
 
-        void Create(Guid id, string name, string login, string password, QueueType queueType);
+        void Create(string name, string login, string password, QueueType queueType);
 
         void Delete(Guid id);
 
         void SetWindow(Guid id, string window);
+
+        bool Authorize(string login, string password);
     }
 }
