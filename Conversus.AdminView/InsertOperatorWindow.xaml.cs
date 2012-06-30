@@ -30,7 +30,7 @@ namespace Conversus.AdminView
             {
                 ServiceHelper.Instance.UserService.Create(
                     nameTextBox.Text, loginTextBox.Text, passTextBox.Text,
-                    (QueueType)((ComboBoxItem)queueTypeComboBox.SelectedItem).Content);
+                    (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
 
                 Close();
             }
