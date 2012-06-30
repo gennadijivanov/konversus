@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Conversus.Core.DomainModel;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -32,8 +33,10 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (borderSender.Name)
             {
                 case "TakingLink" :
+                    navigatePage = new Input_Name(QueueType.Taking);
+                    break;
                 case "ApprovementLink" :
-                    navigatePage = new Input_Name();
+                    navigatePage = new Input_Name(QueueType.Approvement);
                     break;
                 case "HasPinLink" :
                     navigatePage = new InputPIN();

@@ -25,12 +25,9 @@
                               HorizontalAlignment="Stretch"
                               CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"></DataGrid>
                     <Button Name="registerButton"
-                            IsEnabled="False"
-                            Grid.Column="2" Grid.Row="1" 
-                            VerticalAlignment="Center" HorizontalAlignment="Right" 
+                            Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" 
                             Style="{StaticResource inputBoardBtnStyle}" 
-                            Height="50" Width="149" 
-                            Click="addButton_Click" Margin="0,5,5,5">Добавить</Button>
+                            Height="50" Width="149" Click="registerButton_Click">Добавить</Button>
                     <Button Name="deleteButton"
                             IsEnabled="False" Grid.Row="1" 
                             VerticalAlignment="Center" HorizontalAlignment="Left" 

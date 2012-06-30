@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Conversus.Core.DomainModel;
+using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -10,14 +12,17 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class Input_Name : Page
     {
-        public Input_Name()
-        {
-            InitializeComponent();
-        }
-
         private bool IsShiftPressed = true;
         private NavigationService navService = null;
         private const int SHOW_NEXT_BTN_CHAR_COUNT = 5;
+        private QueueType queueType;
+
+        public Input_Name(QueueType queueType)
+        {
+            InitializeComponent();
+
+            this.queueType = queueType;
+        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -36,7 +41,9 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (targetSender.Name)
             {
                 case "nextButton":
-                    navService.Navigate(new PrintPage());
+                    var clientName = nameInputBox.Text;
+                    var client = ServiceHelper.Instance.ClientService.CreateForCommon(clientName, queueType);
+                    navService.Navigate(new PrintPage(client));
                     break;
                 case "r_shift":
                 case "l_shift" :
@@ -59,9 +66,9 @@ namespace Conversus.TerminalView.Views.Terminal
             nameInputBox.Text += (IsShiftPressed) ? charText.ToUpper() : charText.ToLower();
 
             if (nameInputBox.Text.Length > SHOW_NEXT_BTN_CHAR_COUNT - 1)
-                nextButton.Visibility = System.Windows.Visibility.Visible;
+                nextButton.Visibility = Visibility.Visible;
             else
-                nextButton.Visibility = System.Windows.Visibility.Collapsed;
+                nextButton.Visibility = Visibility.Collapsed;
         }
 
         private void deleteChar()
@@ -70,7 +77,7 @@ namespace Conversus.TerminalView.Views.Terminal
                 nameInputBox.Text = nameInputBox.Text.Remove(nameInputBox.Text.Length - 1);
 
             if (nameInputBox.Text.Length < SHOW_NEXT_BTN_CHAR_COUNT)
-                nextButton.Visibility = System.Windows.Visibility.Collapsed;
+                nextButton.Visibility = Visibility.Collapsed;
         }
     }
 }

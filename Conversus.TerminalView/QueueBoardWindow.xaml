@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.TerminalView.Views.BackGrounds"
         Title="QueueBoardWindow" Height="800" Width="800" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*" />
@@ -13,20 +13,20 @@
         <!--Background-->
 
         <!--Раскоментировать Грид, если понадобится бегущая строка-->
-        <!--<Grid>
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>-->
-        <local:DefaultBackGround></local:DefaultBackGround>
-        <MediaElement Name="backgroundVideo" LoadedBehavior="Manual" Stretch="Fill" MediaEnded="backgroundVideo_MediaEnded"></MediaElement>
-        <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound.wav"></MediaElement>
-        <!--<Rectangle Grid.Row="1">
+            </Grid.RowDefinitions>
+            <local:DefaultBackGround></local:DefaultBackGround>
+            <MediaElement Name="backgroundVideo" LoadedBehavior="Manual" Stretch="Fill" MediaEnded="backgroundVideo_MediaEnded"></MediaElement>
+            <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound.wav"></MediaElement>
+            <Rectangle Grid.Row="1">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="#606060"></SolidColorBrush>
                 </Rectangle.Fill>
             </Rectangle>
-        </Grid>-->
+        </Grid>
 
         <Rectangle Grid.Column="1">
             <Rectangle.Fill>
@@ -86,7 +86,7 @@
             </ListView>
         </Grid>
         <!--Потом проанимировать попап-->
-        
+
         <Border Name="callPopupBorder" Width="500" Height="100" 
                 Grid.ColumnSpan="3" Grid.RowSpan="2"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
