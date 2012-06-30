@@ -11,5 +11,7 @@ namespace Conversus.BusinessLogic
         ICollection<IQueue> GetQueues();
 
         IQueue Get(Guid id);
+
+        string GetTitle(QueueType type);
     }
 }

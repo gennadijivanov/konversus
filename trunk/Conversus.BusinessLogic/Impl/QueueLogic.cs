@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Impl.Objects;
 using Conversus.Storage;
@@ -36,6 +37,11 @@ namespace Conversus.BusinessLogic.Impl
         public IQueue Get(Guid id)
         {
             return Storage.Get(id);
+        }
+
+        public string GetTitle(QueueType type)
+        {
+            return Constants.QueueTypeTitles[type];
         }
 
         #endregion

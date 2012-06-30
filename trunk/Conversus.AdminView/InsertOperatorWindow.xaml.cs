@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System;
 using System.Windows.Controls;
 using Conversus.Core.DomainModel;
+using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
 namespace Conversus.AdminView
@@ -16,13 +18,10 @@ namespace Conversus.AdminView
         {
             InitializeComponent();
 
-            var queues = Enum.GetValues(typeof(QueueType)).Cast<QueueType>();
+            ICollection<QueueInfo> queues = ServiceHelper.Instance.QueueService.GetQueues();
 
-            foreach (QueueType queue in queues)
-            {
-                //TODO: pretty titles
-                queueTypeComboBox.Items.Add(new ComboBoxItem() { Content = queue });
-            }
+            queueTypeComboBox.DisplayMemberPath = "Title";
+            queueTypeComboBox.ItemsSource = queues;
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)

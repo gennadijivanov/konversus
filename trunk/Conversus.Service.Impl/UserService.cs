@@ -15,6 +15,12 @@ namespace Conversus.Service.Impl
             get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IUserLogic>()); }
         }
 
+        private IQueueLogic _queueLogic;
+        private IQueueLogic QueueLogic
+        {
+            get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
+        }
+
         public ICollection<UserInfo> GetAllUsers()
         {
             return UserLogic.GetAllUsers().Select(ToUserInfo).ToList();
@@ -50,7 +56,7 @@ namespace Conversus.Service.Impl
             if (user == null)
                 return null;
 
-            var queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().Get(user.QueueId);
+            var queue = QueueLogic.Get(user.QueueId);
 
             return new UserInfo()
                        {
@@ -59,7 +65,7 @@ namespace Conversus.Service.Impl
                            Login = user.Login,
                            Password = user.Password,
                            CurrentWindow = user.Window,
-                           Queue = new QueueInfo() { Id = queue.Id, Type = queue.Type }
+                           Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type))
                        };
         }
     }

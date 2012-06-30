@@ -9,5 +9,14 @@ namespace Conversus.Service.Contract
         public Guid Id { get; set; }
 
         public QueueType Type { get; set; }
+
+        public string Title { get; set; }
+
+        public QueueInfo(Guid id, QueueType type, string title)
+        {
+            Id = id;
+            Type = type;
+            Title = title;
+        }
     }
 }
