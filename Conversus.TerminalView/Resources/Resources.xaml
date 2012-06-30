@@ -94,6 +94,7 @@
         <Setter Property="Margin" Value="20"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
         <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
@@ -111,6 +112,7 @@
         <Setter Property="Margin" Value="20"></Setter>
         <Setter Property="CornerRadius" Value="1"></Setter>
         <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
@@ -127,6 +129,7 @@
         <Setter Property="Background" Value="#EEEAEAEA"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
@@ -143,6 +146,7 @@
         <Setter Property="Background" Value="{StaticResource GreenGradientBg}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
@@ -170,6 +174,7 @@
         <Setter Property="Height" Value="80"></Setter>
         <Setter Property="Padding" Value="0,15,0,0"></Setter>
         <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate >
@@ -197,6 +202,7 @@
         <Setter Property="Margin" Value="5"></Setter>
         <Setter Property="FontSize" Value="24"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
@@ -226,6 +232,7 @@
         <Setter Property="Margin" Value="0,20,0,0"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="CacheMode" Value="BitmapCache"></Setter>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="30"
