@@ -12,19 +12,21 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class AdminWindow : Window
     {
-        private readonly ICollection<UserInfo> allUsersList = null;
-
         public AdminWindow()
         {
             InitializeComponent();
-
-            allUsersList = ServiceHelper.Instance.UserService.GetAllUsers();
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             var insertOperatorWindow = new InsertOperatorWindow();
+            insertOperatorWindow.Closed += insertOperatorWindow_Closed;
             insertOperatorWindow.Show();
+        }
+
+        void insertOperatorWindow_Closed(object sender, EventArgs e)
+        {
+            ReloadOperatorsList();
         }
 
         private void buildReportButton_Click(object sender, RoutedEventArgs e)
@@ -57,7 +59,7 @@ namespace Conversus.AdminView
 
         private void AdminWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            operatorListGrid.ItemsSource = allUsersList;
+            ReloadOperatorsList();
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -65,5 +67,9 @@ namespace Conversus.AdminView
             //var saveItems = (operatorListGrid.Items as List<UserInfo>);
         }
 
+        private void ReloadOperatorsList()
+        {
+            operatorListGrid.ItemsSource = ServiceHelper.Instance.UserService.GetAllUsers();
+        }
     }
 }

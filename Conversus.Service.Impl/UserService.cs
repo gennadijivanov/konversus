@@ -25,9 +25,9 @@ namespace Conversus.Service.Impl
             return ToUserInfo(UserLogic.Get(id));
         }
 
-        public void Create(Guid id, string name, string login, string password, QueueType queueType)
+        public void Create(string name, string login, string password, QueueType queueType)
         {
-            UserLogic.Create(id, name, login, password, queueType);
+            UserLogic.Create(Guid.NewGuid(), name, login, password, queueType);
         }
 
         public void Delete(Guid id)
@@ -38,6 +38,11 @@ namespace Conversus.Service.Impl
         public void SetWindow(Guid id, string window)
         {
             UserLogic.SetWindow(id, window);
+        }
+
+        public bool Authorize(string login, string password)
+        {
+            return UserLogic.Authorize(login, password);
         }
 
         public UserInfo ToUserInfo(IUser user)

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
@@ -14,10 +15,17 @@ namespace Conversus.OperatorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OperatorWindow operatorWorkWin = new OperatorWindow();
-            operatorWorkWin.Show();
+            if (ServiceHelper.Instance.UserService.Authorize(loginTextBox.Text, passwordTextBox.Password))
+            {
+                OperatorWindow operatorWorkWin = new OperatorWindow();
+                operatorWorkWin.Show();
 
-            this.Close();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Пароль или логин введены неверно", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

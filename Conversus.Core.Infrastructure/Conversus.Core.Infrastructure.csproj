@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="LogicFactory.cs" />
     <Compile Include="Repository\ClientFilterParameters.cs" />
     <Compile Include="Repository\IFilterParameters.cs" />
     <Compile Include="Repository\QueueFilterParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\UserFilterParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conversus.Core.DomainModel\Conversus.Core.DomainModel.csproj">

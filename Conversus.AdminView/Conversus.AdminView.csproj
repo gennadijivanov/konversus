@@ -140,6 +140,14 @@
       <Project>{2C8ED2AB-0434-4BB0-95F6-35AB3A0D433E}</Project>
       <Name>Conversus.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Conversus.Core.DomainModel\Conversus.Core.DomainModel.csproj">
+      <Project>{6358F485-88D8-4093-898B-3A4348D72CC7}</Project>
+      <Name>Conversus.Core.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Conversus.Core.Infrastructure\Conversus.Core.Infrastructure.csproj">
+      <Project>{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}</Project>
+      <Name>Conversus.Core.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conversus.Service.Contract\Conversus.Service.Contract.csproj">
       <Project>{5BE9C694-8B57-4626-97DB-23175C47E77D}</Project>
       <Name>Conversus.Service.Contract</Name>

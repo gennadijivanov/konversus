@@ -15,5 +15,7 @@ namespace Conversus.BusinessLogic
         void Delete(Guid id);
 
         void SetWindow(Guid id, string window);
+
+        bool Authorize(string login, string password);
     }
 }

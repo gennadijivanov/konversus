@@ -25,6 +25,12 @@ namespace Conversus.BusinessLogic.Impl
 
         public void Create(Guid id, string name, string login, string password, QueueType queueType)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+                throw new ArgumentNullException();
+
+            if (Storage.Get(new UserFilterParameters() { Login = login }).Count > 0)
+                throw new InvalidOperationException("User is already exists");
+
             password = GetMD5Hash(password);
 
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
@@ -43,6 +49,12 @@ namespace Conversus.BusinessLogic.Impl
             var user = Storage.Get(id);
             user.Window = window;
             Storage.Update(user);
+        }
+
+        public bool Authorize(string login, string password)
+        {
+            password = GetMD5Hash(password);
+            return Storage.Get(new UserFilterParameters() {Login = login, Password = password}).Count > 0;
         }
 
         private string GetMD5Hash(string input)

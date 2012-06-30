@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using Conversus.Core.Infrastructure;
 
 namespace Conversus.AdminView
 {
@@ -14,10 +16,17 @@ namespace Conversus.AdminView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var adminWin = new AdminWindow();
-            adminWin.Show();
+            if (loginTextBox.Text == Constants.AdminLogin && passwordTextBox.Password == Constants.AdminPassword)
+            {
+                var adminWin = new AdminWindow();
+                adminWin.Show();
 
-            this.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Пароль или логин администратора введены неверно", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
