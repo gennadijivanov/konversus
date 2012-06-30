@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -12,13 +14,16 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class PrintPage : Page
     {
-        public PrintPage()
-        {
-            InitializeComponent();
-        }
-
         private Timer backHomeTimer = new Timer();
         private NavigationService navService = null;
+        private ClientInfo client;
+
+        public PrintPage(ClientInfo client)
+        {
+            InitializeComponent();
+
+            this.client = client;
+        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -33,7 +38,13 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void printTicket()
         {
+
             var printDlg = new PrintDialog();
+            ticketView.serviceNameTextBox.Text = client.Queue.Type.ToString();
+            ticketView.ticketNumberLabel.Content = client.Ticket;
+            ticketView.registerDateTimeLabel.Content = DateTime.Now.ToString();
+            ServiceHelper.Instance.ClientService.ClientGettingTicket();
+
             printDlg.PrintVisual(ticketView, "Ticket");
         }
 
@@ -41,7 +52,7 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             backHomeTimer.Elapsed -= new ElapsedEventHandler(goHomePage);
 
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate(){ navService.Navigate(new HomePage()); });
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate() { navService.Navigate(new HomePage()); });
         }
     }
 }

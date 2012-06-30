@@ -12,22 +12,19 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class AdminWindow : Window
     {
-        private List<UserInfo> allUsersList = null;
+        private readonly ICollection<UserInfo> allUsersList = null;
 
         public AdminWindow()
         {
             InitializeComponent();
 
-            allUsersList = (List<UserInfo>) ServiceHelper.Instance.UserService.GetAllUsers();
+            allUsersList = ServiceHelper.Instance.UserService.GetAllUsers();
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Вниз надо передать:
-            //nameTextBox.Text;
-            //loginTextBox.Text;
-            //passTextBox.Text;
-            //roleComboBox.SelectedIndex;
+            var insertOperatorWindow = new InsertOperatorWindow();
+            insertOperatorWindow.Show();
         }
 
         private void buildReportButton_Click(object sender, RoutedEventArgs e)
@@ -46,14 +43,8 @@ namespace Conversus.AdminView
 
         private void dellButton_Click(object sender, RoutedEventArgs e)
         {
-            if(operatorListGrid.SelectedItem != null)
-                ServiceHelper.Instance.UserService.Delete(((UserInfo) operatorListGrid.SelectedItem).Id);
-        }
-
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-            var insertOperatorWindow = new InsertOperatorWindow();
-            insertOperatorWindow.Show();
+            if (operatorListGrid.SelectedItem != null)
+                ServiceHelper.Instance.UserService.Delete(((UserInfo)operatorListGrid.SelectedItem).Id);
         }
 
         private void operatorListGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,7 +62,8 @@ namespace Conversus.AdminView
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            var saveItems = (operatorListGrid.Items as List<UserInfo>);
+            //var saveItems = (operatorListGrid.Items as List<UserInfo>);
         }
+
     }
 }

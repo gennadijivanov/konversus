@@ -2,9 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
-using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -21,10 +19,7 @@ namespace Conversus.TerminalView.Views.Terminal
             InitializeComponent();
             
             this.client = clientData;
-            //TODO: Получить тип очереди
         }
-
-        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -35,10 +30,12 @@ namespace Conversus.TerminalView.Views.Terminal
 
             visitorNameLabel.Content = client.Name;
 
-            if (client.PIN != null) pinInputBox.Text = client.PIN.Value.ToString();
+            pinInputBox.Text = client.PIN.Value.ToString();
+            serviceLabel.Content = client.Queue.Type.ToString();
+            arrivedDateTimeLabel.Content = DateTime.Now.ToString();
+            
             //TODO: Подставить реальное время и записать в базу
-            var nowTime = DateTime.Now;
-            arrivedDateTimeLabel.Content = nowTime.ToString();
+
             if (client != null) serviceLabel.Content = client.Queue.Type;
         }
 
@@ -57,7 +54,7 @@ namespace Conversus.TerminalView.Views.Terminal
                     navService.Navigate(new InputPIN());
                     break;
                 case "approveButton":
-                    navService.Navigate(new PrintPage());
+                    navService.Navigate(new PrintPage(client));
                     break;
             }
         }

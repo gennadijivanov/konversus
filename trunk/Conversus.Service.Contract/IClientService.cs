@@ -22,6 +22,11 @@ namespace Conversus.Service.Contract
         [OperationContract]
         ClientInfo GetClientByPin(int pin);
 
+        //TODO записать в базу время, когда печатается билет
+        //DateTime.Now не вижу смысла передавать
+        [OperationContract]
+        void ClientGettingTicket();
+
         // for operator
 
         [OperationContract]

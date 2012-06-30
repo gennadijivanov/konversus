@@ -2,13 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.AdminView.Views.BackGrounds"
-        Title="Добавление оператора" Height="350" Width="500" ResizeMode="NoResize">
+        Title="Добавление оператора" Height="400" Width="500" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
             <RowDefinition Height="70" />
             <RowDefinition Height="70" />
             <RowDefinition Height="70" />
@@ -23,6 +24,12 @@
         <TextBox Name="loginTextBox" Grid.Column="1" Grid.Row="1" Style="{StaticResource inputStyle}" Margin="0,10,12,10"></TextBox>
         <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Пароль:</Label>
         <TextBox Name="passTextBox" Grid.Column="1" Grid.Row="2" Style="{StaticResource inputStyle}" Margin="0,10,12,10"></TextBox>
-        <Button Name="registerButton" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270" Margin="0,9,12,11">Зарегистрировать</Button>
+        <Button Name="registerButton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="270" Margin="0,9,12,11">Зарегистрировать</Button>
+        <ComboBox Name="reportTypeComboBox" Grid.Column="2" Grid.Row="3" Height="50" FontFamily="Tahoma" FontSize="25" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="1">
+            <ComboBoxItem Content="По услугам" />
+            <ComboBoxItem Content="По посетителям" />
+            <ComboBoxItem Content="1" />
+            <ComboBoxItem Content="2" />
+        </ComboBox>
     </Grid>
 </Window>
