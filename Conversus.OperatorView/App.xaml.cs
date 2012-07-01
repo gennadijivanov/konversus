@@ -11,8 +11,6 @@ namespace Conversus.OperatorView
     {
         public App()
         {
-            StorageLogicInitializer.Initialize();
-            BusinessLogicInitializer.Initialize();
         }
     }
 }

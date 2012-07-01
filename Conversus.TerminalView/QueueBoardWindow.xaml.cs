@@ -5,14 +5,20 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using MessageBox = System.Windows.MessageBox;
 
-namespace TerminalView
+namespace Conversus.TerminalView
 {
     /// <summary>
     /// Interaction logic for QueueBoardWindow.xaml
     /// </summary>
     public partial class QueueBoardWindow : Window
     {
+        public static void CallClient(Guid id)
+        {
+            MessageBox.Show("Fire your guns!");
+        }
+
         public QueueBoardWindow()
         {
             InitializeComponent();
@@ -53,6 +59,8 @@ namespace TerminalView
 
             var r = System.Windows.Forms.Screen.AllScreens;
             checkeForModificationVideoDirectory();
+
+            CallClient(Guid.NewGuid());
         }
 
         private Screen GetSecondaryScreen()

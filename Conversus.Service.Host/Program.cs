@@ -1,27 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
+using Conversus.BusinessLogic;
 using Conversus.Service.Impl;
+using Conversus.Storage;
 
 namespace Conversus.Service.Host
 {
     class Program
     {
+        static readonly Type clientServiceType = typeof(ClientService);
+        static readonly Type queueServiceType = typeof(QueueService);
+        static readonly Type userServiceType = typeof(UserService);
+
+        private static ServiceHost clientHost;
+        private static ServiceHost queueHost;
+        private static ServiceHost userHost;
+
         static void Main(string[] args)
         {
-            Type serviceType = typeof(ClientService);
-            
-            using (ServiceHost host = new ServiceHost(serviceType))
+            StorageLogicInitializer.Initialize();
+            BusinessLogicInitializer.Initialize();
+
+            using (clientHost = new ServiceHost(clientServiceType))
+            using (queueHost = new ServiceHost(queueServiceType))
+            using (userHost = new ServiceHost(userServiceType))
             {
-                host.Open();
+                clientHost.Open();
+                queueHost.Open();
+                userHost.Open();
 
                 Console.WriteLine();
                 Console.WriteLine("Press <ENTER> to terminate Host");
                 Console.ReadLine();
 
-                host.Close();
+                clientHost.Close();
+                queueHost.Close();
+                userHost.Close();
             }
         }
     }

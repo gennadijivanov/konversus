@@ -1,26 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+using System.ServiceModel;
 using System.Windows;
-using Conversus.BusinessLogic;
-using Conversus.Storage;
-using Conversus.Service.Helpers;
+using Conversus.TerminalView.Service;
 
-namespace TerminalView
+namespace Conversus.TerminalView
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
+        private readonly ServiceHost host;
+
         public App()
         {
-            StorageLogicInitializer.Initialize();
-            BusinessLogicInitializer.Initialize();
+            Type serviceType = typeof (TerminalService);
+            host = new ServiceHost(serviceType);
+            host.Open();
+        }
 
-            //ServiceHelper.Instance.ClientService.CreateFromLotus("Vasyanya", 12345);
+        protected override void OnExit(ExitEventArgs e)
+        {
+            host.Close();
+            base.OnExit(e);
         }
     }
 }
