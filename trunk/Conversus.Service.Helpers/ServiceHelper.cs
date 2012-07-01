@@ -13,17 +13,17 @@ namespace Conversus.Service.Helpers
 
         public IClientService ClientService
         {
-            get { return ClientServiceBase<IClientService>.GetClient("ClientService"); }
+            get { return ClientServiceBase<IClientService>.GetClient("IClientService"); }
         }
 
         public IQueueService QueueService
         {
-            get { return ClientServiceBase<IQueueService>.GetClient("QueueService"); }
+            get { return ClientServiceBase<IQueueService>.GetClient("IQueueService"); }
         }
 
         public IUserService UserService
         {
-            get { return ClientServiceBase<IUserService>.GetClient("UserService"); }
+            get { return ClientServiceBase<IUserService>.GetClient("IUserService"); }
         }
 
         private ServiceHelper()

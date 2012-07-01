@@ -10,14 +10,13 @@ namespace Conversus.Service.Helpers
     {
         static T Channel;
         static bool Initialized = false;
-        public bool UseWcf;
 
         public static T GetClient(string endPoint)
         {
             if (Initialized)
                 return Channel;
 
-            const bool isJoined = true;
+            const bool isJoined = false;
 
             if (isJoined)
             {

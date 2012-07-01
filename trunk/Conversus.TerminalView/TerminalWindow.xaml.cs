@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace TerminalView
+namespace Conversus.TerminalView
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
