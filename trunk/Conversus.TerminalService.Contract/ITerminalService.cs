@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 
-namespace Conversus.TerminalView.Service
+namespace Conversus.TerminalService.Contract
 {
     [ServiceContract]
     public interface ITerminalService

@@ -32,7 +32,16 @@ namespace Conversus.Service.Contract
         [OperationContract]
         void ChangeStatus(Guid clientId, ClientStatus status);
 
+        /// <summary>
+        /// Сидящие в очереди с билетиком
+        /// </summary>
         [OperationContract]
-        ICollection<ClientInfo> GetClients(QueueType queue);
+        ICollection<ClientInfo> GetClientsQueue(QueueType queue);
+
+        [OperationContract]
+        ClientInfo CallNextClient(QueueType queue);
+
+        [OperationContract]
+        void CallClient(Guid id);
     }
 }

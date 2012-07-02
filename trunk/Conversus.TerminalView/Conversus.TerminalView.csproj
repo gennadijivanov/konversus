@@ -63,7 +63,6 @@
     <Compile Include="QueueBoardWindow.xaml.cs">
       <DependentUpon>QueueBoardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service\ITerminalService.cs" />
     <Compile Include="Service\TerminalService.cs" />
     <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
       <DependentUpon>DefaultBackGround.xaml</DependentUpon>
@@ -182,7 +181,9 @@
       <Link>db.config</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -213,6 +214,10 @@
     <ProjectReference Include="..\Conversus.Storage\Conversus.Storage.csproj">
       <Project>{0A01855D-10DC-46D7-B2DF-7BA7C3380743}</Project>
       <Name>Conversus.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Conversus.TerminalService.Contract\Conversus.TerminalService.Contract.csproj">
+      <Project>{D44ED2C9-68DE-402D-B81F-6F764F210309}</Project>
+      <Name>Conversus.TerminalService.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

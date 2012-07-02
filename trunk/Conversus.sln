@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{428337
 		Config\db.config = Config\db.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.TerminalService.Contract", "Conversus.TerminalService.Contract\Conversus.TerminalService.Contract.csproj", "{D44ED2C9-68DE-402D-B81F-6F764F210309}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Conversus.vsmdi
@@ -205,6 +207,16 @@ Global
 		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}.Release|x86.ActiveCfg = Release|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D44ED2C9-68DE-402D-B81F-6F764F210309}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,5 +231,6 @@ Global
 		{5BE9C694-8B57-4626-97DB-23175C47E77D} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 		{E93136D3-54BE-48D3-8A18-E42D92F366EA} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 		{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
+		{D44ED2C9-68DE-402D-B81F-6F764F210309} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 	EndGlobalSection
 EndGlobal
