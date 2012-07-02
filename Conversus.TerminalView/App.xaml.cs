@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows;
-using Conversus.TerminalView.Service;
 
 namespace Conversus.TerminalView
 {
@@ -14,7 +13,7 @@ namespace Conversus.TerminalView
 
         public App()
         {
-            Type serviceType = typeof (TerminalService);
+            Type serviceType = typeof (Service.TerminalService);
             host = new ServiceHost(serviceType);
             host.Open();
         }

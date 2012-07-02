@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
+using Conversus.TerminalService.Contract;
 
 namespace Conversus.Service.Impl
 {
@@ -19,6 +21,20 @@ namespace Conversus.Service.Impl
         private IQueueLogic QueueLogic
         {
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
+        }
+
+        private ITerminalService _terminalService;
+        private ITerminalService TerminalService
+        {
+            get
+            {
+                if (_terminalService == null)
+                {
+                    var factory = new ChannelFactory<ITerminalService>("ITerminalService");
+                    _terminalService = factory.CreateChannel();
+                }
+                return _terminalService;
+            }
         }
 
         #region Implementation of IClientService
@@ -55,9 +71,29 @@ namespace Conversus.Service.Impl
             ClientLogic.ChangeStatus(clientId, status);
         }
 
-        public ICollection<ClientInfo> GetClients(QueueType queue)
+        public ICollection<ClientInfo> GetClientsQueue(QueueType queue)
         {
-            return ClientLogic.GetClients(queue).Select(ToClientInfo).ToList();
+            return ClientLogic
+                .GetClients(queue)
+                .Where(c => c.Status == ClientStatus.Waiting)
+                .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
+                .OrderBy(c => c.IsVip)
+                .ThenBy(c => c.Client.TakeTicket)
+                .Select(c => ToClientInfo(c.Client))
+                .ToList();
+        }
+
+        public ClientInfo CallNextClient(QueueType queue)
+        {
+            var client = GetClientsQueue(queue).FirstOrDefault();
+            if (client != null)
+                TerminalService.CallClient(client.Id);
+            return client;
+        }
+
+        public void CallClient(Guid id)
+        {
+            TerminalService.CallClient(id);
         }
 
         #endregion
