@@ -25,5 +25,10 @@ namespace Conversus.Service.Contract
         public string Ticket { get; set; }
 
         public QueueInfo Queue { get; set; }
+
+        /// <summary>
+        /// Окно оператора. Только для уже вызванных
+        /// </summary>
+        public string Window { get; set; }
     }
 }

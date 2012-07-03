@@ -75,7 +75,7 @@ namespace Conversus.Service.Impl
         {
             return ClientLogic
                 .GetClients(queue)
-                .Where(c => c.Status == ClientStatus.Waiting)
+                .Where(c => c.Status == ClientStatus.Performing)
                 .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
                 .OrderBy(c => c.IsVip)
                 .ThenBy(c => c.Client.TakeTicket)
