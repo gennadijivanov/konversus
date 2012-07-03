@@ -76,6 +76,11 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(new ClientFilterParameters(){QueueId = queue.Id});
         }
 
+        public IClient Get(Guid id)
+        {
+            return Storage.Get(id);
+        }
+
         #endregion
     }
 

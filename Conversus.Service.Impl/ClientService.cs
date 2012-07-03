@@ -75,7 +75,7 @@ namespace Conversus.Service.Impl
         {
             return ClientLogic
                 .GetClients(queue)
-                .Where(c => c.Status == ClientStatus.Performing)
+                .Where(c => c.Status == ClientStatus.Waiting)
                 .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
                 .OrderBy(c => c.IsVip)
                 .ThenBy(c => c.Client.TakeTicket)
@@ -93,7 +93,7 @@ namespace Conversus.Service.Impl
 
         public void CallClient(Guid id)
         {
-            TerminalService.CallClient(new ClientInfo());
+            TerminalService.CallClient(ToClientInfo(ClientLogic.Get(id)));
         }
 
         #endregion
