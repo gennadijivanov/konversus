@@ -21,5 +21,7 @@ namespace Conversus.BusinessLogic
         void ChangeStatus(Guid clientId, ClientStatus status);
 
         ICollection<IClient> GetClients(QueueType queue);
+
+        IClient Get(Guid id);
     }
 }
