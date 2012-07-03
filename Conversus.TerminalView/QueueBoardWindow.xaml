@@ -73,21 +73,23 @@
 
             <ListView Name="clientWindowListView" Grid.ColumnSpan="2" Grid.Row="2" 
                       BorderBrush="Transparent" Background="Transparent"
-                      Padding="5,5,5,0">
+                      Padding="5,5,5,0" HorizontalAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Style="{StaticResource queueBordListIlemBorder}">
-
-                            <Button HorizontalAlignment="Left" FontSize="20">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                    <Label Content="{Binding clientNumber}" Style="{StaticResource listItemsLabel}" HorizontalAlignment="Left"></Label>
-                                    <Label Content="{Binding clientWindow}" Style="{StaticResource listItemsLabel}" HorizontalAlignment="Right"></Label>
-                                </StackPanel>
-                            </Button>
-
+                        <Border Padding="0" Margin="0" Style="{StaticResource queueBordListIlemBorder}" HorizontalAlignment="Stretch">
+                            <Grid HorizontalAlignment="Stretch">
+                                <Label Content="{Binding Name}" Style="{StaticResource listItemsLabel}" Grid.Column="0" HorizontalAlignment="Left"></Label>
+                                <Label Content="{Binding OperatorWindow}" Style="{StaticResource listItemsLabel}" Grid.Column="1" HorizontalAlignment="Right"></Label>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
 
                 <!--ПОТОМ УБРАТЬ ЭТО ДЛЯ ТЕСТА-->
                 <!--<ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
