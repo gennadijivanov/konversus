@@ -7,27 +7,32 @@ namespace Conversus.Core.DomainModel
         /// <summary>
         /// Отложенный
         /// </summary>
-        Delayed,
+        Delayed = 1,
+
         /// <summary>
         /// на приеме
         /// </summary>
-        Performing,
+        Performing = 2,
+
         /// <summary>
         /// пришел и сидит в очереди с билетом
         /// </summary>
-        Waiting,
+        Waiting = 3,
+
         /// <summary>
         /// зарегистрирован (импортирован с лотуса)
         /// </summary>
-        Registered,
+        Registered = 4,
+
         /// <summary>
         /// Обработан ОП
         /// </summary>
-        Done,
+        Done = 5,
+
         /// <summary>
         /// неявка
         /// </summary>
-        Absent
+        Absent = 6
     }
 
     public interface IClient : IEntity

@@ -23,6 +23,7 @@ namespace Conversus.BusinessLogic.Impl
 
             IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null,
                                         ClientStatus.Waiting, ticket);
+            client.TakeTicket = DateTime.Now;
             Storage.Create(client);
             return client;
         }
