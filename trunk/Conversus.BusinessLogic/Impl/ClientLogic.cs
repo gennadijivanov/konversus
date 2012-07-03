@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
-using Conversus.Impl.Objects;
 using Conversus.Storage;
 using Client = Conversus.Impl.Objects.Client;
 
@@ -56,7 +55,7 @@ namespace Conversus.BusinessLogic.Impl
 
         public IClient GetClientByPin(int pin)
         {
-            return Storage.Get(new ClientFilterParameters { PIN = pin }).SingleOrDefault();
+            return Storage.Get(new ClientFilterParameters {PIN = pin}).SingleOrDefault();
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
@@ -64,7 +63,32 @@ namespace Conversus.BusinessLogic.Impl
             var client = Storage.Get(clientId);
             if (client == null)
                 throw new InvalidOperationException("Client is not found");
+            ChangeStatus(client, status);
+        }
+
+        private void ChangeStatus(IClient client, ClientStatus status)
+        {
             client.Status = status;
+            switch (status)
+            {
+                case ClientStatus.Registered:
+                case ClientStatus.Delayed:
+                    break;
+                case ClientStatus.Performing:
+                    client.PerformStart = DateTime.Now;
+                    break;
+                case ClientStatus.Waiting:
+                    client.TakeTicket = DateTime.Now;
+                    break;
+                case ClientStatus.Done:
+                    client.PerformEnd = DateTime.Now;
+                    break;
+                case ClientStatus.Absent:
+                    client.PerformEnd = DateTime.Now;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("status");
+            }
             Storage.Update(client);
         }
 
@@ -73,7 +97,26 @@ namespace Conversus.BusinessLogic.Impl
             var queue =
                 StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters()
                                                                           {QueueType = queueType}).Single();
-            return Storage.Get(new ClientFilterParameters(){QueueId = queue.Id});
+            return Storage.Get(new ClientFilterParameters() {QueueId = queue.Id});
+        }
+
+        public ICollection<IClient> GetClientsQueue(QueueType queue)
+        {
+            return GetClients(queue)
+                .Where(c => c.Status == ClientStatus.Waiting)
+                .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
+                .OrderBy(c => c.IsVip)
+                .ThenBy(c => c.Client.TakeTicket)
+                .Select(c => c.Client)
+                .ToList();
+        }
+
+        public IClient CallNextClient(QueueType queue)
+        {
+            var client = GetClientsQueue(queue).FirstOrDefault();
+            if (client != null)
+                ChangeStatus(client, ClientStatus.Performing);
+            return client;
         }
 
         public IClient Get(Guid id)

@@ -74,25 +74,26 @@ namespace Conversus.Service.Impl
         public ICollection<ClientInfo> GetClientsQueue(QueueType queue)
         {
             return ClientLogic
-                .GetClients(queue)
-                .Where(c => c.Status == ClientStatus.Waiting)
-                .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
-                .OrderBy(c => c.IsVip)
-                .ThenBy(c => c.Client.TakeTicket)
-                .Select(c => ToClientInfo(c.Client))
+                .GetClientsQueue(queue)
+                .Select(ToClientInfo)
                 .ToList();
         }
 
         public ClientInfo CallNextClient(QueueType queue)
         {
-            var client = GetClientsQueue(queue).FirstOrDefault();
+            var client = ClientLogic.CallNextClient(queue);
             if (client != null)
-                TerminalService.CallClient(client);
-            return client;
+            {
+                var clientInfo = ToClientInfo(client);
+                TerminalService.CallClient(clientInfo);
+                return clientInfo;
+            }
+            return null;
         }
 
         public void CallClient(Guid id)
         {
+            ClientLogic.ChangeStatus(id, ClientStatus.Performing);
             TerminalService.CallClient(ToClientInfo(ClientLogic.Get(id)));
         }
 
