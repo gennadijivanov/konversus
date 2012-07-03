@@ -54,13 +54,6 @@ namespace Conversus.Service.Impl
             return ToClientInfo(ClientLogic.GetClientByPin(pin));
         }
 
-        public void ClientGettingTicket()
-        {
-            throw new NotImplementedException();
-            //TODO записать в базу время, когда печатается билет
-            //DateTime.Now не вижу смысла передавать
-        }
-
         public void ChangeStatus(Guid clientId, ClientStatus status)
         {
             ClientLogic.ChangeStatus(clientId, status);

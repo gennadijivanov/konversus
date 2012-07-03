@@ -27,7 +27,12 @@ namespace Conversus.Storage.Impl
                                          Name = data.Name,
                                          PIN = data.PIN,
                                          QueueId = data.QueueId,
-                                         Status = (int) data.Status
+                                         Status = (int) data.Status,
+                                         BookingTime = data.BookingTime,
+                                         TakeTicket = data.TakeTicket,
+                                         Ticket = data.Ticket,
+                                         PerformStart = data.PerformStart,
+                                         PerformEnd = data.PerformEnd
                                      };
                 db.AddToClients(client);
                 db.SaveChanges();

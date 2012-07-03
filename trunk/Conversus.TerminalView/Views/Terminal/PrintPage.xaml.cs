@@ -16,7 +16,7 @@ namespace Conversus.TerminalView.Views.Terminal
     {
         private Timer backHomeTimer = new Timer();
         private NavigationService navService = null;
-        private ClientInfo client;
+        private readonly ClientInfo client;
 
         public PrintPage(ClientInfo client)
         {
@@ -38,12 +38,10 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void printTicket()
         {
-
             var printDlg = new PrintDialog();
-            ticketView.serviceNameTextBox.Text = client.Queue.Type.ToString();
+            ticketView.serviceNameTextBox.Text = client.Queue.Title;
             ticketView.ticketNumberLabel.Content = client.Ticket;
-            ticketView.registerDateTimeLabel.Content = DateTime.Now.ToString();
-            ServiceHelper.Instance.ClientService.ClientGettingTicket();
+            ticketView.registerDateTimeLabel.Content = client.TakeTicket.Value.ToString();
 
             printDlg.PrintVisual(ticketView, "Ticket");
         }
