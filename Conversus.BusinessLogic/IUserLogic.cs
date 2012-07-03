@@ -12,7 +12,7 @@ namespace Conversus.BusinessLogic
 
         void Create(Guid id, string name, string login, string password, string window, QueueType queueType);
 
-        void Save(Guid id, string name, string login, string password, string window);
+        void Save(Guid id, string name, string login, string password, string window, QueueType queueType);
 
         void Delete(Guid id);
 

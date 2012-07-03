@@ -18,7 +18,7 @@ namespace Conversus.Service.Contract
         void Create(string name, string login, string password, string window, QueueType queueType);
 
         [OperationContract]
-        void Save(Guid id, string name, string login, string password, string window);
+        void Save(Guid id, string name, string login, string password, string window, QueueType queueType);
 
         [OperationContract]
         void Delete(Guid id);
