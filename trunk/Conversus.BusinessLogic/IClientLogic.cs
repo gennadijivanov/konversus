@@ -12,8 +12,6 @@ namespace Conversus.BusinessLogic
 
         IClient CreateFromLotus(string name, int pin);
 
-        string GetTicket(Guid clientId);
-
         IClient GetClientByPin(int pin);
 
         // for operator

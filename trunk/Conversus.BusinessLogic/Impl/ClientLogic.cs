@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Storage;
 using Client = Conversus.Impl.Objects.Client;
@@ -17,8 +18,11 @@ namespace Conversus.BusinessLogic.Impl
         public IClient CreateForCommon(string name, QueueType queueType)
         {
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null, ClientStatus.Waiting,
-                                        "");
+
+            var ticket = GetTicket(queueType, false);
+
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null,
+                                        ClientStatus.Waiting, ticket);
             Storage.Create(client);
             return client;
         }
@@ -33,26 +37,6 @@ namespace Conversus.BusinessLogic.Impl
             return client;
         }
 
-        //TODO: create ticket factory
-        public string GetTicket(Guid clientId)
-        {
-            // must create ticket by factory, set to object and return
-
-            var client = Storage.Get(clientId);
-            if (client == null)
-                throw new InvalidOperationException("Client is not found");
-
-            if (string.IsNullOrEmpty(client.Ticket))
-            {
-                var queue = StorageLogicFactory.Instance.Get<IQueueStorage>().GetByClient(clientId);
-
-                client.Ticket = (new TicketFactory()).SetTicketForClient(queue.Type, client.PIN);
-                Storage.Update(client);
-            }
-
-            return client.Ticket;
-        }
-
         public IClient GetClientByPin(int pin)
         {
             return Storage.Get(new ClientFilterParameters {PIN = pin}).SingleOrDefault();
@@ -64,32 +48,6 @@ namespace Conversus.BusinessLogic.Impl
             if (client == null)
                 throw new InvalidOperationException("Client is not found");
             ChangeStatus(client, status);
-        }
-
-        private void ChangeStatus(IClient client, ClientStatus status)
-        {
-            client.Status = status;
-            switch (status)
-            {
-                case ClientStatus.Registered:
-                case ClientStatus.Delayed:
-                    break;
-                case ClientStatus.Performing:
-                    client.PerformStart = DateTime.Now;
-                    break;
-                case ClientStatus.Waiting:
-                    client.TakeTicket = DateTime.Now;
-                    break;
-                case ClientStatus.Done:
-                    client.PerformEnd = DateTime.Now;
-                    break;
-                case ClientStatus.Absent:
-                    client.PerformEnd = DateTime.Now;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("status");
-            }
-            Storage.Update(client);
         }
 
         public ICollection<IClient> GetClients(QueueType queueType)
@@ -125,19 +83,48 @@ namespace Conversus.BusinessLogic.Impl
         }
 
         #endregion
-    }
 
-    public class TicketFactory
-    {
-        public string SetTicketForClient(QueueType queueType, int? pin)
+        private string GetTicket(QueueType queueType, bool isVip)
         {
-            // client registered over inet
-            if (pin.HasValue)
-            {
-                IClient client = BusinessLogicFactory.Instance.Get<IClientLogic>().GetClientByPin(pin.Value);
-            }
+            var queue =
+                StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters() { QueueType = queueType }).Single();
 
-            return "ASS PUSHKIN";
+            var clientsCount =
+                GetClients(queueType).Count(c => c.TakeTicket.HasValue && c.TakeTicket.Value.Date == DateTime.Today && c.QueueId == queue.Id);
+
+            string ticket = string.Format("{0} {1}",
+                                          isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],
+                                          clientsCount + 1);
+            return ticket;
+        }
+
+        private void ChangeStatus(IClient client, ClientStatus status)
+        {
+            client.Status = status;
+            switch (status)
+            {
+                case ClientStatus.Registered:
+                case ClientStatus.Delayed:
+                    break;
+                case ClientStatus.Performing:
+                    client.PerformStart = DateTime.Now;
+                    break;
+                case ClientStatus.Waiting:
+                    client.TakeTicket = DateTime.Now;
+                    client.Ticket = GetTicket(
+                        StorageLogicFactory.Instance.Get<IQueueStorage>().Get(client.QueueId).Type,
+                        client.PIN.HasValue);
+                    break;
+                case ClientStatus.Done:
+                    client.PerformEnd = DateTime.Now;
+                    break;
+                case ClientStatus.Absent:
+                    client.PerformEnd = DateTime.Now;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("status");
+            }
+            Storage.Update(client);
         }
     }
 }

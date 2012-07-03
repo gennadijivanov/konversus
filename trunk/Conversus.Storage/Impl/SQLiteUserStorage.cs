@@ -95,10 +95,7 @@ namespace Conversus.Storage.Impl
 
         private IUser ConvertFromData(UserData data)
         {
-            return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.QueueId)
-                       {
-                           Window = data.Window
-                       };
+            return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.Window, data.QueueId);
         }
     }
 }

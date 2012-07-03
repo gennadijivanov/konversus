@@ -49,11 +49,6 @@ namespace Conversus.Service.Impl
             return ToClientInfo(ClientLogic.CreateFromLotus(name, pin));
         }
 
-        public string GetTicket(Guid clientId)
-        {
-            return ClientLogic.GetTicket(clientId);
-        }
-
         public ClientInfo GetClientByPin(int pin)
         {
             return ToClientInfo(ClientLogic.GetClientByPin(pin));

@@ -14,5 +14,13 @@ namespace Conversus.Core.Infrastructure
                                                                                        { QueueType.Approvement, "Согласование" },
                                                                                        { QueueType.Taking, "Получение" }
                                                                                    };
+
+        public static readonly Dictionary<QueueType, string> QueueTypeLetters = new Dictionary<QueueType, string>
+                                                                                   {
+                                                                                       { QueueType.Approvement, "A" },
+                                                                                       { QueueType.Taking, "B" }
+                                                                                   };
+
+        public const string VipQueueLetter = "C";
     }
 }

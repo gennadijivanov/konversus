@@ -127,18 +127,5 @@ namespace Conversus.BusinessLogic.Test
             Assert.AreNotEqual(actual.Count, 0);
             //Assert.AreEqual(3, actual.Count);
         }
-
-        /// <summary>
-        ///Тест для GetTicket
-        ///</summary>
-        [TestMethod()]
-        public void GetTicketTest()
-        {
-            IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            var client = target.GetClients(QueueType.Approvement).First(); // TODO: инициализация подходящего значения
-            string expected = string.Empty; // TODO: инициализация подходящего значения
-            string actual = target.GetTicket(client.Id);
-            Assert.AreEqual(expected, actual);
-        }
     }
 }

@@ -17,9 +17,6 @@ namespace Conversus.Service.Contract
         ClientInfo CreateFromLotus(string name, int pin);
 
         [OperationContract]
-        string GetTicket(Guid clientId);
-
-        [OperationContract]
         ClientInfo GetClientByPin(int pin);
 
         //TODO записать в базу время, когда печатается билет
