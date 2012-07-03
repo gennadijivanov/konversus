@@ -87,13 +87,13 @@ namespace Conversus.Service.Impl
         {
             var client = GetClientsQueue(queue).FirstOrDefault();
             if (client != null)
-                TerminalService.CallClient(client.Id);
+                TerminalService.CallClient(client);
             return client;
         }
 
         public void CallClient(Guid id)
         {
-            TerminalService.CallClient(id);
+            TerminalService.CallClient(new ClientInfo());
         }
 
         #endregion
