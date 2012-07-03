@@ -40,6 +40,9 @@ namespace Conversus.BusinessLogic.Impl
 
         public void Save(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login))
+                throw new ArgumentNullException();
+
             var user = Storage.Get(id);
             user.Name = name;
             user.Login = login;
