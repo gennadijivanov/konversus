@@ -31,8 +31,7 @@ namespace Conversus.TerminalView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var queueBoard = new QueueBoardWindow();
-            queueBoard.Show();
+            QueueBoardWindow.Instance.Show();
         }
     }
 }

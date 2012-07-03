@@ -7,7 +7,7 @@ namespace Conversus.TerminalView.Service
     {
         public void CallClient(Guid clientId)
         {
-            QueueBoardWindow.CallClient(clientId);
+            QueueBoardWindow.Instance.CallClient(clientId);
         }
     }
 }
