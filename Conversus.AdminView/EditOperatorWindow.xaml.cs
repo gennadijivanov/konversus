@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System;
 using System.Windows.Controls;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
@@ -10,13 +9,17 @@ using Conversus.Service.Helpers;
 namespace Conversus.AdminView
 {
     /// <summary>
-    /// Interaction logic for InsertOperatorWindow.xaml
+    /// Interaction logic for EditOperatorWindow.xaml
     /// </summary>
-    public partial class InsertOperatorWindow : Window
+    public partial class EditOperatorWindow : Window
     {
-        public InsertOperatorWindow()
+        private UserInfo _client;
+
+        public EditOperatorWindow(UserInfo client)
         {
             InitializeComponent();
+
+            _client = client;
 
             ICollection<QueueInfo> queues = ServiceHelper.Instance.QueueService.GetQueues();
 
@@ -24,11 +27,21 @@ namespace Conversus.AdminView
             queueTypeComboBox.ItemsSource = queues;
         }
 
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            nameTextBox.Text = "";
+            loginTextBox.Text = "";
+            windowTextBox.Text = "";
+            queueTypeComboBox.SelectedItem = _client.Queue.Title;
+            windowTextBox.Text = _client.CurrentWindow;
+        }
+
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                ServiceHelper.Instance.UserService.Create(
+                ServiceHelper.Instance.UserService.Save(_client.Id,
                     nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
                     (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
 

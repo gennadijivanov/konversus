@@ -63,16 +63,19 @@ namespace Conversus.AdminView
             ReloadOperatorsList();
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
-        {
-            //var saveItems = (operatorListGrid.Items as List<UserInfo>);
-        }
-
         private void ReloadOperatorsList()
         {
             ICollection<UserInfo> users = ServiceHelper.Instance.UserService.GetAllUsers();
             operatorListGrid.ItemsSource =
                 users.Select( u => new {Name = u.Name, Login = u.Login, QueueType = u.Queue.Title, QWindow = u.CurrentWindow} ).ToList();
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (operatorListGrid.SelectedItem != null)
+            {
+                var editWindow = new EditOperatorWindow((UserInfo)operatorListGrid.SelectedItem);
+            }
         }
     }
 }

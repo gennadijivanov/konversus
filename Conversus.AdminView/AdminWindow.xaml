@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.AdminView.Views.BackGrounds"
         xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
-        Title="MainWindow" MinHeight="500" MinWidth="570" Width="600" Height="500" Loaded="AdminWindow_OnLoaded">
+        Title="MainWindow" MinHeight="500" MinWidth="700" Width="700" Height="500" Loaded="AdminWindow_OnLoaded">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
         <Label>Окно админиа/для отчетов</Label>
@@ -42,13 +42,13 @@
                             Height="50" Width="136" 
                             Click="dellButton_Click" 
                             Margin="0,9,0,11">Удалить</Button>
-                    <Button Name="saveButton" IsEnabled="False" 
+                    <Button Name="editButton" IsEnabled="False" 
                             Grid.Row="1"  Grid.Column="1"
                             VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{StaticResource inputBoardBtnStyle}" 
-                            Height="50" Width="162" 
-                            Click="saveButton_Click" 
-                            Margin="0,9,0,11">Сохранить</Button>
+                            Height="50" Width="210" 
+                            Click="editButton_Click" 
+                            Margin="0,0,0,0">Редактировать</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Отчеты">
