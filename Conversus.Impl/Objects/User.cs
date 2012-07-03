@@ -17,13 +17,14 @@ namespace Conversus.Impl.Objects
 
         public string Window { get; set; }
 
-        public User(Guid id, string name, string login, string password, Guid queueId)
+        public User(Guid id, string name, string login, string password, string window, Guid queueId)
         {
             Id = id;
             Name = name;
             Login = login;
             Password = password;
             QueueId = queueId;
+            Window = window;
         }
     }
 }
