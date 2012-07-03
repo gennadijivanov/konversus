@@ -38,7 +38,7 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Create(user);
         }
 
-        public void Save(Guid id, string name, string login, string password, string window)
+        public void Save(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
             var user = Storage.Get(id);
             user.Name = name;
@@ -46,6 +46,10 @@ namespace Conversus.BusinessLogic.Impl
             user.Window = window;
             if (!string.IsNullOrEmpty(password))
                 user.Password = GetMD5Hash(password);
+
+            IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
+            user.QueueId = queue.Id;
+
             Storage.Update(user);
         }
 

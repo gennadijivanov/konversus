@@ -36,9 +36,9 @@ namespace Conversus.Service.Impl
             UserLogic.Create(Guid.NewGuid(), name, login, password, window, queueType);
         }
 
-        public void Save(Guid id, string name, string login, string password, string window)
+        public void Save(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
-            UserLogic.Save(id, name, login, password, window);
+            UserLogic.Save(id, name, login, password, window, queueType);
         }
 
         public void Delete(Guid id)
