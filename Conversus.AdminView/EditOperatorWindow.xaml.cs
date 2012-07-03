@@ -30,11 +30,10 @@ namespace Conversus.AdminView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            nameTextBox.Text = "";
-            loginTextBox.Text = "";
-            windowTextBox.Text = "";
-            queueTypeComboBox.SelectedItem = _client.Queue.Title;
+            nameTextBox.Text = _client.Name;
+            loginTextBox.Text = _client.Login;
             windowTextBox.Text = _client.CurrentWindow;
+            queueTypeComboBox.SelectedItem = _client.Queue.Title;
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)

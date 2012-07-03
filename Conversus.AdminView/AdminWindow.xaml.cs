@@ -66,8 +66,7 @@ namespace Conversus.AdminView
         private void ReloadOperatorsList()
         {
             ICollection<UserInfo> users = ServiceHelper.Instance.UserService.GetAllUsers();
-            operatorListGrid.ItemsSource =
-                users.Select( u => new {Name = u.Name, Login = u.Login, QueueType = u.Queue.Title, QWindow = u.CurrentWindow} ).ToList();
+            operatorListGrid.ItemsSource = users;
         }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +74,7 @@ namespace Conversus.AdminView
             if (operatorListGrid.SelectedItem != null)
             {
                 var editWindow = new EditOperatorWindow((UserInfo)operatorListGrid.SelectedItem);
+                editWindow.Show();
             }
         }
     }
