@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -33,20 +35,28 @@ namespace Conversus.TerminalView
         private int currentIndex = 0;
         private DateTime lastChangeDirectory;
 
+        private readonly List<ClientInfo> _queue = new List<ClientInfo>();
+
         public void CallClient(ClientInfo client)
         {
+            _queue.Add(client);
+
             callSound.Play();
 
             var storyBoard = (Storyboard) TryFindResource("newVisitorAnimation");
             if (storyBoard != null) storyBoard.Begin();
 
-            clientWindowListView.Items.Add(new {Name = "sdfsdf", OperatorWindow = "5"});
-            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
-            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
-            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
+            clientWindowListView.ItemsSource =
+                _queue.OrderByDescending(c => c.PerformStart).Select(c => new {Name = c.Name, OperatorWindow = c.Window}).Take(7);
         }
 
+        public void RemovePerformed(ClientInfo client)
+        {
+            _queue.Remove(client);
 
+            clientWindowListView.ItemsSource =
+                _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Name = c.Name, OperatorWindow = c.Window }).Take(7);
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

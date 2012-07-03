@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Conversus.Service.Contract;
@@ -69,7 +70,9 @@ namespace Conversus.AdminView
 
         private void ReloadOperatorsList()
         {
-            operatorListGrid.ItemsSource = ServiceHelper.Instance.UserService.GetAllUsers();
+            ICollection<UserInfo> users = ServiceHelper.Instance.UserService.GetAllUsers();
+            operatorListGrid.ItemsSource =
+                users.Select( u => new {Name = u.Name, Login = u.Login, QueueType = u.Queue.Title, QWindow = u.CurrentWindow} ).ToList();
         }
     }
 }
