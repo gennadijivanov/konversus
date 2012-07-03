@@ -14,12 +14,19 @@ namespace Conversus.TerminalView
     /// </summary>
     public partial class QueueBoardWindow : Window
     {
-        public static void CallClient(Guid id)
+        public void CallClient(Guid id)
         {
             MessageBox.Show("Fire your guns!");
         }
 
-        public QueueBoardWindow()
+        private static QueueBoardWindow _instance;
+
+        public static QueueBoardWindow Instance
+        {
+            get { return _instance ?? (_instance = new QueueBoardWindow()); }
+        }
+
+        private QueueBoardWindow()
         {
             InitializeComponent();
         }
