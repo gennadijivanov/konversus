@@ -31,19 +31,19 @@ namespace Conversus.Service.Impl
             return ToUserInfo(UserLogic.Get(id));
         }
 
-        public void Create(string name, string login, string password, QueueType queueType)
+        public void Create(string name, string login, string password, string window, QueueType queueType)
         {
-            UserLogic.Create(Guid.NewGuid(), name, login, password, queueType);
+            UserLogic.Create(Guid.NewGuid(), name, login, password, window, queueType);
+        }
+
+        public void Save(Guid id, string name, string login, string password, string window)
+        {
+            UserLogic.Save(id, name, login, password, window);
         }
 
         public void Delete(Guid id)
         {
             UserLogic.Delete(id);
-        }
-
-        public void SetWindow(Guid id, string window)
-        {
-            UserLogic.SetWindow(id, window);
         }
 
         public bool Authorize(string login, string password)

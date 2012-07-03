@@ -10,7 +10,9 @@ namespace Conversus.BusinessLogic
 
         IUser Get(Guid id);
 
-        void Create(Guid id, string name, string login, string password, QueueType queueType);
+        void Create(Guid id, string name, string login, string password, string window, QueueType queueType);
+
+        void Save(Guid id, string name, string login, string password, string window);
 
         void Delete(Guid id);
 

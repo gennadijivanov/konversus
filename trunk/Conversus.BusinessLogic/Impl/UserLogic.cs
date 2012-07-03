@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
-using Conversus.Impl.Objects;
 using Conversus.Storage;
 using User = Conversus.Impl.Objects.User;
 
@@ -23,7 +22,7 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(id);
         }
 
-        public void Create(Guid id, string name, string login, string password, QueueType queueType)
+        public void Create(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
                 throw new ArgumentNullException();
@@ -34,9 +33,20 @@ namespace Conversus.BusinessLogic.Impl
             password = GetMD5Hash(password);
 
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            IUser user = new User(id, name,login,password, queue.Id);
+            IUser user = new User(id, name, login, password, window, queue.Id);
 
             Storage.Create(user);
+        }
+
+        public void Save(Guid id, string name, string login, string password, string window)
+        {
+            var user = Storage.Get(id);
+            user.Name = name;
+            user.Login = login;
+            user.Window = window;
+            if (!string.IsNullOrEmpty(password))
+                user.Password = GetMD5Hash(password);
+            Storage.Update(user);
         }
 
         public void Delete(Guid id)

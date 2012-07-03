@@ -15,13 +15,13 @@ namespace Conversus.Service.Contract
         UserInfo Get(Guid id);
 
         [OperationContract]
-        void Create(string name, string login, string password, QueueType queueType);
+        void Create(string name, string login, string password, string window, QueueType queueType);
+
+        [OperationContract]
+        void Save(Guid id, string name, string login, string password, string window);
 
         [OperationContract]
         void Delete(Guid id);
-
-        [OperationContract]
-        void SetWindow(Guid id, string window);
 
         [OperationContract]
         bool Authorize(string login, string password);
