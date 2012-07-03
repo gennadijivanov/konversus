@@ -5,6 +5,10 @@ namespace Conversus.Core.DomainModel
     public enum ClientStatus
     {
         /// <summary>
+        /// Отложенный
+        /// </summary>
+        Delayed,
+        /// <summary>
         /// на приеме
         /// </summary>
         Performing,
