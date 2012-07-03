@@ -44,6 +44,12 @@
     <Compile Include="ITerminalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Conversus.Service.Contract\Conversus.Service.Contract.csproj">
+      <Project>{5BE9C694-8B57-4626-97DB-23175C47E77D}</Project>
+      <Name>Conversus.Service.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

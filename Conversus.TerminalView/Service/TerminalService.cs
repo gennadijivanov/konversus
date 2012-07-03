@@ -1,13 +1,14 @@
 ﻿using System;
+using Conversus.Service.Contract;
 using Conversus.TerminalService.Contract;
 
 namespace Conversus.TerminalView.Service
 {
     public class TerminalService : ITerminalService
     {
-        public void CallClient(Guid clientId)
+        public void CallClient(ClientInfo client)
         {
-            QueueBoardWindow.Instance.CallClient(clientId);
+            QueueBoardWindow.Instance.CallClient(client);
         }
     }
 }

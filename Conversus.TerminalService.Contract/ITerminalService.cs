@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using Conversus.Service.Contract;
 
 namespace Conversus.TerminalService.Contract
 {
@@ -7,6 +8,6 @@ namespace Conversus.TerminalService.Contract
     public interface ITerminalService
     {
         [OperationContract]
-        void CallClient(Guid clientId);
+        void CallClient(ClientInfo client);
     }
 }

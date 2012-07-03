@@ -90,10 +90,10 @@
                 </ListView.ItemTemplate>
 
                 <!--ПОТОМ УБРАТЬ ЭТО ДЛЯ ТЕСТА-->
+                <!--<ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
                 <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
                 <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
-                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
-                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
+                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>-->
             </ListView>
         </Grid>
         <!--Потом проанимировать попап-->

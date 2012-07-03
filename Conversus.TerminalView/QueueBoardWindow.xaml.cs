@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Conversus.TerminalView
@@ -14,11 +16,6 @@ namespace Conversus.TerminalView
     /// </summary>
     public partial class QueueBoardWindow : Window
     {
-        public void CallClient(Guid id)
-        {
-            MessageBox.Show("Fire your guns!");
-        }
-
         private static QueueBoardWindow _instance;
 
         public static QueueBoardWindow Instance
@@ -36,18 +33,20 @@ namespace Conversus.TerminalView
         private int currentIndex = 0;
         private DateTime lastChangeDirectory;
 
-        //TODO УЗНАТЬ У ГЕНЫ КАК БУДЕТ ЭТО ВЫЗЫВАТЬСЯ ИЗ ИНТЕРФЕЙСА ОПЕРАТОРА
-        //Вызов нового Визитера. Проигрывает звук анимацию и самое главное!
-        //заполняет листвью текущей очередью по событию вызова оператором
-        private void nextVizitorAnimation(ICollection items)
+        public void CallClient(ClientInfo client)
         {
             callSound.Play();
-            
-            var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
+
+            var storyBoard = (Storyboard) TryFindResource("newVisitorAnimation");
             if (storyBoard != null) storyBoard.Begin();
 
-            clientWindowListView.ItemsSource = items;
+            clientWindowListView.Items.Add(new {Name = "sdfsdf", OperatorWindow = "5"});
+            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
+            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
+            clientWindowListView.Items.Add(new { Name = "sdfsdf", OperatorWindow = "5" });
         }
+
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -67,7 +66,7 @@ namespace Conversus.TerminalView
             var r = System.Windows.Forms.Screen.AllScreens;
             checkeForModificationVideoDirectory();
 
-            CallClient(Guid.NewGuid());
+            CallClient(new ClientInfo());
         }
 
         private Screen GetSecondaryScreen()
