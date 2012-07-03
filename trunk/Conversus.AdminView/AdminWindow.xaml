@@ -42,7 +42,7 @@
                             Height="50" Width="136" 
                             Click="dellButton_Click" 
                             Margin="0,9,0,11">Удалить</Button>
-                    <Button Name="editButton" IsEnabled="False" 
+                    <Button Name="editButton"
                             Grid.Row="1"  Grid.Column="1"
                             VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{StaticResource inputBoardBtnStyle}" 

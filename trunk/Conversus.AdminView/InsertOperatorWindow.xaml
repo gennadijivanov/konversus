@@ -18,7 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <local:DefaultBackGround Grid.ColumnSpan="2" Grid.RowSpan="6"></local:DefaultBackGround>
+        <local:DefaultBackGround Grid.ColumnSpan="2" Grid.RowSpan="7"></local:DefaultBackGround>
         <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Имя:</Label>
         <TextBox Name="nameTextBox" Grid.Column="1" Style="{StaticResource inputStyle}" Margin="0,10,12,10"></TextBox>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">Логин:</Label>
