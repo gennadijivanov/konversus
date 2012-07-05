@@ -5,9 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
       d:DesignHeight="1100" d:DesignWidth="1500" Loaded="Page_Loaded"
-	Title="Input_Name" ShowsNavigationUI="False" 
-      xmlns:my="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-      ButtonBase.Click="Page_Click">
+	Title="Input_Name" ShowsNavigationUI="False" ButtonBase.Click="Page_Click">
     <StackPanel>
         <Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">
             <StackPanel>

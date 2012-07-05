@@ -24,6 +24,6 @@ namespace Conversus.Service.Contract
         void Delete(Guid id);
 
         [OperationContract]
-        bool Authorize(string login, string password);
+        UserInfo Authorize(string login, string password);
     }
 }

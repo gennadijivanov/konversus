@@ -15,9 +15,11 @@ namespace Conversus.OperatorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ServiceHelper.Instance.UserService.Authorize(loginTextBox.Text, passwordTextBox.Password))
+            var user = ServiceHelper.Instance.UserService.Authorize(loginTextBox.Text, passwordTextBox.Password);
+
+            if (user != null)
             {
-                OperatorWindow operatorWorkWin = new OperatorWindow();
+                var operatorWorkWin = new OperatorWindow();
                 operatorWorkWin.Show();
 
                 Close();

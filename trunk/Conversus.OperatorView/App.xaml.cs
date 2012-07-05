@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using Conversus.BusinessLogic;
-using Conversus.Storage;
 
 namespace Conversus.OperatorView
 {
