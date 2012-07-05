@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.BusinessLogic
 {
@@ -12,7 +13,7 @@ namespace Conversus.BusinessLogic
 
         IClient CreateFromLotus(string name, int pin);
 
-        IClient GetClientByPin(int pin);
+        ICollection<IClient> Get(ClientFilterParameters filter);
 
         // for operator
 

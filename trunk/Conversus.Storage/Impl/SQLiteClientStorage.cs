@@ -22,18 +22,18 @@ namespace Conversus.Storage.Impl
             using (var db = new ConversusDataContext())
             {
                 var client = new ClientData()
-                                     {
-                                         Id = data.Id,
-                                         Name = data.Name,
-                                         PIN = data.PIN,
-                                         QueueId = data.QueueId,
-                                         Status = (int) data.Status,
-                                         BookingTime = data.BookingTime,
-                                         TakeTicket = data.TakeTicket,
-                                         Ticket = data.Ticket,
-                                         PerformStart = data.PerformStart,
-                                         PerformEnd = data.PerformEnd
-                                     };
+                                 {
+                                     Id = data.Id,
+                                     Name = data.Name,
+                                     PIN = data.PIN,
+                                     QueueId = data.QueueId,
+                                     Status = (int) data.Status,
+                                     BookingTime = data.BookingTime,
+                                     TakeTicket = data.TakeTicket,
+                                     Ticket = data.Ticket,
+                                     PerformStart = data.PerformStart,
+                                     PerformEnd = data.PerformEnd
+                                 };
                 db.AddToClients(client);
                 db.SaveChanges();
             }
@@ -74,13 +74,16 @@ namespace Conversus.Storage.Impl
             {
                 IQueryable<ClientData> query = db.Clients.AsQueryable();
 
-                if (f != null && (f.QueueId.HasValue || f.PIN.HasValue))
+                if (f != null)
                 {
                     if (f.QueueId.HasValue)
                         query = query.Where(c => c.QueueId == f.QueueId.Value);
 
                     if (f.PIN.HasValue)
                         query = query.Where(c => c.PIN == f.PIN.Value);
+
+                    if (!string.IsNullOrEmpty(f.Ticket))
+                        query = query.Where(c => c.Ticket == f.Ticket);
                 }
 
                 //TODO: set all properties

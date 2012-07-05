@@ -7,5 +7,7 @@ namespace Conversus.Core.Infrastructure.Repository
         public Guid? QueueId { get; set; }
 
         public int? PIN { get; set; }
+
+        public string Ticket { get; set; }
     }
 }

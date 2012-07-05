@@ -38,9 +38,9 @@ namespace Conversus.BusinessLogic.Impl
             return client;
         }
 
-        public IClient GetClientByPin(int pin)
+        public ICollection<IClient> Get(ClientFilterParameters filter)
         {
-            return Storage.Get(new ClientFilterParameters {PIN = pin}).SingleOrDefault();
+            return Storage.Get(filter);
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
@@ -62,7 +62,7 @@ namespace Conversus.BusinessLogic.Impl
         public ICollection<IClient> GetClientsQueue(QueueType queue)
         {
             return GetClients(queue)
-                .Where(c => c.Status == ClientStatus.Waiting)
+                .Where(c => c.Status == ClientStatus.Waiting || c.Status == ClientStatus.Postponed)
                 .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
                 .OrderBy(c => c.IsVip)
                 .ThenBy(c => c.Client.TakeTicket)
@@ -105,7 +105,7 @@ namespace Conversus.BusinessLogic.Impl
             switch (status)
             {
                 case ClientStatus.Registered:
-                case ClientStatus.Delayed:
+                case ClientStatus.Postponed:
                     break;
                 case ClientStatus.Performing:
                     client.PerformStart = DateTime.Now;
