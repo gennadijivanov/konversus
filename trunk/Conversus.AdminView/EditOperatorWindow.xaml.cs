@@ -30,17 +30,21 @@ namespace Conversus.AdminView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            nameTextBox.Text = _client.Name;
-            loginTextBox.Text = _client.Login;
-            windowTextBox.Text = _client.CurrentWindow;
-            queueTypeComboBox.SelectedItem = _client.Queue.Title;
+            if (_client != null)
+            {
+                nameTextBox.Text = _client.Name;
+                loginTextBox.Text = _client.Login;
+                windowTextBox.Text = _client.CurrentWindow;
+                queueTypeComboBox.SelectedItem = _client.Queue.Title;
+            }
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                ServiceHelper.Instance.UserService.Save(_client.Id,
+                var clientId = (_client == null) ? new Guid() : _client.Id;
+                ServiceHelper.Instance.UserService.Save(clientId,
                     nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
                     (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
 

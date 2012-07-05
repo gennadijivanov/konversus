@@ -99,6 +99,7 @@ namespace Conversus.BusinessLogic.Test
             Assert.AreEqual(actual.PIN, pin);
         }
 
+     
         /// <summary>
         ///Тест для GetClients
         ///</summary>

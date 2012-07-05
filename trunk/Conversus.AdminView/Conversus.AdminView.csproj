@@ -58,9 +58,6 @@
     <Compile Include="EditOperatorWindow.xaml.cs">
       <DependentUpon>EditOperatorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InsertOperatorWindow.xaml.cs">
-      <DependentUpon>InsertOperatorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\BackGrounds\DefaultBackGround.xaml.cs">
       <DependentUpon>DefaultBackGround.xaml</DependentUpon>
     </Compile>
@@ -83,10 +80,6 @@
     <Page Include="EditOperatorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="InsertOperatorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>

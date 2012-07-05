@@ -19,7 +19,7 @@ namespace Conversus.AdminView
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            var insertOperatorWindow = new InsertOperatorWindow();
+            var insertOperatorWindow = new EditOperatorWindow(null);
             insertOperatorWindow.Closed += insertOperatorWindow_Closed;
             insertOperatorWindow.Show();
         }
