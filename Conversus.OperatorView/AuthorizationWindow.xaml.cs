@@ -19,7 +19,7 @@ namespace Conversus.OperatorView
 
             if (user != null)
             {
-                var operatorWorkWin = new OperatorWindow();
+                var operatorWorkWin = new OperatorWindow(user);
                 operatorWorkWin.Show();
 
                 Close();

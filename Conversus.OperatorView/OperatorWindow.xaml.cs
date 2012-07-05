@@ -3,6 +3,8 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
@@ -16,8 +18,13 @@ namespace Conversus.OperatorView
         private Timer servedTimer;
         private DateTime startTime;
 
-        public OperatorWindow()
+        private ClientInfo _client;
+        private UserInfo _user;
+
+        public OperatorWindow(UserInfo user)
         {
+            _user = user;
+
             InitializeComponent();
             initTimer();
         }
@@ -97,18 +104,36 @@ namespace Conversus.OperatorView
 
         private void refreshTimer()
         {
-            initTimer();
-            pauseButton.IsEnabled = false;
-            timerLabel.Content = TIMER_ZERO_TEXT;
-            startTime = DateTime.Now;
-            servedTimer.Start();
+            if (_user != null && _client != null)
+            {
+                initTimer();
+                pauseButton.IsEnabled = false;
+
+                timerLabel.Content = TIMER_ZERO_TEXT;
+                startTime = DateTime.Now;
+                servedTimer.Start();
+
+                _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
+
+
+                queueTypeTextBox.Text = _client.Queue.Title;
+                currentVisitorTextBox.Text = _client.Ticket;
+
+                absenceButton.IsEnabled = true;
+                postponedButton.IsEnabled = true;
+                servedButton.IsEnabled = true;
+                repeatButton.IsEnabled = true;
+                redirectButton.IsEnabled = true;
+            }
+
+            //TODO Подставить тип очереди в queueTypeTextBox
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var currentWindow = (Window)sender;
 
-            if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение", 
+            if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение",
                 MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
                 e.Cancel = true;
