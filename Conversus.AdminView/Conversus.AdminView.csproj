@@ -37,12 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -143,10 +139,6 @@
     <Content Include="libs\WPFToolkit.Extended.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Conversus.BusinessLogic\Conversus.BusinessLogic.csproj">
-      <Project>{2C8ED2AB-0434-4BB0-95F6-35AB3A0D433E}</Project>
-      <Name>Conversus.BusinessLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Conversus.Core.DomainModel\Conversus.Core.DomainModel.csproj">
       <Project>{6358F485-88D8-4093-898B-3A4348D72CC7}</Project>
       <Name>Conversus.Core.DomainModel</Name>
@@ -162,10 +154,6 @@
     <ProjectReference Include="..\Conversus.Service.Helpers\Conversus.Service.Helpers.csproj">
       <Project>{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}</Project>
       <Name>Conversus.Service.Helpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Conversus.Storage\Conversus.Storage.csproj">
-      <Project>{0A01855D-10DC-46D7-B2DF-7BA7C3380743}</Project>
-      <Name>Conversus.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -100,18 +100,6 @@ namespace Conversus.BusinessLogic.Test
         }
 
         /// <summary>
-        ///Тест для GetClientByPin
-        ///</summary>
-        [TestMethod()]
-        public void GetClientByPinTest()
-        {
-            IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            IClient actual = target.GetClientByPin(pin);
-            Assert.IsNotNull(actual);
-            Assert.AreEqual(actual.PIN, pin);
-        }
-
-        /// <summary>
         ///Тест для GetClients
         ///</summary>
         [TestMethod()]

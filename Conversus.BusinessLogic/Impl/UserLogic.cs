@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Storage;
@@ -68,10 +69,10 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Update(user);
         }
 
-        public bool Authorize(string login, string password)
+        public IUser Authorize(string login, string password)
         {
             password = GetMD5Hash(password);
-            return Storage.Get(new UserFilterParameters() {Login = login, Password = password}).Count > 0;
+            return Storage.Get(new UserFilterParameters() {Login = login, Password = password}).SingleOrDefault();
         }
 
         private string GetMD5Hash(string input)

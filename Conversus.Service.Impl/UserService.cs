@@ -46,12 +46,12 @@ namespace Conversus.Service.Impl
             UserLogic.Delete(id);
         }
 
-        public bool Authorize(string login, string password)
+        public UserInfo Authorize(string login, string password)
         {
-            return UserLogic.Authorize(login, password);
+            return ToUserInfo(UserLogic.Authorize(login, password));
         }
 
-        public UserInfo ToUserInfo(IUser user)
+        private UserInfo ToUserInfo(IUser user)
         {
             if (user == null)
                 return null;

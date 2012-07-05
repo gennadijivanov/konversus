@@ -18,6 +18,6 @@ namespace Conversus.BusinessLogic
 
         void SetWindow(Guid id, string window);
 
-        bool Authorize(string login, string password);
+        IUser Authorize(string login, string password);
     }
 }
