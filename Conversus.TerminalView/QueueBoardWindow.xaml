@@ -90,12 +90,6 @@
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     </Style>
                 </ListView.ItemContainerStyle>
-
-                <!--ПОТОМ УБРАТЬ ЭТО ДЛЯ ТЕСТА-->
-                <!--<ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
-                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
-                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>
-                <ListViewItem Background="{StaticResource queueBordListIlemBG}">test</ListViewItem>-->
             </ListView>
         </Grid>
         <!--Потом проанимировать попап-->
@@ -107,7 +101,7 @@
                 Style="{StaticResource queueBordListIlemBorder}">
             <Label Name="callPopupLabel" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Foreground="White" FontWeight="Bold" 
-                   FontFamily="Tahoma" FontSize="40">A303 -> 3 Окно</Label>
+                   FontFamily="Tahoma" FontSize="40"></Label>
         </Border>
     </Grid>
 </Window>
