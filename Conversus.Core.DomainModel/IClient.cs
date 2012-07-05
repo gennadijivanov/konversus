@@ -7,7 +7,7 @@ namespace Conversus.Core.DomainModel
         /// <summary>
         /// Отложенный
         /// </summary>
-        Delayed = 1,
+        Postponed = 1,
 
         /// <summary>
         /// на приеме

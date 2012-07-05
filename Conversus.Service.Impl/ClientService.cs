@@ -6,6 +6,7 @@ using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 using Conversus.TerminalService.Contract;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Service.Impl
 {
@@ -51,7 +52,7 @@ namespace Conversus.Service.Impl
 
         public ClientInfo GetClientByPin(int pin)
         {
-            return ToClientInfo(ClientLogic.GetClientByPin(pin));
+            return ToClientInfo(ClientLogic.Get(new ClientFilterParameters {PIN = pin}).SingleOrDefault());
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
@@ -83,6 +84,24 @@ namespace Conversus.Service.Impl
         {
             ClientLogic.ChangeStatus(id, ClientStatus.Performing);
             TerminalService.CallClient(ToClientInfo(ClientLogic.Get(id)));
+        }
+
+        public void Postpone(Guid id)
+        {
+            ClientLogic.ChangeStatus(id, ClientStatus.Postponed);
+        }
+
+        public ClientInfo CallClientByTicket(string ticket)
+        {
+            var client = ClientLogic.Get(new ClientFilterParameters { Ticket = ticket }).SingleOrDefault();
+            if (client == null)
+                return null;
+
+            ClientLogic.ChangeStatus(client.Id, ClientStatus.Performing);
+
+            var info = ToClientInfo(client);
+            TerminalService.CallClient(info);
+            return info;
         }
 
         #endregion

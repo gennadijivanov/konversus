@@ -30,5 +30,10 @@ namespace Conversus.Service.Contract
         /// Окно оператора. Только для уже вызванных
         /// </summary>
         public string Window { get; set; }
+
+        public bool IsVip
+        {
+            get { return PIN.HasValue; }
+        }
     }
 }

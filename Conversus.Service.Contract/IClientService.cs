@@ -25,7 +25,7 @@ namespace Conversus.Service.Contract
         void ChangeStatus(Guid clientId, ClientStatus status);
 
         /// <summary>
-        /// Сидящие в очереди с билетиком
+        /// Сидящие в очереди с билетиком (в т.ч. отложенные)
         /// </summary>
         [OperationContract]
         ICollection<ClientInfo> GetClientsQueue(QueueType queue);
@@ -35,5 +35,11 @@ namespace Conversus.Service.Contract
 
         [OperationContract]
         void CallClient(Guid id);
+
+        [OperationContract]
+        void Postpone(Guid id);
+
+        [OperationContract]
+        ClientInfo CallClientByTicket(string ticket);
     }
 }
