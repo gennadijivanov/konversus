@@ -54,8 +54,14 @@ namespace Conversus.AdminView
         {
             var grid = (DataGrid)e.OriginalSource;
 
-            if (!deleteButton.IsEnabled)
-                deleteButton.IsEnabled = true;
+            if ( grid.SelectedItem != null)
+            {
+                deleteButton.Visibility = editButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                deleteButton.Visibility = editButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void AdminWindow_OnLoaded(object sender, RoutedEventArgs e)

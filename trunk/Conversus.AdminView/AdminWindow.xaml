@@ -35,14 +35,14 @@
                             Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" 
                             Style="{StaticResource inputBoardBtnStyle}" 
                             Height="50" Width="149" Click="registerButton_Click">Добавить</Button>
-                    <Button Name="deleteButton"
+                    <Button Name="deleteButton" Visibility="Hidden"
                             IsEnabled="False" Grid.Row="1" 
                             VerticalAlignment="Center" HorizontalAlignment="Left" 
                             Style="{StaticResource inputBoardBtnStyle}" 
                             Height="50" Width="136" 
                             Click="dellButton_Click" 
                             Margin="0,9,0,11">Удалить</Button>
-                    <Button Name="editButton"
+                    <Button Name="editButton" Visibility="Collapsed"
                             Grid.Row="1"  Grid.Column="1"
                             VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{StaticResource inputBoardBtnStyle}" 

@@ -12,7 +12,7 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызванный посетитель</Label>
                     <TextBlock Name="currentVisitorTextBox" HorizontalAlignment="Center" Margin="10,10,10,0" FontFamily="Tahoma" FontWeight="Bold" FontSize="32">---</TextBlock>
-                    <Label Name="timerLabel" Margin="4" HorizontalAlignment="Center">0:00</Label>
+                    <Label Name="timerLabel" Margin="4" HorizontalAlignment="Center">0:00:00</Label>
                 </StackPanel>
             </Border>
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
@@ -28,11 +28,11 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Button Name="absenceButton" Grid.Column="0" Grid.Row="0" Margin="5">Неявка</Button>
-                        <Button Name="postponedButton" Grid.Column="1" Grid.Row="0" Margin="5">Отложить</Button>
-                        <Button Name="servedButton" Grid.Column="2" Grid.Row="0" Margin="5">Обслужен</Button>
-                        <Button Name="repeatButton" Grid.Column="0" Grid.Row="1" Margin="5">Повтор</Button>
-                        <Button Name="redirectButton" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">Перенаправить</Button>
+                        <Button Name="absenceButton" IsEnabled="False" Grid.Column="0" Grid.Row="0" Margin="5">Неявка</Button>
+                        <Button Name="postponedButton" IsEnabled="False" Grid.Column="1" Grid.Row="0" Margin="5">Отложить</Button>
+                        <Button Name="servedButton" IsEnabled="False" Grid.Column="2" Grid.Row="0" Margin="5">Обслужен</Button>
+                        <Button Name="repeatButton" IsEnabled="False" Grid.Column="0" Grid.Row="1" Margin="5">Повтор</Button>
+                        <Button Name="redirectButton" IsEnabled="False" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">Перенаправить</Button>
                     </Grid>
                 </StackPanel>
             </Border>
