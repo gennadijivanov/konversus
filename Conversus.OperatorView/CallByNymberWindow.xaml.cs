@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
@@ -28,10 +20,28 @@ namespace Conversus.OperatorView
 
             if (button.Name == "okButton")
             {
-                //TODO: проверка на существование такого номера в базе
+                string ticketString = ticketTextBox.Text;
+
+                if (!string.IsNullOrWhiteSpace(ticketString))
+                {
+                    var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString);
+                    if (client != null)
+                        Close();
+                    else
+                    {
+                        MessageBox.Show("Такого номера не существует в базе");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Некоректный тикет");
+                }
             }
-            
-            this.Close();
+            else
+            {
+                Close();
+            }
+
         }
 
     }
