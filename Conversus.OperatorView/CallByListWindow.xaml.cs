@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
@@ -8,23 +11,36 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class CallByListWindow : Window
     {
-        public CallByListWindow()
+        private ICollection<ClientInfo> _clientInfos;
+
+        public CallByListWindow(ICollection<ClientInfo> queueCollection)
         {
             InitializeComponent();
+
+            _clientInfos = queueCollection;
         }
 
         private void postponedGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var grid = (DataGrid)e.OriginalSource;
-            
-            if (!callButton.IsEnabled) 
+
+            if (!callButton.IsEnabled)
                 callButton.IsEnabled = true;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO: Запросить список отложенных и прибиндить к гриду
-            //либо передать в конструкот окна при открытии
+            postponedGrid.ItemsSource = _clientInfos;
+        }
+
+        private void callButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedClient = (ClientInfo)postponedGrid.SelectedItem;
+
+            if (selectedClient != null)
+            {
+                ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id);
+            }
         }
     }
 }
