@@ -14,7 +14,7 @@ namespace Conversus.Service.Contract
         ClientInfo CreateForCommon(string name, QueueType queueType);
 
         [OperationContract]
-        ClientInfo CreateFromLotus(string name, int pin);
+        ClientInfo CreateFromLotus(string name, int pin, QueueType queueType, DateTime bookingTime);
 
         [OperationContract]
         ClientInfo GetClientByPin(int pin);

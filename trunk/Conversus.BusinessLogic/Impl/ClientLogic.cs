@@ -28,11 +28,10 @@ namespace Conversus.BusinessLogic.Impl
             return client;
         }
 
-        public IClient CreateFromLotus(string name, int pin)
+        public IClient CreateFromLotus(string name, int pin, QueueType queueType, DateTime bookingTime)
         {
-            //TODO: get Queue type from PIN or add parameter!!!!!!!!!!
-            IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(QueueType.Approvement);
-            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, pin, ClientStatus.Registered,
+            IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, bookingTime, pin, ClientStatus.Registered,
                                         "");
             Storage.Create(client);
             return client;

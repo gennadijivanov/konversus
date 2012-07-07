@@ -11,7 +11,7 @@ namespace Conversus.BusinessLogic
 
         IClient CreateForCommon(string name, QueueType queueType);
 
-        IClient CreateFromLotus(string name, int pin);
+        IClient CreateFromLotus(string name, int pin, QueueType queueType, DateTime bookingTime);
 
         ICollection<IClient> Get(ClientFilterParameters filter);
 
