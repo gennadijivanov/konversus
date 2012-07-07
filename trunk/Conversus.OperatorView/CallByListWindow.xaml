@@ -9,16 +9,19 @@
         <!--Когда будут данные сделать автоматическое заполнение через биндинг!-->
         <Border Margin="10" Style="{StaticResource grayPanel}" Padding="20" VerticalAlignment="Stretch">
             <StackPanel>
-                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" Name="postponedGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="250" SelectionChanged="postponedGrid_SelectionChanged">
+                <DataGrid  Name="postponedGrid" SelectionChanged="postponedGrid_SelectionChanged"
+                           SelectionMode="Single" AutoGenerateColumns="False" 
+                           VerticalAlignment="Stretch" CanUserAddRows="False" 
+                           CanUserDeleteRows="False" CanUserReorderColumns="False" 
+                           HorizontalAlignment="Stretch" Height="250">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="№" />
-                        <DataGridTextColumn Header="Услуга" />
-                        <DataGridTextColumn Header="Отложен, раз" />
-                        <!--Хэддер просто 5 баллов)))-->
-                        <DataGridTextColumn Header="Время с момента откладывания" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Ticket}" Header="Тикет" Width="*" />
+                        <DataGridTextColumn Binding="{Binding Queue.Title}" Header="Услуга" Width="3*"/>
+                        <DataGridTextColumn Binding="{Binding Status}" Header="Статус" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding TakeTicket}" Header="Время получения тикета" Width="3*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Name="callButton" HorizontalAlignment="Right" Padding="10" Height="37" FontWeight="Bold" Margin="0,10,0,0" IsEnabled="False">Вызвать</Button>
+                <Button Name="callButton" HorizontalAlignment="Right" Padding="10" Height="37" FontWeight="Bold" Margin="0,10,0,0" IsEnabled="False" Click="callButton_Click">Вызвать</Button>
             </StackPanel>
         </Border>
     </Grid>

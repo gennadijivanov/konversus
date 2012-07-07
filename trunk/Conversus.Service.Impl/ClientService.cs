@@ -104,6 +104,12 @@ namespace Conversus.Service.Impl
             return info;
         }
 
+        public ClientInfo ChangeQueue(Guid id, QueueType queueType)
+        {
+            //TODO NOT IMPLEMENTED
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private ClientInfo ToClientInfo(IClient client)

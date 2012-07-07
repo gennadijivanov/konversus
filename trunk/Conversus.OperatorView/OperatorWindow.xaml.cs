@@ -49,14 +49,10 @@ namespace Conversus.OperatorView
         {
             Button button = (Button)e.OriginalSource;
 
-            //TODO:Когда будут реальные данные не забыть
-            //если текущий номер null или равен "---"
-            //задизаблить всю секцию кнопок "Действия с вызванным посетителем"
-
             switch (button.Name)
             {
                 case "absenceButton":
-                    MessageBox.Show("Клиент " + currentVisitorTextBox.Text + " отмечена неявка");
+                    MessageBox.Show("Клиенту " + currentVisitorTextBox.Text + " отмечена неявка");
                     servedTimer.Stop();
                     if (!pauseButton.IsEnabled)
                         pauseButton.IsEnabled = true;
@@ -75,7 +71,8 @@ namespace Conversus.OperatorView
                         pauseButton.IsEnabled = true;
                     break;
                 case "repeatButton":
-                    //TODO: Вызвать текущего клиента ещё раз
+                    if (_client != null)
+                        ServiceHelper.Instance.ClientService.CallClient(_user.Id);
                     break;
                 case "redirectButton":
                     //TODO: Вывести окно с доступными очередями и сотрудниками
@@ -83,7 +80,6 @@ namespace Conversus.OperatorView
                     redirect.Show();
                     break;
                 case "callVisitorButton":
-                    //TODO: Запросить нового в очереди
                     refreshTimer();
                     break;
                 case "callByNumberButton":
@@ -91,13 +87,13 @@ namespace Conversus.OperatorView
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
-                    var callByListWindow = new CallByListWindow();
+                    var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
+                    var callByListWindow = new CallByListWindow(queueCollection);
                     callByListWindow.Show();
                     break;
                 case "pauseButton":
-                    //TODO: приостановить работу
                     servedTimer.Stop();
-                    MessageBox.Show("Система переведена в режим Перерыва");
+                    MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно.");
                     break;
             }
         }
@@ -115,7 +111,6 @@ namespace Conversus.OperatorView
 
                 _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
 
-
                 queueTypeTextBox.Text = _client.Queue.Title;
                 currentVisitorTextBox.Text = _client.Ticket;
 
@@ -125,8 +120,6 @@ namespace Conversus.OperatorView
                 repeatButton.IsEnabled = true;
                 redirectButton.IsEnabled = true;
             }
-
-            //TODO Подставить тип очереди в queueTypeTextBox
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
