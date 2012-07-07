@@ -7,7 +7,7 @@
         <local:DefaultBackGround></local:DefaultBackGround>
         <StackPanel Orientation="Vertical">
             <Label Style="{StaticResource titleStyle}" HorizontalAlignment="Center">Номер клиента</Label>
-            <TextBox MaxLength="10" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource inputStyle}"></TextBox>
+            <TextBox Name="ticketTextBox" MaxLength="10" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource inputStyle}"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Name="okButton" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="150" Click="Button_Click">OK</Button>
                 <Button Name="cancelButton" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="150" Click="Button_Click">Отмена</Button>
