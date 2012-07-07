@@ -85,21 +85,7 @@ namespace Conversus.BusinessLogic.Test
             Assert.AreEqual(name, actual.Name);
         }
 
-        /// <summary>
-        ///Тест для CreateFromLotus
-        ///</summary>
-        [TestMethod()]
-        public void CreateFromLotusTest()
-        {
-            IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            const string name = "Vasya";
-            IClient actual = target.CreateFromLotus(name, pin);
-            Assert.IsNotNull(actual);
-            Assert.AreEqual(actual.Name, name);
-            Assert.AreEqual(actual.PIN, pin);
-        }
-
-     
+    
         /// <summary>
         ///Тест для GetClients
         ///</summary>

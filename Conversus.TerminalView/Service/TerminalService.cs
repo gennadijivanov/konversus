@@ -1,5 +1,4 @@
-﻿using System;
-using Conversus.Service.Contract;
+﻿using Conversus.Service.Contract;
 using Conversus.TerminalService.Contract;
 
 namespace Conversus.TerminalView.Service

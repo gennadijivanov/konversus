@@ -45,9 +45,9 @@ namespace Conversus.Service.Impl
             return ToClientInfo(ClientLogic.CreateForCommon(name, queueType));
         }
 
-        public ClientInfo CreateFromLotus(string name, int pin)
+        public ClientInfo CreateFromLotus(string name, int pin, QueueType queueType, DateTime bookingTime)
         {
-            return ToClientInfo(ClientLogic.CreateFromLotus(name, pin));
+            return ToClientInfo(ClientLogic.CreateFromLotus(name, pin, queueType, bookingTime));
         }
 
         public ClientInfo GetClientByPin(int pin)
@@ -113,7 +113,7 @@ namespace Conversus.Service.Impl
 
             var queue = QueueLogic.Get(client.QueueId);
 
-            var clientInfo = new ClientInfo()
+            var clientInfo = new ClientInfo
                                  {
                                      Id = client.Id,
                                      Name = client.Name,
