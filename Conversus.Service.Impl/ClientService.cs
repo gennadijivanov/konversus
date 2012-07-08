@@ -5,6 +5,7 @@ using System.ServiceModel;
 using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 using Conversus.TerminalService.Contract;
 using Conversus.Core.Infrastructure.Repository;
 
@@ -24,18 +25,9 @@ namespace Conversus.Service.Impl
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
         }
 
-        private ITerminalService _terminalService;
         private ITerminalService TerminalService
         {
-            get
-            {
-                if (_terminalService == null)
-                {
-                    var factory = new ChannelFactory<ITerminalService>("ITerminalService");
-                    _terminalService = factory.CreateChannel();
-                }
-                return _terminalService;
-            }
+            get { return ServiceHelper.Instance.TerminalService; }
         }
 
         #region Implementation of IClientService

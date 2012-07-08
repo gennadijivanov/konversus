@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ServiceModel;
 using Conversus.BusinessLogic;
+using Conversus.Core.Infrastructure;
 using Conversus.Service.Impl;
 using Conversus.Storage;
+using Conversus.Service.Helpers;
 
 namespace Conversus.Service.Host
 {
@@ -21,9 +23,9 @@ namespace Conversus.Service.Host
             StorageLogicInitializer.Initialize();
             BusinessLogicInitializer.Initialize();
 
-            using (clientHost = new ServiceHost(clientServiceType))
-            using (queueHost = new ServiceHost(queueServiceType))
-            using (userHost = new ServiceHost(userServiceType))
+            using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
+            using (queueHost = CreateServiceHost(queueServiceType, Constants.Endpoints.QueueService))
+            using (userHost = CreateServiceHost(userServiceType, Constants.Endpoints.UserService))
             {
                 clientHost.Open();
                 queueHost.Open();
@@ -37,6 +39,14 @@ namespace Conversus.Service.Host
                 queueHost.Close();
                 userHost.Close();
             }
+        }
+
+        private static ServiceHost CreateServiceHost(Type serviceType, string endpoint)
+        {
+            var service = new ServiceHost(serviceType, new Uri(ServiceHelper.Instance.ServiceHost + endpoint));
+            service.AddServiceEndpoint(
+                ServiceHelper.Instance.GetEndpoint(serviceType, endpoint, ServiceHelper.Instance.ServiceHost));
+            return service;
         }
     }
 }

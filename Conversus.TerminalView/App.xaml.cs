@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows;
+using Conversus.Core.Infrastructure;
+using Conversus.Service.Helpers;
+using Conversus.TerminalService.Contract;
 
 namespace Conversus.TerminalView
 {
@@ -13,8 +16,7 @@ namespace Conversus.TerminalView
 
         public App()
         {
-            Type serviceType = typeof (Service.TerminalService);
-            host = new ServiceHost(serviceType);
+            host = CreateServiceHost();
             host.Open();
         }
 
@@ -22,6 +24,14 @@ namespace Conversus.TerminalView
         {
             host.Close();
             base.OnExit(e);
+        }
+
+        private static ServiceHost CreateServiceHost()
+        {
+            var service = new ServiceHost(typeof(Service.TerminalService), new Uri(ServiceHelper.Instance.TerminalServiceHost + Constants.Endpoints.TerminalService));
+            service.AddServiceEndpoint(
+                ServiceHelper.Instance.GetEndpoint(typeof(ITerminalService), Constants.Endpoints.TerminalService, ServiceHelper.Instance.TerminalServiceHost));
+            return service;
         }
     }
 }

@@ -9,6 +9,21 @@ namespace Conversus.Core.Infrastructure
 
         public const string AdminPassword = "admin";
 
+        public const string DefaultServiceHost = "http://localhost:8080/";
+
+        public const string DefaultTerminalServiceHost = "http://localhost:8180/";
+
+        public static class Endpoints
+        {
+            public const string TerminalService = "TerminalService";
+
+            public const string ClientService = "ClientService";
+
+            public const string QueueService = "QueueService";
+
+            public const string UserService = "UserService";
+        }
+
         public static readonly Dictionary<QueueType, string> QueueTypeTitles = new Dictionary<QueueType, string>
                                                                                    {
                                                                                        { QueueType.Approvement, "Согласование" },
