@@ -69,7 +69,7 @@ namespace Conversus.OperatorView
         {
             var listBox = (ListBox)e.OriginalSource;
 
-            if (!redirectButton.IsEnabled || !redirectAndReturnButton.IsEnabled && grid != null) 
+            if (!redirectButton.IsEnabled || !redirectAndReturnButton.IsEnabled && listBox != null) 
             {
                 redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = true;
 
