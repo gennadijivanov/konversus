@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using Conversus.Core.DomainModel;
+using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
@@ -8,15 +12,20 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class RedirectWindow : Window
     {
-        public RedirectWindow()
+        private ClientInfo _client;
+
+        public RedirectWindow(ClientInfo client)
         {
             InitializeComponent();
+
+            _client = client;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO: Запросить списки для перенаправления
-            //либо передать в конструктор окна при открытии
+            ICollection<QueueInfo> queues = ServiceHelper.Instance.QueueService.GetQueues();
+            queueList.DisplayMemberPath = "Title";
+            queueList.ItemsSource = queues;
         }
 
         private void Window_Click(object sender, RoutedEventArgs e)
@@ -44,6 +53,11 @@ namespace Conversus.OperatorView
             if (employeeList.SelectedItem != null && queueList.SelectedItem != null)
             {
                 //TODO: метод перенаправления передать туда селектед айтемы и отправить на нижний уровень
+                var selectedQueueType = (QueueType)((QueueInfo)queueList.SelectedItem).Type;
+                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, employeeList.SelectedItem.ToString(),
+                                                                 selectedQueueType);
+
+                this.Close();
             }
             else
             {
@@ -53,9 +67,14 @@ namespace Conversus.OperatorView
 
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!redirectButton.IsEnabled || !redirectAndReturnButton.IsEnabled) 
+            var listBox = (ListBox)e.OriginalSource;
+
+            if (!redirectButton.IsEnabled || !redirectAndReturnButton.IsEnabled && grid != null) 
             {
                 redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = true;
+
+                var selectedQueueType = (QueueType)((QueueInfo)listBox.SelectedItem).Type;
+                var usersByQueue = ServiceHelper.Instance.UserService.GetUsersByQueue(selectedQueueType);
             }
         }
     }

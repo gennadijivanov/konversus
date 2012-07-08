@@ -25,5 +25,8 @@ namespace Conversus.Service.Contract
 
         [OperationContract]
         UserInfo Authorize(string login, string password);
+
+        [OperationContract]
+        ICollection<UserInfo> GetUsersByQueue(QueueType type);
     }
 }

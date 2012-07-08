@@ -51,6 +51,12 @@ namespace Conversus.Service.Impl
             return ToUserInfo(UserLogic.Authorize(login, password));
         }
 
+        public ICollection<UserInfo> GetUsersByQueue(QueueType type)
+        {
+            //TODO NOT EMPLEMENTED
+            throw new NotImplementedException();
+        }
+
         private UserInfo ToUserInfo(IUser user)
         {
             if (user == null)

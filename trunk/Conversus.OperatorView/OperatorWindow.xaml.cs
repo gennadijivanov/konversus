@@ -76,7 +76,7 @@ namespace Conversus.OperatorView
                     break;
                 case "redirectButton":
                     //TODO: Вывести окно с доступными очередями и сотрудниками
-                    var redirect = new RedirectWindow();
+                    var redirect = new RedirectWindow(_client);
                     redirect.Show();
                     break;
                 case "callVisitorButton":
