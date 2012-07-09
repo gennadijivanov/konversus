@@ -43,10 +43,23 @@ namespace Conversus.AdminView
         {
             try
             {
-                var clientId = (_client == null) ? new Guid() : _client.Id;
-                ServiceHelper.Instance.UserService.Save(clientId,
+                Guid clientId;
+
+                if (_client == null) {
+                    clientId = new Guid();
+
+                    ServiceHelper.Instance.UserService.Create(nameTextBox.Text, loginTextBox.Text, passTextBox.Text,
+                                                              windowTextBox.Text,
+                                                              (QueueType)
+                                                              ((QueueInfo) queueTypeComboBox.SelectedItem).Type);
+                }
+                else
+                {
+                    clientId = _client.Id; 
+                    ServiceHelper.Instance.UserService.Save(clientId,
                     nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
                     (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
+                }
 
                 Close();
             }

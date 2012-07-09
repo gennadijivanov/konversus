@@ -27,8 +27,8 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="*" />
                             <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="*" />
-                            <DataGridTextColumn Binding="{Binding QueueType}" Header="Тип очереди" Width="*" />
-                            <DataGridTextColumn Binding="{Binding QWindow}" Header="Окно" Width="*" />
+                            <DataGridTextColumn Binding="{Binding Queue.Title}" Header="Тип очереди" Width="*" />
+                            <DataGridTextColumn Binding="{Binding CurrentWindow}" Header="Окно" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Name="registerButton"
