@@ -79,6 +79,7 @@ namespace Conversus.AdminView
             if (operatorListGrid.SelectedItem != null)
             {
                 var editWindow = new EditOperatorWindow((UserInfo)operatorListGrid.SelectedItem);
+                editWindow.Closed += insertOperatorWindow_Closed;
                 editWindow.Show();
             }
         }
