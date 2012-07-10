@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
             <local:DefaultBackGround></local:DefaultBackGround>
             <MediaElement Name="backgroundVideo" LoadedBehavior="Manual" Stretch="Fill" MediaEnded="backgroundVideo_MediaEnded"></MediaElement>
-            <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound.wav"></MediaElement>
+            <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound2.wav"></MediaElement>
             <Rectangle Grid.Row="1">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="#606060"></SolidColorBrush>
