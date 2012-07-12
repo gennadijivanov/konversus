@@ -31,18 +31,19 @@ namespace Conversus.TerminalView.Views.Terminal
 
             backHomeTimer.Elapsed += new ElapsedEventHandler(goHomePage);
             backHomeTimer.Interval = 2000;
-            backHomeTimer.Start();
-
-            printTicket();
-        }
-
-        private void printTicket()
-        {
-            var printDlg = new PrintDialog();
+            backHomeTimer.Start();            
+            
             ticketView.serviceNameTextBox.Text = client.Queue.Title;
             ticketView.ticketNumberLabel.Content = client.Ticket;
             ticketView.registerDateTimeLabel.Content = client.TakeTicket.Value.ToString();
 
+            printTicket();
+        }
+
+
+        private void printTicket()
+        {
+            var printDlg = new PrintDialog();
             printDlg.PrintVisual(ticketView, "Ticket");
         }
 
