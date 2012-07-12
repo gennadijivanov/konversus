@@ -51,7 +51,7 @@
     </Style>
     <!--Fullscreen Message-->
     <Style x:Key="listItemsLabel" TargetType="Label">
-        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontSize" Value="35"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
@@ -68,7 +68,7 @@
     </Style>
     <!--QueueBoard number style-->
     <Style x:Key="queueBoardVerticalText" TargetType="Label">
-        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontSize" Value="30"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontFamily" Value="Tahoma"></Setter>
