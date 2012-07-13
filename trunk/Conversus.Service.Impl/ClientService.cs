@@ -11,6 +11,7 @@ using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Service.Impl
 {
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class ClientService : IClientService
     {
         private IClientLogic _clientLogic;

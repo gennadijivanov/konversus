@@ -86,11 +86,10 @@ namespace Conversus.BusinessLogic.Impl
 
         private string GetTicket(QueueType queueType, bool isVip)
         {
-            var queue =
-                StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters() { QueueType = queueType }).Single();
-
-            var clientsCount =
-                GetClients(queueType).Count(c => c.TakeTicket.HasValue && c.TakeTicket.Value.Date == DateTime.Today && c.QueueId == queue.Id);
+            var clients = GetClients(queueType).Select(c=>c.TakeTicket).ToList();
+                
+            int     clientsCount = clients
+                .Count(c => c.HasValue && c.Value.Date == DateTime.Today);
 
             string ticket = string.Format("{0} {1}",
                                           isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],

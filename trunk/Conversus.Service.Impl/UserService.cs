@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 
 namespace Conversus.Service.Impl
 {
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class UserService : IUserService
     {
         private IUserLogic _userLogic;
