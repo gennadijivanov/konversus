@@ -1,4 +1,6 @@
-﻿using Conversus.Service.Contract;
+﻿using System;
+using System.Windows.Threading;
+using Conversus.Service.Contract;
 using Conversus.TerminalService.Contract;
 
 namespace Conversus.TerminalView.Service

@@ -7,8 +7,10 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
+using Conversus.TerminalView.Views.Terminal;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Conversus.TerminalView
@@ -30,7 +32,7 @@ namespace Conversus.TerminalView
             InitializeComponent();
         }
 
-        private string VIDEO_DIRECTORY_PATH = Path.GetDirectoryName("Content/video/");
+        private readonly string VIDEO_DIRECTORY_PATH = Path.GetDirectoryName("Content/video/");
         private string[] fileEntries;
         private int currentIndex = 0;
         private DateTime lastChangeDirectory;
@@ -39,17 +41,33 @@ namespace Conversus.TerminalView
 
         public void CallClient(ClientInfo client)
         {
-            _queue.Add(client);
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)(() =>
+            {
+                _queue.Add(client);
 
-            callSound.Play();
+                callSound.Play();
 
-            var storyBoard = (Storyboard) TryFindResource("newVisitorAnimation");
-            if (storyBoard != null) storyBoard.Begin();
+                var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
+                if (storyBoard != null) storyBoard.Begin();
 
-            callPopupLabel.Content = client.Ticket +" => "+ client.Window;
+                callPopupLabel.Content = client.Ticket + " => " + client.Window;
 
-            clientWindowListView.ItemsSource =
-                _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
+                clientWindowListView.ItemsSource =
+                    _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
+            }));
+
+
+            //_queue.Add(client);
+
+            //callSound.Play();
+
+            //var storyBoard = (Storyboard) TryFindResource("newVisitorAnimation");
+            //if (storyBoard != null) storyBoard.Begin();
+
+            //callPopupLabel.Content = client.Ticket +" => "+ client.Window;
+
+            //clientWindowListView.ItemsSource =
+            //    _queue.OrderByDescending(c => c.PerformStart).Select(c => new {Name = c.Name, OperatorWindow = c.Window}).Take(7);
         }
 
         public void RemovePerformed(ClientInfo client)

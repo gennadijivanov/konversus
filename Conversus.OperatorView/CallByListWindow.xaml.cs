@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
@@ -40,6 +41,8 @@ namespace Conversus.OperatorView
             if (selectedClient != null)
             {
                 ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id);
+                //TODO: update operator form, bleat'
+                Close();
             }
         }
     }
