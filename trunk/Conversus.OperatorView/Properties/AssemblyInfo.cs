@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Conversus.OperatorView")]
+[assembly: AssemblyTitle("Пульт оператора")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Conversus.OperatorView")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
+[assembly: AssemblyCompany("Иванов, Воронин и партнеры")]
+[assembly: AssemblyProduct("Система управления очередью")]
+[assembly: AssemblyCopyright("Copyright © Иванов, Воронин и партнеры 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
