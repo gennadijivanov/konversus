@@ -75,7 +75,6 @@ namespace Conversus.OperatorView
                         ServiceHelper.Instance.ClientService.CallClient(_user.Id);
                     break;
                 case "redirectButton":
-                    //TODO: Вывести окно с доступными очередями и сотрудниками
                     var redirect = new RedirectWindow(_client);
                     redirect.Show();
                     break;
@@ -100,8 +99,11 @@ namespace Conversus.OperatorView
 
         private void refreshTimer()
         {
-            if (_user != null && _client != null)
+            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
+
+            if (_client != null)
             {
+
                 initTimer();
                 pauseButton.IsEnabled = false;
 
@@ -109,17 +111,24 @@ namespace Conversus.OperatorView
                 startTime = DateTime.Now;
                 servedTimer.Start();
 
-                _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
-
                 queueTypeTextBox.Text = _client.Queue.Title;
                 currentVisitorTextBox.Text = _client.Ticket;
 
-                absenceButton.IsEnabled = true;
-                postponedButton.IsEnabled = true;
-                servedButton.IsEnabled = true;
-                repeatButton.IsEnabled = true;
-                redirectButton.IsEnabled = true;
+                toggleButtonsEnable(true);
             }
+            else
+            {
+                MessageBox.Show("Ожидающих по текущей очереди нет");
+            }
+        }
+
+        private void toggleButtonsEnable(bool enable)
+        {
+            absenceButton.IsEnabled = enable;
+            postponedButton.IsEnabled = enable;
+            servedButton.IsEnabled = enable;
+            repeatButton.IsEnabled = enable;
+            redirectButton.IsEnabled = enable;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

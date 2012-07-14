@@ -55,19 +55,6 @@ namespace Conversus.TerminalView
                 clientWindowListView.ItemsSource =
                     _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
             }));
-
-
-            //_queue.Add(client);
-
-            //callSound.Play();
-
-            //var storyBoard = (Storyboard) TryFindResource("newVisitorAnimation");
-            //if (storyBoard != null) storyBoard.Begin();
-
-            //callPopupLabel.Content = client.Ticket +" => "+ client.Window;
-
-            //clientWindowListView.ItemsSource =
-            //    _queue.OrderByDescending(c => c.PerformStart).Select(c => new {Name = c.Name, OperatorWindow = c.Window}).Take(7);
         }
 
         public void RemovePerformed(ClientInfo client)
@@ -95,8 +82,6 @@ namespace Conversus.TerminalView
 
             var r = System.Windows.Forms.Screen.AllScreens;
             checkeForModificationVideoDirectory();
-
-            CallClient(new ClientInfo());
         }
 
         private Screen GetSecondaryScreen()
@@ -142,7 +127,7 @@ namespace Conversus.TerminalView
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {        
+        {
             if (e != null && e.Key != Key.Escape) return;
 
             if (this.WindowState == System.Windows.WindowState.Maximized)
