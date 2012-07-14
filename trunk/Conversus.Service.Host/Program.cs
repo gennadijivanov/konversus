@@ -43,9 +43,9 @@ namespace Conversus.Service.Host
 
         private static ServiceHost CreateServiceHost(Type serviceType, string endpoint)
         {
-            var service = new ServiceHost(serviceType, new Uri(ServiceHelper.Instance.ServiceHost + endpoint));
+            var service = new ServiceHost(serviceType, new Uri(PropertyManager.Instance.ServiceHost + endpoint));
             service.AddServiceEndpoint(
-                ServiceHelper.Instance.GetEndpoint(serviceType, endpoint, ServiceHelper.Instance.ServiceHost));
+                ServiceHelper.Instance.GetEndpoint(serviceType, endpoint, PropertyManager.Instance.ServiceHost));
             return service;
         }
     }

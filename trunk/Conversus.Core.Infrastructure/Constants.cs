@@ -9,9 +9,9 @@ namespace Conversus.Core.Infrastructure
 
         public const string AdminPassword = "admin";
 
-        public const string DefaultServiceHost = "http://localhost:8080/";
+        internal const string DefaultServiceHost = "http://localhost:8080/";
 
-        public const string DefaultTerminalServiceHost = "http://localhost:8180/";
+        internal const string DefaultTerminalServiceHost = "http://localhost:8180/";
 
         public static class Endpoints
         {

@@ -28,9 +28,9 @@ namespace Conversus.TerminalView
 
         private static ServiceHost CreateServiceHost()
         {
-            var service = new ServiceHost(typeof(Service.TerminalService), new Uri(ServiceHelper.Instance.TerminalServiceHost + Constants.Endpoints.TerminalService));
+            var service = new ServiceHost(typeof(Service.TerminalService), new Uri(PropertyManager.Instance.TerminalServiceHost + Constants.Endpoints.TerminalService));
             service.AddServiceEndpoint(
-                ServiceHelper.Instance.GetEndpoint(typeof(ITerminalService), Constants.Endpoints.TerminalService, ServiceHelper.Instance.TerminalServiceHost));
+                ServiceHelper.Instance.GetEndpoint(typeof(ITerminalService), Constants.Endpoints.TerminalService, PropertyManager.Instance.TerminalServiceHost));
             return service;
         }
     }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.ComponentModel;
-using System.Configuration.Install;
-using System.Linq;
-using System.Windows.Forms;
 
 
 namespace Conversus.OperatorView.Installer
@@ -17,9 +12,8 @@ namespace Conversus.OperatorView.Installer
         {
             base.Install(stateSaver);
 
-            //TODO: save to reg
-            var serverAddress = Context.Parameters["serverAddress"];
-            MessageBox.Show(serverAddress);
+            var serviceHost = Context.Parameters["serviceHost"];
+            Core.Infrastructure.PropertyManager.Instance.ServiceHost = serviceHost;
         }
 
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
