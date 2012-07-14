@@ -17,8 +17,17 @@ namespace Conversus.Service.Helpers
             get { return _instance ?? (_instance = new ServiceHelper()); }
         }
 
-        public string ServiceHost = Constants.DefaultServiceHost;
-        public string TerminalServiceHost = Constants.DefaultTerminalServiceHost;
+        private string ServiceHost
+        {
+            get { return PropertyManager.Instance.ServiceHost; }
+            set { PropertyManager.Instance.ServiceHost = value; }
+        }
+
+        private string TerminalServiceHost
+        {
+            get { return PropertyManager.Instance.TerminalServiceHost; }
+            set { PropertyManager.Instance.TerminalServiceHost = value; }
+        }
 
         private readonly Binding _binding = new BasicHttpBinding();
 

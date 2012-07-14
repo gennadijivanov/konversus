@@ -51,6 +51,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Conversus.Core.Infrastructure\Conversus.Core.Infrastructure.csproj">
+      <Project>{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}</Project>
+      <Name>Conversus.Core.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
