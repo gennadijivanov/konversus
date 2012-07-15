@@ -52,23 +52,13 @@ namespace Conversus.OperatorView
             switch (button.Name)
             {
                 case "absenceButton":
-                    MessageBox.Show("Клиенту " + currentVisitorTextBox.Text + " отмечена неявка");
-                    servedTimer.Stop();
-                    if (!pauseButton.IsEnabled)
-                        pauseButton.IsEnabled = true;
+                    serviceStoped("Клиенту " + currentVisitorTextBox.Text + " отмечена неявка");
                     break;
                 case "postponedButton":
-                    servedTimer.Stop();
-                    MessageBox.Show("Клиент " + currentVisitorTextBox.Text + " добавлен в список отложенных");
-                    if (!pauseButton.IsEnabled)
-                        pauseButton.IsEnabled = true;
+                    serviceStoped("Клиент " + currentVisitorTextBox.Text + " добавлен в список отложенных");
                     break;
                 case "servedButton":
-                    servedTimer.Stop();
-                    MessageBox.Show("Обслуживание клиента " + currentVisitorTextBox.Text + " завершено");
-                    currentVisitorTextBox.Text = CLEAN_CURRENT_VISITOR_TEXT;
-                    if (!pauseButton.IsEnabled)
-                        pauseButton.IsEnabled = true;
+                    serviceStoped("Обслуживание клиента " + currentVisitorTextBox.Text + " завершено");
                     break;
                 case "repeatButton":
                     if (_client != null)
@@ -87,7 +77,7 @@ namespace Conversus.OperatorView
                     break;
                 case "callByListButton":
                     var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
-                    var callByListWindow = new CallByListWindow(queueCollection);
+                    var callByListWindow = new CallByListWindow(queueCollection, this);
                     callByListWindow.Show();
                     break;
                 case "pauseButton":
@@ -97,7 +87,17 @@ namespace Conversus.OperatorView
             }
         }
 
-        private void refreshTimer()
+        private void serviceStoped(String message)
+        {
+            servedTimer.Stop();
+            MessageBox.Show(message);
+            currentVisitorTextBox.Text = CLEAN_CURRENT_VISITOR_TEXT;
+            toggleButtonsEnable(false);
+            if (!pauseButton.IsEnabled)
+                pauseButton.IsEnabled = true;
+        }
+
+        public void refreshTimer()
         {
             _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
 

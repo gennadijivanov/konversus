@@ -13,11 +13,13 @@ namespace Conversus.OperatorView
     public partial class CallByListWindow : Window
     {
         private ICollection<ClientInfo> _clientInfos;
+        private OperatorWindow _operatorWindow;
 
-        public CallByListWindow(ICollection<ClientInfo> queueCollection)
+        public CallByListWindow(ICollection<ClientInfo> queueCollection, OperatorWindow operatorWindow)
         {
             InitializeComponent();
 
+            _operatorWindow = operatorWindow;
             _clientInfos = queueCollection;
         }
 
@@ -41,7 +43,8 @@ namespace Conversus.OperatorView
             if (selectedClient != null)
             {
                 ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id);
-                //TODO: update operator form, bleat'
+                _operatorWindow.refreshTimer();
+                
                 Close();
             }
         }
