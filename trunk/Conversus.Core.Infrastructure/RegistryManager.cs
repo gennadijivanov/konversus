@@ -1,12 +1,10 @@
-﻿using System;
-using System.Security.AccessControl;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 
 namespace Conversus.Core.Infrastructure
 {
     internal class RegistryManager
     {
-        const string ConversusKeyName = @"Software\Conversus";
+        const string ConversusKeyName = @"Software\IMSMedia\SUO";
 
         private static RegistryManager _instance;
         public static RegistryManager Instance { get { return _instance ?? (_instance = new RegistryManager()); } }
