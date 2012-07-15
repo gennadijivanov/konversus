@@ -55,6 +55,14 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Conversus.OperatorSetup", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.OperatorView.Installer", "Conversus.OperatorView.Installer\Conversus.OperatorView.Installer.csproj", "{DFAF0D23-7B75-4EA0-9ADB-0344AC34C34E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Conversus.AdminSetup", "Conversus.AdminSetup\Conversus.AdminSetup.vdproj", "{D3F84979-BFDD-4035-A31B-FE1F744CF35E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.AdminView.Installer", "Conversus.AdminView.Installer\Conversus.AdminView.Installer.csproj", "{B9939412-0622-4B96-9ED0-825918B7F438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.TerminalView.Installer", "Conversus.TerminalView.Installer\Conversus.TerminalView.Installer.csproj", "{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Conversus.TerminalSetup", "Conversus.TerminalSetup\Conversus.TerminalSetup.vdproj", "{5FFD128C-8301-4151-9809-010FC37F46BA}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Conversus.vsmdi
@@ -239,6 +247,38 @@ Global
 		{DFAF0D23-7B75-4EA0-9ADB-0344AC34C34E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DFAF0D23-7B75-4EA0-9ADB-0344AC34C34E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DFAF0D23-7B75-4EA0-9ADB-0344AC34C34E}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Debug|Any CPU.ActiveCfg = Debug
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Debug|x86.ActiveCfg = Debug
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Release|Any CPU.ActiveCfg = Release
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Release|Mixed Platforms.ActiveCfg = Release
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E}.Release|x86.ActiveCfg = Release
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B9939412-0622-4B96-9ED0-825918B7F438}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2}.Release|x86.ActiveCfg = Release|Any CPU
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Debug|Any CPU.ActiveCfg = Debug
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Debug|x86.ActiveCfg = Debug
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|Any CPU.ActiveCfg = Release
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|Mixed Platforms.ActiveCfg = Release
+		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -256,5 +296,9 @@ Global
 		{D44ED2C9-68DE-402D-B81F-6F764F210309} = {A2908650-1AFA-4840-B659-C39E90C5A1C7}
 		{023E56DB-AD4A-4DE0-8238-D7F76B3FB84F} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
 		{DFAF0D23-7B75-4EA0-9ADB-0344AC34C34E} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{D3F84979-BFDD-4035-A31B-FE1F744CF35E} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{B9939412-0622-4B96-9ED0-825918B7F438} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{5FFD128C-8301-4151-9809-010FC37F46BA} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
 	EndGlobalSection
 EndGlobal

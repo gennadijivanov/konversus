@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Conversus.Core.Infrastructure;
 
-namespace Conversus.OperatorView.Installer
+namespace Conversus.TerminalView.Installer
 {
     [RunInstaller(true)]
-    public partial class Installer : InstallerBase
+    public partial class Installer : InstallerWithTerminalBase
     {
         public Installer()
         {

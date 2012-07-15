@@ -19,7 +19,7 @@ namespace Conversus.AdminView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (loginTextBox.Text == Constants.AdminLogin && passwordTextBox.Password == Constants.AdminPassword)
+            if (loginTextBox.Text == Constants.AdminLogin && passwordTextBox.Password == Constants.DefaultAdminPassword)
             {
                 var adminWin = new AdminWindow();
                 adminWin.Show();

@@ -7,7 +7,7 @@ namespace Conversus.Core.Infrastructure
     {
         public const string AdminLogin = "admin";
 
-        public const string AdminPassword = "admin";
+        public const string DefaultAdminPassword = "admin";
 
         internal const string DefaultServiceHost = "http://localhost:8080/";
 
@@ -24,17 +24,19 @@ namespace Conversus.Core.Infrastructure
             public const string UserService = "UserService";
         }
 
-        public static readonly Dictionary<QueueType, string> QueueTypeTitles = new Dictionary<QueueType, string>
-                                                                                   {
-                                                                                       { QueueType.Approvement, "Согласование" },
-                                                                                       { QueueType.Taking, "Получение" }
-                                                                                   };
+        public static readonly Dictionary<QueueType, string> QueueTypeTitles =
+            new Dictionary<QueueType, string>
+                {
+                    {QueueType.Approvement, "Согласование"},
+                    {QueueType.Taking, "Получение"}
+                };
 
-        public static readonly Dictionary<QueueType, string> QueueTypeLetters = new Dictionary<QueueType, string>
-                                                                                   {
-                                                                                       { QueueType.Approvement, "A" },
-                                                                                       { QueueType.Taking, "B" }
-                                                                                   };
+        public static readonly Dictionary<QueueType, string> QueueTypeLetters =
+            new Dictionary<QueueType, string>
+                {
+                    {QueueType.Approvement, "A"},
+                    {QueueType.Taking, "B"}
+                };
 
         public const string VipQueueLetter = "C";
     }
