@@ -339,6 +339,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A02E38AFE2F54C4E9A99427891851E46"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A16D6B4A84A406225EBE42E000EB0F4D"
         "OwnerKey" = "8:_E5007D5FEA3041959A46B85BB0FCF63F"
         "MsmSig" = "8:_UNDEFINED"
@@ -647,7 +653,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_26C5E23A_6187_4013_9EAD_CF43DE8975EB"
             "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:/serviceHost=[SERVICEHOST] /terminalHost=[TERMINALHOST] /targetDir=\"[TARGETDIR]\""
+            "CustomActionData" = "8:/serviceHost=[SERVICEHOST] /terminalHost=[TERMINALHOST]"
             }
         }
         "DefaultFeature"
@@ -1106,6 +1112,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A02E38AFE2F54C4E9A99427891851E46"
+            {
+            "SourcePath" = "8:..\\Config\\db.config"
+            "TargetName" = "8:db.config"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A16D6B4A84A406225EBE42E000EB0F4D"
             {
             "AssemblyRegister" = "3:1"
@@ -1349,7 +1375,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:СУО. Сервер"
         "ProductCode" = "8:{F7A721F2-FCEA-4654-9B0A-9B15CC515E55}"
-        "PackageCode" = "8:{152220A2-7EA0-42B3-96B7-3F28DD024476}"
+        "PackageCode" = "8:{784EBC27-D4B6-48A3-819C-A231D7F98AB9}"
         "UpgradeCode" = "8:{B1B5645F-7073-47B5-929C-1C3E3B516557}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
