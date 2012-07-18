@@ -63,6 +63,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.TerminalView.Inst
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Conversus.TerminalSetup", "Conversus.TerminalSetup\Conversus.TerminalSetup.vdproj", "{5FFD128C-8301-4151-9809-010FC37F46BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.ServiceHost.Installer", "Conversus.ServiceHost.Installer\Conversus.ServiceHost.Installer.csproj", "{928EC816-9398-4CE4-9DCF-001EC646DD1C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Conversus.ServiceHostSetup", "Conversus.ServiceHostSetup\Conversus.ServiceHostSetup.vdproj", "{1922E55A-7FF2-4780-A04B-983B7632BFD8}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Conversus.vsmdi
@@ -279,6 +283,22 @@ Global
 		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|Any CPU.ActiveCfg = Release
 		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|Mixed Platforms.ActiveCfg = Release
 		{5FFD128C-8301-4151-9809-010FC37F46BA}.Release|x86.ActiveCfg = Release
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Debug|Any CPU.ActiveCfg = Debug
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Debug|x86.ActiveCfg = Debug
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Release|Any CPU.ActiveCfg = Release
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Release|Mixed Platforms.ActiveCfg = Release
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -300,5 +320,7 @@ Global
 		{B9939412-0622-4B96-9ED0-825918B7F438} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
 		{1F7B75BA-8D97-44F5-AEB9-A8F7822AB3B2} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
 		{5FFD128C-8301-4151-9809-010FC37F46BA} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{928EC816-9398-4CE4-9DCF-001EC646DD1C} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
+		{1922E55A-7FF2-4780-A04B-983B7632BFD8} = {711998AB-9D95-46A6-ACB4-280CFE137A12}
 	EndGlobalSection
 EndGlobal

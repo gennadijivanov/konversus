@@ -15,86 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0CDCF8415F872E04DF3359BC5C321B24"
-        "OwnerKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0CDCF8415F872E04DF3359BC5C321B24"
-        "OwnerKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_B187CCA6C82247F2AC36AF25C53F808F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_6E5D2F3A6933435D8C1419384FECC8E1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "OwnerKey" = "8:_28918DDA102B452A808409C9F431E65B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_28918DDA102B452A808409C9F431E65B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_32515DBACD54467E83AFD668C1C1AC3D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
-        "OwnerKey" = "8:_0CDCF8415F872E04DF3359BC5C321B24"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
-        "OwnerKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,145 +40,73 @@
         "Entry"
         {
         "MsmKey" = "8:_51E759A6CA67D8FC0E8CB1B3E7D4806F"
-        "OwnerKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
+        "OwnerKey" = "8:_831ACB1A6C1448149EF00373AEEFE871"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_51E759A6CA67D8FC0E8CB1B3E7D4806F"
-        "OwnerKey" = "8:_32515DBACD54467E83AFD668C1C1AC3D"
+        "OwnerKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_51E759A6CA67D8FC0E8CB1B3E7D4806F"
+        "OwnerKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6D8D48361B0E2DEF77E8C1E753CC85BA"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E5D2F3A6933435D8C1419384FECC8E1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
+        "MsmKey" = "8:_831ACB1A6C1448149EF00373AEEFE871"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_99BACE486EEF1FC66C706B81863B521E"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
+        "OwnerKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B187CCA6C82247F2AC36AF25C53F808F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
+        "MsmKey" = "8:_99BACE486EEF1FC66C706B81863B521E"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
-        "OwnerKey" = "8:_32515DBACD54467E83AFD668C1C1AC3D"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
-        "OwnerKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
+        "OwnerKey" = "8:_831ACB1A6C1448149EF00373AEEFE871"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
         "OwnerKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E2F0AFEDB6804A18BAEB78A0C58B2ACB"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_32515DBACD54467E83AFD668C1C1AC3D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3346F155F13E4408A72C6B0593BA6784"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0CDCF8415F872E04DF3359BC5C321B24"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_51E759A6CA67D8FC0E8CB1B3E7D4806F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6E5D2F3A6933435D8C1419384FECC8E1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_942E0B63A75B4B9A825BF8B7F66DB13B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_99BACE486EEF1FC66C706B81863B521E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
+        "MsmKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -262,19 +118,49 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E2F0AFEDB6804A18BAEB78A0C58B2ACB"
+        "OwnerKey" = "8:_831ACB1A6C1448149EF00373AEEFE871"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_28918DDA102B452A808409C9F431E65B"
+        "OwnerKey" = "8:_51E759A6CA67D8FC0E8CB1B3E7D4806F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B187CCA6C82247F2AC36AF25C53F808F"
+        "OwnerKey" = "8:_F438E937851345CCBF232BF793EA6FF9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EA5E9EA8A1CD778F0DFA700D0C6AA6BA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_99BACE486EEF1FC66C706B81863B521E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_48C404AD776E2A43E06AF22F5DF10A42"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B409169CA6FA654FA39C6F10CF02F54A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_258F7EB33E888348EBEB6D192B9578B2"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -295,6 +181,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -311,23 +205,31 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_C973FE4BD14E47E3989624B9925B66D8"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_76375F32041D48AD8497CE584DDD76A1"
             {
             "Name" = "8:Основные выходные файлы из Conversus.AdminView.Installer (Активный)"
             "Condition" = "8:"
-            "Object" = "8:_32515DBACD54467E83AFD668C1C1AC3D"
+            "Object" = "8:_831ACB1A6C1448149EF00373AEEFE871"
             "FileType" = "3:1"
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_D36147FC_413A_4680_ADE8_1F3B93F22C00"
+            "Identifier" = "8:_CB121524_9FB7_414C_9B24_1CFC53312B1A"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:/serviceHost=[SERVICEHOST]"
             }
@@ -354,37 +256,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0CDCF8415F872E04DF3359BC5C321B24"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Conversus.TerminalService.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0CDCF8415F872E04DF3359BC5C321B24"
-                    {
-                    "Name" = "8:Conversus.TerminalService.Contract.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Conversus.TerminalService.Contract.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_258F7EB33E888348EBEB6D192B9578B2"
             {
             "AssemblyRegister" = "3:1"
@@ -1434,35 +1305,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_28918DDA102B452A808409C9F431E65B"
-            {
-            "SourcePath" = "8:..\\Conversus.Core.Infrastructure\\obj\\Debug\\Conversus.Core.Infrastructure.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{2E1E9BA4-2C8C-481A-B35E-43FF717E4B43}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_32515DBACD54467E83AFD668C1C1AC3D"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_831ACB1A6C1448149EF00373AEEFE871"
             {
             "SourcePath" = "8:..\\Conversus.AdminView.Installer\\obj\\Debug\\Conversus.AdminView.Installer.dll"
             "TargetName" = "8:"
@@ -1490,63 +1333,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3346F155F13E4408A72C6B0593BA6784"
-            {
-            "SourcePath" = "8:..\\Conversus.Service.Helpers\\obj\\Debug\\Conversus.Service.Helpers.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6E5D2F3A6933435D8C1419384FECC8E1"
-            {
-            "SourcePath" = "8:..\\Conversus.Service.Contract\\obj\\Debug\\Conversus.Service.Contract.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{5BE9C694-8B57-4626-97DB-23175C47E77D}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_942E0B63A75B4B9A825BF8B7F66DB13B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F438E937851345CCBF232BF793EA6FF9"
             {
             "SourcePath" = "8:..\\Conversus.AdminView\\obj\\x86\\Debug\\Conversus.AdminView.exe"
             "TargetName" = "8:"
@@ -1569,62 +1356,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{6B478ECD-375C-409D-846B-5ED8C147AAD7}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B187CCA6C82247F2AC36AF25C53F808F"
-            {
-            "SourcePath" = "8:..\\Conversus.Impl\\obj\\Debug\\Conversus.Impl.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{52F0DBB4-1C44-42FB-938D-71A2DE4BEC61}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E2F0AFEDB6804A18BAEB78A0C58B2ACB"
-            {
-            "SourcePath" = "8:..\\Conversus.Core.DomainModel\\obj\\Debug\\Conversus.Core.DomainModel.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_175F55B02BEB4564BBC48FC0E488C797"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{6358F485-88D8-4093-898B-3A4348D72CC7}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

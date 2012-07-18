@@ -4,7 +4,6 @@ namespace Conversus.Core.Infrastructure
 {
     public class InstallerBase : System.Configuration.Install.Installer
     {
-        //[System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
         public override void Install(IDictionary stateSaver)
         {
             base.Install(stateSaver);
@@ -16,7 +15,6 @@ namespace Conversus.Core.Infrastructure
 
     public class InstallerWithTerminalBase : InstallerBase
     {
-        //[System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
         public override void Install(IDictionary stateSaver)
         {
             base.Install(stateSaver);
