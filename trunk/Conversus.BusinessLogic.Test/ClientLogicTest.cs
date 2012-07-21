@@ -31,7 +31,7 @@ namespace Conversus.BusinessLogic.Test
         [ClassInitialize]
         public static void MyClassInitialize(TestContext testContext)
         {
-            StorageLogicInitializer.Initialize();
+            //StorageLogicInitializer.Initialize();
             BusinessLogicInitializer.Initialize();
         }
         //

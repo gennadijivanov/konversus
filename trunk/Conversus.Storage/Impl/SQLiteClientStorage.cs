@@ -8,20 +8,24 @@ using ClientData = Conversus.Storage.Client;
 
 namespace Conversus.Storage.Impl
 {
-    public class SQLiteClientStorage : IClientStorage
+    public class SQLiteClientStorage : SQLiteStorageBase, IClientStorage
     {
+        public SQLiteClientStorage(string connectionString) : base(connectionString)
+        {
+        }
+
         public void Create(IClient data)
         {
             if (data.PIN.HasValue)
             {
-                var allWithSamePin = Get(new ClientFilterParameters() {PIN = data.PIN.Value});
+                var allWithSamePin = Get(new ClientFilterParameters {PIN = data.PIN.Value});
                 if (allWithSamePin.Count > 0)
                     throw new InvalidOperationException("Client with same PIN already exists");
             }
 
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
-                var client = new ClientData()
+                var client = new ClientData
                                  {
                                      Id = data.Id,
                                      Name = data.Name,
@@ -41,7 +45,7 @@ namespace Conversus.Storage.Impl
 
         public void Update(IClient data)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var dbCl = db.Clients.SingleOrDefault(c => c.Id == data.Id);
 
@@ -65,7 +69,7 @@ namespace Conversus.Storage.Impl
 
         public IClient Get(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var dbCl = db.Clients.SingleOrDefault(c => c.Id == id);
 
@@ -80,7 +84,7 @@ namespace Conversus.Storage.Impl
         {
             ClientFilterParameters f = filter != null ? filter as ClientFilterParameters : null;
 
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 IQueryable<ClientData> query = db.Clients.AsQueryable();
 
@@ -103,7 +107,7 @@ namespace Conversus.Storage.Impl
 
         public void Delete(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var client = db.Clients.SingleOrDefault(c => c.Id == id);
                 if (client != null)

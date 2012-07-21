@@ -23,7 +23,7 @@ namespace Conversus.Service.Host
         {
             InitializeComponent();
 
-            StorageLogicInitializer.Initialize();
+            StorageLogicInitializer.Initialize(Program.GetConnectionString());
             BusinessLogicInitializer.Initialize();
         }
 

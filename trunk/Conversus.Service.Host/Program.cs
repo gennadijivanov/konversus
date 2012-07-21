@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SQLite;
 using System.ServiceModel;
 using Conversus.BusinessLogic;
 using Conversus.Core.Infrastructure;
@@ -20,7 +21,9 @@ namespace Conversus.Service.Host
 
         static void Main(string[] args)
         {
-            StorageLogicInitializer.Initialize();
+            string connectionString = GetConnectionString();
+
+            StorageLogicInitializer.Initialize(connectionString);
             BusinessLogicInitializer.Initialize();
 
             using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
@@ -39,6 +42,20 @@ namespace Conversus.Service.Host
                 queueHost.Close();
                 userHost.Close();
             }
+        }
+
+        public static string GetConnectionString()
+        {
+            const string modelFileName = "ConversusDataModel";
+            const string dbFileName = "conversus.db3";
+
+            var fac = SQLiteFactory.Instance;
+            var connectionStringBuilder = fac.CreateConnectionStringBuilder();
+            connectionStringBuilder.Add("metadata", string.Format("res://*/{0}.csdl|res://*/{0}.ssdl|res://*/{0}.msl", modelFileName));
+            connectionStringBuilder.Add("provider", "System.Data.SQLite");
+            connectionStringBuilder.Add("provider connection string", string.Format("data source={0}", dbFileName));
+
+            return connectionStringBuilder.ToString();
         }
 
         private static ServiceHost CreateServiceHost(Type serviceType, string endpoint)

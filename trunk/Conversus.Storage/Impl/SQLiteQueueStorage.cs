@@ -8,17 +8,21 @@ using QueueData = Conversus.Storage.Queue;
 
 namespace Conversus.Storage.Impl
 {
-    public class SQLiteQueueStorage : IQueueStorage
+    public class SQLiteQueueStorage : SQLiteStorageBase, IQueueStorage
     {
+        public SQLiteQueueStorage(string connectionString) : base(connectionString)
+        {
+        }
+
         public void Create(IQueue data)
         {
             //var allWithSamePin = Get(new QueueFilterParameters() { QueueType = data.Type });
             //if (allWithSamePin.Count > 0)
             //    throw new InvalidOperationException("Client with same PIN already exists");
 
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
-                var client = new QueueData()
+                var client = new QueueData
                                  {
                                      Id = data.Id,
                                      Type = (int) data.Type
@@ -30,7 +34,7 @@ namespace Conversus.Storage.Impl
 
         public void Update(IQueue data)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var dbCl = db.Queues.SingleOrDefault(c => c.Id == data.Id);
 
@@ -44,7 +48,7 @@ namespace Conversus.Storage.Impl
 
         public IQueue Get(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var dbCl = db.Queues.SingleOrDefault(c => c.Id == id);
 
@@ -56,14 +60,14 @@ namespace Conversus.Storage.Impl
 
         public IQueue GetByClient(Guid clientId)
         {
-            return Get(new QueueFilterParameters() { ClientId = clientId }).SingleOrDefault();
+            return Get(new QueueFilterParameters { ClientId = clientId }).SingleOrDefault();
         }
 
         public ICollection<IQueue> Get(IFilterParameters filter)
         {
             QueueFilterParameters f = filter != null ? filter as QueueFilterParameters : null;
 
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 IEnumerable<QueueData> query = db.Queues;
 
@@ -85,7 +89,7 @@ namespace Conversus.Storage.Impl
 
         public void Delete(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var queue = db.Queues.SingleOrDefault(c => c.Id == id);
                 if (queue != null)
