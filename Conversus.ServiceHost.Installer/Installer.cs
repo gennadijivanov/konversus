@@ -13,11 +13,11 @@ namespace Conversus.ServiceHost.Installer
             InitializeComponent();
         }
 
-        public override void Uninstall(IDictionary savedState)
-        {
-            base.Uninstall(savedState);
-            serviceProcessInstaller1.Uninstall(savedState);
-            serviceInstaller1.Uninstall(savedState);
-        }
+        //public override void Uninstall(IDictionary savedState)
+        //{
+        //    base.Uninstall(savedState);
+        //    serviceProcessInstaller1.Uninstall(savedState);
+        //    serviceInstaller1.Uninstall(savedState);
+        //}
     }
 }

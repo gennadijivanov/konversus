@@ -40,11 +40,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Service.Host", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Service.Helpers", "Conversus.Service.Helpers\Conversus.Service.Helpers.csproj", "{E4A9FBDF-75E9-45E7-AFE5-D40D35724B1E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{42833761-481E-489E-9C2E-E2631E9254B2}"
-	ProjectSection(SolutionItems) = preProject
-		Config\db.config = Config\db.config
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.TerminalService.Contract", "Conversus.TerminalService.Contract\Conversus.TerminalService.Contract.csproj", "{D44ED2C9-68DE-402D-B81F-6F764F210309}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Scheduler", "Conversus.Scheduler\Conversus.Scheduler.csproj", "{6843B1CC-EAF2-42CE-AC16-D1C8799F5848}"

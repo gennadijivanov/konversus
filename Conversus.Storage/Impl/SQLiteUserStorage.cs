@@ -8,11 +8,15 @@ using UserData = Conversus.Storage.User;
 
 namespace Conversus.Storage.Impl
 {
-    public class SQLiteUserStorage : IUserStorage
+    public class SQLiteUserStorage : SQLiteStorageBase, IUserStorage
     {
+        public SQLiteUserStorage(string connectionString) : base(connectionString)
+        {
+        }
+
         public void Create(IUser data)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var user = new UserData
                 {
@@ -30,7 +34,7 @@ namespace Conversus.Storage.Impl
 
         public void Update(IUser data)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var user = db.Users.SingleOrDefault(c => c.Id == data.Id);
 
@@ -50,7 +54,7 @@ namespace Conversus.Storage.Impl
 
         public IUser Get(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var dbCl = db.Users.SingleOrDefault(c => c.Id == id);
 
@@ -64,7 +68,7 @@ namespace Conversus.Storage.Impl
         {
             UserFilterParameters f = filter != null ? filter as UserFilterParameters : null;
 
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 IEnumerable<UserData> query = db.Users;
 
@@ -85,7 +89,7 @@ namespace Conversus.Storage.Impl
 
         public void Delete(Guid id)
         {
-            using (var db = new ConversusDataContext())
+            using (var db = GetDataContext())
             {
                 var user = db.Users.SingleOrDefault(c => c.Id == id);
                 if (user != null)
