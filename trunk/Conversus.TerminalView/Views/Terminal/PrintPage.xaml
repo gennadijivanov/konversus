@@ -13,7 +13,7 @@
             Пожалуйста подождите,<LineBreak />
             печатается билет
         </TextBlock>
-        <StackPanel Opacity="0">
+        <StackPanel Opacity="1">
             <local:TicketPrintControl x:Name="ticketView" HorizontalAlignment="Left" Height="350"/>
         </StackPanel>
     </Grid>
