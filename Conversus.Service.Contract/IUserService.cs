@@ -28,5 +28,11 @@ namespace Conversus.Service.Contract
 
         [OperationContract]
         ICollection<UserInfo> GetUsersByQueue(QueueType type);
+
+        [OperationContract]
+        void PauseMaintenance(Guid id);
+
+        [OperationContract]
+        void ReopenMaintenance(Guid id);
     }
 }

@@ -82,7 +82,14 @@ namespace Conversus.OperatorView
                     break;
                 case "pauseButton":
                     servedTimer.Stop();
-                    MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно.");
+                    
+                    ServiceHelper.Instance.UserService.PauseMaintenance(_user.Id);
+
+                    MessageBoxResult pauseMaintenanceMessBoxResult = MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно или нажмите ОК", "Перерыв в работе", MessageBoxButton.OK);
+                    if (pauseMaintenanceMessBoxResult == MessageBoxResult.OK || pauseMaintenanceMessBoxResult == MessageBoxResult.None)
+                    {
+                        ServiceHelper.Instance.UserService.ReopenMaintenance(_user.Id);
+                    }
                     break;
             }
         }

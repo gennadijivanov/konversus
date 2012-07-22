@@ -27,8 +27,8 @@ namespace Conversus.Core.Infrastructure
         public static readonly Dictionary<QueueType, string> QueueTypeTitles =
             new Dictionary<QueueType, string>
                 {
-                    {QueueType.Approvement, "Согласование"},
-                    {QueueType.Taking, "Получение"}
+                    {QueueType.Approvement, "Сдача документов на согласование проектной документации"},
+                    {QueueType.Taking, "Сдача документов на получение технических условий"}
                 };
 
         public static readonly Dictionary<QueueType, string> QueueTypeLetters =
