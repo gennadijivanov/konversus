@@ -59,6 +59,18 @@ namespace Conversus.Service.Impl
             throw new NotImplementedException();
         }
 
+        public void PauseMaintenance(Guid id)
+        {
+            //TODO NOT EMPLEMENTED
+            throw new NotImplementedException();
+        }
+
+        public void ReopenMaintenance(Guid id)
+        {
+            //TODO NOT EMPLEMENTED
+            throw new NotImplementedException();
+        }
+
         private UserInfo ToUserInfo(IUser user)
         {
             if (user == null)
