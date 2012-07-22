@@ -11,5 +11,12 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             InitializeComponent();
         }
+
+        public void setLabels(string serviceNameText, string ticketNumber, string registerDateTime)
+        {
+            serviceNameTextBox.Text = serviceNameText;
+            ticketNumberLabel.Content = ticketNumber;
+            registerDateTimeLabel.Content = registerDateTime;
+        }
     }
 }

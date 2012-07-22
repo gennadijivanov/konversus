@@ -16,13 +16,13 @@ namespace Conversus.TerminalView.Views.Terminal
     {
         private Timer backHomeTimer = new Timer();
         private NavigationService navService = null;
-        private readonly ClientInfo client;
+        private readonly ClientInfo _client;
 
         public PrintPage(ClientInfo client)
         {
             InitializeComponent();
 
-            this.client = client;
+            this._client = client;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -31,11 +31,11 @@ namespace Conversus.TerminalView.Views.Terminal
 
             backHomeTimer.Elapsed += new ElapsedEventHandler(goHomePage);
             backHomeTimer.Interval = 2000;
-            backHomeTimer.Start();            
-            
-            ticketView.serviceNameTextBox.Text = client.Queue.Title;
-            ticketView.ticketNumberLabel.Content = client.Ticket;
-            ticketView.registerDateTimeLabel.Content = client.TakeTicket.Value.ToString();
+            backHomeTimer.Start();
+
+            ticketView.setLabels(_client.Queue.Title, _client.Ticket, _client.TakeTicket.Value.ToString());
+
+            ticketView.UpdateLayout();
 
             printTicket();
         }
