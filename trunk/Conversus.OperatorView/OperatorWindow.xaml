@@ -62,10 +62,10 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Статистика</Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White">
-                        <Label FontWeight="Bold" Margin="5">ОЖ:0/0</Label>
-                        <Label FontWeight="Bold" Margin="5">ОТ:0/0</Label>
+                        <Label Name="waitingLabel" FontWeight="Bold" Margin="5">ОЖ:0/0</Label>
+                        <Label Name="postponedLabel" FontWeight="Bold" Margin="5">ОТ:0/0</Label>
                         <Label FontWeight="Bold" Margin="5">ВД:0/0</Label>
-                        <Label FontWeight="Bold" Margin="5">ДЛ:0/0</Label>
+                        <Label Name="longWaitLabel" FontWeight="Bold" Margin="5">ДЛ:0/0</Label>
                     </StackPanel>
                     <Button Name="pauseButton" Grid.Column="1" Grid.Row="1" Margin="5">Сделать перерыв</Button>
                 </StackPanel>

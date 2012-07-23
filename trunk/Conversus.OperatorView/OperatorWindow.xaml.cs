@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
@@ -27,6 +29,7 @@ namespace Conversus.OperatorView
 
             InitializeComponent();
             initTimer();
+            refreshLabels();
         }
 
         private void initTimer()
@@ -122,6 +125,8 @@ namespace Conversus.OperatorView
                 currentVisitorTextBox.Text = _client.Ticket;
 
                 toggleButtonsEnable(true);
+
+                refreshLabels();
             }
             else
             {
@@ -146,6 +151,25 @@ namespace Conversus.OperatorView
                 MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void refreshLabels()
+        {
+            var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
+
+            if (queueCollection.Count > 0)
+            {
+                var allQueues = ServiceHelper.Instance.QueueService.GetQueues().Count;
+
+                var postponedCount = queueCollection.Count(q => q.Status == ClientStatus.Postponed);
+
+                var oneHourAgo = DateTime.Now.AddHours(-1);
+                var waitingLongCount = queueCollection.Count(q => DateTime.Compare(q.TakeTicket.Value, oneHourAgo) > 0);
+
+                waitingLabel.Content = String.Format("ОЖ:{0}/{1}", queueCollection.Count, allQueues);
+                postponedLabel.Content = String.Format("ОТ:{0}/{1}", postponedCount, allQueues);
+                longWaitLabel.Content = String.Format("ДЛ:{0}/{1}", waitingLongCount, allQueues);
             }
         }
     }
