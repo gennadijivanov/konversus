@@ -71,7 +71,7 @@ namespace Conversus.BusinessLogic.Impl
 
         public IClient CallNextClient(QueueType queue)
         {
-            var client = GetClientsQueue(queue).FirstOrDefault();
+            var client = GetClientsQueue(queue).FirstOrDefault(c => c.Status == ClientStatus.Waiting);
             if (client != null)
                 ChangeStatus(client, ClientStatus.Performing);
             return client;
