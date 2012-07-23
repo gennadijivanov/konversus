@@ -23,6 +23,11 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(id);
         }
 
+        public ICollection<IUser> Get(UserFilterParameters filter)
+        {
+            return Storage.Get(filter);
+        }
+
         public void Create(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))

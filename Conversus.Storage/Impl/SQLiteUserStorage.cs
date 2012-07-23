@@ -47,7 +47,6 @@ namespace Conversus.Storage.Impl
                 user.Window = data.Window;
                 user.QueueId = data.QueueId;
 
-                //TODO: set field of data obj
                 db.SaveChanges();
             }
         }
@@ -79,6 +78,9 @@ namespace Conversus.Storage.Impl
 
                     if (!string.IsNullOrEmpty(f.Password))
                         query = query.Where(u => u.Password == f.Password);
+
+                    if (f.QueueType.HasValue)
+                        query = query.Where(u => u.Queue.Type == (int) f.QueueType.Value);
                 }
 
                 var list = query.ToList();

@@ -36,12 +36,13 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var dbCl = db.Queues.SingleOrDefault(c => c.Id == data.Id);
+                var dbQueue = db.Queues.SingleOrDefault(c => c.Id == data.Id);
 
-                if (dbCl == null)
+                if (dbQueue == null)
                     return;
 
-                //TODO: set field of data obj
+                dbQueue.Type = (int)data.Type;
+
                 db.SaveChanges();
             }
         }

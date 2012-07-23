@@ -62,7 +62,6 @@ namespace Conversus.Storage.Impl
                 dbCl.TakeTicket = data.TakeTicket;
                 dbCl.Ticket = data.Ticket;
 
-                //TODO: set field of data obj
                 db.SaveChanges();
             }
         }
@@ -100,7 +99,6 @@ namespace Conversus.Storage.Impl
                         query = query.Where(c => c.Ticket == f.Ticket);
                 }
 
-                //TODO: set all properties
                 return query.ToList().Select(ConvertFromData).ToList();
             }
         }
@@ -115,11 +113,10 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        //TODO: set all properties
         private IClient ConvertFromData(ClientData data)
         {
             var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.PIN, (ClientStatus)data.Status,
-                              data.Ticket);
+                data.Ticket);
             client.TakeTicket = data.TakeTicket;
             return client;
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using Conversus.BusinessLogic;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 using Conversus.Service.Contract;
 
 namespace Conversus.Service.Impl
@@ -55,8 +56,7 @@ namespace Conversus.Service.Impl
 
         public ICollection<UserInfo> GetUsersByQueue(QueueType type)
         {
-            //TODO NOT EMPLEMENTED
-            throw new NotImplementedException();
+            return UserLogic.Get(new UserFilterParameters() {QueueType = type}).Select(ToUserInfo).ToList();
         }
 
         public void PauseMaintenance(Guid id)

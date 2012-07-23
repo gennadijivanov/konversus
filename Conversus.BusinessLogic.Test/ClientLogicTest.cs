@@ -66,8 +66,8 @@ namespace Conversus.BusinessLogic.Test
         public void ChangeStatusTest()
         {
             IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
-            Guid clientId = new Guid(); // TODO: инициализация подходящего значения
-            ClientStatus status = new ClientStatus(); // TODO: инициализация подходящего значения
+            Guid clientId = new Guid();
+            ClientStatus status = new ClientStatus();
             target.ChangeStatus(clientId, status);
         }
 
@@ -79,7 +79,7 @@ namespace Conversus.BusinessLogic.Test
         {
             IClientLogic target = BusinessLogicFactory.Instance.Get<IClientLogic>();
             string name = "Clent Name";
-            QueueType queueType = new QueueType(); // TODO: инициализация подходящего значения
+            QueueType queueType = new QueueType();
             IClient actual = target.CreateForCommon(name, queueType);
             //Assert.AreEqual(queueType, actual.GetQueue().Type);
             Assert.AreEqual(name, actual.Name);
