@@ -10,7 +10,7 @@
                              AutoReverse="True" 
                              Storyboard.TargetName="callPopupBorder" 
                              From="0" To="1" Duration="0:0:1" />
-        </Storyboard>
+        </Storyboard>      
     </Window.Resources>
     <Grid>
 
