@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
@@ -11,6 +12,7 @@ using System.Windows.Threading;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 using Conversus.TerminalView.Views.Terminal;
+using ListBox = System.Windows.Controls.ListBox;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Conversus.TerminalView
@@ -54,6 +56,13 @@ namespace Conversus.TerminalView
 
                 clientWindowListView.ItemsSource =
                     _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
+
+                clientWindowListView.UpdateLayout();
+
+                if (clientWindowListView != null)
+                {
+                    ClientWindowListViewSourceUpdated(clientWindowListView);
+                }
             }));
         }
 
@@ -77,10 +86,10 @@ namespace Conversus.TerminalView
             }
             else
             {
-                System.Windows.MessageBox.Show("Второй монитор не подключен");
+                MessageBox.Show("Второй монитор не подключен");
             }
 
-            var r = System.Windows.Forms.Screen.AllScreens;
+            var r = Screen.AllScreens;
             checkeForModificationVideoDirectory();
         }
 
@@ -117,7 +126,7 @@ namespace Conversus.TerminalView
             }
             else
             {
-                System.Windows.MessageBox.Show("Директория video пуста или отсутствует");
+                MessageBox.Show("Директория video пуста или отсутствует");
             }
         }
 
@@ -130,15 +139,40 @@ namespace Conversus.TerminalView
         {
             if (e != null && e.Key != Key.Escape) return;
 
-            if (this.WindowState == System.Windows.WindowState.Maximized)
+            if (this.WindowState == WindowState.Maximized)
             {
-                this.WindowState = System.Windows.WindowState.Normal;
-                this.WindowStyle = System.Windows.WindowStyle.ToolWindow;
+                this.WindowState = WindowState.Normal;
+                this.WindowStyle = WindowStyle.ToolWindow;
             }
             else
             {
-                this.WindowState = System.Windows.WindowState.Maximized;
-                this.WindowStyle = System.Windows.WindowStyle.None;
+                this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
+            }
+        }
+
+        private void ClientWindowListViewSourceUpdated(ListBox listBox)
+        {
+            if (listBox.Items.Count > 0)
+            {
+                var item = (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromIndex(0);
+                var animation = new DoubleAnimation
+                                                {
+                                                    From = 1,
+                                                    To = 0,
+                                                    Duration = new Duration(TimeSpan.FromSeconds(2)),
+                                                    BeginTime = TimeSpan.FromSeconds(6),
+                                                    AutoReverse = true,
+                                                    RepeatBehavior = new RepeatBehavior(3)
+                                                };
+
+                var myStoryboard = new Storyboard();
+                myStoryboard.Children.Add(animation);
+
+                Storyboard.SetTarget(animation, item);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(ListBoxItem.OpacityProperty));
+
+                myStoryboard.Begin(item);
             }
         }
     }
