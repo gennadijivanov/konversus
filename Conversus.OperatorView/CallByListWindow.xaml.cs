@@ -14,9 +14,9 @@ namespace Conversus.OperatorView
     {
         private readonly ICollection<ClientInfo> _clientInfos;
         private readonly OperatorWindow _operatorWindow;
-        private readonly UserInfo _user;
+        private readonly OperatorInfo _user;
 
-        public CallByListWindow(ICollection<ClientInfo> queueCollection, OperatorWindow operatorWindow, UserInfo user)
+        public CallByListWindow(ICollection<ClientInfo> queueCollection, OperatorWindow operatorWindow, OperatorInfo user)
         {
             InitializeComponent();
 

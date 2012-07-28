@@ -43,10 +43,10 @@ namespace Conversus.Service.Helpers
             get { return _queueService ?? (_queueService = GetClient<IQueueService>(Constants.Endpoints.QueueService)); }
         }
 
-        private IUserService _userService;
-        public IUserService UserService
+        private IOperatorService _operatorService;
+        public IOperatorService OperatorService
         {
-            get { return _userService ?? (_userService = GetClient<IUserService>(Constants.Endpoints.UserService)); }
+            get { return _operatorService ?? (_operatorService = GetClient<IOperatorService>(Constants.Endpoints.OperatorService)); }
         }
 
         private ITerminalService _terminalService;
@@ -63,7 +63,7 @@ namespace Conversus.Service.Helpers
         {
             ServiceHost = serviceHost;
             _queueService = null;
-            _userService = null;
+            _operatorService = null;
             _сlientService = null;
         }
 

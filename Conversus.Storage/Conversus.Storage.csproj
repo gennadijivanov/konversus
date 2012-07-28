@@ -58,12 +58,12 @@
     <Compile Include="IClientStorage.cs" />
     <Compile Include="Impl\ConversusDataContext.cs" />
     <Compile Include="Impl\SQLiteClientStorage.cs" />
+    <Compile Include="Impl\SQLiteOperatorStorage.cs" />
     <Compile Include="Impl\SQLiteQueueStorage.cs" />
     <Compile Include="Impl\SQLiteStorageBase.cs" />
-    <Compile Include="Impl\SQLiteUserStorage.cs" />
+    <Compile Include="IOperatorStorage.cs" />
     <Compile Include="IQueueStorage.cs" />
     <Compile Include="IStorage.cs" />
-    <Compile Include="IUserStorage.cs" />
     <Compile Include="StorageLogicFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageLogicInitializer.cs" />

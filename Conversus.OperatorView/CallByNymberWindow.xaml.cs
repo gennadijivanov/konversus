@@ -10,9 +10,9 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class CallByNymberWindow : Window
     {
-        private readonly UserInfo _user;
+        private readonly OperatorInfo _user;
 
-        public CallByNymberWindow(UserInfo user)
+        public CallByNymberWindow(OperatorInfo user)
         {
             _user = user;
 

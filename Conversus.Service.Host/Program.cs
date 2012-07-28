@@ -13,7 +13,7 @@ namespace Conversus.Service.Host
     {
         static readonly Type clientServiceType = typeof(ClientService);
         static readonly Type queueServiceType = typeof(QueueService);
-        static readonly Type userServiceType = typeof(UserService);
+        static readonly Type userServiceType = typeof(OperatorService);
 
         private static ServiceHost clientHost;
         private static ServiceHost queueHost;
@@ -28,7 +28,7 @@ namespace Conversus.Service.Host
 
             using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
             using (queueHost = CreateServiceHost(queueServiceType, Constants.Endpoints.QueueService))
-            using (userHost = CreateServiceHost(userServiceType, Constants.Endpoints.UserService))
+            using (userHost = CreateServiceHost(userServiceType, Constants.Endpoints.OperatorService))
             {
                 clientHost.Open();
                 queueHost.Open();

@@ -36,8 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\Client.cs" />
+    <Compile Include="Objects\Operator.cs" />
     <Compile Include="Objects\Queue.cs" />
-    <Compile Include="Objects\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

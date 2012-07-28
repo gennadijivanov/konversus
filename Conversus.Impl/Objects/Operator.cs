@@ -3,7 +3,7 @@ using Conversus.Core.DomainModel;
 
 namespace Conversus.Impl.Objects
 {
-    public class User:IUser
+    public class Operator : IOperator
     {
         public Guid Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace Conversus.Impl.Objects
 
         public string Window { get; set; }
 
-        public User(Guid id, string name, string login, string password, string window, Guid queueId)
+        public Operator(Guid id, string name, string login, string password, string window, Guid queueId)
         {
             Id = id;
             Name = name;

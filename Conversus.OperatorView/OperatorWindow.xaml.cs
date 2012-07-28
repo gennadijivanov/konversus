@@ -21,9 +21,9 @@ namespace Conversus.OperatorView
         private DateTime startTime;
 
         private ClientInfo _client;
-        private readonly UserInfo _user;
+        private readonly OperatorInfo _user;
 
-        public OperatorWindow(UserInfo user)
+        public OperatorWindow(OperatorInfo user)
         {
             _user = user;
 
@@ -86,12 +86,12 @@ namespace Conversus.OperatorView
                 case "pauseButton":
                     servedTimer.Stop();
                     
-                    ServiceHelper.Instance.UserService.PauseMaintenance(_user.Id);
+                    ServiceHelper.Instance.OperatorService.PauseMaintenance(_user.Id);
 
                     MessageBoxResult pauseMaintenanceMessBoxResult = MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно или нажмите ОК", "Перерыв в работе", MessageBoxButton.OK);
                     if (pauseMaintenanceMessBoxResult == MessageBoxResult.OK || pauseMaintenanceMessBoxResult == MessageBoxResult.None)
                     {
-                        ServiceHelper.Instance.UserService.ReopenMaintenance(_user.Id);
+                        ServiceHelper.Instance.OperatorService.ReopenMaintenance(_user.Id);
                     }
                     break;
             }

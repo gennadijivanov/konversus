@@ -15,7 +15,7 @@ namespace Conversus.OperatorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var user = ServiceHelper.Instance.UserService.Authorize(loginTextBox.Text, passwordTextBox.Password);
+            var user = ServiceHelper.Instance.OperatorService.Authorize(loginTextBox.Text, passwordTextBox.Password);
 
             if (user != null)
             {
