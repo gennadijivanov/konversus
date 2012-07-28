@@ -74,7 +74,7 @@ namespace Conversus.OperatorView
                 redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = true;
 
                 var selectedQueueType = (QueueType)((QueueInfo)listBox.SelectedItem).Type;
-                var usersByQueue = ServiceHelper.Instance.UserService.GetUsersByQueue(selectedQueueType);
+                var usersByQueue = ServiceHelper.Instance.OperatorService.GetUsersByQueue(selectedQueueType);
             }
         }
     }

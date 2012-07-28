@@ -2,7 +2,7 @@ using Conversus.Core.DomainModel;
 
 namespace Conversus.Storage
 {
-    public interface IUserStorage : IStorage<IUser>
+    public interface IOperatorStorage : IStorage<IOperator>
     {
         
     }

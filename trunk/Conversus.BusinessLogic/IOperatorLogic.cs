@@ -5,13 +5,13 @@ using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.BusinessLogic
 {
-    public interface IUserLogic
+    public interface IOperatorLogic
     {
-        ICollection<IUser> GetAllUsers();
+        ICollection<IOperator> GetAllUsers();
 
-        IUser Get(Guid id);
+        IOperator Get(Guid id);
 
-        ICollection<IUser> Get(UserFilterParameters filter);
+        ICollection<IOperator> Get(UserFilterParameters filter);
 
         void Create(Guid id, string name, string login, string password, string window, QueueType queueType);
 
@@ -21,6 +21,6 @@ namespace Conversus.BusinessLogic
 
         void SetWindow(Guid id, string window);
 
-        IUser Authorize(string login, string password);
+        IOperator Authorize(string login, string password);
     }
 }

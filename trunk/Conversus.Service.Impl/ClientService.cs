@@ -26,10 +26,10 @@ namespace Conversus.Service.Impl
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
         }
 
-        private IUserLogic _userLogic;
-        private IUserLogic UserLogic
+        private IOperatorLogic _userLogic;
+        private IOperatorLogic UserLogic
         {
-            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IUserLogic>()); }
+            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IOperatorLogic>()); }
         }
 
         private ITerminalService TerminalService
@@ -131,12 +131,12 @@ namespace Conversus.Service.Impl
                                      PerformEnd = client.PerformEnd,
                                      Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
                                      User = client.UserId.HasValue 
-                                         ? UserService.ToUserInfo(UserLogic.Get(client.UserId.Value))
+                                         ? OperatorService.ToUserInfo(UserLogic.Get(client.UserId.Value))
                                          : null
                                  };
 
             if (userId.HasValue)
-                clientInfo.User = UserService.ToUserInfo(UserLogic.Get(userId.Value));
+                clientInfo.User = OperatorService.ToUserInfo(UserLogic.Get(userId.Value));
 
             return clientInfo;
         }

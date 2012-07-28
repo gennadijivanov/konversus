@@ -13,7 +13,7 @@ namespace Conversus.Service.Host
     {
         readonly Type _clientServiceType = typeof(ClientService);
         readonly Type _queueServiceType = typeof(QueueService);
-        readonly Type _userServiceType = typeof(UserService);
+        readonly Type _userServiceType = typeof(OperatorService);
 
         private ServiceHost _clientHost;
         private ServiceHost _queueHost;
@@ -31,7 +31,7 @@ namespace Conversus.Service.Host
         {
             _clientHost = CreateServiceHost(_clientServiceType, Constants.Endpoints.ClientService);
             _queueHost = CreateServiceHost(_queueServiceType, Constants.Endpoints.QueueService);
-            _userHost = CreateServiceHost(_userServiceType, Constants.Endpoints.UserService);
+            _userHost = CreateServiceHost(_userServiceType, Constants.Endpoints.OperatorService);
         }
 
         protected override void OnStop()

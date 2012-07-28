@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
-using UserImpl = Conversus.Impl.Objects.User;
+using UserImpl = Conversus.Impl.Objects.Operator;
 using UserData = Conversus.Storage.Operators;
 
 namespace Conversus.Storage.Impl
 {
-    public class SQLiteUserStorage : SQLiteStorageBase, IUserStorage
+    public class SQLiteOperatorStorage : SQLiteStorageBase, IOperatorStorage
     {
-        public SQLiteUserStorage(string connectionString) : base(connectionString)
+        public SQLiteOperatorStorage(string connectionString) : base(connectionString)
         {
         }
 
-        public void Create(IUser data)
+        public void Create(IOperator data)
         {
             using (var db = GetDataContext())
             {
@@ -32,7 +32,7 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public void Update(IUser data)
+        public void Update(IOperator data)
         {
             using (var db = GetDataContext())
             {
@@ -51,7 +51,7 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public IUser Get(Guid id)
+        public IOperator Get(Guid id)
         {
             using (var db = GetDataContext())
             {
@@ -63,7 +63,7 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public ICollection<IUser> Get(IFilterParameters filter)
+        public ICollection<IOperator> Get(IFilterParameters filter)
         {
             UserFilterParameters f = filter != null ? filter as UserFilterParameters : null;
 
@@ -99,7 +99,7 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        private IUser ConvertFromData(UserData data)
+        private IOperator ConvertFromData(UserData data)
         {
             return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.Window, data.QueueId);
         }

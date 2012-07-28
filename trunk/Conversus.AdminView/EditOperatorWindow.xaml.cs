@@ -13,9 +13,9 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class EditOperatorWindow : Window
     {
-        private UserInfo _client;
+        private OperatorInfo _client;
 
-        public EditOperatorWindow(UserInfo client)
+        public EditOperatorWindow(OperatorInfo client)
         {
             InitializeComponent();
 
@@ -48,7 +48,7 @@ namespace Conversus.AdminView
                 if (_client == null) {
                     clientId = new Guid();
 
-                    ServiceHelper.Instance.UserService.Create(nameTextBox.Text, loginTextBox.Text, passTextBox.Text,
+                    ServiceHelper.Instance.OperatorService.Create(nameTextBox.Text, loginTextBox.Text, passTextBox.Text,
                                                               windowTextBox.Text,
                                                               (QueueType)
                                                               ((QueueInfo) queueTypeComboBox.SelectedItem).Type);
@@ -56,7 +56,7 @@ namespace Conversus.AdminView
                 else
                 {
                     clientId = _client.Id; 
-                    ServiceHelper.Instance.UserService.Save(clientId,
+                    ServiceHelper.Instance.OperatorService.Save(clientId,
                     nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
                     (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
                 }

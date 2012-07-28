@@ -2,7 +2,7 @@ using System;
 
 namespace Conversus.Core.DomainModel
 {
-    public interface IUser : IEntity
+    public interface IOperator : IEntity
     {
         string Name { get; set; }
 

@@ -4,25 +4,25 @@ using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Storage;
-using User = Conversus.Impl.Objects.User;
+using User = Conversus.Impl.Objects.Operator;
 
 namespace Conversus.BusinessLogic.Impl
 {
-    public class UserLogic : IUserLogic
+    public class OperatorLogic : IOperatorLogic
     {
-        private readonly IUserStorage Storage = StorageLogicFactory.Instance.Get<IUserStorage>();
+        private readonly IOperatorStorage Storage = StorageLogicFactory.Instance.Get<IOperatorStorage>();
 
-        public ICollection<IUser> GetAllUsers()
+        public ICollection<IOperator> GetAllUsers()
         {
             return Storage.Get(new QueueFilterParameters());
         }
 
-        public IUser Get(Guid id)
+        public IOperator Get(Guid id)
         {
             return Storage.Get(id);
         }
 
-        public ICollection<IUser> Get(UserFilterParameters filter)
+        public ICollection<IOperator> Get(UserFilterParameters filter)
         {
             return Storage.Get(filter);
         }
@@ -38,7 +38,7 @@ namespace Conversus.BusinessLogic.Impl
             password = GetMD5Hash(password);
 
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            IUser user = new User(id, name, login, password, window, queue.Id);
+            IOperator user = new User(id, name, login, password, window, queue.Id);
 
             Storage.Create(user);
         }
@@ -73,7 +73,7 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Update(user);
         }
 
-        public IUser Authorize(string login, string password)
+        public IOperator Authorize(string login, string password)
         {
             password = GetMD5Hash(password);
             return Storage.Get(new UserFilterParameters() {Login = login, Password = password}).SingleOrDefault();

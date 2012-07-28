@@ -3,7 +3,7 @@ using System;
 namespace Conversus.Service.Contract
 {
     [Serializable]
-    public class UserInfo
+    public class OperatorInfo
     {
         public Guid Id { get; set; }
 

@@ -46,7 +46,7 @@ namespace Conversus.AdminView
         private void dellButton_Click(object sender, RoutedEventArgs e)
         {
             if (operatorListGrid.SelectedItem != null)
-                ServiceHelper.Instance.UserService.Delete(((UserInfo)operatorListGrid.SelectedItem).Id);
+                ServiceHelper.Instance.OperatorService.Delete(((OperatorInfo)operatorListGrid.SelectedItem).Id);
         }
 
         private void operatorListGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -70,7 +70,7 @@ namespace Conversus.AdminView
 
         private void ReloadOperatorsList()
         {
-            ICollection<UserInfo> users = ServiceHelper.Instance.UserService.GetAllUsers();
+            ICollection<OperatorInfo> users = ServiceHelper.Instance.OperatorService.GetAllUsers();
             operatorListGrid.ItemsSource = users;
         }
 
@@ -78,7 +78,7 @@ namespace Conversus.AdminView
         {
             if (operatorListGrid.SelectedItem != null)
             {
-                var editWindow = new EditOperatorWindow((UserInfo)operatorListGrid.SelectedItem);
+                var editWindow = new EditOperatorWindow((OperatorInfo)operatorListGrid.SelectedItem);
                 editWindow.Closed += insertOperatorWindow_Closed;
                 editWindow.Show();
             }

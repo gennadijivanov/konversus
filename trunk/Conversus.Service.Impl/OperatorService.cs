@@ -10,12 +10,12 @@ using Conversus.Service.Contract;
 namespace Conversus.Service.Impl
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
-    public class UserService : IUserService
+    public class OperatorService : IOperatorService
     {
-        private IUserLogic _userLogic;
-        private IUserLogic UserLogic
+        private IOperatorLogic _userLogic;
+        private IOperatorLogic UserLogic
         {
-            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IUserLogic>()); }
+            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IOperatorLogic>()); }
         }
 
         private static IQueueLogic _queueLogic;
@@ -24,12 +24,12 @@ namespace Conversus.Service.Impl
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
         }
 
-        public ICollection<UserInfo> GetAllUsers()
+        public ICollection<OperatorInfo> GetAllUsers()
         {
             return UserLogic.GetAllUsers().Select(ToUserInfo).ToList();
         }
 
-        public UserInfo Get(Guid id)
+        public OperatorInfo Get(Guid id)
         {
             return ToUserInfo(UserLogic.Get(id));
         }
@@ -49,12 +49,12 @@ namespace Conversus.Service.Impl
             UserLogic.Delete(id);
         }
 
-        public UserInfo Authorize(string login, string password)
+        public OperatorInfo Authorize(string login, string password)
         {
             return ToUserInfo(UserLogic.Authorize(login, password));
         }
 
-        public ICollection<UserInfo> GetUsersByQueue(QueueType type)
+        public ICollection<OperatorInfo> GetUsersByQueue(QueueType type)
         {
             return UserLogic.Get(new UserFilterParameters() {QueueType = type}).Select(ToUserInfo).ToList();
         }
@@ -71,14 +71,14 @@ namespace Conversus.Service.Impl
             throw new NotImplementedException();
         }
 
-        public static UserInfo ToUserInfo(IUser user)
+        public static OperatorInfo ToUserInfo(IOperator user)
         {
             if (user == null)
                 return null;
 
             var queue = QueueLogic.Get(user.QueueId);
 
-            return new UserInfo()
+            return new OperatorInfo()
                        {
                            Id = user.Id,
                            Name = user.Name,

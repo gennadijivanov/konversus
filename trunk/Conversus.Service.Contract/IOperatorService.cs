@@ -6,13 +6,13 @@ using Conversus.Core.DomainModel;
 namespace Conversus.Service.Contract
 {
     [ServiceContract]
-    public interface IUserService
+    public interface IOperatorService
     {
         [OperationContract]
-        ICollection<UserInfo> GetAllUsers();
+        ICollection<OperatorInfo> GetAllUsers();
 
         [OperationContract]
-        UserInfo Get(Guid id);
+        OperatorInfo Get(Guid id);
 
         [OperationContract]
         void Create(string name, string login, string password, string window, QueueType queueType);
@@ -24,10 +24,10 @@ namespace Conversus.Service.Contract
         void Delete(Guid id);
 
         [OperationContract]
-        UserInfo Authorize(string login, string password);
+        OperatorInfo Authorize(string login, string password);
 
         [OperationContract]
-        ICollection<UserInfo> GetUsersByQueue(QueueType type);
+        ICollection<OperatorInfo> GetUsersByQueue(QueueType type);
 
         [OperationContract]
         void PauseMaintenance(Guid id);
