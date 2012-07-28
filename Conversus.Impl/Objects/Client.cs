@@ -23,6 +23,8 @@ namespace Conversus.Impl.Objects
 
         public Guid QueueId { get; set; }
 
+        public Guid? UserId { get; set; }
+
         public Guid Id { get; set; }
 
         public Client(Guid id, string name, Guid queueId, DateTime bookingTime, int? pin, ClientStatus status, string ticket)

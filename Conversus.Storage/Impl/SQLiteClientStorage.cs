@@ -4,7 +4,7 @@ using System.Linq;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.DomainModel;
 using ClientImpl = Conversus.Impl.Objects.Client;
-using ClientData = Conversus.Storage.Client;
+using ClientData = Conversus.Storage.Clients;
 
 namespace Conversus.Storage.Impl
 {

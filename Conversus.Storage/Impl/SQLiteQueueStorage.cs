@@ -4,7 +4,7 @@ using System.Linq;
 using Conversus.Core.Infrastructure.Repository;
 using Conversus.Core.DomainModel;
 using QueueImpl = Conversus.Impl.Objects.Queue;
-using QueueData = Conversus.Storage.Queue;
+using QueueData = Conversus.Storage.Queues;
 
 namespace Conversus.Storage.Impl
 {
