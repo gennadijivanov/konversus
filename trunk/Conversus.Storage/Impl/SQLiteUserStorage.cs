@@ -4,7 +4,7 @@ using System.Linq;
 using Conversus.Core.DomainModel;
 using Conversus.Core.Infrastructure.Repository;
 using UserImpl = Conversus.Impl.Objects.User;
-using UserData = Conversus.Storage.User;
+using UserData = Conversus.Storage.Operators;
 
 namespace Conversus.Storage.Impl
 {
@@ -27,7 +27,7 @@ namespace Conversus.Storage.Impl
                     Window = data.Window,
                     QueueId = data.QueueId
                 };
-                db.AddToUsers(user);
+                db.AddToOperators(user);
                 db.SaveChanges();
             }
         }
@@ -36,7 +36,7 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var user = db.Users.SingleOrDefault(c => c.Id == data.Id);
+                var user = db.Operators.SingleOrDefault(c => c.Id == data.Id);
 
                 if (user == null)
                     return;
@@ -55,7 +55,7 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var dbCl = db.Users.SingleOrDefault(c => c.Id == id);
+                var dbCl = db.Operators.SingleOrDefault(c => c.Id == id);
 
                 return dbCl == null
                     ? null
@@ -69,7 +69,7 @@ namespace Conversus.Storage.Impl
 
             using (var db = GetDataContext())
             {
-                IEnumerable<UserData> query = db.Users;
+                IEnumerable<UserData> query = db.Operators;
 
                 if (f != null)
                 {
@@ -80,7 +80,7 @@ namespace Conversus.Storage.Impl
                         query = query.Where(u => u.Password == f.Password);
 
                     if (f.QueueType.HasValue)
-                        query = query.Where(u => u.Queue.Type == (int) f.QueueType.Value);
+                        query = query.Where(u => u.Queues.Type == (int) f.QueueType.Value);
                 }
 
                 var list = query.ToList();
@@ -93,9 +93,9 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var user = db.Users.SingleOrDefault(c => c.Id == id);
+                var user = db.Operators.SingleOrDefault(c => c.Id == id);
                 if (user != null)
-                    db.Users.DeleteObject(user);
+                    db.Operators.DeleteObject(user);
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,8 +9,6 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Conversus.Service.Contract;
-using Conversus.Service.Helpers;
-using Conversus.TerminalView.Views.Terminal;
 using ListBox = System.Windows.Controls.ListBox;
 using MessageBox = System.Windows.MessageBox;
 
@@ -35,9 +32,9 @@ namespace Conversus.TerminalView
         }
 
         private readonly string VIDEO_DIRECTORY_PATH = Path.GetDirectoryName("Content/video/");
-        private string[] fileEntries;
-        private int currentIndex = 0;
-        private DateTime lastChangeDirectory;
+        private string[] _fileEntries;
+        private int _currentIndex = 0;
+        private DateTime _lastChangeDirectory;
 
         private readonly List<ClientInfo> _queue = new List<ClientInfo>();
 
@@ -107,22 +104,22 @@ namespace Conversus.TerminalView
         {
             var currentChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
 
-            if (lastChangeDirectory == null || lastChangeDirectory != currentChangeDirectory)
+            if (_lastChangeDirectory == null || _lastChangeDirectory != currentChangeDirectory)
             {
-                lastChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
-                fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH, "*.wmv");
-                currentIndex = 0;
+                _lastChangeDirectory = Directory.GetLastWriteTime(VIDEO_DIRECTORY_PATH);
+                _fileEntries = Directory.GetFiles(VIDEO_DIRECTORY_PATH, "*.wmv");
+                _currentIndex = 0;
             }
 
-            if (fileEntries.Length > 0)
+            if (_fileEntries.Length > 0)
             {
-                backgroundVideo.Source = new Uri(fileEntries[currentIndex], UriKind.Relative);
+                backgroundVideo.Source = new Uri(_fileEntries[_currentIndex], UriKind.Relative);
                 backgroundVideo.Play();
 
-                if (currentIndex < fileEntries.Length - 1)
-                    currentIndex++;
+                if (_currentIndex < _fileEntries.Length - 1)
+                    _currentIndex++;
                 else
-                    currentIndex = 0;
+                    _currentIndex = 0;
             }
             else
             {
