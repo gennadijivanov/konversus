@@ -26,6 +26,8 @@ namespace Conversus.Service.Contract
 
         public QueueInfo Queue { get; set; }
 
+        public UserInfo User { get; set; }
+
         /// <summary>
         /// Окно оператора. Только для уже вызванных
         /// </summary>

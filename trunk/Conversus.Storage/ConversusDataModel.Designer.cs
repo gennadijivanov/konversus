@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("conversusModel", "FK_Clients_0_0", "Queues", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Conversus.Storage.Queue), "Clients", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Conversus.Storage.Client), true)]
 [assembly: EdmRelationshipAttribute("conversusModel", "FK_Users_0_0", "Queues", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Conversus.Storage.Queue), "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Conversus.Storage.User), true)]
+[assembly: EdmRelationshipAttribute("conversusModel", "UserClient", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Conversus.Storage.User), "Client", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Conversus.Storage.Client))]
 
 #endregion
 
@@ -428,6 +429,30 @@ namespace Conversus.Storage
         private Nullable<global::System.DateTime> _TakeTicket;
         partial void OnTakeTicketChanging(Nullable<global::System.DateTime> value);
         partial void OnTakeTicketChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UserId;
+        partial void OnUserIdChanging(Nullable<global::System.Guid> value);
+        partial void OnUserIdChanged();
 
         #endregion
     
@@ -467,6 +492,44 @@ namespace Conversus.Storage
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Queue>("conversusModel.FK_Clients_0_0", "Queues", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("conversusModel", "UserClient", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("conversusModel.UserClient", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("conversusModel.UserClient", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("conversusModel.UserClient", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("conversusModel.UserClient", "User", value);
                 }
             }
         }
@@ -819,6 +882,28 @@ namespace Conversus.Storage
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Queue>("conversusModel.FK_Users_0_0", "Queues", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("conversusModel", "UserClient", "Client")]
+        public EntityCollection<Client> Clients
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Client>("conversusModel.UserClient", "Client");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Client>("conversusModel.UserClient", "Client", value);
                 }
             }
         }

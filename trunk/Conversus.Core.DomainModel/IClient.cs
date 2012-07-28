@@ -62,5 +62,7 @@ namespace Conversus.Core.DomainModel
         string Ticket { get; set; }
 
         Guid QueueId { get; set; }
+
+        Guid? UserId { get; set; }
     }
 }
