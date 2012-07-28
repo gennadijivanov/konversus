@@ -20,8 +20,8 @@ namespace Conversus.Service.Impl
             get { return _clientLogic ?? (_clientLogic = BusinessLogicFactory.Instance.Get<IClientLogic>()); }
         }
 
-        private IQueueLogic _queueLogic;
-        private IQueueLogic QueueLogic
+        private static IQueueLogic _queueLogic;
+        private static IQueueLogic QueueLogic
         {
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
         }
@@ -103,7 +103,7 @@ namespace Conversus.Service.Impl
             return info;
         }
 
-        public ClientInfo ChangeQueue(Guid clientId, string name, QueueType queueType)
+        public ClientInfo ChangeQueue(Guid clientId, Guid userId)
         {
             //TODO NOT IMPLEMENTED
             throw new NotImplementedException();
@@ -129,7 +129,10 @@ namespace Conversus.Service.Impl
                                      TakeTicket = client.TakeTicket,
                                      PerformStart = client.PerformStart,
                                      PerformEnd = client.PerformEnd,
-                                     Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type))
+                                     Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
+                                     User = client.UserId.HasValue 
+                                         ? UserService.ToUserInfo(UserLogic.Get(client.UserId.Value))
+                                         : null
                                  };
 
             if (userId.HasValue)

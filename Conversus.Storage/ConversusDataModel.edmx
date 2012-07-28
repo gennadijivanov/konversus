@@ -92,6 +92,10 @@
             <End Role="Queues" EntitySet="Queues" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="UserClient" Association="conversusModel.UserClient">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -108,6 +112,8 @@
           <Property Name="BookingTime" Type="DateTime" Nullable="false" />
           <Property Name="TakeTicket" Type="DateTime" />
           <NavigationProperty Name="Queue" Relationship="conversusModel.FK_Clients_0_0" FromRole="Clients" ToRole="Queues" />
+          <Property Type="Guid" Name="UserId" Nullable="true" />
+          <NavigationProperty Name="User" Relationship="conversusModel.UserClient" FromRole="Client" ToRole="User" />
         </EntityType>
         <EntityType Name="Queue">
           <Key>
@@ -129,6 +135,7 @@
           <Property Name="QueueId" Type="Guid" Nullable="false" />
           <Property Name="Window" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Queue" Relationship="conversusModel.FK_Users_0_0" FromRole="Users" ToRole="Queues" />
+          <NavigationProperty Name="Clients" Relationship="conversusModel.UserClient" FromRole="User" ToRole="Client" />
         </EntityType>
         <Association Name="FK_Clients_0_0">
           <End Role="Queues" Type="conversusModel.Queue" Multiplicity="1" />
@@ -153,6 +160,10 @@
               <PropertyRef Name="QueueId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="UserClient">
+          <End Type="conversusModel.User" Role="User" Multiplicity="1" />
+          <End Type="conversusModel.Client" Role="Client" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -205,17 +216,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ConversusDataModel">
-        <EntityTypeShape EntityType="conversusModel.Client" Width="1.5" PointX="3" PointY="1.125" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Client" Width="1.5" PointX="3" PointY="1.125" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="conversusModel.Queue" Width="1.5" PointX="0.75" PointY="3.375" Height="1.7879850260416657" IsExpanded="true" />
-        <EntityTypeShape EntityType="conversusModel.User" Width="1.5" PointX="3" PointY="5" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.User" Width="1.5" PointX="6.875" PointY="5" Height="2.5571907552083326" IsExpanded="true" />
         <AssociationConnector Association="conversusModel.FK_Clients_0_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.8170475260416667" />
-          <ConnectorPoint PointX="3" PointY="3.8170475260416667" />
+          <ConnectorPoint PointX="2.25" PointY="3.9131982421875" />
+          <ConnectorPoint PointX="3" PointY="3.9131982421875" />
         </AssociationConnector>
         <AssociationConnector Association="conversusModel.FK_Users_0_0" ManuallyRouted="false">
           <ConnectorPoint PointX="1.5" PointY="5.1629850260416656" />
-          <ConnectorPoint PointX="1.5" PointY="6.2639376744791662" />
-          <ConnectorPoint PointX="3" PointY="6.2639376744791662" />
+          <ConnectorPoint PointX="1.5" PointY="6.3600883906249983" />
+          <ConnectorPoint PointX="6.875" PointY="6.3600883906249983" />
+        </AssociationConnector>
+        <AssociationConnector Association="conversusModel.UserClient">
+          <ConnectorPoint PointX="6.875" PointY="5.7582242731119777" />
+          <ConnectorPoint PointX="3.75" PointY="5.7582242731119777" />
+          <ConnectorPoint PointX="3.75" PointY="4.6436979166666656" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

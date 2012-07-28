@@ -14,7 +14,6 @@ namespace Conversus.BusinessLogic.Impl
 
         public ICollection<IUser> GetAllUsers()
         {
-            //TODO: filters
             return Storage.Get(new QueueFilterParameters());
         }
 

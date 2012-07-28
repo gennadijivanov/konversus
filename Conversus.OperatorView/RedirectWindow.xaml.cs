@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Conversus.Core.DomainModel;
@@ -52,10 +53,9 @@ namespace Conversus.OperatorView
         {
             if (employeeList.SelectedItem != null && queueList.SelectedItem != null)
             {
-                //TODO: метод перенаправления передать туда селектед айтемы и отправить на нижний уровень
                 var selectedQueueType = (QueueType)((QueueInfo)queueList.SelectedItem).Type;
-                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, employeeList.SelectedItem.ToString(),
-                                                                 selectedQueueType);
+                //TODO: get operator Id
+                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, Guid.NewGuid());
 
                 this.Close();
             }
