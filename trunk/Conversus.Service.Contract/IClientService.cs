@@ -31,16 +31,16 @@ namespace Conversus.Service.Contract
         ICollection<ClientInfo> GetClientsQueue(QueueType queue);
 
         [OperationContract]
-        ClientInfo CallNextClient(QueueType queue);
+        ClientInfo CallNextClient(QueueType queue, Guid userId);
 
         [OperationContract]
-        void CallClient(Guid id);
+        void CallClient(Guid id, Guid userId);
 
         [OperationContract]
         void Postpone(Guid id);
 
         [OperationContract]
-        ClientInfo CallClientByTicket(string ticket);
+        ClientInfo CallClientByTicket(string ticket, Guid userId);
 
         [OperationContract]
         ClientInfo ChangeQueue(Guid clientId, string name, QueueType queueType);

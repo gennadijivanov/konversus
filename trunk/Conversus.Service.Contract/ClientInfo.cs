@@ -29,7 +29,7 @@ namespace Conversus.Service.Contract
         /// <summary>
         /// Окно оператора. Только для уже вызванных
         /// </summary>
-        public string Window { get; set; }
+        public UserInfo User { get; set; }
 
         public bool IsVip
         {

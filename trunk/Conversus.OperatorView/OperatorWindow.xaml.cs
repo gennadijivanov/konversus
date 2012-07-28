@@ -21,7 +21,7 @@ namespace Conversus.OperatorView
         private DateTime startTime;
 
         private ClientInfo _client;
-        private UserInfo _user;
+        private readonly UserInfo _user;
 
         public OperatorWindow(UserInfo user)
         {
@@ -65,7 +65,7 @@ namespace Conversus.OperatorView
                     break;
                 case "repeatButton":
                     if (_client != null)
-                        ServiceHelper.Instance.ClientService.CallClient(_user.Id);
+                        ServiceHelper.Instance.ClientService.CallClient(_client.Id, _user.Id);
                     break;
                 case "redirectButton":
                     var redirect = new RedirectWindow(_client);
@@ -75,12 +75,12 @@ namespace Conversus.OperatorView
                     refreshTimer();
                     break;
                 case "callByNumberButton":
-                    var callByNumberWindow = new CallByNymberWindow();
+                    var callByNumberWindow = new CallByNymberWindow(_user);
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
                     var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
-                    var callByListWindow = new CallByListWindow(queueCollection, this);
+                    var callByListWindow = new CallByListWindow(queueCollection, this, _user);
                     callByListWindow.Show();
                     break;
                 case "pauseButton":
@@ -109,11 +109,10 @@ namespace Conversus.OperatorView
 
         public void refreshTimer()
         {
-            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type);
+            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
 
             if (_client != null)
             {
-
                 initTimer();
                 pauseButton.IsEnabled = false;
 

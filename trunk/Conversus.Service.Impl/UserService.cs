@@ -18,8 +18,8 @@ namespace Conversus.Service.Impl
             get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IUserLogic>()); }
         }
 
-        private IQueueLogic _queueLogic;
-        private IQueueLogic QueueLogic
+        private static IQueueLogic _queueLogic;
+        private static IQueueLogic QueueLogic
         {
             get { return _queueLogic ?? (_queueLogic = BusinessLogicFactory.Instance.Get<IQueueLogic>()); }
         }
@@ -71,7 +71,7 @@ namespace Conversus.Service.Impl
             throw new NotImplementedException();
         }
 
-        private UserInfo ToUserInfo(IUser user)
+        public static UserInfo ToUserInfo(IUser user)
         {
             if (user == null)
                 return null;

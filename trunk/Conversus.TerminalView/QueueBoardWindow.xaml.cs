@@ -52,10 +52,10 @@ namespace Conversus.TerminalView
                 var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
                 if (storyBoard != null) storyBoard.Begin();
 
-                callPopupLabel.Content = client.Ticket + " => " + client.Window;
+                callPopupLabel.Content = client.Ticket + " => " + client.User.CurrentWindow;
 
                 clientWindowListView.ItemsSource =
-                    _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
+                    _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow }).Take(7);
 
                 clientWindowListView.UpdateLayout();
 
@@ -71,7 +71,7 @@ namespace Conversus.TerminalView
             _queue.Remove(client);
 
             clientWindowListView.ItemsSource =
-                _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Window }).Take(7);
+                _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow }).Take(7);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -157,14 +157,14 @@ namespace Conversus.TerminalView
             {
                 var item = (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromIndex(0);
                 var animation = new DoubleAnimation
-                                                {
-                                                    From = 1,
-                                                    To = 0,
-                                                    Duration = new Duration(TimeSpan.FromSeconds(2)),
-                                                    BeginTime = TimeSpan.FromSeconds(6),
-                                                    AutoReverse = true,
-                                                    RepeatBehavior = new RepeatBehavior(3)
-                                                };
+                                    {
+                                        From = 1,
+                                        To = 0,
+                                        Duration = new Duration(TimeSpan.FromSeconds(2)),
+                                        BeginTime = TimeSpan.FromSeconds(6),
+                                        AutoReverse = true,
+                                        RepeatBehavior = new RepeatBehavior(3)
+                                    };
 
                 var myStoryboard = new Storyboard();
                 myStoryboard.Children.Add(animation);
