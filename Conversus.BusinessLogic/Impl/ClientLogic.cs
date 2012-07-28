@@ -86,14 +86,14 @@ namespace Conversus.BusinessLogic.Impl
 
         private string GetTicket(QueueType queueType, bool isVip)
         {
-            var clients = GetClients(queueType).Select(c=>c.TakeTicket).ToList();
+            var clients = GetClients(queueType).Select(c => c.TakeTicket).ToList();
                 
-            int     clientsCount = clients
+            int clientsCount = clients
                 .Count(c => c.HasValue && c.Value.Date == DateTime.Today);
 
             string ticket = string.Format("{0} {1}",
-                                          isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],
-                                          clientsCount + 1);
+                isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],
+                clientsCount + 1);
             return ticket;
         }
 

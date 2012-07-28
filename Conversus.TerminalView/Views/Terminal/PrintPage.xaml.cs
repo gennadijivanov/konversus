@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using Conversus.Service.Contract;
-using Conversus.Service.Helpers;
 
 namespace Conversus.TerminalView.Views.Terminal
 {
@@ -14,7 +13,7 @@ namespace Conversus.TerminalView.Views.Terminal
     /// </summary>
     public partial class PrintPage : Page
     {
-        private Timer backHomeTimer = new Timer();
+        private readonly Timer backHomeTimer = new Timer();
         private NavigationService navService = null;
         private readonly ClientInfo _client;
 
@@ -39,7 +38,6 @@ namespace Conversus.TerminalView.Views.Terminal
 
             printTicket();
         }
-
 
         private void printTicket()
         {

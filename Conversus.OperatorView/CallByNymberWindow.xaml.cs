@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
@@ -9,8 +10,12 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class CallByNymberWindow : Window
     {
-        public CallByNymberWindow()
+        private readonly UserInfo _user;
+
+        public CallByNymberWindow(UserInfo user)
         {
+            _user = user;
+
             InitializeComponent();
         }
 
@@ -24,7 +29,7 @@ namespace Conversus.OperatorView
 
                 if (!string.IsNullOrWhiteSpace(ticketString))
                 {
-                    var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString);
+                    var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString, _user.Id);
                     if (client != null)
                         Close();
                     else
