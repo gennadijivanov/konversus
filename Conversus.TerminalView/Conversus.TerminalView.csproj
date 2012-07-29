@@ -161,6 +161,7 @@
     <Resource Include="Content\images\logo\printLogo.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Content\images\icons\icon.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

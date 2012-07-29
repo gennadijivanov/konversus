@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
         Title="Перенаправление посетителя" Height="400" Width="700" ResizeMode="NoResize"
-        Loaded="Window_Loaded" ButtonBase.Click="Window_Click">
+        Loaded="Window_Loaded" ButtonBase.Click="Window_Click" Icon="/Content/images/icons/icon.png">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
         <!--Когда будут данные сделать автоматическое заполнение через биндинг!-->

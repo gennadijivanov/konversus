@@ -154,6 +154,7 @@
     <Resource Include="Content\images\bg\background_2.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Content\images\icons\icon.png" />
     <Content Include="libs\WPFToolkit.Extended.dll" />
   </ItemGroup>
   <ItemGroup>
