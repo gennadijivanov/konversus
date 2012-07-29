@@ -85,7 +85,7 @@ namespace Conversus.OperatorView
                     break;
                 case "pauseButton":
                     servedTimer.Stop();
-                    
+
                     ServiceHelper.Instance.OperatorService.PauseMaintenance(_user.Id);
 
                     MessageBoxResult pauseMaintenanceMessBoxResult = MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно или нажмите ОК", "Перерыв в работе", MessageBoxButton.OK);
@@ -105,6 +105,8 @@ namespace Conversus.OperatorView
             toggleButtonsEnable(false);
             if (!pauseButton.IsEnabled)
                 pauseButton.IsEnabled = true;
+
+            _client = null;
         }
 
         public void refreshTimer()
@@ -140,16 +142,30 @@ namespace Conversus.OperatorView
             servedButton.IsEnabled = enable;
             repeatButton.IsEnabled = enable;
             redirectButton.IsEnabled = enable;
+
+            enable = !enable;
+
+            callByListButton.IsEnabled = enable;
+            callByNumberButton.IsEnabled = enable;
+            callVisitorButton.IsEnabled = enable;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var currentWindow = (Window)sender;
 
-            if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение",
-                MessageBoxButton.YesNo) == MessageBoxResult.No)
+            if (_client != null)
             {
                 e.Cancel = true;
+                MessageBox.Show("Нельзя закрыть программу, без завершения обслуживания клиента.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение",
+                MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
