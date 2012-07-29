@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
         Title="Пульт оператора электронной очереди" ResizeMode="NoResize" 
         MinWidth="300" Width="300" Height="580"
-        ButtonBase.Click="Window_Click" Closing="Window_Closing">
+        ButtonBase.Click="Window_Click" Closing="Window_Closing" Icon="/Content/images/icons/icon.png">
     <Grid HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
