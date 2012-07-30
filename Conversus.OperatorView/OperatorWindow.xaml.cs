@@ -180,7 +180,7 @@ namespace Conversus.OperatorView
                 var postponedCount = queueCollection.Count(q => q.Status == ClientStatus.Postponed);
 
                 var oneHourAgo = DateTime.Now.AddHours(-1);
-                var waitingLongCount = queueCollection.Count(q => DateTime.Compare(q.TakeTicket.Value, oneHourAgo) > 0);
+                var waitingLongCount = queueCollection.Count(q => DateTime.Compare(q.ChangeTime, oneHourAgo) > 0);
 
                 waitingLabel.Content = String.Format("ОЖ:{0}/{1}", queueCollection.Count, allQueues);
                 postponedLabel.Content = String.Format("ОТ:{0}/{1}", postponedCount, allQueues);

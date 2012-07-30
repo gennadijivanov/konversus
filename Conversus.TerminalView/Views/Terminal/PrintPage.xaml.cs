@@ -32,7 +32,7 @@ namespace Conversus.TerminalView.Views.Terminal
             backHomeTimer.Interval = 2000;
             backHomeTimer.Start();
 
-            ticketView.setLabels(_client.Queue.Title, _client.Ticket, _client.TakeTicket.Value.ToString());
+            ticketView.setLabels(_client.Queue.Title, _client.Ticket, DateTime.Now.ToString());
 
             ticketView.UpdateLayout();
 

@@ -23,7 +23,6 @@ namespace Conversus.BusinessLogic.Impl
 
             IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null,
                                         ClientStatus.Waiting, ticket);
-            client.TakeTicket = DateTime.Now;
             Storage.Create(client);
             return client;
         }
@@ -64,7 +63,8 @@ namespace Conversus.BusinessLogic.Impl
                 .Where(c => c.Status == ClientStatus.Waiting || c.Status == ClientStatus.Postponed)
                 .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
                 .OrderBy(c => c.IsVip)
-                .ThenBy(c => c.Client.TakeTicket)
+                //TODO: !!!
+                //.ThenBy(c => c.Client.TakeTicket)
                 .Select(c => c.Client)
                 .ToList();
         }
@@ -86,10 +86,11 @@ namespace Conversus.BusinessLogic.Impl
 
         private string GetTicket(QueueType queueType, bool isVip)
         {
-            var clients = GetClients(queueType).Select(c => c.TakeTicket).ToList();
+            var clients = GetClients(queueType);
                 
             int clientsCount = clients
-                .Count(c => c.HasValue && c.Value.Date == DateTime.Today);
+                //TODO: date!!!
+                .Count(c => c.Status != ClientStatus.Registered && c.BookingTime.Date == DateTime.Today);
 
             string ticket = string.Format("{0} {1}",
                 isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],
@@ -100,28 +101,11 @@ namespace Conversus.BusinessLogic.Impl
         private void ChangeStatus(IClient client, ClientStatus status)
         {
             client.Status = status;
-            switch (status)
+            if (status == ClientStatus.Waiting)
             {
-                case ClientStatus.Registered:
-                case ClientStatus.Postponed:
-                    break;
-                case ClientStatus.Performing:
-                    client.PerformStart = DateTime.Now;
-                    break;
-                case ClientStatus.Waiting:
-                    client.TakeTicket = DateTime.Now;
-                    client.Ticket = GetTicket(
-                        StorageLogicFactory.Instance.Get<IQueueStorage>().Get(client.QueueId).Type,
-                        client.PIN.HasValue);
-                    break;
-                case ClientStatus.Done:
-                    client.PerformEnd = DateTime.Now;
-                    break;
-                case ClientStatus.Absent:
-                    client.PerformEnd = DateTime.Now;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("status");
+                client.Ticket = GetTicket(
+                    StorageLogicFactory.Instance.Get<IQueueStorage>().Get(client.QueueId).Type,
+                    client.PIN.HasValue);
             }
             Storage.Update(client);
         }

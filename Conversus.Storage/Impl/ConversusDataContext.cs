@@ -1,6 +1,6 @@
 ﻿namespace Conversus.Storage.Impl
 {
-    public class ConversusDataContext : conversusEntities
+    public class ConversusDataContext : Entities
     {
         public ConversusDataContext(string connectionString) : base(connectionString)
         {

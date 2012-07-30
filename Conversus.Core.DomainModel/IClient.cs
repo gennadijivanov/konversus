@@ -43,17 +43,9 @@ namespace Conversus.Core.DomainModel
         /// </summary>
         DateTime BookingTime { get; set; }
         /// <summary>
-        /// время получения талона
+        /// время изменения объекта
         /// </summary>
-        DateTime? TakeTicket { get; set; }
-        /// <summary>
-        /// время начала обработки оператором
-        /// </summary>
-        DateTime? PerformStart { get; set; }
-        /// <summary>
-        /// время окончания обработки оператором
-        /// </summary>
-        DateTime? PerformEnd { get; set; }
+        DateTime ChangeTime { get; set; }
 
         ClientStatus Status { get; set; }
 
