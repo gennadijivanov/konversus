@@ -118,6 +118,7 @@ namespace Conversus.Service.Impl
 
             var queue = QueueLogic.Get(client.QueueId);
 
+            //todo: history
             var clientInfo = new ClientInfo
                                  {
                                      Id = client.Id,
@@ -126,9 +127,6 @@ namespace Conversus.Service.Impl
                                      Status = client.Status,
                                      Ticket = client.Ticket,
                                      BookingTime = client.BookingTime,
-                                     TakeTicket = client.TakeTicket,
-                                     PerformStart = client.PerformStart,
-                                     PerformEnd = client.PerformEnd,
                                      Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
                                      User = client.UserId.HasValue 
                                          ? OperatorService.ToUserInfo(UserLogic.Get(client.UserId.Value))

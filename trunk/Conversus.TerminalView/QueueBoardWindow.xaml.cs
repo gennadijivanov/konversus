@@ -51,8 +51,7 @@ namespace Conversus.TerminalView
 
                 callPopupLabel.Content = client.Ticket + " => " + client.User.CurrentWindow;
 
-                clientWindowListView.ItemsSource =
-                    _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow }).Take(7);
+                SetQueueData();
 
                 clientWindowListView.UpdateLayout();
 
@@ -63,12 +62,18 @@ namespace Conversus.TerminalView
             }));
         }
 
+        private void SetQueueData()
+        {
+            //todo: get from service
+            clientWindowListView.ItemsSource =
+                _queue.Select(c => new {Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow}).Take(7);
+        }
+
         public void RemovePerformed(ClientInfo client)
         {
             _queue.Remove(client);
 
-            clientWindowListView.ItemsSource =
-                _queue.OrderByDescending(c => c.PerformStart).Select(c => new { Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow }).Take(7);
+            SetQueueData();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -25,6 +25,7 @@
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ChangeStatusTime" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
@@ -32,10 +33,8 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="PIN" Type="int" />
           <Property Name="Ticket" Type="nvarchar" MaxLength="500" />
-          <Property Name="PerformStart" Type="datetime" />
-          <Property Name="PerformEnd" Type="datetime" />
+          <Property Name="ChangeStatusTime" Type="datetime" Nullable="false" />
           <Property Name="BookingTime" Type="datetime" Nullable="false" />
-          <Property Name="TakeTicket" Type="datetime" />
           <Property Name="OperatorId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Operators">
@@ -97,7 +96,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="conversusModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="conversusEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="conversusModel.Clients" />
           <EntitySet Name="Operators" EntityType="conversusModel.Operators" />
           <EntitySet Name="Queues" EntityType="conversusModel.Queues" />
@@ -117,6 +116,7 @@
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ChangeStatusTime" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
@@ -124,10 +124,8 @@
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="PIN" Type="Int32" />
           <Property Name="Ticket" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="PerformStart" Type="DateTime" />
-          <Property Name="PerformEnd" Type="DateTime" />
+          <Property Name="ChangeStatusTime" Type="DateTime" Nullable="false" />
           <Property Name="BookingTime" Type="DateTime" Nullable="false" />
-          <Property Name="TakeTicket" Type="DateTime" />
           <Property Name="OperatorId" Type="Guid" />
           <NavigationProperty Name="Operators" Relationship="conversusModel.FK_Clients_0_0" FromRole="Clients" ToRole="Operators" />
           <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Clients_1_0" FromRole="Clients" ToRole="Queues" />
@@ -195,7 +193,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="conversusModelStoreContainer" CdmEntityContainer="conversusEntities">
+        <EntityContainerMapping StorageEntityContainer="conversusModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Clients"><EntityTypeMapping TypeName="conversusModel.Clients"><MappingFragment StoreEntitySet="Clients">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
@@ -203,10 +201,8 @@
             <ScalarProperty Name="Status" ColumnName="Status" />
             <ScalarProperty Name="PIN" ColumnName="PIN" />
             <ScalarProperty Name="Ticket" ColumnName="Ticket" />
-            <ScalarProperty Name="PerformStart" ColumnName="PerformStart" />
-            <ScalarProperty Name="PerformEnd" ColumnName="PerformEnd" />
+            <ScalarProperty Name="ChangeStatusTime" ColumnName="ChangeStatusTime" />
             <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
-            <ScalarProperty Name="TakeTicket" ColumnName="TakeTicket" />
             <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Operators"><EntityTypeMapping TypeName="conversusModel.Operators"><MappingFragment StoreEntitySet="Operators">
@@ -242,22 +238,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ConversusDataModel">
-        <EntityTypeShape EntityType="conversusModel.Clients" Width="1.5" PointX="5.25" PointY="5.125" Height="3.5186979166666665" IsExpanded="true" />
-        <EntityTypeShape EntityType="conversusModel.Operators" Width="1.5" PointX="3" PointY="7.625" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="conversusModel.Queues" Width="1.5" PointX="0.75" PointY="3.625" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Clients" Width="1.5" PointX="5.25" PointY="4.875" Height="3.1340950520833344" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Operators" Width="1.5" PointX="3" PointY="7" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Queues" Width="1.5" PointX="0.75" PointY="3.5" Height="1.7879850260416657" IsExpanded="true" />
         <AssociationConnector Association="conversusModel.FK_Clients_0_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="8.1343489583333337" />
-          <ConnectorPoint PointX="5.25" PointY="8.1343489583333337" />
+          <ConnectorPoint PointX="4.5" PointY="7.5045475260416676" />
+          <ConnectorPoint PointX="5.25" PointY="7.5045475260416676" />
         </AssociationConnector>
         <AssociationConnector Association="conversusModel.FK_Clients_1_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="4.3749994999999995" />
-          <ConnectorPoint PointX="6" PointY="4.3749994999999995" />
-          <ConnectorPoint PointX="6" PointY="5.125" />
+          <ConnectorPoint PointX="2.25" PointY="5.0814925130208328" />
+          <ConnectorPoint PointX="5.25" PointY="5.0814925130208328" />
         </AssociationConnector>
         <AssociationConnector Association="conversusModel.FK_Operators_0_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="5.4129850260416656" />
-          <ConnectorPoint PointX="1.5" PointY="8.9035953776041659" />
-          <ConnectorPoint PointX="3" PointY="8.9035953776041659" />
+          <ConnectorPoint PointX="1.5" PointY="5.2879850260416656" />
+          <ConnectorPoint PointX="1.5" PointY="8.2785953776041659" />
+          <ConnectorPoint PointX="3" PointY="8.2785953776041659" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

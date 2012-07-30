@@ -31,32 +31,32 @@ namespace Conversus.Storage
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
-    public partial class conversusEntities : ObjectContext
+    public partial class Entities : ObjectContext
     {
         #region Конструкторы
     
         /// <summary>
-        /// Инициализирует новый объект conversusEntities, используя строку соединения из раздела "conversusEntities" файла конфигурации приложения.
+        /// Инициализирует новый объект Entities, используя строку соединения из раздела "Entities" файла конфигурации приложения.
         /// </summary>
-        public conversusEntities() : base("name=conversusEntities", "conversusEntities")
+        public Entities() : base("name=Entities", "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Инициализация нового объекта conversusEntities.
+        /// Инициализация нового объекта Entities.
         /// </summary>
-        public conversusEntities(string connectionString) : base(connectionString, "conversusEntities")
+        public Entities(string connectionString) : base(connectionString, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Инициализация нового объекта conversusEntities.
+        /// Инициализация нового объекта Entities.
         /// </summary>
-        public conversusEntities(EntityConnection connection) : base(connection, "conversusEntities")
+        public Entities(EntityConnection connection) : base(connection, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -172,14 +172,16 @@ namespace Conversus.Storage
         /// <param name="name">Исходное значение свойства Name.</param>
         /// <param name="queueId">Исходное значение свойства QueueId.</param>
         /// <param name="status">Исходное значение свойства Status.</param>
+        /// <param name="changeStatusTime">Исходное значение свойства ChangeStatusTime.</param>
         /// <param name="bookingTime">Исходное значение свойства BookingTime.</param>
-        public static Clients CreateClients(global::System.Guid id, global::System.String name, global::System.Guid queueId, global::System.Int32 status, global::System.DateTime bookingTime)
+        public static Clients CreateClients(global::System.Guid id, global::System.String name, global::System.Guid queueId, global::System.Int32 status, global::System.DateTime changeStatusTime, global::System.DateTime bookingTime)
         {
             Clients clients = new Clients();
             clients.Id = id;
             clients.Name = name;
             clients.QueueId = queueId;
             clients.Status = status;
+            clients.ChangeStatusTime = changeStatusTime;
             clients.BookingTime = bookingTime;
             return clients;
         }
@@ -337,50 +339,29 @@ namespace Conversus.Storage
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> PerformStart
+        public global::System.DateTime ChangeStatusTime
         {
             get
             {
-                return _PerformStart;
+                return _ChangeStatusTime;
             }
             set
             {
-                OnPerformStartChanging(value);
-                ReportPropertyChanging("PerformStart");
-                _PerformStart = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PerformStart");
-                OnPerformStartChanged();
+                if (_ChangeStatusTime != value)
+                {
+                    OnChangeStatusTimeChanging(value);
+                    ReportPropertyChanging("ChangeStatusTime");
+                    _ChangeStatusTime = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ChangeStatusTime");
+                    OnChangeStatusTimeChanged();
+                }
             }
         }
-        private Nullable<global::System.DateTime> _PerformStart;
-        partial void OnPerformStartChanging(Nullable<global::System.DateTime> value);
-        partial void OnPerformStartChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> PerformEnd
-        {
-            get
-            {
-                return _PerformEnd;
-            }
-            set
-            {
-                OnPerformEndChanging(value);
-                ReportPropertyChanging("PerformEnd");
-                _PerformEnd = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PerformEnd");
-                OnPerformEndChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _PerformEnd;
-        partial void OnPerformEndChanging(Nullable<global::System.DateTime> value);
-        partial void OnPerformEndChanged();
+        private global::System.DateTime _ChangeStatusTime;
+        partial void OnChangeStatusTimeChanging(global::System.DateTime value);
+        partial void OnChangeStatusTimeChanged();
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -405,30 +386,6 @@ namespace Conversus.Storage
         private global::System.DateTime _BookingTime;
         partial void OnBookingTimeChanging(global::System.DateTime value);
         partial void OnBookingTimeChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> TakeTicket
-        {
-            get
-            {
-                return _TakeTicket;
-            }
-            set
-            {
-                OnTakeTicketChanging(value);
-                ReportPropertyChanging("TakeTicket");
-                _TakeTicket = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TakeTicket");
-                OnTakeTicketChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _TakeTicket;
-        partial void OnTakeTicketChanging(Nullable<global::System.DateTime> value);
-        partial void OnTakeTicketChanged();
     
         /// <summary>
         /// Нет доступной документации по метаданным.

@@ -32,11 +32,9 @@ namespace Conversus.Storage.Impl
                                      PIN = data.PIN,
                                      QueueId = data.QueueId,
                                      Status = (int) data.Status,
+                                     ChangeStatusTime = DateTime.Now,
                                      BookingTime = data.BookingTime,
-                                     TakeTicket = data.TakeTicket,
-                                     Ticket = data.Ticket,
-                                     PerformStart = data.PerformStart,
-                                     PerformEnd = data.PerformEnd
+                                     Ticket = data.Ticket
                                  };
                 db.AddToClients(client);
                 db.SaveChanges();
@@ -55,13 +53,12 @@ namespace Conversus.Storage.Impl
                 dbCl.BookingTime = data.BookingTime;
                 dbCl.Name = data.Name;
                 dbCl.PIN = data.PIN;
-                dbCl.PerformEnd = data.PerformEnd;
-                dbCl.PerformStart = data.PerformStart;
                 dbCl.QueueId = data.QueueId;
                 dbCl.Status = (int)data.Status;
-                dbCl.TakeTicket = data.TakeTicket;
                 dbCl.Ticket = data.Ticket;
+                dbCl.ChangeStatusTime = DateTime.Now;
 
+                db.AddToClients(dbCl);
                 db.SaveChanges();
             }
         }
@@ -70,7 +67,7 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var dbCl = db.Clients.SingleOrDefault(c => c.Id == id);
+                var dbCl = db.Clients.OrderByDescending(c => c.ChangeStatusTime).FirstOrDefault(c => c.Id == id);
 
                 if (dbCl == null)
                     return null;
@@ -98,7 +95,8 @@ namespace Conversus.Storage.Impl
                     if (!string.IsNullOrEmpty(f.Ticket))
                         query = query.Where(c => c.Ticket == f.Ticket);
                 }
-
+                
+                //todo: dubles
                 return query.ToList().Select(ConvertFromData).ToList();
             }
         }
@@ -107,17 +105,21 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var client = db.Clients.SingleOrDefault(c => c.Id == id);
-                if (client != null)
-                    db.Clients.DeleteObject(client);
+                var client = db.Clients.Where(c => c.Id == id);
+                if (!client.Any())
+                    return;
+                
+                foreach (Clients clientRecord in client)
+                {
+                    db.Clients.DeleteObject(clientRecord);
+                }
             }
         }
 
         private IClient ConvertFromData(ClientData data)
         {
-            var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.PIN, (ClientStatus)data.Status,
-                data.Ticket);
-            client.TakeTicket = data.TakeTicket;
+            var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, 
+                data.PIN, (ClientStatus)data.Status, data.Ticket);
             return client;
         }
     }

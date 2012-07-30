@@ -9,11 +9,7 @@ namespace Conversus.Impl.Objects
 
         public DateTime BookingTime { get; set; }
 
-        public DateTime? TakeTicket { get; set; }
-
-        public DateTime? PerformStart { get; set; }
-
-        public DateTime? PerformEnd { get; set; }
+        public DateTime ChangeTime { get; set; }
 
         public ClientStatus Status { get; set; }
 
