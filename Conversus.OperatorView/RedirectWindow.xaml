@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Conversus.OperatorView.Views.BackGrounds"
-        Title="Перенаправление посетителя" Height="400" Width="700" ResizeMode="NoResize"
+        Title="Перенаправление посетителя" Height="460" Width="700" ResizeMode="NoResize"
         Loaded="Window_Loaded" ButtonBase.Click="Window_Click" Icon="/Content/images/icons/icon.png">
     <Grid>
         <local:DefaultBackGround></local:DefaultBackGround>
@@ -20,6 +20,9 @@
                 <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Stretch">
                     <Label>Список очередей:</Label>
                     <ListBox Name="queueList" Margin="10" Height="200" SelectionMode="Single" SelectionChanged="list_SelectionChanged"></ListBox>
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="С учетом ожидания по данной услуге" IsChecked="True"/>
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="Поместить в самое начало очереди" />
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="Поместить в конец очереди" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
                     <Label>Список сотрудников:</Label>
