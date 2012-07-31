@@ -43,6 +43,6 @@ namespace Conversus.Service.Contract
         ClientInfo CallClientByTicket(string ticket, Guid userId);
 
         [OperationContract]
-        ClientInfo ChangeQueue(Guid clientId, Guid userId);
+        void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
     }
 }

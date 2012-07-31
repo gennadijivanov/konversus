@@ -29,5 +29,7 @@ namespace Conversus.BusinessLogic
         IClient CallNextClient(QueueType queue);
 
         IClient Get(Guid id);
+
+        IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
     }
 }

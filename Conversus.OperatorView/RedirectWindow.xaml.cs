@@ -55,7 +55,7 @@ namespace Conversus.OperatorView
             {
                 var selectedQueueType = (QueueType)((QueueInfo)queueList.SelectedItem).Type;
                 //TODO: get operator Id
-                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, Guid.NewGuid());
+                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, Guid.NewGuid(), SortPriority.Common);
 
                 this.Close();
             }

@@ -22,7 +22,7 @@ namespace Conversus.BusinessLogic.Impl
             var ticket = GetTicket(queueType, false);
 
             IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null,
-                                        ClientStatus.Waiting, ticket);
+                                        ClientStatus.Waiting, SortPriority.Common, ticket);
             Storage.Create(client);
             return client;
         }
@@ -31,7 +31,7 @@ namespace Conversus.BusinessLogic.Impl
         {
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
             IClient client = new Client(Guid.NewGuid(), name, queue.Id, bookingTime, pin, ClientStatus.Registered,
-                                        "");
+                                        SortPriority.Vip, "");
             Storage.Create(client);
             return client;
         }
@@ -52,20 +52,17 @@ namespace Conversus.BusinessLogic.Impl
         public ICollection<IClient> GetClients(QueueType queueType)
         {
             var queue =
-                StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters()
-                                                                          {QueueType = queueType}).Single();
-            return Storage.Get(new ClientFilterParameters() {QueueId = queue.Id});
+                StorageLogicFactory.Instance.Get<IQueueStorage>().Get(new QueueFilterParameters {QueueType = queueType})
+                    .Single();
+            return Storage.Get(new ClientFilterParameters {QueueId = queue.Id});
         }
 
         public ICollection<IClient> GetClientsQueue(QueueType queue)
         {
             return GetClients(queue)
                 .Where(c => c.Status == ClientStatus.Waiting || c.Status == ClientStatus.Postponed)
-                .Select(c => new {IsVip = c.PIN.HasValue, Client = c})
-                .OrderBy(c => c.IsVip)
-                //TODO: !!!
-                //.ThenBy(c => c.Client.TakeTicket)
-                .Select(c => c.Client)
+                .OrderByDescending(c => c.SortPriority)
+                .ThenByDescending(c => c.ChangeTime)
                 .ToList();
         }
 
@@ -80,6 +77,11 @@ namespace Conversus.BusinessLogic.Impl
         public IClient Get(Guid id)
         {
             return Storage.Get(id);
+        }
+
+        public IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
+        {
+            Storage.ChangeQueue(clientId, targetOperatorId, sortPriority);
         }
 
         #endregion

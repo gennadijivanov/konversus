@@ -35,6 +35,14 @@ namespace Conversus.Core.DomainModel
         Absent = 6
     }
 
+    public enum SortPriority
+    {
+        Common,
+        LowerVip,
+        Vip,
+        HigherVip
+    }
+
     public interface IClient : IEntity
     {
         string Name { get; set; }
@@ -55,6 +63,8 @@ namespace Conversus.Core.DomainModel
 
         Guid QueueId { get; set; }
 
-        Guid? UserId { get; set; }
+        Guid? OperatorId { get; set; }
+
+        SortPriority SortPriority { get; set; }
     }
 }

@@ -25,11 +25,8 @@ namespace Conversus.Service.Contract
         /// <summary>
         /// Окно оператора. Только для уже вызванных
         /// </summary>
-        public OperatorInfo User { get; set; }
+        public OperatorInfo Operator { get; set; }
 
-        public bool IsVip
-        {
-            get { return PIN.HasValue; }
-        }
+        public SortPriority SortPriority { get; set; }
     }
 }

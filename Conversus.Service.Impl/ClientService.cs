@@ -103,10 +103,9 @@ namespace Conversus.Service.Impl
             return info;
         }
 
-        public ClientInfo ChangeQueue(Guid clientId, Guid userId)
+        public void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
         {
-            //TODO NOT IMPLEMENTED
-            throw new NotImplementedException();
+            ClientLogic.ChangeQueue(clientId, targetOperatorId, sortPriority);
         }
 
         #endregion
@@ -118,7 +117,6 @@ namespace Conversus.Service.Impl
 
             var queue = QueueLogic.Get(client.QueueId);
 
-            //todo: history
             var clientInfo = new ClientInfo
                                  {
                                      Id = client.Id,
@@ -128,13 +126,13 @@ namespace Conversus.Service.Impl
                                      Ticket = client.Ticket,
                                      BookingTime = client.BookingTime,
                                      Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
-                                     User = client.UserId.HasValue 
-                                         ? OperatorService.ToUserInfo(UserLogic.Get(client.UserId.Value))
+                                     Operator = client.OperatorId.HasValue 
+                                         ? OperatorService.ToUserInfo(UserLogic.Get(client.OperatorId.Value))
                                          : null
                                  };
 
             if (userId.HasValue)
-                clientInfo.User = OperatorService.ToUserInfo(UserLogic.Get(userId.Value));
+                clientInfo.Operator = OperatorService.ToUserInfo(UserLogic.Get(userId.Value));
 
             return clientInfo;
         }

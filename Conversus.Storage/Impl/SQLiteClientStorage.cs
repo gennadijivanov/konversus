@@ -57,6 +57,7 @@ namespace Conversus.Storage.Impl
                 dbCl.Status = (int)data.Status;
                 dbCl.Ticket = data.Ticket;
                 dbCl.ChangeStatusTime = DateTime.Now;
+                dbCl.SortPriority = (int)data.SortPriority;
 
                 db.AddToClients(dbCl);
                 db.SaveChanges();
@@ -95,9 +96,9 @@ namespace Conversus.Storage.Impl
                     if (!string.IsNullOrEmpty(f.Ticket))
                         query = query.Where(c => c.Ticket == f.Ticket);
                 }
-                
-                //todo: dubles
-                return query.ToList().Select(ConvertFromData).ToList();
+
+                var lookUp = query.ToLookup(c => c.Id, c => c);
+                return lookUp.Select(client => ConvertFromData(client.OrderByDescending(c => c.ChangeStatusTime).First())).ToList();
             }
         }
 
@@ -116,10 +117,31 @@ namespace Conversus.Storage.Impl
             }
         }
 
+        public IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
+        {
+            using (var db = GetDataContext())
+            {
+                var dbCl = db.Clients.OrderByDescending(c => c.ChangeStatusTime).FirstOrDefault(c => c.Id == clientId);
+
+                if (dbCl == null)
+                    return null;
+
+                dbCl.OperatorId = targetOperatorId;
+                dbCl.QueueId = db.Operators.Single(o => o.Id == targetOperatorId).QueueId;
+                dbCl.SortPriority = (int)sortPriority;
+                dbCl.ChangeStatusTime = DateTime.Now;
+
+                db.AddToClients(dbCl);
+                db.SaveChanges();
+
+                return ConvertFromData(dbCl);
+            }
+        }
+        
         private IClient ConvertFromData(ClientData data)
         {
             var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, 
-                data.PIN, (ClientStatus)data.Status, data.Ticket);
+                data.PIN, (ClientStatus)data.Status, (SortPriority)data.SortPriority, data.Ticket);
             return client;
         }
     }
