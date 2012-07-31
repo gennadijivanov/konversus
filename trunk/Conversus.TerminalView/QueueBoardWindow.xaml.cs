@@ -50,7 +50,7 @@ namespace Conversus.TerminalView
                 var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
                 if (storyBoard != null) storyBoard.Begin();
 
-                callPopupLabel.Content = client.Ticket + " => " + client.User.CurrentWindow;
+                callPopupLabel.Content = client.Ticket + " => " + client.Operator.CurrentWindow;
 
                 SetQueueData();
 
@@ -67,7 +67,7 @@ namespace Conversus.TerminalView
         {
             //todo: get from service
             clientWindowListView.ItemsSource =
-                _queue.Select(c => new {Ticket = c.Ticket, OperatorWindow = c.User.CurrentWindow}).Take(7);
+                _queue.Select(c => new {Ticket = c.Ticket, OperatorWindow = c.Operator.CurrentWindow}).Take(7);
         }
 
         public void RemovePerformed(ClientInfo client)
