@@ -30,10 +30,6 @@ namespace Conversus.OperatorView
             InitializeComponent();
             initTimer();
             refreshLabels();
-
-            //TODO: KILL IT/ONLY FOR TEST
-            var redirect = new RedirectWindow(_client);
-            redirect.Show();
         }
 
         private void initTimer()
