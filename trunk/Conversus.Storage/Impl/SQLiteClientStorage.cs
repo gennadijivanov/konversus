@@ -32,7 +32,7 @@ namespace Conversus.Storage.Impl
                                      PIN = data.PIN,
                                      QueueId = data.QueueId,
                                      Status = (int) data.Status,
-                                     ChangeStatusTime = DateTime.Now,
+                                     ChangeStatusTime = data.ChangeTime,
                                      BookingTime = data.BookingTime,
                                      Ticket = data.Ticket
                                  };
@@ -143,7 +143,7 @@ namespace Conversus.Storage.Impl
         
         private IClient ConvertFromData(ClientData data)
         {
-            var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, 
+            var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.ChangeStatusTime,
                 data.PIN, (ClientStatus)data.Status, (SortPriority)data.SortPriority, data.Ticket);
             return client;
         }

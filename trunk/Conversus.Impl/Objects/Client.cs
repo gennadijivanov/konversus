@@ -25,7 +25,7 @@ namespace Conversus.Impl.Objects
 
         public Guid Id { get; set; }
 
-        public Client(Guid id, string name, Guid queueId, DateTime bookingTime, int? pin, ClientStatus status, SortPriority sortPriority, string ticket)
+        public Client(Guid id, string name, Guid queueId, DateTime bookingTime, DateTime changeTime, int? pin, ClientStatus status, SortPriority sortPriority, string ticket)
         {
             Id = id;
             QueueId = queueId;
@@ -35,6 +35,7 @@ namespace Conversus.Impl.Objects
             Status = status;
             Ticket = ticket;
             SortPriority = sortPriority;
+            ChangeTime = changeTime;
         }
     }
 }

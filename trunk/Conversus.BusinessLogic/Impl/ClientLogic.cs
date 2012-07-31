@@ -21,7 +21,7 @@ namespace Conversus.BusinessLogic.Impl
 
             var ticket = GetTicket(queueType, false);
 
-            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, null,
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, DateTime.MinValue, DateTime.Now, null,
                                         ClientStatus.Waiting, SortPriority.Common, ticket);
             Storage.Create(client);
             return client;
@@ -30,7 +30,7 @@ namespace Conversus.BusinessLogic.Impl
         public IClient CreateFromLotus(string name, int pin, QueueType queueType, DateTime bookingTime)
         {
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            IClient client = new Client(Guid.NewGuid(), name, queue.Id, bookingTime, pin, ClientStatus.Registered,
+            IClient client = new Client(Guid.NewGuid(), name, queue.Id, bookingTime, DateTime.Now, pin, ClientStatus.Registered,
                                         SortPriority.Vip, "");
             Storage.Create(client);
             return client;
@@ -92,7 +92,7 @@ namespace Conversus.BusinessLogic.Impl
                 
             int clientsCount = clients
                 //TODO: date!!!
-                .Count(c => c.Status != ClientStatus.Registered && c.BookingTime.Date == DateTime.Today);
+                .Count(c => c.Status != ClientStatus.Registered && c.ChangeTime.Date == DateTime.Today);
 
             string ticket = string.Format("{0} {1}",
                 isVip ? Constants.VipQueueLetter : Constants.QueueTypeLetters[queueType],
