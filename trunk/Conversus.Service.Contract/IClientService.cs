@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 
 namespace Conversus.Service.Contract
 {
@@ -18,6 +19,8 @@ namespace Conversus.Service.Contract
 
         [OperationContract]
         ClientInfo GetClientByPin(int pin);
+
+        ICollection<ClientInfo> Get(ClientFilterParameters filter);
 
         // for operator
 

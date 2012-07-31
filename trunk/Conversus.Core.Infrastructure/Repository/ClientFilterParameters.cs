@@ -1,4 +1,5 @@
 using System;
+using Conversus.Core.DomainModel;
 
 namespace Conversus.Core.Infrastructure.Repository
 {
@@ -9,5 +10,7 @@ namespace Conversus.Core.Infrastructure.Repository
         public int? PIN { get; set; }
 
         public string Ticket { get; set; }
+
+        public ClientStatus? Status { get; set; }
     }
 }

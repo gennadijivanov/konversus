@@ -5,6 +5,6 @@ namespace Conversus.Storage
 {
     public interface IClientStorage : IStorage<IClient>
     {
-        IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
+        void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
     }
 }

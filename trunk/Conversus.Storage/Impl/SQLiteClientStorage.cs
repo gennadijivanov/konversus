@@ -83,7 +83,10 @@ namespace Conversus.Storage.Impl
 
             using (var db = GetDataContext())
             {
-                IQueryable<ClientData> query = db.Clients.AsQueryable();
+                IEnumerable<ClientData> query = db.Clients;
+
+                var lookUp = query.ToLookup(c => c.Id, c => c);
+                query = lookUp.Select(client => client.OrderByDescending(c => c.ChangeStatusTime).First());
 
                 if (f != null)
                 {
@@ -95,10 +98,12 @@ namespace Conversus.Storage.Impl
 
                     if (!string.IsNullOrEmpty(f.Ticket))
                         query = query.Where(c => c.Ticket == f.Ticket);
+
+                    if (f.Status.HasValue)
+                        query = query.Where(c => c.Status == (int)f.Status.Value);
                 }
 
-                var lookUp = query.ToLookup(c => c.Id, c => c);
-                return lookUp.Select(client => ConvertFromData(client.OrderByDescending(c => c.ChangeStatusTime).First())).ToList();
+                return query.Select(ConvertFromData).ToList();
             }
         }
 
@@ -117,14 +122,14 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
+        public void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
         {
             using (var db = GetDataContext())
             {
                 var dbCl = db.Clients.OrderByDescending(c => c.ChangeStatusTime).FirstOrDefault(c => c.Id == clientId);
 
                 if (dbCl == null)
-                    return null;
+                    return;
 
                 dbCl.OperatorId = targetOperatorId;
                 dbCl.QueueId = db.Operators.Single(o => o.Id == targetOperatorId).QueueId;
@@ -133,8 +138,6 @@ namespace Conversus.Storage.Impl
 
                 db.AddToClients(dbCl);
                 db.SaveChanges();
-
-                return ConvertFromData(dbCl);
             }
         }
         
