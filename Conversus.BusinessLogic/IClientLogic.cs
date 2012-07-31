@@ -30,6 +30,6 @@ namespace Conversus.BusinessLogic
 
         IClient Get(Guid id);
 
-        IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
+        void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority);
     }
 }
