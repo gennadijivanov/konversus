@@ -79,7 +79,7 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(id);
         }
 
-        public IClient ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
+        public void ChangeQueue(Guid clientId, Guid targetOperatorId, SortPriority sortPriority)
         {
             Storage.ChangeQueue(clientId, targetOperatorId, sortPriority);
         }
