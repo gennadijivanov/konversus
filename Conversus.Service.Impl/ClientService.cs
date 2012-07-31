@@ -54,6 +54,11 @@ namespace Conversus.Service.Impl
             return ToClientInfo(ClientLogic.Get(new ClientFilterParameters {PIN = pin}).SingleOrDefault());
         }
 
+        public ICollection<ClientInfo> Get(ClientFilterParameters filter)
+        {
+            return ClientLogic.Get(filter).Select(c => ToClientInfo(c)).ToList();
+        }
+
         public void ChangeStatus(Guid clientId, ClientStatus status)
         {
             ClientLogic.ChangeStatus(clientId, status);
