@@ -44,6 +44,7 @@ namespace Conversus.TerminalView
             {
                 _queue.Add(client);
 
+                callSound.Stop();
                 callSound.Play();
 
                 var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
