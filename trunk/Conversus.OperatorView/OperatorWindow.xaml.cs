@@ -156,8 +156,6 @@ namespace Conversus.OperatorView
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var currentWindow = (Window)sender;
-
             if (_client != null)
             {
                 e.Cancel = true;
@@ -166,9 +164,13 @@ namespace Conversus.OperatorView
             else
             {
                 if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Подтверждение",
-                MessageBoxButton.YesNo) == MessageBoxResult.No)
+                    MessageBoxButton.YesNo) == MessageBoxResult.No)
                 {
                     e.Cancel = true;
+                }
+                else
+                {
+                    ServiceHelper.Instance.OperatorService.Logout(_user.Id);
                 }
             }
         }

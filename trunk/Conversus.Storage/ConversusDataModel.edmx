@@ -9,15 +9,11 @@
           <EntitySet Name="Clients" EntityType="conversusModel.Store.Clients" store:Type="Tables" />
           <EntitySet Name="Operators" EntityType="conversusModel.Store.Operators" store:Type="Tables" />
           <EntitySet Name="Queues" EntityType="conversusModel.Store.Queues" store:Type="Tables" />
-          <AssociationSet Name="FK_Clients_0" Association="conversusModel.Store.FK_Clients_0">
-            <End Role="Operators" EntitySet="Operators" />
-            <End Role="Clients" EntitySet="Clients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clients_1" Association="conversusModel.Store.FK_Clients_1">
+          <AssociationSet Name="FK_Clients_1_0" Association="conversusModel.Store.FK_Clients_1_0">
             <End Role="Queues" EntitySet="Queues" />
             <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
-          <AssociationSet Name="FK_Operators_0" Association="conversusModel.Store.FK_Operators_0">
+          <AssociationSet Name="FK_Operators_0_0" Association="conversusModel.Store.FK_Operators_0_0">
             <End Role="Queues" EntitySet="Queues" />
             <End Role="Operators" EntitySet="Operators" />
           </AssociationSet>
@@ -38,9 +34,13 @@
           <Property Name="OperatorId" Type="uniqueidentifier" />
           <Property Name="SortPriority" Type="int" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+      предупреждение 6035: В связи "FK_Clients_0_0" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+      -->
         <EntityType Name="Operators">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ChangeStatusTime" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
@@ -48,6 +48,8 @@
           <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="QueueId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Window" Type="nvarchar" MaxLength="20" />
+          <Property Name="ChangeStatusTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Queues">
           <Key>
@@ -56,19 +58,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Clients_0">
-          <End Role="Operators" Type="conversusModel.Store.Operators" Multiplicity="0..1" />
-          <End Role="Clients" Type="conversusModel.Store.Clients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Operators">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clients">
-              <PropertyRef Name="OperatorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clients_1">
+        <Association Name="FK_Clients_1_0">
           <End Role="Queues" Type="conversusModel.Store.Queues" Multiplicity="1" />
           <End Role="Clients" Type="conversusModel.Store.Clients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +70,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Operators_0">
+        <Association Name="FK_Operators_0_0">
           <End Role="Queues" Type="conversusModel.Store.Queues" Multiplicity="1" />
           <End Role="Operators" Type="conversusModel.Store.Operators" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,15 +91,11 @@
           <EntitySet Name="Clients" EntityType="conversusModel.Clients" />
           <EntitySet Name="Operators" EntityType="conversusModel.Operators" />
           <EntitySet Name="Queues" EntityType="conversusModel.Queues" />
-          <AssociationSet Name="FK_Clients_0" Association="conversusModel.FK_Clients_0">
-            <End Role="Operators" EntitySet="Operators" />
-            <End Role="Clients" EntitySet="Clients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clients_1" Association="conversusModel.FK_Clients_1">
+          <AssociationSet Name="FK_Clients_1_0" Association="conversusModel.FK_Clients_1_0">
             <End Role="Queues" EntitySet="Queues" />
             <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
-          <AssociationSet Name="FK_Operators_0" Association="conversusModel.FK_Operators_0">
+          <AssociationSet Name="FK_Operators_0_0" Association="conversusModel.FK_Operators_0_0">
             <End Role="Queues" EntitySet="Queues" />
             <End Role="Operators" EntitySet="Operators" />
           </AssociationSet>
@@ -129,12 +115,12 @@
           <Property Name="BookingTime" Type="DateTime" Nullable="false" />
           <Property Name="OperatorId" Type="Guid" />
           <Property Name="SortPriority" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Operators" Relationship="conversusModel.FK_Clients_0" FromRole="Clients" ToRole="Operators" />
-          <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Clients_1" FromRole="Clients" ToRole="Queues" />
+          <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Clients_1_0" FromRole="Clients" ToRole="Queues" />
         </EntityType>
         <EntityType Name="Operators">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ChangeStatusTime" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
@@ -142,8 +128,9 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="QueueId" Type="Guid" Nullable="false" />
           <Property Name="Window" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Clients" Relationship="conversusModel.FK_Clients_0" FromRole="Operators" ToRole="Clients" />
-          <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Operators_0" FromRole="Operators" ToRole="Queues" />
+          <Property Name="ChangeStatusTime" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Operators_0_0" FromRole="Operators" ToRole="Queues" />
         </EntityType>
         <EntityType Name="Queues">
           <Key>
@@ -151,22 +138,10 @@
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="conversusModel.FK_Clients_1" FromRole="Queues" ToRole="Clients" />
-          <NavigationProperty Name="Operators" Relationship="conversusModel.FK_Operators_0" FromRole="Queues" ToRole="Operators" />
+          <NavigationProperty Name="Clients" Relationship="conversusModel.FK_Clients_1_0" FromRole="Queues" ToRole="Clients" />
+          <NavigationProperty Name="Operators" Relationship="conversusModel.FK_Operators_0_0" FromRole="Queues" ToRole="Operators" />
         </EntityType>
-        <Association Name="FK_Clients_0">
-          <End Role="Operators" Type="conversusModel.Operators" Multiplicity="0..1" />
-          <End Role="Clients" Type="conversusModel.Clients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Operators">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clients">
-              <PropertyRef Name="OperatorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clients_1">
+        <Association Name="FK_Clients_1_0">
           <End Role="Queues" Type="conversusModel.Queues" Multiplicity="1" />
           <End Role="Clients" Type="conversusModel.Clients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Operators_0">
+        <Association Name="FK_Operators_0_0">
           <End Role="Queues" Type="conversusModel.Queues" Multiplicity="1" />
           <End Role="Operators" Type="conversusModel.Operators" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,6 +190,8 @@
             <ScalarProperty Name="Password" ColumnName="Password" />
             <ScalarProperty Name="QueueId" ColumnName="QueueId" />
             <ScalarProperty Name="Window" ColumnName="Window" />
+            <ScalarProperty Name="ChangeStatusTime" ColumnName="ChangeStatusTime" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Queues"><EntityTypeMapping TypeName="conversusModel.Queues"><MappingFragment StoreEntitySet="Queues">
             <ScalarProperty Name="Id" ColumnName="Id" />
@@ -241,21 +218,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ConversusDataModel">
-        <EntityTypeShape EntityType="conversusModel.Clients" Width="1.5" PointX="5.25" PointY="5" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="conversusModel.Operators" Width="1.5" PointX="3" PointY="7.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Clients" Width="1.5" PointX="3" PointY="1.125" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Operators" Width="1.5" PointX="3" PointY="5" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="conversusModel.Queues" Width="1.5" PointX="0.75" PointY="3.625" Height="1.7879850260416657" IsExpanded="true" />
-        <AssociationConnector Association="conversusModel.FK_Clients_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="7.7881982421875" />
-          <ConnectorPoint PointX="5.25" PointY="7.7881982421875" />
+        <AssociationConnector Association="conversusModel.FK_Clients_1_0" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.9420475260416667" />
+          <ConnectorPoint PointX="3" PointY="3.9420475260416667" />
         </AssociationConnector>
-        <AssociationConnector Association="conversusModel.FK_Clients_1" ManuallyRouted="false">
+        <AssociationConnector Association="conversusModel.FK_Operators_0_0" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="5.2064925130208328" />
-          <ConnectorPoint PointX="5.25" PointY="5.2064925130208328" />
-        </AssociationConnector>
-        <AssociationConnector Association="conversusModel.FK_Operators_0" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="5.4129850260416656" />
-          <ConnectorPoint PointX="1.5" PointY="8.5285953776041659" />
-          <ConnectorPoint PointX="3" PointY="8.5285953776041659" />
+          <ConnectorPoint PointX="3" PointY="5.2064925130208328" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

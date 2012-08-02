@@ -25,7 +25,9 @@ namespace Conversus.Storage.Impl
                     Login = data.Login,
                     Password = data.Password,
                     Window = data.Window,
-                    QueueId = data.QueueId
+                    QueueId = data.QueueId,
+                    ChangeStatusTime = data.ChangeTime,
+                    Status = (int)data.Status
                 };
                 db.AddToOperators(user);
                 db.SaveChanges();
@@ -46,7 +48,10 @@ namespace Conversus.Storage.Impl
                 user.Password = data.Password;
                 user.Window = data.Window;
                 user.QueueId = data.QueueId;
+                user.Status = (int)data.Status;
+                user.ChangeStatusTime = DateTime.Now;
 
+                db.AddToOperators(user);
                 db.SaveChanges();
             }
         }
@@ -55,7 +60,7 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var dbCl = db.Operators.SingleOrDefault(c => c.Id == id);
+                var dbCl = db.Operators.OrderByDescending(c => c.ChangeStatusTime).FirstOrDefault(c => c.Id == id);
 
                 return dbCl == null
                     ? null
@@ -70,6 +75,9 @@ namespace Conversus.Storage.Impl
             using (var db = GetDataContext())
             {
                 IEnumerable<UserData> query = db.Operators;
+
+                var lookUp = query.ToLookup(c => c.Id, c => c);
+                query = lookUp.Select(client => client.OrderByDescending(c => c.ChangeStatusTime).First());
 
                 if (f != null)
                 {
@@ -93,15 +101,21 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var user = db.Operators.SingleOrDefault(c => c.Id == id);
-                if (user != null)
-                    db.Operators.DeleteObject(user);
+                var oper = db.Operators.Where(c => c.Id == id);
+                if (!oper.Any())
+                    return;
+
+                foreach (var clientRecord in oper)
+                {
+                    db.Operators.DeleteObject(clientRecord);
+                }
             }
         }
 
         private IOperator ConvertFromData(UserData data)
         {
-            return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.Window, data.QueueId);
+            return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.Window, 
+                data.QueueId, (OperatorStatus)data.Status, data.ChangeStatusTime);
         }
     }
 }

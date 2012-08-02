@@ -24,7 +24,10 @@ namespace Conversus.Service.Contract
         void Delete(Guid id);
 
         [OperationContract]
-        OperatorInfo Authorize(string login, string password);
+        OperatorInfo Login(string login, string password);
+
+        [OperationContract]
+        void Logout(Guid id);
 
         [OperationContract]
         ICollection<OperatorInfo> GetUsersByQueue(QueueType type);

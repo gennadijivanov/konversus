@@ -132,12 +132,12 @@ namespace Conversus.Service.Impl
                                      BookingTime = client.BookingTime,
                                      Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
                                      Operator = client.OperatorId.HasValue 
-                                         ? OperatorService.ToUserInfo(UserLogic.Get(client.OperatorId.Value))
+                                         ? OperatorService.ToOperatorInfo(UserLogic.Get(client.OperatorId.Value))
                                          : null
                                  };
 
             if (userId.HasValue)
-                clientInfo.Operator = OperatorService.ToUserInfo(UserLogic.Get(userId.Value));
+                clientInfo.Operator = OperatorService.ToOperatorInfo(UserLogic.Get(userId.Value));
 
             return clientInfo;
         }

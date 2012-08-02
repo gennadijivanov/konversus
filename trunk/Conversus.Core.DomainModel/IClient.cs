@@ -46,10 +46,12 @@ namespace Conversus.Core.DomainModel
     public interface IClient : IEntity
     {
         string Name { get; set; }
+        
         /// <summary>
         /// время записи
         /// </summary>
         DateTime BookingTime { get; set; }
+        
         /// <summary>
         /// время изменения объекта
         /// </summary>

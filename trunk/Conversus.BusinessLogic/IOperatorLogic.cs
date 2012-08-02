@@ -21,6 +21,10 @@ namespace Conversus.BusinessLogic
 
         void SetWindow(Guid id, string window);
 
-        IOperator Authorize(string login, string password);
+        IOperator Login(string login, string password);
+
+        void Logout(Guid id);
+
+        void ChangeStatus(Guid id, OperatorStatus status);
     }
 }
