@@ -18,42 +18,33 @@ namespace Conversus.Storage.Impl
         {
             using (var db = GetDataContext())
             {
-                var user = new UserData
-                {
-                    Id = data.Id,
-                    Name = data.Name,
-                    Login = data.Login,
-                    Password = data.Password,
-                    Window = data.Window,
-                    QueueId = data.QueueId,
-                    ChangeStatusTime = data.ChangeTime,
-                    Status = (int)data.Status
-                };
+                var user = ToOperatorData(data);
+
                 db.AddToOperators(user);
                 db.SaveChanges();
             }
         }
 
+        private Operators ToOperatorData(IOperator data)
+        {
+            var user = new UserData
+                           {
+                               Id = data.Id,
+                               Name = data.Name,
+                               Login = data.Login,
+                               Password = data.Password,
+                               Window = data.Window,
+                               QueueId = data.QueueId,
+                               ChangeStatusTime = data.ChangeTime,
+                               Status = (int) data.Status
+                           };
+            return user;
+        }
+
         public void Update(IOperator data)
         {
-            using (var db = GetDataContext())
-            {
-                var user = db.Operators.SingleOrDefault(c => c.Id == data.Id);
-
-                if (user == null)
-                    return;
-
-                user.Login = data.Login;
-                user.Name = data.Name;
-                user.Password = data.Password;
-                user.Window = data.Window;
-                user.QueueId = data.QueueId;
-                user.Status = (int)data.Status;
-                user.ChangeStatusTime = DateTime.Now;
-
-                db.AddToOperators(user);
-                db.SaveChanges();
-            }
+            data.ChangeTime = DateTime.Now;
+            Create(data);
         }
 
         public IOperator Get(Guid id)
