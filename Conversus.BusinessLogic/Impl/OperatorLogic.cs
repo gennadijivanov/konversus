@@ -99,7 +99,7 @@ namespace Conversus.BusinessLogic.Impl
             if (oper == null || oper.Status == status)
                 return;
 
-            oper.Status = OperatorStatus.Stop;
+            oper.Status = status;
             Storage.Update(oper);
         }
 
