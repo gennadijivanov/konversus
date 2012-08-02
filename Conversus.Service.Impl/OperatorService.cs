@@ -12,10 +12,10 @@ namespace Conversus.Service.Impl
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class OperatorService : IOperatorService
     {
-        private IOperatorLogic _userLogic;
-        private IOperatorLogic UserLogic
+        private IOperatorLogic _operatorLogic;
+        private IOperatorLogic OperatorLogic
         {
-            get { return _userLogic ?? (_userLogic = BusinessLogicFactory.Instance.Get<IOperatorLogic>()); }
+            get { return _operatorLogic ?? (_operatorLogic = BusinessLogicFactory.Instance.Get<IOperatorLogic>()); }
         }
 
         private static IQueueLogic _queueLogic;
@@ -26,66 +26,70 @@ namespace Conversus.Service.Impl
 
         public ICollection<OperatorInfo> GetAllUsers()
         {
-            return UserLogic.GetAllUsers().Select(ToUserInfo).ToList();
+            return OperatorLogic.GetAllUsers().Select(ToOperatorInfo).ToList();
         }
 
         public OperatorInfo Get(Guid id)
         {
-            return ToUserInfo(UserLogic.Get(id));
+            return ToOperatorInfo(OperatorLogic.Get(id));
         }
 
         public void Create(string name, string login, string password, string window, QueueType queueType)
         {
-            UserLogic.Create(Guid.NewGuid(), name, login, password, window, queueType);
+            OperatorLogic.Create(Guid.NewGuid(), name, login, password, window, queueType);
         }
 
         public void Save(Guid id, string name, string login, string password, string window, QueueType queueType)
         {
-            UserLogic.Save(id, name, login, password, window, queueType);
+            OperatorLogic.Save(id, name, login, password, window, queueType);
         }
 
         public void Delete(Guid id)
         {
-            UserLogic.Delete(id);
+            OperatorLogic.Delete(id);
         }
 
-        public OperatorInfo Authorize(string login, string password)
+        public OperatorInfo Login(string login, string password)
         {
-            return ToUserInfo(UserLogic.Authorize(login, password));
+            return ToOperatorInfo(OperatorLogic.Login(login, password));
+        }
+
+        public void Logout(Guid id)
+        {
+            OperatorLogic.Logout(id);
         }
 
         public ICollection<OperatorInfo> GetUsersByQueue(QueueType type)
         {
-            return UserLogic.Get(new UserFilterParameters() {QueueType = type}).Select(ToUserInfo).ToList();
+            return OperatorLogic.Get(new UserFilterParameters() {QueueType = type}).Select(ToOperatorInfo).ToList();
         }
 
         public void PauseMaintenance(Guid id)
         {
-            //TODO NOT EMPLEMENTED
-            throw new NotImplementedException();
+            OperatorLogic.ChangeStatus(id, OperatorStatus.Pause);
         }
 
         public void ReopenMaintenance(Guid id)
         {
-            //TODO NOT EMPLEMENTED
-            throw new NotImplementedException();
+            OperatorLogic.ChangeStatus(id, OperatorStatus.Play);
         }
 
-        public static OperatorInfo ToUserInfo(IOperator user)
+        public static OperatorInfo ToOperatorInfo(IOperator oper)
         {
-            if (user == null)
+            if (oper == null)
                 return null;
 
-            var queue = QueueLogic.Get(user.QueueId);
+            var queue = QueueLogic.Get(oper.QueueId);
 
             return new OperatorInfo()
                        {
-                           Id = user.Id,
-                           Name = user.Name,
-                           Login = user.Login,
-                           Password = user.Password,
-                           CurrentWindow = user.Window,
-                           Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type))
+                           Id = oper.Id,
+                           Name = oper.Name,
+                           Login = oper.Login,
+                           Password = oper.Password,
+                           CurrentWindow = oper.Window,
+                           Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
+                           Status = oper.Status
                        };
         }
     }

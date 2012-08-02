@@ -1,4 +1,5 @@
 using System;
+using Conversus.Core.DomainModel;
 
 namespace Conversus.Service.Contract
 {
@@ -16,5 +17,7 @@ namespace Conversus.Service.Contract
         public QueueInfo Queue { get; set; }
 
         public string CurrentWindow { get; set; }
+
+        public OperatorStatus Status { get; set; }
     }
 }

@@ -16,8 +16,13 @@ namespace Conversus.Impl.Objects
         public Guid QueueId { get; set; }
 
         public string Window { get; set; }
+        
+        public OperatorStatus Status { get; set; }
+        
+        public DateTime ChangeTime { get; set; }
 
-        public Operator(Guid id, string name, string login, string password, string window, Guid queueId)
+        public Operator(Guid id, string name, string login, string password, string window,
+            Guid queueId, OperatorStatus status, DateTime changeTime)
         {
             Id = id;
             Name = name;
@@ -25,6 +30,8 @@ namespace Conversus.Impl.Objects
             Password = password;
             QueueId = queueId;
             Window = window;
+            Status = status;
+            ChangeTime = changeTime;
         }
     }
 }

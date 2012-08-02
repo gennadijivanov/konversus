@@ -38,7 +38,7 @@ namespace Conversus.BusinessLogic.Impl
             password = GetMD5Hash(password);
 
             IQueue queue = BusinessLogicFactory.Instance.Get<IQueueLogic>().GetOrCreateQueue(queueType);
-            IOperator user = new User(id, name, login, password, window, queue.Id);
+            IOperator user = new User(id, name, login, password, window, queue.Id, OperatorStatus.Stop, DateTime.Now);
 
             Storage.Create(user);
         }
@@ -73,10 +73,34 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Update(user);
         }
 
-        public IOperator Authorize(string login, string password)
+        public IOperator Login(string login, string password)
         {
             password = GetMD5Hash(password);
-            return Storage.Get(new UserFilterParameters() {Login = login, Password = password}).SingleOrDefault();
+            var oper = Storage.Get(new UserFilterParameters { Login = login, Password = password })
+                .SingleOrDefault();
+
+            if (oper == null)
+                return null;
+
+            oper.Status = OperatorStatus.Play;
+            Storage.Update(oper);
+            return oper;
+        }
+
+        public void Logout(Guid id)
+        {
+            ChangeStatus(id, OperatorStatus.Stop);
+        }
+
+        public void ChangeStatus(Guid id, OperatorStatus status)
+        {
+            var oper = Storage.Get(id);
+
+            if (oper == null || oper.Status == status)
+                return;
+
+            oper.Status = OperatorStatus.Stop;
+            Storage.Update(oper);
         }
 
         private string GetMD5Hash(string input)
