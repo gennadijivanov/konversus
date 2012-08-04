@@ -44,6 +44,7 @@ namespace Conversus.TerminalView.Views.Terminal
                     var clientName = nameInputBox.Text;
                     var client = ServiceHelper.Instance.ClientService.CreateForCommon(clientName, queueType);
                     navService.Navigate(new PrintPage(client));
+                    targetSender.IsEnabled = false;
                     break;
                 case "r_shift":
                 case "l_shift" :
