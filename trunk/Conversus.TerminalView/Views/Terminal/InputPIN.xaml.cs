@@ -46,6 +46,7 @@ namespace Conversus.TerminalView.Views.Terminal
                     else
                     {
                         navService.Navigate(new ConfirmPIN(client));
+                        targetSender.IsEnabled = false;
                     }
 
                     break;

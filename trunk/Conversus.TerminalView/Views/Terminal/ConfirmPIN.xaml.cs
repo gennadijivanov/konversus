@@ -55,6 +55,7 @@ namespace Conversus.TerminalView.Views.Terminal
                     break;
                 case "approveButton":
                     navService.Navigate(new PrintPage(client));
+                    targetSender.IsEnabled = false;
                     break;
             }
         }
