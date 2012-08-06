@@ -16,13 +16,6 @@ namespace Conversus.Storage.Impl
 
         public void Create(IClient data)
         {
-            if (data.PIN.HasValue)
-            {
-                var allWithSamePin = Get(new ClientFilterParameters {PIN = data.PIN.Value});
-                if (allWithSamePin.Count > 0)
-                    throw new InvalidOperationException("Client with same PIN already exists");
-            }
-
             using (var db = GetDataContext())
             {
                 var client = new ClientData
@@ -43,25 +36,8 @@ namespace Conversus.Storage.Impl
 
         public void Update(IClient data)
         {
-            using (var db = GetDataContext())
-            {
-                var dbCl = db.Clients.SingleOrDefault(c => c.Id == data.Id);
-
-                if (dbCl == null)
-                    return;
-
-                dbCl.BookingTime = data.BookingTime;
-                dbCl.Name = data.Name;
-                dbCl.PIN = data.PIN;
-                dbCl.QueueId = data.QueueId;
-                dbCl.Status = (int)data.Status;
-                dbCl.Ticket = data.Ticket;
-                dbCl.ChangeStatusTime = DateTime.Now;
-                dbCl.SortPriority = (int)data.SortPriority;
-
-                db.AddToClients(dbCl);
-                db.SaveChanges();
-            }
+            data.ChangeTime = DateTime.Now;
+            Create(data);
         }
 
         public IClient Get(Guid id)
