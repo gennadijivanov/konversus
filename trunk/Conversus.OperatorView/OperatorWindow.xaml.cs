@@ -73,6 +73,7 @@ namespace Conversus.OperatorView
                     break;
                 case "callVisitorButton":
                     refreshTimer();
+                    
                     break;
                 case "callByNumberButton":
                     var callByNumberWindow = new CallByNymberWindow(_user);
@@ -115,10 +116,9 @@ namespace Conversus.OperatorView
 
         public void refreshTimer()
         {
-            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
-
             if (_client != null)
             {
+                _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
                 initTimer();
                 pauseButton.IsEnabled = false;
 
