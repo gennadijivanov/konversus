@@ -8,7 +8,10 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 using Conversus.Service.Contract;
+using Conversus.Service.Helpers;
 using ListBox = System.Windows.Controls.ListBox;
 using MessageBox = System.Windows.MessageBox;
 
@@ -65,9 +68,13 @@ namespace Conversus.TerminalView
 
         private void SetQueueData()
         {
-            //todo: get from service
+            var filter = new ClientFilterParameters();
+            filter.Status = ClientStatus.Performing;
+
+            var currentQueue = ServiceHelper.Instance.ClientService.Get(filter);
+
             clientWindowListView.ItemsSource =
-                _queue.Select(c => new {Ticket = c.Ticket, OperatorWindow = c.Operator.CurrentWindow}).Take(7);
+                currentQueue.Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Operator.CurrentWindow }).Take(7);
         }
 
         public void RemovePerformed(ClientInfo client)

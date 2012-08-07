@@ -20,6 +20,7 @@ namespace Conversus.Service.Contract
         [OperationContract]
         ClientInfo GetClientByPin(int pin);
 
+        [OperationContract]
         ICollection<ClientInfo> Get(ClientFilterParameters filter);
 
         // for operator
