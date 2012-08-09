@@ -72,8 +72,7 @@ namespace Conversus.OperatorView
                     redirect.Show();
                     break;
                 case "callVisitorButton":
-                    refreshTimer();
-                    
+                    callNext();
                     break;
                 case "callByNumberButton":
                     var callByNumberWindow = new CallByNymberWindow(_user);
@@ -108,17 +107,30 @@ namespace Conversus.OperatorView
             if (!pauseButton.IsEnabled)
                 pauseButton.IsEnabled = true;
 
-            if(_client != null)
+            if (_client != null)
                 ServiceHelper.Instance.ClientService.ChangeStatus(_client.Id, clientStatus);
 
             _client = null;
+        }
+
+        public void callNext()
+        {
+            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
+
+            if (_client != null)
+            {
+                refreshTimer();
+            }
+            else
+            {
+                MessageBox.Show("Ожидающих по текущей очереди нет");
+            }
         }
 
         public void refreshTimer()
         {
             if (_client != null)
             {
-                _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
                 initTimer();
                 pauseButton.IsEnabled = false;
 
@@ -132,10 +144,6 @@ namespace Conversus.OperatorView
                 toggleButtonsEnable(true);
 
                 refreshLabels();
-            }
-            else
-            {
-                MessageBox.Show("Ожидающих по текущей очереди нет");
             }
         }
 
