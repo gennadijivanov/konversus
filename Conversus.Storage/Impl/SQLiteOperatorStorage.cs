@@ -41,10 +41,11 @@ namespace Conversus.Storage.Impl
             return user;
         }
 
-        public void Update(IOperator data)
+        public IOperator Update(IOperator data)
         {
             data.ChangeTime = DateTime.Now;
             Create(data);
+            return data;
         }
 
         public IOperator Get(Guid id)

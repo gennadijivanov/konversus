@@ -68,9 +68,7 @@ namespace Conversus.TerminalView
 
         private void SetQueueData()
         {
-            var filter = new ClientFilterParameters();
-            filter.Status = ClientStatus.Performing;
-
+            var filter = new ClientFilterParameters {Status = ClientStatus.Performing};
             var currentQueue = ServiceHelper.Instance.ClientService.Get(filter);
 
             clientWindowListView.ItemsSource =

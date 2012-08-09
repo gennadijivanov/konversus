@@ -26,7 +26,9 @@ namespace Conversus.BusinessLogic
         /// </summary>
         ICollection<IClient> GetClientsQueue(QueueType queue);
 
-        IClient CallNextClient(QueueType queue);
+        IClient CallNextClient(QueueType queue, Guid operatorId);
+
+        IClient CallClient(Guid clientId, Guid operatorId);
 
         IClient Get(Guid id);
 

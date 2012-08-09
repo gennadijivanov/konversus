@@ -32,18 +32,20 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        public void Update(IQueue data)
+        public IQueue Update(IQueue data)
         {
             using (var db = GetDataContext())
             {
                 var dbQueue = db.Queues.SingleOrDefault(c => c.Id == data.Id);
 
                 if (dbQueue == null)
-                    return;
+                    return null;
 
                 dbQueue.Type = (int)data.Type;
 
                 db.SaveChanges();
+
+                return data;
             }
         }
 
