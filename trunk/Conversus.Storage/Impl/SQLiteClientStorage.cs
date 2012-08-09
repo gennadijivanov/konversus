@@ -27,17 +27,20 @@ namespace Conversus.Storage.Impl
                                      Status = (int) data.Status,
                                      ChangeStatusTime = data.ChangeTime,
                                      BookingTime = data.BookingTime,
-                                     Ticket = data.Ticket
+                                     Ticket = data.Ticket,
+                                     SortPriority = (int)data.SortPriority,
+                                     OperatorId = data.OperatorId
                                  };
                 db.AddToClients(client);
                 db.SaveChanges();
             }
         }
 
-        public void Update(IClient data)
+        public IClient Update(IClient data)
         {
             data.ChangeTime = DateTime.Now;
             Create(data);
+            return data;
         }
 
         public IClient Get(Guid id)
@@ -120,7 +123,10 @@ namespace Conversus.Storage.Impl
         private IClient ConvertFromData(ClientData data)
         {
             var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.ChangeStatusTime,
-                data.PIN, (ClientStatus)data.Status, (SortPriority)data.SortPriority, data.Ticket);
+                data.PIN, (ClientStatus)data.Status, (SortPriority)data.SortPriority, data.Ticket)
+                             {
+                                 OperatorId = data.OperatorId
+                             };
             return client;
         }
     }

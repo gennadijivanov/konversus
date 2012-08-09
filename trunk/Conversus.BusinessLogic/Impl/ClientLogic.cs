@@ -47,6 +47,7 @@ namespace Conversus.BusinessLogic.Impl
             if (client == null)
                 throw new InvalidOperationException("Client is not found");
             ChangeStatus(client, status);
+            Storage.Update(client);
         }
 
         public ICollection<IClient> GetClients(QueueType queueType)
@@ -66,12 +67,25 @@ namespace Conversus.BusinessLogic.Impl
                 .ToList();
         }
 
-        public IClient CallNextClient(QueueType queue)
+        public IClient CallNextClient(QueueType queue, Guid operatorId)
         {
             var client = GetClientsQueue(queue).FirstOrDefault(c => c.Status == ClientStatus.Waiting);
-            if (client != null)
-                ChangeStatus(client, ClientStatus.Performing);
-            return client;
+            return CallClient(client, operatorId);
+        }
+
+        public IClient CallClient(Guid clientId, Guid operatorId)
+        {
+            return CallClient(Storage.Get(clientId), operatorId);
+        }
+
+        private IClient CallClient(IClient client, Guid operatorId)
+        {
+            if (client == null)
+                return null;
+            
+            ChangeStatus(client, ClientStatus.Performing);
+            client.OperatorId = operatorId;
+            return Storage.Update(client);
         }
 
         public IClient Get(Guid id)
@@ -109,7 +123,6 @@ namespace Conversus.BusinessLogic.Impl
                     StorageLogicFactory.Instance.Get<IQueueStorage>().Get(client.QueueId).Type,
                     client.PIN.HasValue);
             }
-            Storage.Update(client);
         }
     }
 }

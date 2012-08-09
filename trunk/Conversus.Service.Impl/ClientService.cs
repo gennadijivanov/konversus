@@ -56,7 +56,7 @@ namespace Conversus.Service.Impl
 
         public ICollection<ClientInfo> Get(ClientFilterParameters filter)
         {
-            return ClientLogic.Get(filter).Select(c => ToClientInfo(c)).ToList();
+            return ClientLogic.Get(filter).Select(ToClientInfo).ToList();
         }
 
         public void ChangeStatus(Guid clientId, ClientStatus status)
@@ -68,16 +68,16 @@ namespace Conversus.Service.Impl
         {
             return ClientLogic
                 .GetClientsQueue(queue)
-                .Select(c => ToClientInfo(c))
+                .Select(ToClientInfo)
                 .ToList();
         }
 
         public ClientInfo CallNextClient(QueueType queue, Guid userId)
         {
-            var client = ClientLogic.CallNextClient(queue);
+            var client = ClientLogic.CallNextClient(queue, userId);
             if (client != null)
             {
-                var clientInfo = ToClientInfo(client, userId);
+                var clientInfo = ToClientInfo(client);
                 TerminalService.CallClient(clientInfo);
                 return clientInfo;
             }
@@ -86,8 +86,8 @@ namespace Conversus.Service.Impl
 
         public void CallClient(Guid id, Guid userId)
         {
-            ClientLogic.ChangeStatus(id, ClientStatus.Performing);
-            TerminalService.CallClient(ToClientInfo(ClientLogic.Get(id), userId));
+            var client = ClientLogic.CallClient(id, userId);
+            TerminalService.CallClient(ToClientInfo(client));
         }
 
         public void Postpone(Guid id)
@@ -101,9 +101,9 @@ namespace Conversus.Service.Impl
             if (client == null)
                 return null;
 
-            ClientLogic.ChangeStatus(client.Id, ClientStatus.Performing);
+            client = ClientLogic.CallClient(client.Id, userId);
 
-            var info = ToClientInfo(client, userId);
+            var info = ToClientInfo(client);
             TerminalService.CallClient(info);
             return info;
         }
@@ -115,7 +115,7 @@ namespace Conversus.Service.Impl
 
         #endregion
 
-        private ClientInfo ToClientInfo(IClient client, Guid? userId = null)
+        private ClientInfo ToClientInfo(IClient client)
         {
             if (client == null)
                 return null;
@@ -130,14 +130,12 @@ namespace Conversus.Service.Impl
                                      Status = client.Status,
                                      Ticket = client.Ticket,
                                      BookingTime = client.BookingTime,
+                                     ChangeTime = client.ChangeTime,
                                      Queue = new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type)),
                                      Operator = client.OperatorId.HasValue 
                                          ? OperatorService.ToOperatorInfo(UserLogic.Get(client.OperatorId.Value))
                                          : null
                                  };
-
-            if (userId.HasValue)
-                clientInfo.Operator = OperatorService.ToOperatorInfo(UserLogic.Get(userId.Value));
 
             return clientInfo;
         }
