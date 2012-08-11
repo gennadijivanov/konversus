@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\CreepLine.cs" />
     <Compile Include="QueueBoardWindow.xaml.cs">
       <DependentUpon>QueueBoardWindow.xaml</DependentUpon>
     </Compile>
