@@ -12,5 +12,7 @@ namespace Conversus.Core.Infrastructure.Repository
         public string Ticket { get; set; }
 
         public ClientStatus? Status { get; set; }
+
+        public Guid? OperatorId { get; set; }
     }
 }

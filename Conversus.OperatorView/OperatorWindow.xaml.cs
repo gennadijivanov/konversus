@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure.Repository;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
@@ -21,7 +22,7 @@ namespace Conversus.OperatorView
         private DateTime startTime;
 
         private ClientInfo _client;
-        private readonly OperatorInfo _user;
+        private readonly OperatorInfo _oper;
 
         public ClientInfo Client
         {
@@ -29,13 +30,22 @@ namespace Conversus.OperatorView
             get { return _client; }
         }
 
-        public OperatorWindow(OperatorInfo user)
+        public OperatorWindow(OperatorInfo oper)
         {
-            _user = user;
+            _oper = oper;
 
             InitializeComponent();
             initTimer();
             refreshLabels();
+
+            _client = ServiceHelper.Instance.ClientService.Get(new ClientFilterParameters
+                                                                   {
+                                                                       Status = ClientStatus.Performing,
+                                                                       OperatorId = oper.Id
+                                                                   }).FirstOrDefault();
+
+            if (_client != null)
+                refreshTimer();
         }
 
         private void initTimer()
@@ -71,33 +81,33 @@ namespace Conversus.OperatorView
                     break;
                 case "repeatButton":
                     if (_client != null)
-                        ServiceHelper.Instance.ClientService.CallClient(_client.Id, _user.Id);
+                        ServiceHelper.Instance.ClientService.CallClient(_client.Id, _oper.Id);
                     break;
                 case "redirectButton":
-                    var redirect = new RedirectWindow(_client);
+                    var redirect = new RedirectWindow(this);
                     redirect.Show();
                     break;
                 case "callVisitorButton":
                     callNext();
                     break;
                 case "callByNumberButton":
-                    var callByNumberWindow = new CallByNymberWindow(_user);
+                    var callByNumberWindow = new CallByNymberWindow(_oper);
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
-                    var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
-                    var callByListWindow = new CallByListWindow(queueCollection, this, _user);
+                    var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_oper.Queue.Type);
+                    var callByListWindow = new CallByListWindow(queueCollection, this, _oper);
                     callByListWindow.Show();
                     break;
                 case "pauseButton":
                     servedTimer.Stop();
 
-                    ServiceHelper.Instance.OperatorService.PauseMaintenance(_user.Id);
+                    ServiceHelper.Instance.OperatorService.PauseMaintenance(_oper.Id);
 
                     MessageBoxResult pauseMaintenanceMessBoxResult = MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно или нажмите ОК", "Перерыв в работе", MessageBoxButton.OK);
                     if (pauseMaintenanceMessBoxResult == MessageBoxResult.OK || pauseMaintenanceMessBoxResult == MessageBoxResult.None)
                     {
-                        ServiceHelper.Instance.OperatorService.ReopenMaintenance(_user.Id);
+                        ServiceHelper.Instance.OperatorService.ReopenMaintenance(_oper.Id);
                     }
                     break;
             }
@@ -121,7 +131,7 @@ namespace Conversus.OperatorView
 
         public void callNext()
         {
-            _client = ServiceHelper.Instance.ClientService.CallNextClient(_user.Queue.Type, _user.Id);
+            _client = ServiceHelper.Instance.ClientService.CallNextClient(_oper.Queue.Type, _oper.Id);
 
             if (_client != null)
             {
@@ -184,14 +194,14 @@ namespace Conversus.OperatorView
                 }
                 else
                 {
-                    ServiceHelper.Instance.OperatorService.Logout(_user.Id);
+                    ServiceHelper.Instance.OperatorService.Logout(_oper.Id);
                 }
             }
         }
 
         private void refreshLabels()
         {
-            var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_user.Queue.Type);
+            var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_oper.Queue.Type);
 
             if (queueCollection.Count > 0)
             {

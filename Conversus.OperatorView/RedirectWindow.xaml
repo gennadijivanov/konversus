@@ -20,13 +20,13 @@
                 <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Stretch">
                     <Label>Список очередей:</Label>
                     <ListBox Name="queueList" Margin="10" Height="200" SelectionMode="Single" SelectionChanged="list_SelectionChanged"></ListBox>
-                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="С учетом ожидания по данной услуге" IsChecked="True"/>
-                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="Поместить в самое начало очереди" />
-                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Content="Поместить в конец очереди" />
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Name="CommonPriorityBtn" Content="С учетом ожидания по данной услуге" IsChecked="True" DataContext="{Binding}" />
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Name="BeginPriorityBtn" Content="Поместить в самое начало очереди" />
+                    <RadioButton GroupName="ClientPriority" Margin="10,0,0,0" Name="EndPriorityBtn" Content="Поместить в конец очереди" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
                     <Label>Список сотрудников:</Label>
-                    <ListBox Name="employeeList" Height="200" Margin="10" SelectionMode="Single" SelectionChanged="list_SelectionChanged"></ListBox>
+                    <ListBox Name="employeeList" Height="200" Margin="10" SelectionMode="Single" SelectionChanged="employeeList_SelectionChanged"></ListBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
                     <Button Name="redirectButton" 
