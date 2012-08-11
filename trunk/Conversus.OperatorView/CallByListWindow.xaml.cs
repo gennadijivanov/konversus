@@ -1,27 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
 namespace Conversus.OperatorView
 {
+    public class ClientItemInfo
+    {
+        public Guid Id { get; set; }
+        public string Ticket { get; set; }
+        public string QueueTitle { get; set; }
+        public string Status { get; set; }
+        public string ChangeTime { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for CallByListWindow.xaml
     /// </summary>
     public partial class CallByListWindow : Window
     {
-        private readonly ICollection<ClientInfo> _clientInfos;
+        private readonly IEnumerable<ClientItemInfo> _clientInfos;
         private readonly OperatorWindow _operatorWindow;
         private readonly OperatorInfo _user;
 
-        public CallByListWindow(ICollection<ClientInfo> queueCollection, OperatorWindow operatorWindow, OperatorInfo user)
+        public CallByListWindow(IEnumerable<ClientInfo> queueCollection, OperatorWindow operatorWindow, OperatorInfo user)
         {
             InitializeComponent();
 
             _operatorWindow = operatorWindow;
-            _clientInfos = queueCollection;
+            _clientInfos = queueCollection.Select(c => new ClientItemInfo
+                                                           {
+                                                               Id = c.Id,
+                                                               Ticket = c.Ticket,
+                                                               Status = Constants.ClientStatusTitles[c.Status],
+                                                               ChangeTime = c.ChangeTime.ToShortTimeString(),
+                                                               QueueTitle = c.Queue.Title
+                                                           });
             _user = user;
         }
 
@@ -40,15 +58,15 @@ namespace Conversus.OperatorView
 
         private void callButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedClient = (ClientInfo)postponedGrid.SelectedItem;
+            var selectedClient = postponedGrid.SelectedItem;
 
-            if (selectedClient != null)
-            {
-                _operatorWindow.Client = ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id, _user.Id);
-                _operatorWindow.refreshTimer();
+            if (selectedClient == null)
+                return;
+
+            _operatorWindow.Client = ServiceHelper.Instance.ClientService.CallClient(((ClientItemInfo)selectedClient).Id, _user.Id);
+            _operatorWindow.refreshTimer();
                 
-                Close();
-            }
+            Close();
         }
     }
 }
