@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using Conversus.Core.DomainModel;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
@@ -13,13 +14,13 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class RedirectWindow : Window
     {
-        private ClientInfo _client;
+        private readonly OperatorWindow _operatorWindow;
 
-        public RedirectWindow(ClientInfo client)
+        public RedirectWindow(OperatorWindow operatorWindow)
         {
             InitializeComponent();
 
-            _client = client;
+            _operatorWindow = operatorWindow;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -27,11 +28,13 @@ namespace Conversus.OperatorView
             ICollection<QueueInfo> queues = ServiceHelper.Instance.QueueService.GetQueues();
             queueList.DisplayMemberPath = "Title";
             queueList.ItemsSource = queues;
+
+            employeeList.DisplayMemberPath = "Name";
         }
 
         private void Window_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)e.OriginalSource;
+            var button = (ButtonBase)e.OriginalSource;
 
             switch (button.Name)
             {
@@ -53,9 +56,20 @@ namespace Conversus.OperatorView
         {
             if (employeeList.SelectedItem != null && queueList.SelectedItem != null)
             {
-                var selectedQueueType = (QueueType)((QueueInfo)queueList.SelectedItem).Type;
-                //TODO: get operator Id
-                ServiceHelper.Instance.ClientService.ChangeQueue(_client.Id, Guid.NewGuid(), SortPriority.Common);
+                var operatorId = ((OperatorInfo)employeeList.SelectedItem).Id;
+                SortPriority sortPriority = SortPriority.Common;
+
+                if (CommonPriorityBtn.IsChecked.Value)
+                    sortPriority = SortPriority.Common;
+                else if(BeginPriorityBtn.IsChecked.Value)
+                    sortPriority = SortPriority.LowerCommon;
+                else if (EndPriorityBtn.IsChecked.Value)
+                    sortPriority = SortPriority.HigherVip;
+
+                ServiceHelper.Instance.ClientService.ChangeQueue(_operatorWindow.Client.Id, operatorId, sortPriority);
+
+                _operatorWindow.Client = null;
+                _operatorWindow.refreshTimer();
 
                 this.Close();
             }
@@ -69,13 +83,15 @@ namespace Conversus.OperatorView
         {
             var listBox = (ListBox)e.OriginalSource;
 
-            if (!redirectButton.IsEnabled || !redirectAndReturnButton.IsEnabled && listBox != null) 
-            {
-                redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = true;
+            redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = false;
 
-                var selectedQueueType = (QueueType)((QueueInfo)listBox.SelectedItem).Type;
-                var usersByQueue = ServiceHelper.Instance.OperatorService.GetUsersByQueue(selectedQueueType);
-            }
+            var selectedQueueType = ((QueueInfo)listBox.SelectedItem).Type;
+            employeeList.ItemsSource = ServiceHelper.Instance.OperatorService.GetUsersByQueue(selectedQueueType);
+        }
+
+        private void employeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            redirectButton.IsEnabled = redirectAndReturnButton.IsEnabled = true;
         }
     }
 }

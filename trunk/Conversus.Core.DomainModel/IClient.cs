@@ -37,6 +37,7 @@ namespace Conversus.Core.DomainModel
 
     public enum SortPriority
     {
+        LowerCommon,
         Common,
         LowerVip,
         Vip,

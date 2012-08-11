@@ -80,6 +80,9 @@ namespace Conversus.Storage.Impl
 
                     if (f.Status.HasValue)
                         query = query.Where(c => c.Status == (int)f.Status.Value);
+
+                    if (f.OperatorId.HasValue)
+                        query = query.Where(c => c.OperatorId == f.OperatorId.Value);
                 }
 
                 return query.Select(ConvertFromData).ToList();
@@ -111,12 +114,13 @@ namespace Conversus.Storage.Impl
                     return;
 
                 dbCl.OperatorId = targetOperatorId;
-                dbCl.QueueId = db.Operators.Single(o => o.Id == targetOperatorId).QueueId;
+                dbCl.QueueId =
+                    db.Operators.OrderByDescending(o => o.ChangeStatusTime).First(o => o.Id == targetOperatorId).QueueId;
                 dbCl.SortPriority = (int)sortPriority;
+                dbCl.Status = (int)ClientStatus.Waiting;
                 dbCl.ChangeStatusTime = DateTime.Now;
 
-                db.AddToClients(dbCl);
-                db.SaveChanges();
+                Create(ConvertFromData(dbCl));
             }
         }
         
