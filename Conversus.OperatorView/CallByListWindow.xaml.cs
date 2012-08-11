@@ -45,8 +45,6 @@ namespace Conversus.OperatorView
 
         private void postponedGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var grid = (DataGrid)e.OriginalSource;
-
             if (!callButton.IsEnabled)
                 callButton.IsEnabled = true;
         }
