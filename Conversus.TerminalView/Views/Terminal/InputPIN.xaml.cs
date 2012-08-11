@@ -36,17 +36,17 @@ namespace Conversus.TerminalView.Views.Terminal
             switch (targetSender.Name)
             {
                 case "nextButton":
-
+                    targetSender.IsEnabled = false;
                     ClientInfo client = ServiceHelper.Instance.ClientService.GetClientByPin(int.Parse(pinInputBox.Text));
 
                     if (client == null)
                     {
                         MessageBox.Show("Пользователь с таким пином не зарегистрирован в системе");
+                        targetSender.IsEnabled = true;
                     }
                     else
                     {
                         navService.Navigate(new ConfirmPIN(client));
-                        targetSender.IsEnabled = false;
                     }
 
                     break;
@@ -54,12 +54,12 @@ namespace Conversus.TerminalView.Views.Terminal
                     deleteChar();
                     break;
                 default:
-                    insetrChar(targetSender.Content.ToString());
+                    insertChar(targetSender.Content.ToString());
                     break;
             }
         }
 
-        private void insetrChar(string inputNumber)
+        private void insertChar(string inputNumber)
         {
             if (pinInputBox.Text.Length < 5)
                 pinInputBox.Text += inputNumber;

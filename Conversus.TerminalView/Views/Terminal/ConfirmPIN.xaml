@@ -22,10 +22,10 @@
                     <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
                 </Grid>
                 <StackPanel Orientation="Horizontal" Margin="40,30,40,0" HorizontalAlignment="Center">
-                    <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
+                    <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}" IsReadOnly="True"></TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
-                    <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}">введите пять цифр</Label>
+                    <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}" Height="35"></Label>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
