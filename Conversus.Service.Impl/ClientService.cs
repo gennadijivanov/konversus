@@ -84,10 +84,16 @@ namespace Conversus.Service.Impl
             return null;
         }
 
-        public void CallClient(Guid id, Guid userId)
+        public ClientInfo CallClient(Guid id, Guid userId)
         {
             var client = ClientLogic.CallClient(id, userId);
-            TerminalService.CallClient(ToClientInfo(client));
+            if (client != null)
+            {
+                var clientInfo = ToClientInfo(client);
+                TerminalService.CallClient(clientInfo);
+                return clientInfo;
+            }
+            return null;
         }
 
         public void Postpone(Guid id)

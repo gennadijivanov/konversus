@@ -44,7 +44,7 @@ namespace Conversus.OperatorView
 
             if (selectedClient != null)
             {
-                ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id, _user.Id);
+                _operatorWindow.Client = ServiceHelper.Instance.ClientService.CallClient(selectedClient.Id, _user.Id);
                 _operatorWindow.refreshTimer();
                 
                 Close();
