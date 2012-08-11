@@ -39,5 +39,16 @@ namespace Conversus.Core.Infrastructure
                 };
 
         public const string VipQueueLetter = "C";
+
+        public static readonly Dictionary<ClientStatus, string> ClientStatusTitles =
+            new Dictionary<ClientStatus, string>
+                {
+                    {ClientStatus.Absent, "Неявка"},
+                    {ClientStatus.Done, "Обработан"},
+                    {ClientStatus.Performing, "Обслуживается"},
+                    {ClientStatus.Postponed, "Отложен"},
+                    {ClientStatus.Registered, "Зарегистрирован"},
+                    {ClientStatus.Waiting, "Ожидает в очереди"},
+                };
     }
 }
