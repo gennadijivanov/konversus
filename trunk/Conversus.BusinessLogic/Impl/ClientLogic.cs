@@ -63,7 +63,7 @@ namespace Conversus.BusinessLogic.Impl
             return GetClients(queue)
                 .Where(c => c.Status == ClientStatus.Waiting || c.Status == ClientStatus.Postponed)
                 .OrderByDescending(c => c.SortPriority)
-                .ThenByDescending(c => c.ChangeTime)
+                .ThenBy(c => c.ChangeTime)
                 .ToList();
         }
 
