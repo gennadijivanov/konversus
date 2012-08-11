@@ -38,7 +38,7 @@ namespace Conversus.Service.Contract
         ClientInfo CallNextClient(QueueType queue, Guid userId);
 
         [OperationContract]
-        void CallClient(Guid id, Guid userId);
+        ClientInfo CallClient(Guid id, Guid userId);
 
         [OperationContract]
         void Postpone(Guid id);

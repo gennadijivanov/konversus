@@ -23,6 +23,12 @@ namespace Conversus.OperatorView
         private ClientInfo _client;
         private readonly OperatorInfo _user;
 
+        public ClientInfo Client
+        {
+            set { _client = value; }
+            get { return _client; }
+        }
+
         public OperatorWindow(OperatorInfo user)
         {
             _user = user;
