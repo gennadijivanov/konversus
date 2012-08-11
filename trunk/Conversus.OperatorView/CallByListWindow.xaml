@@ -15,10 +15,10 @@
                            CanUserDeleteRows="False" CanUserReorderColumns="False" 
                            HorizontalAlignment="Stretch" Height="250">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Ticket}" Header="Тикет" Width="*" />
+                        <DataGridTextColumn Binding="{Binding Ticket}" Header="Номер" Width="*" />
                         <DataGridTextColumn Binding="{Binding QueueTitle}" Header="Услуга" Width="3*"/>
                         <DataGridTextColumn Binding="{Binding Status}" Header="Статус" Width="*"/>
-                        <DataGridTextColumn Binding="{Binding ChangeTime}" Header="Время получения тикета" Width="3*"/>
+                        <DataGridTextColumn Binding="{Binding ChangeTime}" Header="Время прихода" Width="3*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button Name="callButton" HorizontalAlignment="Right" Padding="10" Height="37" FontWeight="Bold" Margin="0,10,0,0" IsEnabled="False" Click="callButton_Click">Вызвать</Button>
