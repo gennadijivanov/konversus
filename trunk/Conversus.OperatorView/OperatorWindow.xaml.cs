@@ -115,18 +115,25 @@ namespace Conversus.OperatorView
 
         private void serviceStoped(String message, ClientStatus clientStatus)
         {
+            SetViewStopped();
+
+            if (_client != null)
+            {
+                ServiceHelper.Instance.ClientService.ChangeStatus(_client.Id, clientStatus);
+                MessageBox.Show(message);
+            }
+
+            _client = null;
+        }
+
+        internal void SetViewStopped()
+        {
             servedTimer.Stop();
-            MessageBox.Show(message);
             currentVisitorTextBox.Text = CLEAN_CURRENT_VISITOR_TEXT;
             toggleButtonsEnable(false);
 
             if (!pauseButton.IsEnabled)
                 pauseButton.IsEnabled = true;
-
-            if (_client != null)
-                ServiceHelper.Instance.ClientService.ChangeStatus(_client.Id, clientStatus);
-
-            _client = null;
         }
 
         public void callNext()

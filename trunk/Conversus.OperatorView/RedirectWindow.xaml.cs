@@ -69,7 +69,7 @@ namespace Conversus.OperatorView
                 ServiceHelper.Instance.ClientService.ChangeQueue(_operatorWindow.Client.Id, operatorId, sortPriority);
 
                 _operatorWindow.Client = null;
-                _operatorWindow.refreshTimer();
+                _operatorWindow.SetViewStopped();
 
                 this.Close();
             }
