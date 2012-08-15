@@ -113,14 +113,16 @@ namespace Conversus.Storage.Impl
                 if (dbCl == null)
                     return;
 
-                dbCl.OperatorId = targetOperatorId;
-                dbCl.QueueId =
-                    db.Operators.OrderByDescending(o => o.ChangeStatusTime).First(o => o.Id == targetOperatorId).QueueId;
-                dbCl.SortPriority = (int)sortPriority;
-                dbCl.Status = (int)ClientStatus.Waiting;
-                dbCl.ChangeStatusTime = DateTime.Now;
+                IClient dataStruct = ConvertFromData(dbCl);
 
-                Create(ConvertFromData(dbCl));
+                dataStruct.OperatorId = targetOperatorId;
+                dataStruct.QueueId =
+                    db.Operators.OrderByDescending(o => o.ChangeStatusTime).First(o => o.Id == targetOperatorId).QueueId;
+                dataStruct.SortPriority = sortPriority;
+                dataStruct.Status = ClientStatus.Waiting;
+                dataStruct.ChangeTime = DateTime.Now;
+
+                Create(dataStruct);
             }
         }
         
