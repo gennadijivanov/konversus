@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 namespace Conversus.Impl
@@ -35,5 +36,26 @@ namespace Conversus.Impl
             }
             return Convert.ToBase64String(Results);
         }
+
+        public static LicenseType? TestLicense(string key, string company)
+        {
+            var licValues = Enum.GetValues(typeof (LicenseType));
+
+            foreach (LicenseType licValue in licValues)
+            {
+                var testString = EncryptString(licValue.ToString() + company, "key");
+                if (testString == key) return licValue;   
+            }
+
+            return null;
+        }
+    }
+
+    public enum LicenseType
+    {
+        Lite = 3,
+        Medium = 7,
+        Big = 10,
+        Large = 20
     }
 }

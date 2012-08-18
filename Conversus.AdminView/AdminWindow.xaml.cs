@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Conversus.Impl;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 
@@ -65,6 +66,8 @@ namespace Conversus.AdminView
 
         private void AdminWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            //TODO: Если нет активации, то не грузим лист операторов и активируем вкладку с активацией
+            //то есть нада tabActivation.IsSelected = true;
             ReloadOperatorsList();
         }
 
@@ -82,6 +85,23 @@ namespace Conversus.AdminView
                 editWindow.Closed += insertOperatorWindow_Closed;
                 editWindow.Show();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var licenseType = EncryptionManager.TestLicense(keyTextBox.Text ,companyTextBox.Text);
+
+            if (licenseType != null)
+            {
+                tabItem1.IsEnabled = true;
+                TabItemReports.IsEnabled = true;
+                statusLabel.Text = "Продукт активирован. Доступно операторов: "+((int)licenseType).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Ключ невалиден");
+            }
+
         }
     }
 }
