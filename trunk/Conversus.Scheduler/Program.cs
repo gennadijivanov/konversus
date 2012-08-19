@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure;
 using Newtonsoft.Json;
 using Conversus.Service.Helpers;
 
@@ -11,10 +12,20 @@ namespace Conversus.Scheduler
     {
         static void Main(string[] args)
         {
-            //QueueType qType = QueueType.Approvement;
-            //CreateClients(qType, GetPureData(qType));
+            try
+            {
+                //QueueType qType = QueueType.Approvement;
+                //CreateClients(qType, GetPureData(qType));
+                //Logger.Log("Data from Lotus is imported");
 
-            ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
+                ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
+                Logger.Log("All absent are marked as absent");
+            }
+            catch(Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                Logger.Log(exc);
+            }
         }
 
         private static void CreateClients(QueueType qType, PureResponse pureData)
