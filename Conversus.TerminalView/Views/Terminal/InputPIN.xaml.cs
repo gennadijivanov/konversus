@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Conversus.Core.DomainModel;
@@ -46,7 +47,15 @@ namespace Conversus.TerminalView.Views.Terminal
                     }
                     else
                     {
-                        navService.Navigate(new ConfirmPIN(client));
+                        if (client.BookingTime >= DateTime.Now)
+                            navService.Navigate(new ConfirmPIN(client));
+                        else
+                        {
+                            MessageBox.Show(
+                                "Вы опоздали. Запишитесь, пожалуйста, на другой день или возьмите талон по общей очереди",
+                                "Опоздание", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            navService.Navigate(new HomePage());
+                        }
                     }
 
                     break;
