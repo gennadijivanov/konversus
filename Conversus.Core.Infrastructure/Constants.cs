@@ -22,6 +22,8 @@ namespace Conversus.Core.Infrastructure
             public const string QueueService = "QueueService";
 
             public const string OperatorService = "OperatorService";
+
+            public const string PropertyService = "PropertyService";
         }
 
         public static readonly Dictionary<QueueType, string> QueueTypeTitles =

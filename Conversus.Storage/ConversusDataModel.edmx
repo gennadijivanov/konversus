@@ -8,6 +8,7 @@
         <EntityContainer Name="conversusModelStoreContainer">
           <EntitySet Name="Clients" EntityType="conversusModel.Store.Clients" store:Type="Tables" />
           <EntitySet Name="Operators" EntityType="conversusModel.Store.Operators" store:Type="Tables" />
+          <EntitySet Name="Properties" EntityType="conversusModel.Store.Properties" store:Type="Tables" />
           <EntitySet Name="Queues" EntityType="conversusModel.Store.Queues" store:Type="Tables" />
           <AssociationSet Name="FK_Clients_1_0" Association="conversusModel.Store.FK_Clients_1_0">
             <End Role="Queues" EntitySet="Queues" />
@@ -51,6 +52,13 @@
           <Property Name="ChangeStatusTime" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Value" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="Queues">
           <Key>
             <PropertyRef Name="Id" />
@@ -90,6 +98,7 @@
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="conversusModel.Clients" />
           <EntitySet Name="Operators" EntityType="conversusModel.Operators" />
+          <EntitySet Name="Properties" EntityType="conversusModel.Properties" />
           <EntitySet Name="Queues" EntityType="conversusModel.Queues" />
           <AssociationSet Name="FK_Clients_1_0" Association="conversusModel.FK_Clients_1_0">
             <End Role="Queues" EntitySet="Queues" />
@@ -131,6 +140,13 @@
           <Property Name="ChangeStatusTime" Type="DateTime" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Queues" Relationship="conversusModel.FK_Operators_0_0" FromRole="Operators" ToRole="Queues" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Queues">
           <Key>
@@ -193,6 +209,10 @@
             <ScalarProperty Name="ChangeStatusTime" ColumnName="ChangeStatusTime" />
             <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Properties"><EntityTypeMapping TypeName="conversusModel.Properties"><MappingFragment StoreEntitySet="Properties">
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Queues"><EntityTypeMapping TypeName="conversusModel.Queues"><MappingFragment StoreEntitySet="Queues">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Type" ColumnName="Type" />
@@ -220,6 +240,7 @@
       <Diagram Name="ConversusDataModel">
         <EntityTypeShape EntityType="conversusModel.Clients" Width="1.5" PointX="3" PointY="1.125" Height="3.1340950520833335" IsExpanded="true" />
         <EntityTypeShape EntityType="conversusModel.Operators" Width="1.5" PointX="3" PointY="5" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="conversusModel.Properties" Width="1.5" PointX="5.75" PointY="0.75" Height="1.4033821614583326" IsExpanded="true" />
         <EntityTypeShape EntityType="conversusModel.Queues" Width="1.5" PointX="0.75" PointY="3.625" Height="1.7879850260416657" IsExpanded="true" />
         <AssociationConnector Association="conversusModel.FK_Clients_1_0" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="3.9420475260416667" />

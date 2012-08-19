@@ -47,6 +47,7 @@
     <Compile Include="ClientInfo.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IOperatorService.cs" />
+    <Compile Include="IPropertyService.cs" />
     <Compile Include="IQueueService.cs" />
     <Compile Include="OperatorInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
