@@ -61,7 +61,7 @@ namespace Conversus.Service.Impl
 
         public ICollection<OperatorInfo> GetUsersByQueue(QueueType type)
         {
-            return OperatorLogic.Get(new UserFilterParameters() {QueueType = type}).Select(ToOperatorInfo).ToList();
+            return OperatorLogic.Get(new OperatorFilterParameters {QueueType = type}).Select(ToOperatorInfo).ToList();
         }
 
         public void PauseMaintenance(Guid id)

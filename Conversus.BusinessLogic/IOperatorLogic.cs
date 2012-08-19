@@ -11,7 +11,7 @@ namespace Conversus.BusinessLogic
 
         IOperator Get(Guid id);
 
-        ICollection<IOperator> Get(UserFilterParameters filter);
+        ICollection<IOperator> Get(OperatorFilterParameters filter);
 
         void Create(Guid id, string name, string login, string password, string window, QueueType queueType);
 
