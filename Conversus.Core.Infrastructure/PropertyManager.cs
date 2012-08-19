@@ -25,22 +25,6 @@
             set { SetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, value); }
         }
 
-        private const string _companyNameKey = "companyName";
-        private string _companyName;
-        public string CompanyName
-        {
-            get { return GetProperty(ref _companyName, _companyNameKey, null); }
-            set { SetProperty(ref _companyName, _companyNameKey, value); }
-        }
-
-        private const string _licenseRegistryKey = "licenseKey";
-        private string _licenseKey;
-        public string LicenseKey
-        {
-            get { return GetProperty(ref _licenseKey, _licenseRegistryKey, null); }
-            set { SetProperty(ref _licenseKey, _licenseRegistryKey, value); }
-        }
-
         private T GetProperty<T>(ref T field, string regKey, T defaultValue) where T: class
         {
             if (field == default(T))

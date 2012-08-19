@@ -13,11 +13,13 @@ namespace Conversus.Service.Host
     {
         static readonly Type clientServiceType = typeof(ClientService);
         static readonly Type queueServiceType = typeof(QueueService);
-        static readonly Type userServiceType = typeof(OperatorService);
+        static readonly Type operatorServiceType = typeof(OperatorService);
+        static readonly Type propertyServiceType = typeof(PropertyService);
 
         private static ServiceHost clientHost;
         private static ServiceHost queueHost;
-        private static ServiceHost userHost;
+        private static ServiceHost operatorHost;
+        private static ServiceHost propertyHost;
 
         static void Main(string[] args)
         {
@@ -28,11 +30,13 @@ namespace Conversus.Service.Host
 
             using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
             using (queueHost = CreateServiceHost(queueServiceType, Constants.Endpoints.QueueService))
-            using (userHost = CreateServiceHost(userServiceType, Constants.Endpoints.OperatorService))
+            using (operatorHost = CreateServiceHost(operatorServiceType, Constants.Endpoints.OperatorService))
+            using (propertyHost = CreateServiceHost(propertyServiceType, Constants.Endpoints.PropertyService))
             {
                 clientHost.Open();
                 queueHost.Open();
-                userHost.Open();
+                operatorHost.Open();
+                propertyHost.Open();
 
                 Console.WriteLine();
                 Console.WriteLine("Press <ENTER> to terminate Host");
@@ -40,7 +44,8 @@ namespace Conversus.Service.Host
 
                 clientHost.Close();
                 queueHost.Close();
-                userHost.Close();
+                operatorHost.Close();
+                propertyHost.Close();
             }
         }
 
