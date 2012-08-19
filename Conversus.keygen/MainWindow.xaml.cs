@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Conversus.Impl;
@@ -18,18 +17,14 @@ namespace Conversus.keygen
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            var licType = (LicenseType)Enum.Parse(typeof(LicenseType), licenseTypeComboBox.SelectedItem.ToString());
-
-            var stringToEncrypt = licType + companyTextBox.Text;
-            outputKeyTextBox.Text = EncryptionManager.EncryptString(stringToEncrypt, "key");
+            LicenseType licType = (LicenseType)licenseTypeComboBox.SelectedItem;
+            outputKeyTextBox.Text = EncryptionManager.GetEncryptedKey(companyTextBox.Text, licType);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO: как вывести значения енума - 3 оператора, к примеру? т.е Lite - 3 оператора.
-            licenseTypeComboBox.ItemsSource = Enum.GetValues(typeof(LicenseType)).Cast<LicenseType>();
+            licenseTypeComboBox.ItemsSource =
+                Enum.GetValues(typeof (LicenseType)).Cast<LicenseType>().Select(v => (int) v);
         }
-
     }
 }
