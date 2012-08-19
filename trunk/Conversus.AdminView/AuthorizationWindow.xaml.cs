@@ -1,9 +1,5 @@
-﻿using System.IO;
-using System.Windows;
-using Conversus.Core.DomainModel;
+﻿using System.Windows;
 using Conversus.Core.Infrastructure;
-using Conversus.Service.Contract;
-using Conversus.Service.Helpers;
 
 namespace Conversus.AdminView
 {

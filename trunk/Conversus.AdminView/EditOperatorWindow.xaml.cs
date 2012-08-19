@@ -12,7 +12,7 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class EditOperatorWindow : Window
     {
-        private OperatorInfo _client;
+        private readonly OperatorInfo _client;
 
         public EditOperatorWindow(OperatorInfo client)
         {
@@ -29,35 +29,30 @@ namespace Conversus.AdminView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_client != null)
-            {
-                nameTextBox.Text = _client.Name;
-                loginTextBox.Text = _client.Login;
-                windowTextBox.Text = _client.CurrentWindow;
-                queueTypeComboBox.SelectedItem = _client.Queue.Title;
-            }
+            if (_client == null)
+                return;
+            
+            nameTextBox.Text = _client.Name;
+            loginTextBox.Text = _client.Login;
+            windowTextBox.Text = _client.CurrentWindow;
+            queueTypeComboBox.SelectedItem = _client.Queue.Title;
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Guid clientId;
-
-                if (_client == null) {
-                    clientId = new Guid();
-
+                if (_client == null)
+                {
                     ServiceHelper.Instance.OperatorService.Create(nameTextBox.Text, loginTextBox.Text, passTextBox.Text,
-                                                              windowTextBox.Text,
-                                                              (QueueType)
-                                                              ((QueueInfo) queueTypeComboBox.SelectedItem).Type);
+                        windowTextBox.Text,
+                        ((QueueInfo) queueTypeComboBox.SelectedItem).Type);
                 }
                 else
                 {
-                    clientId = _client.Id; 
-                    ServiceHelper.Instance.OperatorService.Save(clientId,
-                    nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
-                    (QueueType)((QueueInfo)queueTypeComboBox.SelectedItem).Type);
+                    ServiceHelper.Instance.OperatorService.Save(_client.Id,
+                        nameTextBox.Text, loginTextBox.Text, passTextBox.Text, windowTextBox.Text,
+                        ((QueueInfo)queueTypeComboBox.SelectedItem).Type);
                 }
 
                 Close();
