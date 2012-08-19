@@ -11,8 +11,10 @@ namespace Conversus.Scheduler
     {
         static void Main(string[] args)
         {
-            QueueType qType = QueueType.Approvement;
-            CreateClients(qType, GetPureData(qType));
+            //QueueType qType = QueueType.Approvement;
+            //CreateClients(qType, GetPureData(qType));
+
+            ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
         }
 
         private static void CreateClients(QueueType qType, PureResponse pureData)
