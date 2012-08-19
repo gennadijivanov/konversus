@@ -20,8 +20,8 @@ namespace Conversus.AdminView
         {
             InitializeComponent();
 
-            string company = PropertyManager.Instance.CompanyName;
-            string licenseKey = PropertyManager.Instance.LicenseKey;
+            string company = ServiceHelper.Instance.PropertyService.GetProperty(Constants.Properties.Company);
+            string licenseKey = ServiceHelper.Instance.PropertyService.GetProperty(Constants.Properties.LicenseKey);
 
             if (!string.IsNullOrEmpty(company) && !string.IsNullOrEmpty(licenseKey))
                 _license = EncryptionManager.TestLicense(licenseKey, company);
@@ -99,8 +99,12 @@ namespace Conversus.AdminView
                 MessageBox.Show("Ключ невалиден");
             else
             {
-                PropertyManager.Instance.CompanyName = companyTextBox.Text;
-                PropertyManager.Instance.LicenseKey = keyTextBox.Text;
+                _license = licenseType;
+
+                ServiceHelper.Instance.PropertyService.SetProperty(Constants.Properties.Company, companyTextBox.Text);
+                ServiceHelper.Instance.PropertyService.SetProperty(Constants.Properties.LicenseKey, keyTextBox.Text);
+
+                keyTextBox.Text = string.Empty;
 
                 string congratulationsText = "Продукт активирован. Доступно операторов: " + (int) licenseType.Value;
                 MessageBox.Show(congratulationsText);
@@ -114,7 +118,7 @@ namespace Conversus.AdminView
             SetActivationStatusLabel();
 
             if (_license.HasValue)
-                companyTextBox.Text = PropertyManager.Instance.CompanyName;
+                companyTextBox.Text = ServiceHelper.Instance.PropertyService.GetProperty(Constants.Properties.Company);
         }
 
         private void ActivateApplication()

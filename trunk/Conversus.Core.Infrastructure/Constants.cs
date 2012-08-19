@@ -26,6 +26,13 @@ namespace Conversus.Core.Infrastructure
             public const string PropertyService = "PropertyService";
         }
 
+        public static class Properties
+        {
+            public const string Company = "Company";
+
+            public const string LicenseKey = "LicenseKey";
+        }
+
         public static readonly Dictionary<QueueType, string> QueueTypeTitles =
             new Dictionary<QueueType, string>
                 {
