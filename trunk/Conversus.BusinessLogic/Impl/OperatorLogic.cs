@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Conversus.Core.DomainModel;
+using Conversus.Core.Infrastructure;
 using Conversus.Core.Infrastructure.Repository;
+using Conversus.Impl;
 using Conversus.Storage;
 using User = Conversus.Impl.Objects.Operator;
 
@@ -22,7 +24,7 @@ namespace Conversus.BusinessLogic.Impl
             return Storage.Get(id);
         }
 
-        public ICollection<IOperator> Get(UserFilterParameters filter)
+        public ICollection<IOperator> Get(OperatorFilterParameters filter)
         {
             return Storage.Get(filter);
         }
@@ -32,7 +34,7 @@ namespace Conversus.BusinessLogic.Impl
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
                 throw new ArgumentNullException();
 
-            if (Storage.Get(new UserFilterParameters() { Login = login }).Count > 0)
+            if (Storage.Get(new OperatorFilterParameters() { Login = login }).Count > 0)
                 throw new InvalidOperationException("User is already exists");
 
             password = GetMD5Hash(password);
@@ -75,12 +77,17 @@ namespace Conversus.BusinessLogic.Impl
 
         public IOperator Login(string login, string password)
         {
+            CheckLoginedOperatorsCount();
+
             password = GetMD5Hash(password);
-            var oper = Storage.Get(new UserFilterParameters { Login = login, Password = password })
+            var oper = Storage.Get(new OperatorFilterParameters { Login = login, Password = password })
                 .SingleOrDefault();
 
             if (oper == null)
                 return null;
+
+            if (oper.Status != OperatorStatus.Stop)
+                throw new Exception("Оператор уже залогинен");
 
             oper.Status = OperatorStatus.Play;
             Storage.Update(oper);
@@ -103,6 +110,24 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Update(oper);
         }
 
+        private void CheckLoginedOperatorsCount()
+        {
+            List<IOperator> loginedOperators =
+                Storage.Get(new OperatorFilterParameters { Status = OperatorStatus.Play }).ToList();
+            loginedOperators.AddRange(Storage.Get(new OperatorFilterParameters() { Status = OperatorStatus.Pause }));
+
+            var propLogic = BusinessLogicFactory.Instance.Get<IPropertyLogic>();
+            string company = propLogic.GetProperty(Constants.Properties.Company);
+            string licKey = propLogic.GetProperty(Constants.Properties.LicenseKey);
+
+            LicenseType? license = EncryptionManager.TestLicense(licKey, company);
+
+            if (!license.HasValue)
+                throw new Exception("Администратор должен активировать лицензию");
+            else if (loginedOperators.Count >= (int)license.Value)
+                throw new Exception("Уже достигнуто максимально возможное число операторов");
+        }
+
         private string GetMD5Hash(string input)
         {
             var x = new System.Security.Cryptography.MD5CryptoServiceProvider();
@@ -113,8 +138,7 @@ namespace Conversus.BusinessLogic.Impl
             {
                 s.Append(b.ToString("x2").ToLower());
             }
-            string password = s.ToString();
-            return password;
+            return s.ToString();
         }
     }
 }

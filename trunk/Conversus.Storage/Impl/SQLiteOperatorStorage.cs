@@ -62,7 +62,7 @@ namespace Conversus.Storage.Impl
 
         public ICollection<IOperator> Get(IFilterParameters filter)
         {
-            UserFilterParameters f = filter != null ? filter as UserFilterParameters : null;
+            OperatorFilterParameters f = filter != null ? filter as OperatorFilterParameters : null;
 
             using (var db = GetDataContext())
             {
@@ -81,6 +81,9 @@ namespace Conversus.Storage.Impl
 
                     if (f.QueueType.HasValue)
                         query = query.Where(u => u.Queues.Type == (int) f.QueueType.Value);
+
+                    if (f.Status.HasValue)
+                        query = query.Where(u => u.Status == (int) f.Status.Value);
                 }
 
                 var list = query.ToList();
