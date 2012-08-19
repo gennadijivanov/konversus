@@ -64,6 +64,11 @@ namespace Conversus.Service.Impl
             ClientLogic.ChangeStatus(clientId, status);
         }
 
+        public void SetAllRegisteredAsAbsent()
+        {
+            ClientLogic.SetAllRegisteredAsAbsent();
+        }
+
         public ICollection<ClientInfo> GetClientsQueue(QueueType queue)
         {
             return ClientLogic

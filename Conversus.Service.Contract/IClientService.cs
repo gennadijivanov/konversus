@@ -28,6 +28,9 @@ namespace Conversus.Service.Contract
         [OperationContract]
         void ChangeStatus(Guid clientId, ClientStatus status);
 
+        [OperationContract]
+        void SetAllRegisteredAsAbsent();
+
         /// <summary>
         /// Сидящие в очереди с билетиком (в т.ч. отложенные)
         /// </summary>

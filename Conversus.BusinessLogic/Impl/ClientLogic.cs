@@ -50,6 +50,18 @@ namespace Conversus.BusinessLogic.Impl
             Storage.Update(client);
         }
 
+        public void SetAllRegisteredAsAbsent()
+        {
+            ICollection<IClient> absentClients =
+                Storage.Get(new ClientFilterParameters { Status = ClientStatus.Registered });
+            
+            foreach (IClient client in absentClients)
+            {
+                ChangeStatus(client, ClientStatus.Absent);
+                Storage.Update(client);
+            }
+        }
+
         public ICollection<IClient> GetClients(QueueType queueType)
         {
             var queue =

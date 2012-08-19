@@ -19,6 +19,8 @@ namespace Conversus.BusinessLogic
 
         void ChangeStatus(Guid clientId, ClientStatus status);
 
+        void SetAllRegisteredAsAbsent();
+
         ICollection<IClient> GetClients(QueueType queue);
 
         /// <summary>
