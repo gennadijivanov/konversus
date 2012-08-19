@@ -13,20 +13,22 @@ namespace Conversus.Core.Infrastructure
         {
         }
 
-        public bool TryGetValue(string key, out string value)
+        public bool TryGetValue<T>(string key, out T value)
         {
-            value = null;
+            value = default(T);
             object val = ProgramKey.GetValue(key);
             if (val == null)
                 return false;
 
-            value = (string)val;
+            value = (T)val;
             return true;
         }
 
-        public void SetValue(string key, string value)
+        public void SetValue<T>(string key, T value) where T: class
         {
-            ProgramKey.SetValue(key, value, RegistryValueKind.String);
+            if (value == default(T))
+                return;
+            ProgramKey.SetValue(key, value, RegistryValueKind.Unknown);
         }
 
         private RegistryKey _programKey;

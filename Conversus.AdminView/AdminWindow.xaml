@@ -9,7 +9,7 @@
         <local:DefaultBackGround></local:DefaultBackGround>
         <Label>Окно админиа/для отчетов</Label>
         <TabControl Name="tabControl1" MinHeight="400" MinWidth="400" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent">
-            <TabItem Header="Регистрация опреаторов" Name="tabItem1" IsEnabled="False">
+            <TabItem Header="Регистрация опреаторов" Name="tabItem1" IsEnabled="False" IsSelected="False">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5*"></RowDefinition>
@@ -84,7 +84,7 @@
                     <DataGrid Name="reportGrid" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" ColumnWidth="Auto" ></DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Активация" Name="tabActivation">
+            <TabItem Header="Активация" Name="tabActivation" IsSelected="True" GotFocus="tabActivation_GotFocus">
                 <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="170" />

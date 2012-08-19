@@ -25,9 +25,25 @@
             set { SetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, value); }
         }
 
-        private string GetProperty(ref string field, string regKey, string defaultValue)
+        private const string _companyNameKey = "companyName";
+        private string _companyName;
+        public string CompanyName
         {
-            if (string.IsNullOrEmpty(field))
+            get { return GetProperty(ref _companyName, _companyNameKey, null); }
+            set { SetProperty(ref _companyName, _companyNameKey, value); }
+        }
+
+        private const string _licenseRegistryKey = "licenseKey";
+        private string _licenseKey;
+        public string LicenseKey
+        {
+            get { return GetProperty(ref _licenseKey, _licenseRegistryKey, null); }
+            set { SetProperty(ref _licenseKey, _licenseRegistryKey, value); }
+        }
+
+        private T GetProperty<T>(ref T field, string regKey, T defaultValue) where T: class
+        {
+            if (field == default(T))
             {
                 if (!RegistryManager.Instance.TryGetValue(regKey, out field))
                 {
@@ -38,7 +54,7 @@
             return field;
         }
 
-        private void SetProperty(ref string field, string regKey, string value)
+        private void SetProperty<T>(ref T field, string regKey, T value) where T: class
         {
             field = value;
             RegistryManager.Instance.SetValue(regKey, field);

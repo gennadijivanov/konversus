@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using Conversus.Impl;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
+using Conversus.Core.Infrastructure;
 
 namespace Conversus.AdminView
 {
@@ -13,9 +14,23 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private LicenseType? _license;
+
         public AdminWindow()
         {
             InitializeComponent();
+
+            string company = PropertyManager.Instance.CompanyName;
+            string licenseKey = PropertyManager.Instance.LicenseKey;
+
+            if (!string.IsNullOrEmpty(company) && !string.IsNullOrEmpty(licenseKey))
+                _license = EncryptionManager.TestLicense(licenseKey, company);
+        }
+
+        private void AdminWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (_license.HasValue)
+                ActivateApplication();
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
@@ -25,7 +40,7 @@ namespace Conversus.AdminView
             insertOperatorWindow.Show();
         }
 
-        void insertOperatorWindow_Closed(object sender, EventArgs e)
+        private void insertOperatorWindow_Closed(object sender, EventArgs e)
         {
             ReloadOperatorsList();
         }
@@ -47,28 +62,17 @@ namespace Conversus.AdminView
         private void dellButton_Click(object sender, RoutedEventArgs e)
         {
             if (operatorListGrid.SelectedItem != null)
-                ServiceHelper.Instance.OperatorService.Delete(((OperatorInfo)operatorListGrid.SelectedItem).Id);
+                ServiceHelper.Instance.OperatorService.Delete(((OperatorInfo) operatorListGrid.SelectedItem).Id);
         }
 
         private void operatorListGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var grid = (DataGrid)e.OriginalSource;
+            var grid = (DataGrid) e.OriginalSource;
 
-            if ( grid.SelectedItem != null)
-            {
+            if (grid.SelectedItem != null)
                 deleteButton.Visibility = editButton.Visibility = Visibility.Visible;
-            }
             else
-            {
                 deleteButton.Visibility = editButton.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void AdminWindow_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            //TODO: Если нет активации, то не грузим лист операторов и активируем вкладку с активацией
-            //то есть нада tabActivation.IsSelected = true;
-            ReloadOperatorsList();
         }
 
         private void ReloadOperatorsList()
@@ -79,29 +83,55 @@ namespace Conversus.AdminView
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            if (operatorListGrid.SelectedItem != null)
-            {
-                var editWindow = new EditOperatorWindow((OperatorInfo)operatorListGrid.SelectedItem);
-                editWindow.Closed += insertOperatorWindow_Closed;
-                editWindow.Show();
-            }
+            if (operatorListGrid.SelectedItem == null)
+                return;
+
+            var editWindow = new EditOperatorWindow((OperatorInfo) operatorListGrid.SelectedItem);
+            editWindow.Closed += insertOperatorWindow_Closed;
+            editWindow.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var licenseType = EncryptionManager.TestLicense(keyTextBox.Text ,companyTextBox.Text);
+            LicenseType? licenseType = EncryptionManager.TestLicense(keyTextBox.Text, companyTextBox.Text);
 
-            if (licenseType != null)
-            {
-                tabItem1.IsEnabled = true;
-                TabItemReports.IsEnabled = true;
-                statusLabel.Text = "Продукт активирован. Доступно операторов: "+((int)licenseType).ToString();
-            }
+            if (!licenseType.HasValue)
+                MessageBox.Show("Ключ невалиден");
             else
             {
-                MessageBox.Show("Ключ невалиден");
-            }
+                PropertyManager.Instance.CompanyName = companyTextBox.Text;
+                PropertyManager.Instance.LicenseKey = keyTextBox.Text;
 
+                string congratulationsText = "Продукт активирован. Доступно операторов: " + (int) licenseType.Value;
+                MessageBox.Show(congratulationsText);
+
+                ActivateApplication();
+            }
+        }
+
+        private void tabActivation_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SetActivationStatusLabel();
+
+            if (_license.HasValue)
+                companyTextBox.Text = PropertyManager.Instance.CompanyName;
+        }
+
+        private void ActivateApplication()
+        {
+            tabItem1.IsEnabled = true;
+            tabItem1.IsSelected = true;
+            TabItemReports.IsEnabled = true;
+            ReloadOperatorsList();
+            SetActivationStatusLabel();
+        }
+
+        private void SetActivationStatusLabel()
+        {
+            if (_license.HasValue)
+                statusLabel.Text = "Продукт активирован. Доступно операторов: " + (int) _license.Value;
+            else
+                statusLabel.Text = "Продукт не активирован.";
         }
     }
 }
