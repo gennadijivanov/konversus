@@ -13,6 +13,7 @@ namespace Conversus.Storage
                 {typeof(IQueueStorage), new SQLiteQueueStorage(connectionString)},
                 {typeof(IClientStorage), new SQLiteClientStorage(connectionString)},
                 {typeof(IOperatorStorage), new SQLiteOperatorStorage(connectionString)},
+                {typeof(IPropertyStorage), new SQLitePropertyStorage(connectionString)},
             };
 
             StorageLogicFactory.Instance.RegisterObjects(storageTypes);

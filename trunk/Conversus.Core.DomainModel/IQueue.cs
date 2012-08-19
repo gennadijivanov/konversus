@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Conversus.Core.DomainModel
+﻿namespace Conversus.Core.DomainModel
 {
     public enum QueueType
     {

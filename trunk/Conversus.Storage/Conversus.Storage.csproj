@@ -59,9 +59,11 @@
     <Compile Include="Impl\ConversusDataContext.cs" />
     <Compile Include="Impl\SQLiteClientStorage.cs" />
     <Compile Include="Impl\SQLiteOperatorStorage.cs" />
+    <Compile Include="Impl\SQLitePropertyStorage.cs" />
     <Compile Include="Impl\SQLiteQueueStorage.cs" />
     <Compile Include="Impl\SQLiteStorageBase.cs" />
     <Compile Include="IOperatorStorage.cs" />
+    <Compile Include="IPropertyStorage.cs" />
     <Compile Include="IQueueStorage.cs" />
     <Compile Include="IStorage.cs" />
     <Compile Include="StorageLogicFactory.cs" />

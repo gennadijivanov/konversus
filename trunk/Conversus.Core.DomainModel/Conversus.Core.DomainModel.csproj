@@ -43,6 +43,7 @@
     <Compile Include="IClient.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IOperator.cs" />
+    <Compile Include="IProperty.cs" />
     <Compile Include="IQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
