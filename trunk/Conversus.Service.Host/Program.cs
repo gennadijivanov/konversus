@@ -23,29 +23,38 @@ namespace Conversus.Service.Host
 
         static void Main(string[] args)
         {
-            string connectionString = GetConnectionString();
-
-            StorageLogicInitializer.Initialize(connectionString);
-            BusinessLogicInitializer.Initialize();
-
-            using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
-            using (queueHost = CreateServiceHost(queueServiceType, Constants.Endpoints.QueueService))
-            using (operatorHost = CreateServiceHost(operatorServiceType, Constants.Endpoints.OperatorService))
-            using (propertyHost = CreateServiceHost(propertyServiceType, Constants.Endpoints.PropertyService))
+            try
             {
-                clientHost.Open();
-                queueHost.Open();
-                operatorHost.Open();
-                propertyHost.Open();
+                string connectionString = GetConnectionString();
 
-                Console.WriteLine();
-                Console.WriteLine("Press <ENTER> to terminate Host");
+                StorageLogicInitializer.Initialize(connectionString);
+                BusinessLogicInitializer.Initialize();
+
+                using (clientHost = CreateServiceHost(clientServiceType, Constants.Endpoints.ClientService))
+                using (queueHost = CreateServiceHost(queueServiceType, Constants.Endpoints.QueueService))
+                using (operatorHost = CreateServiceHost(operatorServiceType, Constants.Endpoints.OperatorService))
+                using (propertyHost = CreateServiceHost(propertyServiceType, Constants.Endpoints.PropertyService))
+                {
+                    clientHost.Open();
+                    queueHost.Open();
+                    operatorHost.Open();
+                    propertyHost.Open();
+
+                    Console.WriteLine();
+                    Console.WriteLine("Press <ENTER> to terminate Host");
+                    Console.ReadLine();
+
+                    clientHost.Close();
+                    queueHost.Close();
+                    operatorHost.Close();
+                    propertyHost.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                Logger.Log(exc);
+                Console.WriteLine(exc.Message);
                 Console.ReadLine();
-
-                clientHost.Close();
-                queueHost.Close();
-                operatorHost.Close();
-                propertyHost.Close();
             }
         }
 

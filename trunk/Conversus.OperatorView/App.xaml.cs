@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using Conversus.Core.Infrastructure;
 
 namespace Conversus.OperatorView
 {
@@ -9,6 +11,12 @@ namespace Conversus.OperatorView
     {
         public App()
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Logger.Log((Exception)e.ExceptionObject);
         }
     }
 }

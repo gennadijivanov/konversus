@@ -14,7 +14,13 @@
         public string ServiceHost
         {
             get { return GetProperty(ref _serviceHost, _serviceHostRegistryKey, Constants.DefaultServiceHost); }
-            set { SetProperty(ref _serviceHost, _serviceHostRegistryKey, value); }
+            set
+            {
+                string host = value;
+                if (!host.EndsWith("/"))
+                    host += "/";
+                SetProperty(ref _serviceHost, _serviceHostRegistryKey, host);
+            }
         }
 
         private const string _terminalServiceHostRegistryKey = "terminalServiceHost";
@@ -22,7 +28,13 @@
         public string TerminalServiceHost
         {
             get { return GetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, Constants.DefaultTerminalServiceHost); }
-            set { SetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, value); }
+            set
+            {
+                string host = value;
+                if (!host.EndsWith("/"))
+                    host += "/";
+                SetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, host);
+            }
         }
 
         private T GetProperty<T>(ref T field, string regKey, T defaultValue) where T: class

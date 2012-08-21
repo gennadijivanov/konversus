@@ -16,8 +16,15 @@ namespace Conversus.TerminalView
 
         public App()
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             host = CreateServiceHost();
             host.Open();
+        }
+
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Logger.Log((Exception)e.ExceptionObject);
         }
 
         protected override void OnExit(ExitEventArgs e)
