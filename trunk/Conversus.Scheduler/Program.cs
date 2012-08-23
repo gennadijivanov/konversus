@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using Conversus.Core.DomainModel;
@@ -14,9 +16,13 @@ namespace Conversus.Scheduler
         {
             try
             {
-                //QueueType qType = QueueType.Approvement;
-                //CreateClients(qType, GetPureData(qType));
-                //Logger.Log("Data from Lotus is imported");
+                IEnumerable<QueueType> queueTypes = Enum.GetValues(typeof (QueueType)).Cast<QueueType>();
+
+                foreach (QueueType queueType in queueTypes)
+                {
+                    CreateClients(queueType, GetPureData(queueType));  
+                }
+                Logger.Log("Data from Lotus is imported");
 
                 ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
                 Logger.Log("All absent are marked as absent");
@@ -52,7 +58,7 @@ namespace Conversus.Scheduler
 
         private static PureResponse GetPureData(QueueType qType)
         {
-            JsonReader jr = new JsonTextReader(new StreamReader("fakedata.js"));
+            JsonReader jr = new JsonTextReader(new StreamReader(ConfigurationManager.AppSettings[qType.ToString()]));
             return (new JsonSerializer()).Deserialize<PureResponse>(jr);
         }
     }
