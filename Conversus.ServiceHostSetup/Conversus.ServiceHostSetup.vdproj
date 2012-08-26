@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_03D511F75D63D85F259C81937BD05623"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_049B9BA1C574AAA157E3FF626BE4FA81"
         "OwnerKey" = "8:_B456656A00814522989B0CD674ED747F"
         "MsmSig" = "8:_UNDEFINED"
@@ -47,6 +53,12 @@
         {
         "MsmKey" = "8:_1D5D60E2D6599FD66CB6D5797373009C"
         "OwnerKey" = "8:_B456656A00814522989B0CD674ED747F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3DB060D022AF1AC53143028573C7FDAB"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,6 +112,12 @@
         "Entry"
         {
         "MsmKey" = "8:_54CA473C22CB263C8F27E986A6B9A5D0"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_54CA473C22CB263C8F27E986A6B9A5D0"
         "OwnerKey" = "8:_049B9BA1C574AAA157E3FF626BE4FA81"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -125,6 +143,18 @@
         {
         "MsmKey" = "8:_608500C21C110B826E73F44A016AFA85"
         "OwnerKey" = "8:_4D323FB13202496A86ED2A54007349DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_608500C21C110B826E73F44A016AFA85"
+        "OwnerKey" = "8:_8FA40B073F95086A68923DC2BB7FF47E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_608500C21C110B826E73F44A016AFA85"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -185,6 +215,12 @@
         {
         "MsmKey" = "8:_801D9C13CCEB18A37A12CE1157630AF7"
         "OwnerKey" = "8:_EE2F13E91C560CC4DC55A1D18EE509CA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_801D9C13CCEB18A37A12CE1157630AF7"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -263,6 +299,12 @@
         {
         "MsmKey" = "8:_8CBF598BCFE855A8B6BFDB226B7C0CC6"
         "OwnerKey" = "8:_B456656A00814522989B0CD674ED747F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8FA40B073F95086A68923DC2BB7FF47E"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,8 +495,38 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4D323FB13202496A86ED2A54007349DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FBA099A44237422089EE1F901FF1DD8B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_03D511F75D63D85F259C81937BD05623"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8FA40B073F95086A68923DC2BB7FF47E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3DB060D022AF1AC53143028573C7FDAB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -702,6 +774,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_03D511F75D63D85F259C81937BD05623"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_03D511F75D63D85F259C81937BD05623"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_049B9BA1C574AAA157E3FF626BE4FA81"
             {
             "AssemblyRegister" = "3:1"
@@ -778,6 +881,37 @@
                     }
                 }
             "SourcePath" = "8:Conversus.TerminalService.Contract.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3DB060D022AF1AC53143028573C7FDAB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Conversus.Core.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3DB060D022AF1AC53143028573C7FDAB"
+                    {
+                    "Name" = "8:Conversus.Core.DomainModel.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Conversus.Core.DomainModel.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
@@ -1046,6 +1180,37 @@
                     }
                 }
             "SourcePath" = "8:Conversus.BusinessLogic.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8FA40B073F95086A68923DC2BB7FF47E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Conversus.TerminalService.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8FA40B073F95086A68923DC2BB7FF47E"
+                    {
+                    "Name" = "8:Conversus.TerminalService.Contract.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Conversus.TerminalService.Contract.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
@@ -1399,7 +1564,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:СУО. Сервер"
         "ProductCode" = "8:{F7A721F2-FCEA-4654-9B0A-9B15CC515E55}"
-        "PackageCode" = "8:{299F072F-DD38-4CE4-B289-D0E04A4BC0BF}"
+        "PackageCode" = "8:{CB5F5A18-2885-4301-8AD0-7C7837775A26}"
         "UpgradeCode" = "8:{B1B5645F-7073-47B5-929C-1C3E3B516557}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2225,6 +2390,62 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{928EC816-9398-4CE4-9DCF-001EC646DD1C}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BD1FCBABD2DE4AC3A67465BB3DB0D28E"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectGuid" = "8:{6843B1CC-EAF2-42CE-AC16-D1C8799F5848}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FBA099A44237422089EE1F901FF1DD8B"
+            {
+            "SourcePath" = "8:..\\Conversus.Scheduler\\obj\\x86\\Debug\\Conversus.Scheduler.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BB448A3E47AF49AA898ED6DC2A8490A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{6843B1CC-EAF2-42CE-AC16-D1C8799F5848}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
