@@ -49,6 +49,7 @@
     <Compile Include="IOperatorService.cs" />
     <Compile Include="IPropertyService.cs" />
     <Compile Include="IQueueService.cs" />
+    <Compile Include="IReportService.cs" />
     <Compile Include="OperatorInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueInfo.cs" />

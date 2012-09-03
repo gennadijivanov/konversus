@@ -10,6 +10,7 @@ namespace Conversus.Storage
         TEntity Update(TEntity data);
         TEntity Get(Guid id);
         ICollection<TEntity> Get(IFilterParameters filter);
+        ICollection<TEntity> GetWithHistory(DateTime startDate, DateTime endDate);
         void Delete(Guid id);
     }
 }

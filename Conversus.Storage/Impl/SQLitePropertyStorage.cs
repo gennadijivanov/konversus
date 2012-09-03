@@ -32,6 +32,11 @@ namespace Conversus.Storage.Impl
             throw new NotImplementedException();
         }
 
+        public ICollection<IProperty> GetWithHistory(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Guid id)
         {
             throw new NotImplementedException();

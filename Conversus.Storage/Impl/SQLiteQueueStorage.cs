@@ -80,14 +80,18 @@ namespace Conversus.Storage.Impl
                         query = query.Where(q => q.Clients.Any(c => c.Id == f.ClientId.Value));
 
                     if (f.QueueType.HasValue)
-                        query = query.Where(q => q.Type == (int)f.QueueType.Value);
+                        query = query.Where(q => q.Type == (int) f.QueueType.Value);
                 }
 
                 var list = query.ToList();
 
                 return list.Select(ConvertFromData).ToList();
             }
+        }
 
+        public ICollection<IQueue> GetWithHistory(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
         }
 
         public void Delete(Guid id)

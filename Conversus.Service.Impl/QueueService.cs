@@ -32,10 +32,9 @@ namespace Conversus.Service.Impl
 
         private QueueInfo ToQueueInfo(IQueue queue)
         {
-            if (queue == null)
-                return null;
-
-            return new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type));
+            return queue == null 
+                ? null
+                : new QueueInfo(queue.Id, queue.Type, QueueLogic.GetTitle(queue.Type));
         }
     }
 }
