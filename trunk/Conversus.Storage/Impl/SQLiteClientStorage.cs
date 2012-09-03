@@ -29,7 +29,7 @@ namespace Conversus.Storage.Impl
                                      BookingTime = data.BookingTime,
                                      Ticket = data.Ticket,
                                      SortPriority = (int)data.SortPriority,
-                                     OperatorId = data.OperatorId
+                                     OperatorId = data.OperatorId,
                                  };
                 db.AddToClients(client);
                 db.SaveChanges();
@@ -89,6 +89,16 @@ namespace Conversus.Storage.Impl
             }
         }
 
+        public ICollection<IClient> GetWithHistory(DateTime startDate, DateTime endDate)
+        {
+            using (var db = GetDataContext())
+            {
+                IEnumerable<ClientData> query =
+                    db.Clients.Where(c => c.ChangeStatusTime >= startDate && c.ChangeStatusTime <= endDate);
+                return query.Select(ConvertFromData).ToList();
+            }
+        }
+
         public void Delete(Guid id)
         {
             using (var db = GetDataContext())
@@ -126,13 +136,13 @@ namespace Conversus.Storage.Impl
             }
         }
         
-        private IClient ConvertFromData(ClientData data)
+        private static IClient ConvertFromData(ClientData data)
         {
             var client = new ClientImpl(data.Id, data.Name, data.QueueId, data.BookingTime, data.ChangeStatusTime,
                 data.PIN, (ClientStatus)data.Status, (SortPriority)data.SortPriority, data.Ticket)
-                             {
-                                 OperatorId = data.OperatorId
-                             };
+                {
+                    OperatorId = data.OperatorId,
+                };
             return client;
         }
     }

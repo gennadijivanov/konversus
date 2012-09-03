@@ -36,7 +36,7 @@ namespace Conversus.Storage.Impl
                                Window = data.Window,
                                QueueId = data.QueueId,
                                ChangeStatusTime = data.ChangeTime,
-                               Status = (int) data.Status
+                               Status = (int) data.Status,
                            };
             return user;
         }
@@ -92,6 +92,16 @@ namespace Conversus.Storage.Impl
             }
         }
 
+        public ICollection<IOperator> GetWithHistory(DateTime startDate, DateTime endDate)
+        {
+            using (var db = GetDataContext())
+            {
+                IEnumerable<UserData> query =
+                    db.Operators.Where(c => c.ChangeStatusTime >= startDate && c.ChangeStatusTime <= endDate);
+                return query.Select(ConvertFromData).ToList();
+            }
+        }
+
         public void Delete(Guid id)
         {
             using (var db = GetDataContext())
@@ -107,7 +117,7 @@ namespace Conversus.Storage.Impl
             }
         }
 
-        private IOperator ConvertFromData(UserData data)
+        private static IOperator ConvertFromData(UserData data)
         {
             return new UserImpl(data.Id, data.Name, data.Login, data.Password, data.Window, 
                 data.QueueId, (OperatorStatus)data.Status, data.ChangeStatusTime);

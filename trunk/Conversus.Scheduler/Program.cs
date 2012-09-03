@@ -16,6 +16,7 @@ namespace Conversus.Scheduler
         {
             try
             {
+                
                 IEnumerable<QueueType> queueTypes = Enum.GetValues(typeof (QueueType)).Cast<QueueType>();
 
                 foreach (QueueType queueType in queueTypes)
@@ -26,6 +27,12 @@ namespace Conversus.Scheduler
 
                 ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
                 Logger.Log("All absent are marked as absent");
+                
+                /*
+                List<ReportByQueueModel> report = ServiceHelper.Instance.ReportService.GetReportByQueue(DateTime.Today.AddDays(-5),
+                                                                                   DateTime.Today.AddDays(5));
+
+                Console.ReadLine();*/
             }
             catch(Exception exc)
             {

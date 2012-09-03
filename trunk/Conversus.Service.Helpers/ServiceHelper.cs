@@ -55,6 +55,12 @@ namespace Conversus.Service.Helpers
             get { return _propertyService ?? (_propertyService = GetClient<IPropertyService>(Constants.Endpoints.PropertyService)); }
         }
 
+        private IReportService _reportService;
+        public IReportService ReportService
+        {
+            get { return _reportService ?? (_reportService = GetClient<IReportService>(Constants.Endpoints.ReportService)); }
+        }
+
         private ITerminalService _terminalService;
         public ITerminalService TerminalService
         {
@@ -72,6 +78,7 @@ namespace Conversus.Service.Helpers
             _operatorService = null;
             _сlientService = null;
             _propertyService = null;
+            _reportService = null;
         }
 
         public void ChangeTerminalServiceHost(string serviceHost)

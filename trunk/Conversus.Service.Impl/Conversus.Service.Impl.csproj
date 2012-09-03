@@ -49,6 +49,7 @@
     <Compile Include="ClientService.cs" />
     <Compile Include="PropertyService.cs" />
     <Compile Include="QueueService.cs" />
+    <Compile Include="ReportService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
