@@ -82,7 +82,8 @@ namespace Conversus.BusinessLogic.Impl
                 List<IClient> clientHistory =
                     dayClientsGrouping[uniqueClient.Id].OrderBy(c => c.ChangeTime).ToList();
 
-                TimeSpan beingInOffice = new TimeSpan();
+                TimeSpan waiting = new TimeSpan();
+                TimeSpan performing = new TimeSpan();
 
                 for (int i = 1; i < clientHistory.Count; i++)
                 {
@@ -98,15 +99,21 @@ namespace Conversus.BusinessLogic.Impl
                     {
                         case ClientStatus.Waiting:
                         case ClientStatus.Postponed:
-                            waitings.Add(span);
-                            beingInOffice = beingInOffice.Add(span);
+                            waiting = waiting.Add(span);
                             break;
                         case ClientStatus.Performing:
-                            performings.Add(span);
-                            beingInOffice = beingInOffice.Add(span);
+                            performing = performing.Add(span);
                             break;
                     }
                 }
+
+                if (waiting.Ticks > 0)
+                    waitings.Add(waiting);
+
+                if (performing.Ticks > 0)
+                    performings.Add(performing);
+
+                TimeSpan beingInOffice = waiting.Add(performing);
 
                 if (beingInOffice.Ticks > 0)
                     beingsInOffice.Add(beingInOffice);
