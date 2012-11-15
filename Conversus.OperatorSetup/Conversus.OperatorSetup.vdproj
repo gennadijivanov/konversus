@@ -505,6 +505,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0F403CFAEC0A4F168EA47C2D9FF5E81C"
+                    {
+                    "Name" = "8:IMS Media"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_6CCD30D84F73432982CD678F72C68B58"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -524,7 +535,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:СУО. Пульт оператора"
         "ProductCode" = "8:{4868AE34-E044-4E35-B081-FFBE49DDC13D}"
-        "PackageCode" = "8:{4195D61F-60BD-48C3-A3E9-270A581D4E1F}"
+        "PackageCode" = "8:{9AC73824-7415-4533-BA29-EE5BBDB4E85A}"
         "UpgradeCode" = "8:{2F087502-F670-48E6-AA30-05DA2DD9E3CF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -644,6 +655,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_235B13F5EDEC412284A564059C5ABBB7"
+            {
+            "Name" = "8:СУО. Пульт оператора"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
+            "Folder" = "8:_93DA7D7340984C01AEA1A800E489946F"
+            "WorkingFolder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8621272A2F3A4DC787A5A5E16CC73FB1"
+            {
+            "Name" = "8:СУО. Пульт оператора"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
+            "Folder" = "8:_0F403CFAEC0A4F168EA47C2D9FF5E81C"
+            "WorkingFolder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
