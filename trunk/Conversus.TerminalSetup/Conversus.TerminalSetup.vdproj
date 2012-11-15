@@ -219,6 +219,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -475,6 +488,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8551092F73A640388E5C0E65F3A1B9E7"
+                    {
+                    "Name" = "8:IMS Media"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_5CE7563788714B5EBB3FB56D9B1CA99D"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_9415224272064568A9EED3A038268F93"
@@ -528,7 +552,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:СУО. Терминал"
         "ProductCode" = "8:{09834A33-4055-426F-9E2E-A047DC184F37}"
-        "PackageCode" = "8:{D2A03FD4-4E72-499E-9EE8-1832CFDF4E2B}"
+        "PackageCode" = "8:{BE7ADBD3-B711-41CC-8FCB-48D79EE75201}"
         "UpgradeCode" = "8:{4D00E5CB-D19E-4D9C-91D4-0C2604EA745A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -648,6 +672,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2D704B5F75DE4373A9920954B7D996B6"
+            {
+            "Name" = "8:СУО. Терминал"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_E0723F2EC1134FA98B78309F2259DCFC"
+            "Folder" = "8:_1E05C66A517E46AE91C073F0D1885048"
+            "WorkingFolder" = "8:_9415224272064568A9EED3A038268F93"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_529280E1D91E4152ACBA3F1EAA45F90E"
+            {
+            "Name" = "8:СУО. Терминал"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_E0723F2EC1134FA98B78309F2259DCFC"
+            "Folder" = "8:_8551092F73A640388E5C0E65F3A1B9E7"
+            "WorkingFolder" = "8:_9415224272064568A9EED3A038268F93"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
