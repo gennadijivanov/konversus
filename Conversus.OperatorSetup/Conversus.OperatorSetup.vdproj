@@ -15,8 +15,50 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_1CEACEFB1E0320DCF95532356D127610"
+        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
+        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
+        "OwnerKey" = "8:_62032E583C694818AA0AAF63EDF031EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
+        "OwnerKey" = "8:_1CEACEFB1E0320DCF95532356D127610"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
+        "OwnerKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_53BB5625DFEAA6D029A5682B69307DBB"
+        "OwnerKey" = "8:_1CEACEFB1E0320DCF95532356D127610"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_53BB5625DFEAA6D029A5682B69307DBB"
+        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -27,86 +69,50 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7C2324BBC6B3E771078385606A02554D"
+        "MsmKey" = "8:_875614A20635F1C2941EBD200035BD60"
         "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7C2324BBC6B3E771078385606A02554D"
-        "OwnerKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
+        "MsmKey" = "8:_875614A20635F1C2941EBD200035BD60"
+        "OwnerKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7C2324BBC6B3E771078385606A02554D"
-        "OwnerKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
+        "MsmKey" = "8:_875614A20635F1C2941EBD200035BD60"
+        "OwnerKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9CD48DD3B10D31BEF8D357F72C7187EA"
-        "OwnerKey" = "8:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
+        "MsmKey" = "8:_BE2ECAEE3B4D4BE4B10D89AA8C1B13ED"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9CD48DD3B10D31BEF8D357F72C7187EA"
+        "MsmKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
         "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9FA30FA89D58D5F4B29B49057D2F8B8F"
+        "MsmKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
+        "OwnerKey" = "8:_53BB5625DFEAA6D029A5682B69307DBB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
+        "OwnerKey" = "8:_1CEACEFB1E0320DCF95532356D127610"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD136F7662F4415103022FF49B7F29BF"
         "OwnerKey" = "8:_62032E583C694818AA0AAF63EDF031EC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
-        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
-        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
-        "OwnerKey" = "8:_9CD48DD3B10D31BEF8D357F72C7187EA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
-        "OwnerKey" = "8:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
-        "OwnerKey" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
-        "OwnerKey" = "8:_62032E583C694818AA0AAF63EDF031EC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
-        "OwnerKey" = "8:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
-        "OwnerKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,37 +130,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9FA30FA89D58D5F4B29B49057D2F8B8F"
+        "OwnerKey" = "8:_FD136F7662F4415103022FF49B7F29BF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
+        "OwnerKey" = "8:_1CEACEFB1E0320DCF95532356D127610"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9CD48DD3B10D31BEF8D357F72C7187EA"
+        "OwnerKey" = "8:_53BB5625DFEAA6D029A5682B69307DBB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C954A460D6C9C6BF1B522B1F86D6069D"
+        "OwnerKey" = "8:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D04F34D4E6525C289B8CCFC1D0773AF3"
+        "OwnerKey" = "8:_517D92D730BF5FED0FB2E746296395A3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7C2324BBC6B3E771078385606A02554D"
+        "OwnerKey" = "8:_875614A20635F1C2941EBD200035BD60"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -276,107 +282,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7C2324BBC6B3E771078385606A02554D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Conversus.Core.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7C2324BBC6B3E771078385606A02554D"
-                    {
-                    "Name" = "8:Conversus.Core.DomainModel.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Conversus.Core.DomainModel.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9CD48DD3B10D31BEF8D357F72C7187EA"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Conversus.TerminalService.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_9CD48DD3B10D31BEF8D357F72C7187EA"
-                    {
-                    "Name" = "8:Conversus.TerminalService.Contract.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Conversus.TerminalService.Contract.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9FA30FA89D58D5F4B29B49057D2F8B8F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Conversus.Core.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_9FA30FA89D58D5F4B29B49057D2F8B8F"
-                    {
-                    "Name" = "8:Conversus.Core.DomainModel.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Conversus.Core.DomainModel.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BDAF0F6B8FD50F8BF2F9DA844122DE83"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1CEACEFB1E0320DCF95532356D127610"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Conversus.Service.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BDAF0F6B8FD50F8BF2F9DA844122DE83"
+                    "_1CEACEFB1E0320DCF95532356D127610"
                     {
                     "Name" = "8:Conversus.Service.Helpers.dll"
                     "Attributes" = "3:512"
@@ -400,14 +313,127 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C954A460D6C9C6BF1B522B1F86D6069D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_517D92D730BF5FED0FB2E746296395A3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Conversus.Core.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_517D92D730BF5FED0FB2E746296395A3"
+                    {
+                    "Name" = "8:Conversus.Core.Infrastructure.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Conversus.Core.Infrastructure.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_53BB5625DFEAA6D029A5682B69307DBB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Conversus.TerminalService.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_53BB5625DFEAA6D029A5682B69307DBB"
+                    {
+                    "Name" = "8:Conversus.TerminalService.Contract.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Conversus.TerminalService.Contract.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_875614A20635F1C2941EBD200035BD60"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Conversus.Core.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_875614A20635F1C2941EBD200035BD60"
+                    {
+                    "Name" = "8:Conversus.Core.DomainModel.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Conversus.Core.DomainModel.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BE2ECAEE3B4D4BE4B10D89AA8C1B13ED"
+            {
+            "SourcePath" = "8:..\\Conversus.Resources\\Content\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EE2CD69971E9CC3C0A1E7EF9F18990BA"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Conversus.Service.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C954A460D6C9C6BF1B522B1F86D6069D"
+                    "_EE2CD69971E9CC3C0A1E7EF9F18990BA"
                     {
                     "Name" = "8:Conversus.Service.Contract.dll"
                     "Attributes" = "3:512"
@@ -431,20 +457,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D04F34D4E6525C289B8CCFC1D0773AF3"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FD136F7662F4415103022FF49B7F29BF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Conversus.Core.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Conversus.Core.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D04F34D4E6525C289B8CCFC1D0773AF3"
+                    "_FD136F7662F4415103022FF49B7F29BF"
                     {
-                    "Name" = "8:Conversus.Core.Infrastructure.dll"
+                    "Name" = "8:Conversus.Core.DomainModel.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Conversus.Core.Infrastructure.dll"
+            "SourcePath" = "8:Conversus.Core.DomainModel.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_757C401BCC16441A8BD76FC875E0630A"
@@ -661,7 +687,7 @@
             "Target" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
             "Folder" = "8:_93DA7D7340984C01AEA1A800E489946F"
             "WorkingFolder" = "8:_757C401BCC16441A8BD76FC875E0630A"
-            "Icon" = "8:"
+            "Icon" = "8:_BE2ECAEE3B4D4BE4B10D89AA8C1B13ED"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8621272A2F3A4DC787A5A5E16CC73FB1"
@@ -675,7 +701,7 @@
             "Target" = "8:_3632DCCBA42E42B9BCA365F7C592F6A7"
             "Folder" = "8:_0F403CFAEC0A4F168EA47C2D9FF5E81C"
             "WorkingFolder" = "8:_757C401BCC16441A8BD76FC875E0630A"
-            "Icon" = "8:"
+            "Icon" = "8:_BE2ECAEE3B4D4BE4B10D89AA8C1B13ED"
             "Feature" = "8:"
             }
         }
@@ -691,7 +717,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1C2A3CCEEDBB4C92ACE4A773A478D6B3"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка установки"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -726,7 +752,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_B08E96A32FC348F0AE15C0AD71E3C631"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Текстовые поля (A)"
+                    "DisplayName" = "8:Textboxes   (A)"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdCustomText1Dlg.wid"
@@ -982,7 +1008,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F757C1A345DD4B6CBE55ED150143C277"
                     {
                     "Sequence" = "3:400"
-                    "DisplayName" = "8:Подтверждение установки"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1004,7 +1030,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_FC1302785A5E4EE190FD2FA0401A58B7"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Добро пожаловать!"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -1061,7 +1087,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_AA9988F261E34859A761EB43A7874D62"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Ход выполнения"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -1117,7 +1143,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_84F7CD7C57164D9E9C08709763760313"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Готово"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -1161,7 +1187,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_0E37E0EE0DED4A97B43A8EA18669C66E"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Ход выполнения"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -1205,7 +1231,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6CBB4A3C6874457B9D9E27188295AC3A"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка установки"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -1227,7 +1253,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_824CCDDC88A0499BBAD9288C2576161F"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Подтверждение установки"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -1249,7 +1275,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F32E43EFC2B842F68DFE08048E426F16"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Добро пожаловать!"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -1306,7 +1332,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5718C34EC3C74DE68F96F531464F3570"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Готово"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
