@@ -37,9 +37,9 @@ namespace Conversus.Core.Infrastructure
             get { return _programKey ?? (_programKey = GetKey()); }
         }
 
-        private RegistryKey GetKey()
+        private static RegistryKey GetKey()
         {
-            var rootKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
+            var rootKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32);
             return rootKey.CreateSubKey(ConversusKeyName,
                 RegistryKeyPermissionCheck.ReadWriteSubTree);
         }
