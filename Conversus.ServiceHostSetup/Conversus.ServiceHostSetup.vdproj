@@ -1550,7 +1550,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_13EE25262D9C4A8B81C7C3FF26B214C3"
                     {
-                    "Name" = "8:IMS Media"
+                    "Name" = "8:IMS media"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -1609,7 +1609,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:IMS Media"
+        "Manufacturer" = "8:IMS media"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:СУО. Сервер"
