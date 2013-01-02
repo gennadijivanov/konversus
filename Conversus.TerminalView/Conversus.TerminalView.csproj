@@ -167,6 +167,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Content\images\icons\icon.png" />
+    <Resource Include="Content\images\buttons\but_1.png" />
+    <Resource Include="Content\images\buttons\but_2.png" />
+    <Resource Include="Content\images\buttons\but_3.png" />
+    <Resource Include="Content\images\buttons\but_4.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

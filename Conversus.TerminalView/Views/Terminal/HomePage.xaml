@@ -8,31 +8,40 @@
 	Title="HomePage" Loaded="Page_Loaded">
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="700">
-        <Border Name="TakingLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonUp="Border_MouseLeftButtonUp">
-            <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
+        <Image Name="TakingLink" Source="/Content\images\buttons\but_1.png" MouseLeftButtonDown="Border_MouseLeftButtonUp"></Image>
+        <Image Name="ApprovementLink" Source="/Content\images\buttons\but_2.png" MouseLeftButtonDown="Border_MouseLeftButtonUp"></Image>
+        <Image Name="HasPinLink" Source="/Content\images\buttons\but_3.png" MouseLeftButtonDown="Border_MouseLeftButtonUp"></Image>
+        <Image Name="ToAnotherDayLink" Source="/Content\images\buttons\but_4.png" MouseLeftButtonDown="Border_MouseLeftButtonUp"></Image>
+        
+        <!--Если захотят опять в векторе-->
+        <!--<Border Name="TakingLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonUp="Border_MouseLeftButtonUp">-->
+            <!--<TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}" Width="640" Height="127">
                     cдача документов на<LineBreak />
                     <Run FontSize="30">ПОЛУЧЕНИЕ</Run><LineBreak />
                     <Run FontSize="25">технических условий</Run>
-            </TextBlock>
-        </Border>
-        <Border Name="ApprovementLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
+            </TextBlock>-->
+        <!--</Border>-->
+        <!--<Border Name="ApprovementLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
             <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     сдача документов на<LineBreak />
                     <Run FontSize="30">СОГЛАСОВАНИЕ</Run><LineBreak />
                     <Run FontSize="25">проектной документации</Run>
             </TextBlock>
-        </Border>
-        <Border Name="HasPinLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
+        </Border>-->
+        
+        <!--<Border Name="HasPinLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
             <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     Получение талона<LineBreak />
                     электронной очереди<LineBreak />
                     <Run FontSize="30">по предварительной записи</Run>
             </TextBlock>
-        </Border>
-        <Border Name="ToAnotherDayLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
+        </Border>-->
+        
+        <!--<Border Name="ToAnotherDayLink" Style="{StaticResource ResourceKey=greenButtonStyle}" MouseLeftButtonDown="Border_MouseLeftButtonUp">
             <TextBlock Style="{StaticResource ResourceKey=greenButtonTextStyle}">
                     <Run FontSize="30">Записаться на другой день</Run>
             </TextBlock>
-        </Border>
+        </Border>-->
+        
     </StackPanel>
 </Page>
