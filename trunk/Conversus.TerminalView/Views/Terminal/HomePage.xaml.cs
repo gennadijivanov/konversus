@@ -27,7 +27,7 @@ namespace Conversus.TerminalView.Views.Terminal
 
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var borderSender = (Border)sender;
+            var borderSender = (Image)sender;
             Page navigatePage = null;
 
             switch (borderSender.Name)
