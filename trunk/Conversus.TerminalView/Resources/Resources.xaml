@@ -296,4 +296,88 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
+
+    <!--//NEW STYLES. NOW WE DON'T USE VECTOR//-->
+    <!--//NEW STYLES. NOW WE DON'T USE VECTOR//-->
+    <!--//NEW STYLES. NOW WE DON'T USE VECTOR//-->
+
+    <!--backspace button-->
+    <ImageBrush x:Key="backSpace_btn" ImageSource="/Content/images/buttons/delete_but.png" />
+    <ControlTemplate TargetType="Button" x:Key="backSpace_btn_tmpl">
+        <Grid Name="gridy" Background="{StaticResource backSpace_btn}">
+            <ContentPresenter  />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource backSpace_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    
+    <!--pin button-->
+    <ImageBrush x:Key="pin_btn" ImageSource="/Content/images/buttons/pin_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="pin_btn_tmpl">
+        <Grid Name="gridy" Width="90" Margin="0,2,0,0" Height="87" Background="{StaticResource pin_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource pin_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+
+    <!--shift button-->
+    <ImageBrush x:Key="shift_btn" ImageSource="/Content/images/buttons/shift_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="shift_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource shift_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource shift_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <!--space button-->
+    <ImageBrush x:Key="space_btn" ImageSource="/Content/images/buttons/space_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="space_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource space_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource space_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--next button-->
+    <ImageBrush x:Key="next_btn" ImageSource="/Content/images/buttons/next_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="next_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource next_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource next_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <!--button font styles-->
+    <Style x:Key="btn_font_style" TargetType="Button">
+        <Setter Property="MinWidth" Value="10"></Setter>
+        <Setter Property="MinHeight" Value="10"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="FontFamily" Value="Tahoma"></Setter>
+    </Style>
 </ResourceDictionary>

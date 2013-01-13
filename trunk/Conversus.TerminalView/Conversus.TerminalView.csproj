@@ -173,7 +173,11 @@
     <Resource Include="Content\images\buttons\but_3.png" />
     <Resource Include="Content\images\buttons\but_4.png" />
     <Resource Include="Content\images\bg\key_board_panel.png" />
-    <Resource Include="Content\images\bg\key_board_panel_2.png" />
+    <Resource Include="Content\images\buttons\delete_but.png" />
+    <Resource Include="Content\images\buttons\pin_btn.png" />
+    <Resource Include="Content\images\buttons\shift_btn.png" />
+    <Resource Include="Content\images\buttons\space_btn.png" />
+    <Resource Include="Content\images\buttons\next_btn.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
