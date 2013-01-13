@@ -6,6 +6,7 @@
       mc:Ignorable="d"
       d:DesignHeight="1100" d:DesignWidth="1500" Loaded="Page_Loaded"
 	Title="Input_Name" ShowsNavigationUI="False" ButtonBase.Click="Page_Click">
+
     <StackPanel>
         <!--<Border Height="440" Style="{StaticResource ResourceKey=grayPanel}">-->
         <StackPanel>
@@ -25,7 +26,8 @@
                 <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,-170,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
 
                 <DockPanel Margin="40,70,70,0" LastChildFill="True" Grid.Column="1">
-                    <Button DockPanel.Dock="Right" Margin="20,0,0,0" Width="300" Height="40" Name="deleteButton" Style="{StaticResource inputBoardBtnStyle}">⇐ Стереть</Button>
+                    <Button DockPanel.Dock="Right" Margin="20,7,0,0" Width="300" Height="90" Name="deleteButton" Template="{StaticResource backSpace_btn_tmpl}" ></Button>
+
                     <TextBox Name="nameInputBox" DockPanel.Dock="Left" MaxLength="100" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
                 </DockPanel>
                 <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}" VerticalAlignment="Center" Margin="-150,220,20,20" Grid.Column="1">введите фамилию, имя и отчество</Label>
@@ -47,54 +49,54 @@
                 <ColumnDefinition Width="1020" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image Height="500" Margin="30,-10,10,0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Column="0" Source="/Content\images\bg\key_board_panel_2.png" Stretch="Fill"></Image>
+            <Image Height="500" Margin="30,-10,10,0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Column="0" Source="/Content\images\bg\key_board_panel.png" Stretch="Fill"></Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Button Style="{StaticResource inputBoardBtnStyle}">Й</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ц</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">У</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">К</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Е</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Н</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Г</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ш</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Щ</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">З</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Х</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Й</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ц</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">У</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">К</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Е</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Н</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Г</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ш</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Щ</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">З</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Х</Button>
             </StackPanel>
             <StackPanel Margin="30,0,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ф</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ы</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">В</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">А</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">П</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Р</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">О</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Л</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Д</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ж</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Э</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ф</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ы</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">В</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">А</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">П</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Р</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">О</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Л</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Д</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ж</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Э</Button>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ё</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Я</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ч</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">С</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">М</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">И</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Т</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ь</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Б</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ю</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">Ъ</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ё</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Я</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ч</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">С</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">М</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">И</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Т</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ь</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Б</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ю</Button>
+                <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">Ъ</Button>
             </StackPanel>
             <StackPanel Margin="30,0,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Button Name="l_shift" Width="135" Style="{StaticResource inputBoardBtnStyle}">↑</Button>
-                <Button Style="{StaticResource inputBoardBtnStyle}">-</Button>
-                <Button Width="600" Name="spaceButton" Style="{StaticResource inputBoardBtnStyle}"></Button>
-                <Button Name="r_shift" Width="135" Style="{StaticResource inputBoardBtnStyle}">↑</Button>
+                <Button Name="l_shift"  Width="135" Style="{StaticResource btn_font_style}" Template="{StaticResource shift_btn_tmpl}" />
+                <Button Style="{StaticResource btn_font_style}" FontSize="40" Template="{StaticResource pin_btn_tmpl}">-</Button>
+                <Button Width="600" Name="spaceButton" Style="{StaticResource btn_font_style}" Template="{StaticResource space_btn_tmpl}"></Button>
+                <Button Name="r_shift" Width="135" Style="{StaticResource btn_font_style}" Template="{StaticResource shift_btn_tmpl}"></Button>
             </StackPanel>
             <StackPanel Margin="0,15,0,10" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Visibility="Collapsed" Name="nextButton" Width="245" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
+                <Button Visibility="Collapsed" Name="nextButton" Height="80" Width="245" Style="{StaticResource btn_font_style}" Template="{StaticResource next_btn_tmpl}">Далее »</Button>
             </StackPanel>
         </Grid>
         <!--</Border>-->
