@@ -371,6 +371,32 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <!--confirm cancel button-->
+    <ImageBrush x:Key="cancel_btn" ImageSource="/Content/images/buttons/cancel_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="cancel_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource cancel_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource cancel_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--confirm confirmation button-->
+    <ImageBrush x:Key="confirmation_btn" ImageSource="/Content/images/buttons/confirmation_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="confirmation_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource confirmation_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource confirmation_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 
     <!--button font styles-->
     <Style x:Key="btn_font_style" TargetType="Button">
