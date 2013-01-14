@@ -40,17 +40,9 @@
                         <Label HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}">Дата и время:</Label>
                         <Label Name="arrivedDateTimeLabel" HorizontalContentAlignment="Center" Style="{StaticResource greenTipTextStyle}"></Label>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="100">
-                        <Button Name="cancelButton" Content="ОТМЕНА" Style="{StaticResource inputGreenBtnStyle}">
-                            <Button.Effect>
-                                <DropShadowEffect Opacity="0"/>
-                            </Button.Effect>
-                        </Button>
-                        <Button Name="approveButton" Content="ПОДТВЕРДИТЬ" Style="{StaticResource inputGreenBtnStyle}">
-                            <Button.Effect>
-                                <DropShadowEffect Opacity="0"/>
-                            </Button.Effect>
-                        </Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="69">
+                        <Button Name="cancelButton" Width="395" Style="{StaticResource btn_font_style}" Template="{StaticResource cancel_btn_tmpl}"></Button>
+                        <Button Name="approveButton" Width="395" Style="{StaticResource btn_font_style}" Template="{StaticResource confirmation_btn_tmpl}"></Button>
                     </StackPanel>
                     <Label HorizontalAlignment="Center" Style="{StaticResource greenTipTextStyle}">Проверьте свои данные и нажмите "ПОДТВЕРДИТЬ", если все данные верны</Label>
                 </StackPanel>
