@@ -22,7 +22,7 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal" Margin="40,30,40,0" HorizontalAlignment="Center">
                     <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}"></TextBox>
-                    <Button DockPanel.Dock="Right" Height="70" Margin="20,0,0,0" Width="300" Name="deleteButton" Style="{StaticResource inputBoardBtnStyle}">⇐ Стереть</Button>
+                    <Button DockPanel.Dock="Right" Height="90" Margin="20,0,0,0" Width="300" Name="deleteButton" Template="{StaticResource backSpace_btn_tmpl}"></Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
                     <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}">введите пять цифр</Label>
@@ -44,25 +44,25 @@
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Style="{StaticResource inputBoardBtnStyle}">1</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">2</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">3</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">1</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">2</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">3</Button>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Style="{StaticResource inputBoardBtnStyle}">4</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">5</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">6</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">4</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">5</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">6</Button>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Style="{StaticResource inputBoardBtnStyle}">7</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">8</Button>
-                    <Button Style="{StaticResource inputBoardBtnStyle}">9</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">7</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">8</Button>
+                    <Button Style="{StaticResource btn_font_style}" Template="{StaticResource pin_btn_tmpl}">9</Button>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Width="260" Style="{StaticResource inputBoardBtnStyle}">0</Button>
+                    <Button Width="265" Height="80" Margin="2,0,0,0" Style="{StaticResource btn_font_style}" Template="{StaticResource zero_btn_tmpl}">0</Button>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Margin="290,0,0,0" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Width="245" Name="nextButton" Visibility="Collapsed" Style="{StaticResource inputBoardBtnStyle}">Далее »</Button>
+                    <Button Name="nextButton" Visibility="Collapsed" Height="80" Width="245" Style="{StaticResource btn_font_style}" Template="{StaticResource next_btn_tmpl}">Далее »</Button>
                 </StackPanel>
             </Grid>
         </Border>
