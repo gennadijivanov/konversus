@@ -178,6 +178,9 @@
     <Resource Include="Content\images\buttons\shift_btn.png" />
     <Resource Include="Content\images\buttons\space_btn.png" />
     <Resource Include="Content\images\buttons\next_btn.png" />
+    <Resource Include="Content\images\buttons\cancel_btn.png" />
+    <Resource Include="Content\images\buttons\confirmation_btn.png" />
+    <Resource Include="Content\images\bg\pin_upper_panel.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

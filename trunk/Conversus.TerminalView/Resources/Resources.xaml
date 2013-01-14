@@ -397,6 +397,19 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <!--confirm confirmation button-->
+    <ImageBrush x:Key="zero_btn" ImageSource="/Content/images/buttons/zero_btn.png" />
+    <ControlTemplate TargetType="Button" x:Key="zero_btn_tmpl">
+        <Grid Name="gridy" Margin="0,2,0,0" Background="{StaticResource zero_btn}">
+            <ContentPresenter Margin="-5,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="gridy" Property="Background" Value="{StaticResource zero_btn}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 
     <!--button font styles-->
     <Style x:Key="btn_font_style" TargetType="Button">
