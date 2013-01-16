@@ -181,6 +181,8 @@
     <Resource Include="Content\images\buttons\cancel_btn.png" />
     <Resource Include="Content\images\buttons\confirmation_btn.png" />
     <Resource Include="Content\images\bg\pin_upper_panel.png" />
+    <Resource Include="Content\images\buttons\zero_btn.png" />
+    <Resource Include="Content\images\bg\win_header.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

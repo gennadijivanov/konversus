@@ -10,7 +10,10 @@
     <Grid>
         <WebBrowser Name="browser" Margin="30,70,30,30" Source="http://000-sp3.mog.ent.local/_layouts/LoginPersonalCabinet.aspx?ReturnUrl=%2fClientOrders%2fList.aspx"></WebBrowser>
         <StackPanel HorizontalAlignment="Stretch" Margin="30,20,30,0" Height="50" VerticalAlignment="Top">
-            <Border CornerRadius="20,10,0,0" Background="{StaticResource GreenGradientBg}">
+            <Border CornerRadius="20,10,0,0">
+                <Border.Background>
+                    <ImageBrush ImageSource="\Content/images/bg/win_header.png"></ImageBrush>
+                </Border.Background>
                 <Image Source="/Content/images/buttons/closeButton.png" MouseDown="Image_MouseDown" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top"></Image>
             </Border>
         </StackPanel>
