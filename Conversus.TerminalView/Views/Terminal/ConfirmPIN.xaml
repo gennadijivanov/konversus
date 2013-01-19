@@ -19,18 +19,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Image Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Source="/Content\images\bg\pin_upper_panel.png" Stretch="Fill"></Image>
             <TextBlock Margin="0,110,0,0" TextAlignment="Center" Grid.Column="2" FontSize="24" FontFamily="Tahoma">ВАШ ИДЕНТИФИКАЦИОННЫЙ НОМЕР:</TextBlock>
             <Image HorizontalAlignment="Right" Grid.Column="0" Margin="0,70,0,0" Width="98" Height="101" Source="/Content/images/buttons/back.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
 
-            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="40,30,40,0" HorizontalAlignment="Center">
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="40,0,40,0" HorizontalAlignment="Center">
                 <TextBox Name="pinInputBox" Width="350" MaxLength="5" Style="{StaticResource ResourceKey=inputStyle}" IsReadOnly="True"></TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Margin="0">
-                <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}" Height="35" Width="300"></Label>
+                <Label HorizontalContentAlignment="Center" Style="{StaticResource tipTextStyle}" Height="5" Width="300"></Label>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

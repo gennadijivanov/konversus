@@ -34,26 +34,26 @@
             <MediaElement Name="callSound" LoadedBehavior="Manual" Source="Content/sounds/callVisitorSound2.wav"></MediaElement>
             <Rectangle Grid.Row="1">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="#606060"></SolidColorBrush>
+                    <ImageBrush ImageSource="/Content\images/bg/creep_line.png"></ImageBrush>
                 </Rectangle.Fill>
             </Rectangle>
             <cust:CreepLine IsEnabled="True" InitialDelay="0:0:0.1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                 <TextBlock FontSize="40" Foreground="White">
-				Lorem ipsum
-				<Bold>sample text</Bold>
-				ipsum
-				<Run Foreground="DarkOrange" FontWeight="Bold">loremlorem ipsum</Run>
+				Просто текст
+				<Bold>жирный текст</Bold>
+				текст
+				<Run Foreground="DarkOrange" FontWeight="Bold">текст с произвольным стилем</Run>
 				<!--<InlineUIContainer>
 					<MediaElement  Source="...." LoadedBehavior="Play"/>
 				</InlineUIContainer>-->
-				sample, Latin copy text, Lorem ipsum text, Latin dummy text
+                    просто текст, просто текст, просто текст, Просто текст
                 </TextBlock>
             </cust:CreepLine>
         </Grid>
 
         <Rectangle Grid.Column="1">
             <Rectangle.Fill>
-                <SolidColorBrush Color="#ed891a"></SolidColorBrush>
+                <ImageBrush ImageSource="/Content/images/bg/vertical_text.png"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Grid Grid.Column="1">
