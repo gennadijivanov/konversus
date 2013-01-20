@@ -57,7 +57,7 @@
 
                 <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" 
                         HorizontalAlignment="Right" 
-                        Style="{StaticResource inputBoardBtnStyle}" 
+                        FontSize="25"
                         Height="50" Width="270" 
                         Click="Button_Click">Сгенерировать</Button>
             </Grid>
