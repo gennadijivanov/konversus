@@ -11,7 +11,10 @@
         </Grid.RowDefinitions>
         <local:DefaultBackGround x:Name="defaultBackGround1" />
         <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
-            <Border Margin="10" Style="{StaticResource grayPanel}" VerticalAlignment="Stretch">
+            <Border Margin="10" VerticalAlignment="Stretch">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Content/images/bg/upper_panel.png"></ImageBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызванный посетитель</Label>
                     <TextBlock Name="currentVisitorTextBox" HorizontalAlignment="Center" Margin="10,10,10,0" FontFamily="Tahoma" FontWeight="Bold" FontSize="32">---</TextBlock>
@@ -19,7 +22,10 @@
                     <Label Name="timerLabel" Margin="4" HorizontalAlignment="Center">0:00:00</Label>
                 </StackPanel>
             </Border>
-            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Content/images/bg/down_panel.png"></ImageBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Действия с вызванным посетителем</Label>
                     <Grid>
@@ -40,7 +46,10 @@
                     </Grid>
                 </StackPanel>
             </Border>
-            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Content/images/bg/down_panel.png"></ImageBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Вызов посетителей</Label>
                     <Grid>
@@ -58,7 +67,10 @@
                     </Grid>
                 </StackPanel>
             </Border>
-            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" Style="{StaticResource greenPanel}">
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Content/images/bg/down_panel.png"></ImageBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="5">
                     <Label HorizontalAlignment="Center" Style="{StaticResource smallLabelStyle}">Статистика</Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White">
