@@ -81,7 +81,11 @@
             </Grid.ColumnDefinitions>
             <local:QueueboardListBG Grid.RowSpan="3" Grid.ColumnSpan="2"></local:QueueboardListBG>
 
-            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,5,0" Style="{StaticResource queueBordListIlemBorder}" MinWidth="10" Opacity=".9"></Border>
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,5,0" MinWidth="10" Opacity=".9">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Content/images/bg/board_table_header.png"></ImageBrush>
+                </Border.Background>
+            </Border>
             <Label Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,3" Style="{StaticResource listItemsLabel}">КЛИЕНТ</Label>
             <Label Grid.Row="1" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Style="{StaticResource listItemsLabel}">ОКНО</Label>
 
@@ -113,6 +117,9 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Opacity="0"
                 Style="{StaticResource queueBordListIlemBorder}">
+            <Border.Background>
+                <ImageBrush ImageSource="/Content/images/bg/board_popup_bg.png"></ImageBrush>
+            </Border.Background>
             <Label Name="callPopupLabel" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Foreground="White" FontWeight="Bold" 
                    FontFamily="Tahoma" FontSize="50"></Label>

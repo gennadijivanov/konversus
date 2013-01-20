@@ -183,6 +183,11 @@
     <Resource Include="Content\images\bg\pin_upper_panel.png" />
     <Resource Include="Content\images\buttons\zero_btn.png" />
     <Resource Include="Content\images\bg\win_header.png" />
+    <Resource Include="Content\images\bg\creep_line.png" />
+    <Resource Include="Content\images\bg\video_panel.png" />
+    <Resource Include="Content\images\bg\vertical_text.png" />
+    <Resource Include="Content\images\bg\board_table_header.png" />
+    <Resource Include="Content\images\bg\board_popup_bg.png" />
     <Content Include="Content\sounds\callVisitorSound2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
