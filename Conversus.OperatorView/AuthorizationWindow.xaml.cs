@@ -19,16 +19,18 @@ namespace Conversus.OperatorView
         {
             try
             {
-                var user = ServiceHelper.Instance.OperatorService.Login(loginTextBox.Text, passwordTextBox.Password);
+                OperatorInfo oper = ServiceHelper.Instance.OperatorService.Login(loginTextBox.Text, passwordTextBox.Password);
 
-                if (user == null)
+                if (oper == null)
                 {
                     MessageBox.Show("Пароль или логин введены неверно", "Ошибка авторизации", MessageBoxButton.OK,
                                     MessageBoxImage.Error);
                 }
                 else
                 {
-                    var operatorWorkWin = new OperatorWindow(user);
+                    Globals.Operator = oper;
+
+                    var operatorWorkWin = new OperatorWindow();
                     operatorWorkWin.Show();
 
                     Close();
