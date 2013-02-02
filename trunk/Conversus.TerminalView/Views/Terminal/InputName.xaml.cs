@@ -15,7 +15,7 @@ namespace Conversus.TerminalView.Views.Terminal
         private bool IsShiftPressed = true;
         private NavigationService navService = null;
         private const int SHOW_NEXT_BTN_CHAR_COUNT = 5;
-        private QueueType queueType;
+        private readonly QueueType queueType;
 
         public Input_Name(QueueType queueType)
         {
@@ -66,10 +66,9 @@ namespace Conversus.TerminalView.Views.Terminal
         {
             nameInputBox.Text += (IsShiftPressed) ? charText.ToUpper() : charText.ToLower();
 
-            if (nameInputBox.Text.Length > SHOW_NEXT_BTN_CHAR_COUNT - 1)
-                nextButton.Visibility = Visibility.Visible;
-            else
-                nextButton.Visibility = Visibility.Collapsed;
+            nextButton.Visibility = nameInputBox.Text.Length > SHOW_NEXT_BTN_CHAR_COUNT - 1 
+                ? Visibility.Visible 
+                : Visibility.Collapsed;
         }
 
         private void deleteChar()
