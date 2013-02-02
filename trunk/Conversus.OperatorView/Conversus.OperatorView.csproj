@@ -63,6 +63,7 @@
     <Compile Include="CallByNymberWindow.xaml.cs">
       <DependentUpon>CallByNymberWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="RedirectWindow.xaml.cs">
       <DependentUpon>RedirectWindow.xaml</DependentUpon>
     </Compile>

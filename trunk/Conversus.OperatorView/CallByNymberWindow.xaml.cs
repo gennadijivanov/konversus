@@ -10,12 +10,8 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class CallByNymberWindow : Window
     {
-        private readonly OperatorInfo _user;
-
-        public CallByNymberWindow(OperatorInfo user)
+        public CallByNymberWindow()
         {
-            _user = user;
-
             InitializeComponent();
         }
 
@@ -29,7 +25,7 @@ namespace Conversus.OperatorView
 
                 if (!string.IsNullOrWhiteSpace(ticketString))
                 {
-                    var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString, _user.Id);
+                    var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString, Globals.Operator.Id);
                     if (client != null)
                         Close();
                     else

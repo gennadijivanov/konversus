@@ -21,30 +21,26 @@ namespace Conversus.OperatorView
         private Timer servedTimer;
         private DateTime startTime;
 
-        private ClientInfo _client;
-        private readonly OperatorInfo _oper;
-
         public ClientInfo Client
         {
-            set { _client = value; }
-            get { return _client; }
+            set { Globals.CurrentClient = value; }
+            get { return Globals.CurrentClient; }
         }
 
-        public OperatorWindow(OperatorInfo oper)
+        public OperatorWindow()
         {
-            _oper = oper;
-
             InitializeComponent();
             initTimer();
             refreshLabels();
 
-            _client = ServiceHelper.Instance.ClientService.Get(new ClientFilterParameters
-                                                                   {
-                                                                       Status = ClientStatus.Performing,
-                                                                       OperatorId = oper.Id
-                                                                   }).FirstOrDefault();
+            Client = ServiceHelper.Instance.ClientService.Get(
+                new ClientFilterParameters
+                    {
+                        Status = ClientStatus.Performing,
+                        OperatorId = Globals.Operator.Id
+                    }).FirstOrDefault();
 
-            if (_client != null)
+            if (Client != null)
                 refreshTimer();
         }
 
@@ -80,8 +76,8 @@ namespace Conversus.OperatorView
                     serviceStoped("Обслуживание клиента " + currentVisitorTextBox.Text + " завершено", ClientStatus.Done);
                     break;
                 case "repeatButton":
-                    if (_client != null)
-                        ServiceHelper.Instance.ClientService.CallClient(_client.Id, _oper.Id);
+                    if (Client != null)
+                        ServiceHelper.Instance.ClientService.CallClient(Client.Id, Globals.Operator.Id);
                     break;
                 case "redirectButton":
                     var redirect = new RedirectWindow(this);
@@ -91,23 +87,23 @@ namespace Conversus.OperatorView
                     callNext();
                     break;
                 case "callByNumberButton":
-                    var callByNumberWindow = new CallByNymberWindow(_oper);
+                    var callByNumberWindow = new CallByNymberWindow();
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
-                    var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_oper.Queue.Type);
-                    var callByListWindow = new CallByListWindow(queueCollection, this, _oper);
+                    var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(Globals.Operator.Queue.Type);
+                    var callByListWindow = new CallByListWindow(queueCollection, this);
                     callByListWindow.Show();
                     break;
                 case "pauseButton":
                     servedTimer.Stop();
 
-                    ServiceHelper.Instance.OperatorService.PauseMaintenance(_oper.Id);
+                    ServiceHelper.Instance.OperatorService.PauseMaintenance(Globals.Operator.Id);
 
                     MessageBoxResult pauseMaintenanceMessBoxResult = MessageBox.Show("Система переведена в режим Перерыва, для возврата в рабочее состояние - закройте это окно или нажмите ОК", "Перерыв в работе", MessageBoxButton.OK);
                     if (pauseMaintenanceMessBoxResult == MessageBoxResult.OK || pauseMaintenanceMessBoxResult == MessageBoxResult.None)
                     {
-                        ServiceHelper.Instance.OperatorService.ReopenMaintenance(_oper.Id);
+                        ServiceHelper.Instance.OperatorService.ReopenMaintenance(Globals.Operator.Id);
                     }
                     break;
             }
@@ -117,13 +113,13 @@ namespace Conversus.OperatorView
         {
             SetViewStopped();
 
-            if (_client != null)
+            if (Client != null)
             {
-                ServiceHelper.Instance.ClientService.ChangeStatus(_client.Id, clientStatus);
+                ServiceHelper.Instance.ClientService.ChangeStatus(Client.Id, clientStatus);
                 MessageBox.Show(message);
             }
 
-            _client = null;
+            Client = null;
         }
 
         internal void SetViewStopped()
@@ -138,9 +134,9 @@ namespace Conversus.OperatorView
 
         public void callNext()
         {
-            _client = ServiceHelper.Instance.ClientService.CallNextClient(_oper.Queue.Type, _oper.Id);
+            Client = ServiceHelper.Instance.ClientService.CallNextClient(Globals.Operator.Queue.Type, Globals.Operator.Id);
 
-            if (_client != null)
+            if (Client != null)
             {
                 refreshTimer();
             }
@@ -152,22 +148,22 @@ namespace Conversus.OperatorView
 
         public void refreshTimer()
         {
-            if (_client != null)
-            {
-                initTimer();
-                pauseButton.IsEnabled = false;
+            if (Client == null)
+                return;
+            
+            initTimer();
+            pauseButton.IsEnabled = false;
 
-                timerLabel.Content = TIMER_ZERO_TEXT;
-                startTime = DateTime.Now;
-                servedTimer.Start();
+            timerLabel.Content = TIMER_ZERO_TEXT;
+            startTime = DateTime.Now;
+            servedTimer.Start();
 
-                queueTypeTextBox.Text = _client.Queue.Title;
-                currentVisitorTextBox.Text = _client.Ticket;
+            queueTypeTextBox.Text = Client.Queue.Title;
+            currentVisitorTextBox.Text = Client.Ticket;
 
-                toggleButtonsEnable(true);
+            toggleButtonsEnable(true);
 
-                refreshLabels();
-            }
+            refreshLabels();
         }
 
         private void toggleButtonsEnable(bool enable)
@@ -187,7 +183,7 @@ namespace Conversus.OperatorView
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_client != null)
+            if (Client != null)
             {
                 e.Cancel = true;
                 MessageBox.Show("Нельзя закрыть программу, без завершения обслуживания клиента.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -201,14 +197,14 @@ namespace Conversus.OperatorView
                 }
                 else
                 {
-                    ServiceHelper.Instance.OperatorService.Logout(_oper.Id);
+                    ServiceHelper.Instance.OperatorService.Logout(Globals.Operator.Id);
                 }
             }
         }
 
         private void refreshLabels()
         {
-            var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(_oper.Queue.Type);
+            var queueCollection = ServiceHelper.Instance.ClientService.GetClientsQueue(Globals.Operator.Queue.Type);
 
             if (queueCollection.Count > 0)
             {

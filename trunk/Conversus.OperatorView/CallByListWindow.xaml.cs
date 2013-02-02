@@ -25,9 +25,8 @@ namespace Conversus.OperatorView
     {
         private readonly IEnumerable<ClientItemInfo> _clientInfos;
         private readonly OperatorWindow _operatorWindow;
-        private readonly OperatorInfo _user;
 
-        public CallByListWindow(IEnumerable<ClientInfo> queueCollection, OperatorWindow operatorWindow, OperatorInfo user)
+        public CallByListWindow(IEnumerable<ClientInfo> queueCollection, OperatorWindow operatorWindow)
         {
             InitializeComponent();
 
@@ -40,7 +39,6 @@ namespace Conversus.OperatorView
                                                                ChangeTime = c.ChangeTime.ToShortTimeString(),
                                                                QueueTitle = c.Queue.Title
                                                            });
-            _user = user;
         }
 
         private void postponedGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,7 +59,7 @@ namespace Conversus.OperatorView
             if (selectedClient == null)
                 return;
 
-            _operatorWindow.Client = ServiceHelper.Instance.ClientService.CallClient(((ClientItemInfo)selectedClient).Id, _user.Id);
+            _operatorWindow.Client = ServiceHelper.Instance.ClientService.CallClient(((ClientItemInfo)selectedClient).Id, Globals.Operator.Id);
             _operatorWindow.refreshTimer();
                 
             Close();
