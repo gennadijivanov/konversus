@@ -87,7 +87,7 @@ namespace Conversus.OperatorView
                     callNext();
                     break;
                 case "callByNumberButton":
-                    var callByNumberWindow = new CallByNymberWindow();
+                    var callByNumberWindow = new CallByNymberWindow(this);
                     callByNumberWindow.Show();
                     break;
                 case "callByListButton":
