@@ -10,8 +10,12 @@ namespace Conversus.OperatorView
     /// </summary>
     public partial class CallByNymberWindow : Window
     {
-        public CallByNymberWindow()
+        private readonly OperatorWindow _operatorWindow;
+
+        public CallByNymberWindow(OperatorWindow operatorWindow)
         {
+            _operatorWindow = operatorWindow;
+
             InitializeComponent();
         }
 
@@ -27,7 +31,12 @@ namespace Conversus.OperatorView
                 {
                     var client = ServiceHelper.Instance.ClientService.CallClientByTicket(ticketString, Globals.Operator.Id);
                     if (client != null)
+                    {
+                        _operatorWindow.Client = client;
+                        _operatorWindow.refreshTimer();
+
                         Close();
+                    }
                     else
                     {
                         MessageBox.Show("Такого номера не существует в базе");
