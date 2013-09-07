@@ -72,7 +72,10 @@ namespace Conversus.TerminalView
             var currentQueue = ServiceHelper.Instance.ClientService.Get(filter);
 
             clientWindowListView.ItemsSource =
-                currentQueue.Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Operator.CurrentWindow }).Take(7);
+                currentQueue
+                    .OrderByDescending(c => c.ChangeTime)
+                    .Select(c => new { Ticket = c.Ticket, OperatorWindow = c.Operator.CurrentWindow })
+                    .Take(7);
         }
 
         public void RemovePerformed(ClientInfo client)
