@@ -1,59 +1,95 @@
-﻿namespace Conversus.Core.Infrastructure
+﻿using System;
+using System.Configuration;
+using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Conversus.Core.Infrastructure
 {
+    [Serializable]
+    public class ConfigModel
+    {
+        public string ServiceHost { get; set; }
+
+        public string TerminalServiceHost { get; set; }
+    }
+
     public class PropertyManager
     {
         private static PropertyManager _instance;
         public static PropertyManager Instance { get { return _instance ?? (_instance = new PropertyManager()); } }
 
+        private readonly ConfigModel _config;
+
         private PropertyManager()
         {
+            _config = GetConfig();
+
+            if (string.IsNullOrWhiteSpace(_config.ServiceHost))
+                _config.ServiceHost = Constants.DefaultServiceHost;
+
+            if (string.IsNullOrWhiteSpace(_config.TerminalServiceHost))
+                _config.TerminalServiceHost = Constants.DefaultTerminalServiceHost;
         }
 
-        private const string _serviceHostRegistryKey = "serviceHost";
-        private string _serviceHost;
         public string ServiceHost
         {
-            get { return GetProperty(ref _serviceHost, _serviceHostRegistryKey, Constants.DefaultServiceHost); }
-            set
-            {
-                string host = value;
-                if (!host.EndsWith("/"))
-                    host += "/";
-                SetProperty(ref _serviceHost, _serviceHostRegistryKey, host);
-            }
+            get { return _config.ServiceHost; }
         }
 
-        private const string _terminalServiceHostRegistryKey = "terminalServiceHost";
-        private string _terminalServiceHost;
         public string TerminalServiceHost
         {
-            get { return GetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, Constants.DefaultTerminalServiceHost); }
-            set
-            {
-                string host = value;
-                if (!host.EndsWith("/"))
-                    host += "/";
-                SetProperty(ref _terminalServiceHost, _terminalServiceHostRegistryKey, host);
-            }
+            get { return _config.TerminalServiceHost; }
         }
 
-        private T GetProperty<T>(ref T field, string regKey, T defaultValue) where T: class
+        public ConfigModel GetConfig()
         {
-            if (field == default(T))
+            XmlSerializer serializer = new XmlSerializer(typeof(ConfigModel));
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+
+            try
             {
-                if (!RegistryManager.Instance.TryGetValue(regKey, out field))
+                using (var textReader = File.OpenText("hostSetting.cfg"))
                 {
-                    field = defaultValue;
-                    RegistryManager.Instance.SetValue(regKey, field);
+                    using (XmlReader xmlReader = XmlReader.Create(textReader, settings))
+                    {
+                        return (ConfigModel)serializer.Deserialize(xmlReader);
+                    }
                 }
             }
-            return field;
+            catch
+            {
+                return new ConfigModel();
+            }
         }
 
-        private void SetProperty<T>(ref T field, string regKey, T value) where T: class
+        public string GetConfigString(string serviceHost, string terminalServiceHost)
         {
-            field = value;
-            RegistryManager.Instance.SetValue(regKey, field);
+            var config = new ConfigModel
+                             {
+                                 ServiceHost = serviceHost,
+                                 TerminalServiceHost = terminalServiceHost
+                             };
+
+            XmlSerializer serializer = new XmlSerializer(typeof(ConfigModel));
+
+            XmlWriterSettings settings = new XmlWriterSettings
+                                             {
+                                                 Encoding = new UnicodeEncoding(false, false), // no BOM in a .NET string
+                                                 Indent = true,
+                                                 OmitXmlDeclaration = false
+                                             };
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
+                {
+                    serializer.Serialize(xmlWriter, config);
+                }
+                return textWriter.ToString();
+            }
         }
     }
 }

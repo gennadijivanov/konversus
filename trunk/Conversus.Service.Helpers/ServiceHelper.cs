@@ -20,13 +20,11 @@ namespace Conversus.Service.Helpers
         private string ServiceHost
         {
             get { return PropertyManager.Instance.ServiceHost; }
-            set { PropertyManager.Instance.ServiceHost = value; }
         }
 
         private string TerminalServiceHost
         {
             get { return PropertyManager.Instance.TerminalServiceHost; }
-            set { PropertyManager.Instance.TerminalServiceHost = value; }
         }
 
         private readonly Binding _binding = new BasicHttpBinding();
@@ -69,22 +67,6 @@ namespace Conversus.Service.Helpers
 
         private ServiceHelper()
         {
-        }
-
-        public void ChangeServiceHost(string serviceHost)
-        {
-            ServiceHost = serviceHost;
-            _queueService = null;
-            _operatorService = null;
-            _сlientService = null;
-            _propertyService = null;
-            _reportService = null;
-        }
-
-        public void ChangeTerminalServiceHost(string serviceHost)
-        {
-            TerminalServiceHost = serviceHost;
-            _terminalService = null;
         }
 
         public ServiceEndpoint GetEndpoint(Type contract, string endpoint, string serviceHost)

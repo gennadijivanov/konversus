@@ -16,28 +16,22 @@ namespace Conversus.Scheduler
         {
             try
             {
-                
-                IEnumerable<QueueType> queueTypes = Enum.GetValues(typeof (QueueType)).Cast<QueueType>();
+                ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
+                Logger.Log("All absent are marked as absent");
 
+                IEnumerable<QueueType> queueTypes = Enum.GetValues(typeof (QueueType)).Cast<QueueType>();
                 foreach (QueueType queueType in queueTypes)
                 {
                     CreateClients(queueType, GetPureData(queueType));  
                 }
                 Logger.Log("Data from Lotus is imported");
-
-                ServiceHelper.Instance.ClientService.SetAllRegisteredAsAbsent();
-                Logger.Log("All absent are marked as absent");
-                
-                /*
-                List<ReportByQueueModel> report = ServiceHelper.Instance.ReportService.GetReportByQueue(DateTime.Today.AddDays(-5),
-                                                                                   DateTime.Today.AddDays(5));
-
-                Console.ReadLine();*/
             }
             catch(Exception exc)
             {
                 Console.WriteLine(exc.Message);
                 Logger.Log(exc);
+
+                Console.ReadLine();
             }
         }
 

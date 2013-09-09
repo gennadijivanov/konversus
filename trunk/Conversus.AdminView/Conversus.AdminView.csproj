@@ -142,6 +142,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\Config\hostSettings.cfg">
+      <Link>hostSettings.cfg</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="Conversus.AdminView_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

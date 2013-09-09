@@ -50,7 +50,6 @@
     <Compile Include="Logger.cs" />
     <Compile Include="LogicFactory.cs" />
     <Compile Include="PropertyManager.cs" />
-    <Compile Include="RegistryManager.cs" />
     <Compile Include="Repository\ClientFilterParameters.cs" />
     <Compile Include="Repository\IFilterParameters.cs" />
     <Compile Include="Repository\QueueFilterParameters.cs" />

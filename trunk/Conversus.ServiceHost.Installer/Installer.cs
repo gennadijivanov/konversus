@@ -6,7 +6,7 @@ using Conversus.Core.Infrastructure;
 namespace Conversus.ServiceHost.Installer
 {
     [RunInstaller(true)]
-    public partial class Installer : InstallerWithTerminalBase
+    public partial class Installer : InstallerBase
     {
         public Installer()
         {

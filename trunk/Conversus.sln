@@ -66,6 +66,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Keygen", "Convers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversus.Resources", "Conversus.Resources\Conversus.Resources.csproj", "{3E1517D1-2979-403C-B886-FB6BABCF6FB5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{B1CBFD43-3689-47D4-9FCB-1F6EA3268462}"
+	ProjectSection(SolutionItems) = preProject
+		Config\hostSettings.cfg = Config\hostSettings.cfg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Conversus.vsmdi
