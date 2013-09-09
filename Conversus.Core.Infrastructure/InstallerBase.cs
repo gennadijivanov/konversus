@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 
 namespace Conversus.Core.Infrastructure
 {
@@ -7,20 +8,19 @@ namespace Conversus.Core.Infrastructure
         public override void Install(IDictionary stateSaver)
         {
             base.Install(stateSaver);
+            
+            string serviceHost = Context.Parameters["serviceHost"];
+            string terminalServiceHost = Context.Parameters["terminalHost"];
 
-            var serviceHost = Context.Parameters["serviceHost"];
-            PropertyManager.Instance.ServiceHost = serviceHost;
+            File.WriteAllText(Path.Combine(StripDir(Context.Parameters["AssemblyPath"]), "hostSettings.cfg"),
+                PropertyManager.Instance.GetConfigString(serviceHost, terminalServiceHost));
         }
-    }
 
-    public class InstallerWithTerminalBase : InstallerBase
-    {
-        public override void Install(IDictionary stateSaver)
+        private static string StripDir(string fullPath)
         {
-            base.Install(stateSaver);
-
-            var terminalServiceHost = Context.Parameters["terminalHost"];
-            PropertyManager.Instance.TerminalServiceHost = terminalServiceHost;
+            return !string.IsNullOrEmpty(fullPath) 
+                ? fullPath.Substring(0, fullPath.LastIndexOf(@"\"))
+                : string.Empty;
         }
     }
 }
