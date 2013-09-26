@@ -61,5 +61,13 @@ namespace Conversus.Core.Infrastructure
                     {ClientStatus.Registered, "Зарегистрирован"},
                     {ClientStatus.Waiting, "Ожидает в очереди"},
                 };
+
+        public static readonly Dictionary<OperatorStatus, string> OperatorStatusTitles =
+            new Dictionary<OperatorStatus, string>
+                {
+                    {OperatorStatus.Stop, "Отключен"},
+                    {OperatorStatus.Play, "Работает"},
+                    {OperatorStatus.Pause, "Перерыв"}
+                };
     }
 }

@@ -10,5 +10,11 @@ namespace Conversus.Service.Contract
     {
         [OperationContract]
         List<ReportByQueueModel> GetReportByQueue(DateTime startDate, DateTime endDate);
+
+        [OperationContract]
+        List<ReportByOperatorsModel> GetReportByOperators(DateTime startDate, DateTime endDate);
+
+        [OperationContract]
+        List<ReportByClientsModel> GetReportByClients(DateTime startDate, DateTime endDate);
     }
 }

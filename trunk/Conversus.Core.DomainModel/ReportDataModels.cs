@@ -3,6 +3,49 @@ using System.Collections.Generic;
 
 namespace Conversus.Core.DomainModel
 {
+    public enum ReportType
+    {
+        ByQueue,
+        ByOperators,
+        ByClients
+    }
+
+    public class ReportByOperatorsModel
+    {
+        public string Name { get; set; }
+
+        public string Queue { get; set; }
+
+        public string Window { get; set; }
+
+        public string Date { get; set; }
+
+        public string Time { get; set; }
+
+        public string Status { get; set; }
+    }
+
+    public class ReportByClientsModel
+    {
+        public string Name { get; set; }
+
+        public string Queue { get; set; }
+
+        public string Date { get; set; }
+
+        public string Time { get; set; }
+
+        public string Status { get; set; }
+
+        public string PIN { get; set; }
+
+        public string Operator { get; set; }
+
+        public string BookingDate { get; set; }
+
+        public string BookingTime { get; set; }
+    }
+
     /// <summary>
     /// Отчет по услугам
     /// </summary>
