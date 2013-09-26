@@ -20,5 +20,15 @@ namespace Conversus.Service.Impl
         {
             return ReportLogic.GetReportByQueue(startDate, endDate);
         }
+
+        public List<ReportByOperatorsModel> GetReportByOperators(DateTime startDate, DateTime endDate)
+        {
+            return ReportLogic.GetReportByOperators(startDate, endDate);
+        }
+
+        public List<ReportByClientsModel> GetReportByClients(DateTime startDate, DateTime endDate)
+        {
+            return ReportLogic.GetReportByClients(startDate, endDate);
+        }
     }
 }

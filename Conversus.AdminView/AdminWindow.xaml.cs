@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Windows;
 using System.Windows.Controls;
+using Conversus.Core.DomainModel;
 using Conversus.Impl;
 using Conversus.Service.Contract;
 using Conversus.Service.Helpers;
 using Conversus.Core.Infrastructure;
+using Microsoft.Win32;
 
 namespace Conversus.AdminView
 {
@@ -14,7 +18,37 @@ namespace Conversus.AdminView
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private struct ReportDescription
+        {
+            public string CreateTableSchema { get; set; }
+
+            public string InsertSchema { get; set; }
+
+            public string InsertDataTpl { get; set; }
+        }
+
         private LicenseType? _license;
+
+        private readonly Dictionary<ReportType, ReportDescription> _reportDescriptions = new Dictionary<ReportType,ReportDescription>
+            {
+                { ReportType.ByClients, new ReportDescription
+                    {
+                        CreateTableSchema = "[Date] VARCHAR(30), [Time] VARCHAR(30), [Name] VARCHAR(100), [PIN] VARCHAR(10), [Queue] VARCHAR(100), [Status] VARCHAR(30), [Operator] VARCHAR(100), [BookingDate] VARCHAR(30), [BookingTime] VARCHAR(30)",
+                        InsertSchema = "[Date], [Time], [Name], [PIN], [Queue], [Status], [Operator], [BookingDate], [BookingTime]",
+                        InsertDataTpl = "'{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}'"
+                    } },
+                { ReportType.ByOperators, new ReportDescription
+                    {
+                        CreateTableSchema = "[Name] VARCHAR(100), [Queue] VARCHAR(100), [Window] VARCHAR(100), [Date] VARCHAR(30), [Time] VARCHAR(30), [Status] VARCHAR(30)",
+                        InsertSchema = "[Name], [Queue], [Window], [Date], [Time], [Status]",
+                        InsertDataTpl = "'{0}', '{1}', '{2}', '{3}', '{4}', '{5}'"
+                    } },
+                //{ ReportType.ByQueue, new ReportDescription
+                //    {
+                //        CreateTableSchema = "[Date] datetime, [PerformedCount] int, [NotPerformedCount] int",
+                //        InsertSchema = "[Date], [PerformedCount], [NotPerformedCount]"
+                //    } }
+            }; 
 
         public AdminWindow()
         {
@@ -47,16 +81,121 @@ namespace Conversus.AdminView
 
         private void buildReportButton_Click(object sender, RoutedEventArgs e)
         {
-            //reportTypeComboBox.SelectedIndex;
-            //fromDateTime.Value;
-            //toDateTime.Value;
-            //на колбэк заполнить гридДату - reportGrid
-            //или через биндинг
+            if (!fromDateTime.Value.HasValue || !toDateTime.Value.HasValue)
+            {
+                MessageBox.Show("Проверьте правильность введенных дат", "", MessageBoxButton.OK,
+                                MessageBoxImage.Asterisk);
+                return;
+            }
+
+            switch ((ReportType)reportTypeComboBox.SelectedValue)
+            {
+                case ReportType.ByOperators:
+                    reportGrid.ItemsSource = ServiceHelper.Instance.ReportService.GetReportByOperators(
+                        fromDateTime.Value.Value,
+                        toDateTime.Value.Value);
+                    break;
+
+                case ReportType.ByClients:
+                    reportGrid.ItemsSource = ServiceHelper.Instance.ReportService.GetReportByClients(
+                        fromDateTime.Value.Value,
+                        toDateTime.Value.Value);
+                    break;
+
+                //case ReportType.ByQueue:
+                //    reportGrid.ItemsSource = ServiceHelper.Instance.ReportService.GetReportByQueue(
+                //        fromDateTime.Value.Value,
+                //        toDateTime.Value.Value);
+                //    break;
+            }
         }
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Тут хз. Надо посоветоваться с Геной.
+            var dlg = new SaveFileDialog
+                          {
+                              DefaultExt = ".xls",
+                              Filter = "Excel documents (.xls)|*.xls"
+                          };
+
+            if (dlg.ShowDialog() != true)
+                return;
+
+            if (System.IO.File.Exists(dlg.FileName))
+                System.IO.File.Delete(dlg.FileName);
+
+            var reportType = (ReportType) reportTypeComboBox.SelectedValue;
+            var repDesc = _reportDescriptions[reportType];
+
+            using (
+                var conn =
+                    new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + dlg.FileName +
+                                        ";Extended Properties='Excel 8.0;HDR=Yes'"))
+            {
+                conn.Open();
+                using (var cmd = new OleDbCommand("CREATE TABLE [NewSheet] (" + repDesc.CreateTableSchema + ")", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                const string insertCmdTpl = "INSERT INTO [NewSheet] ({0}) VALUES ({1});";
+
+                switch (reportType)
+                {
+                    case ReportType.ByOperators:
+                        {
+                            var data = (IEnumerable<ReportByOperatorsModel>) reportGrid.ItemsSource;
+
+                            foreach (ReportByOperatorsModel item in data)
+                            {
+                                string dataStr = string.Format(repDesc.InsertDataTpl, item.Name, item.Queue, item.Window,
+                                    item.Date, item.Time, item.Status);
+                                var cmd = string.Format(insertCmdTpl, repDesc.InsertSchema, dataStr);
+
+                                using (var insertCmd = new OleDbCommand(cmd, conn))
+                                {
+                                    insertCmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        break;
+
+                    case ReportType.ByClients:
+                        {
+                            var data = (IEnumerable<ReportByClientsModel>) reportGrid.ItemsSource;
+
+                            foreach (ReportByClientsModel item in data)
+                            {
+                                string dataStr = string.Format(repDesc.InsertDataTpl, item.Date, item.Time, item.Name,
+                                    item.PIN, item.Queue, item.Status, item.Operator, item.BookingDate, item.BookingTime);
+                                var cmd = string.Format(insertCmdTpl, repDesc.InsertSchema, dataStr);
+
+                                using (var insertCmd = new OleDbCommand(cmd, conn))
+                                {
+                                    insertCmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        break;
+
+                    //case ReportType.ByQueue:
+                    //    var data = (IEnumerable<ReportByQueueModel>)reportGrid.ItemsSource;
+
+                    //    foreach (ReportByQueueModel item in data)
+                    //    {
+                    //        string dataStr = "'" + item.Date.ToShortDateString() + "',"
+                    //                         + item.PerformedCount + ","
+                    //                         + item.NotPerformedCount;
+                    //        var cmd = string.Format(insertCmdTpl, repDesc.InsertSchema, dataStr);
+
+                    //        using (var insertCmd = new OleDbCommand(cmd, conn))
+                    //        {
+                    //            insertCmd.ExecuteNonQuery();
+                    //        }
+                    //    }
+                    //    break;
+                }
+            }
         }
 
         private void dellButton_Click(object sender, RoutedEventArgs e)
@@ -128,6 +267,15 @@ namespace Conversus.AdminView
             TabItemReports.IsEnabled = true;
             ReloadOperatorsList();
             SetActivationStatusLabel();
+
+            reportTypeComboBox.ItemsSource = new ArrayList
+                                             {
+                                                 new { Value = ReportType.ByClients, Title = "По клиентам" },
+                                                 new { Value = ReportType.ByOperators, Title = "По операторам" },
+                                             };
+            reportTypeComboBox.DisplayMemberPath = "Title";
+            reportTypeComboBox.SelectedValuePath = "Value";
+            reportTypeComboBox.SelectedIndex = 0;
         }
 
         private void SetActivationStatusLabel()
