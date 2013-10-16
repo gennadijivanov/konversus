@@ -51,7 +51,7 @@ namespace Conversus.Core.Infrastructure
 
             try
             {
-                using (var textReader = File.OpenText("hostSetting.cfg"))
+                using (var textReader = File.OpenText("hostSettings.cfg"))
                 {
                     using (XmlReader xmlReader = XmlReader.Create(textReader, settings))
                     {
