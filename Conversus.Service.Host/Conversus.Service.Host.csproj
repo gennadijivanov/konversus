@@ -94,12 +94,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HostService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="HostService.Designer.cs">
-      <DependentUpon>HostService.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
