@@ -59,6 +59,16 @@ namespace Conversus.Service.Impl
             return ClientLogic.Get(filter).Select(ToClientInfo).ToList();
         }
 
+        public ClientInfo GetPerformingClient(Guid operatorId)
+        {
+            var filter = new ClientFilterParameters
+                             {
+                                 OperatorId = operatorId,
+                                 Status = ClientStatus.Performing
+                             };
+            return ToClientInfo(ClientLogic.Get(filter).SingleOrDefault());
+        }
+
         public void ChangeStatus(Guid clientId, ClientStatus status)
         {
             ClientLogic.ChangeStatus(clientId, status);

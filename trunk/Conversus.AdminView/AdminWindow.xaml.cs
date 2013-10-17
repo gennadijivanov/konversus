@@ -226,9 +226,9 @@ namespace Conversus.AdminView
             var grid = (DataGrid) e.OriginalSource;
 
             if (grid.SelectedItem != null)
-                deleteButton.Visibility = editButton.Visibility = Visibility.Visible;
+                deleteButton.Visibility = editButton.Visibility = kickButton.Visibility = Visibility.Visible;
             else
-                deleteButton.Visibility = editButton.Visibility = Visibility.Collapsed;
+                deleteButton.Visibility = editButton.Visibility = kickButton.Visibility = Visibility.Collapsed;
         }
 
         private void ReloadOperatorsList()
@@ -301,6 +301,23 @@ namespace Conversus.AdminView
                 statusLabel.Text = "Продукт активирован. Доступно операторов: " + (int) _license.Value;
             else
                 statusLabel.Text = "Продукт не активирован.";
+        }
+
+        private void kickButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (operatorListGrid.SelectedItem == null)
+                return;
+
+            var operInfo = ((OperatorInfo) operatorListGrid.SelectedItem);
+
+            if (operInfo.Status == OperatorStatus.Stop)
+                return;
+
+            ClientInfo client = ServiceHelper.Instance.ClientService.GetPerformingClient(operInfo.Id);
+            if (client != null)
+                ServiceHelper.Instance.ClientService.Postpone(client.Id);
+
+            ServiceHelper.Instance.OperatorService.Logout(operInfo.Id);
         }
     }
 }
