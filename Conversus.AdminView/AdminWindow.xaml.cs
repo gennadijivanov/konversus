@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Conversus.Core.DomainModel;
@@ -108,10 +109,23 @@ namespace Conversus.AdminView
                 //        toDateTime.Value.Value);
                 //    break;
             }
+
+            if (!((IEnumerable<ReportModelBase>)reportGrid.ItemsSource).Any())
+            {
+                MessageBox.Show("Нет данных за указанный период", "", MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
         }
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
+            if (reportGrid.ItemsSource == null || !((IEnumerable<ReportModelBase>)reportGrid.ItemsSource).Any())
+            {
+                MessageBox.Show("Пожалуйста сформируйте отчет для экспорта", "", MessageBoxButton.OK,
+                                MessageBoxImage.Asterisk);
+                return;
+            }
+
             var dlg = new SaveFileDialog
                           {
                               DefaultExt = ".xls",

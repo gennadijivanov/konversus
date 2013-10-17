@@ -10,13 +10,9 @@ namespace Conversus.Core.DomainModel
         ByClients
     }
 
-    public class ReportByOperatorsModel
+    public class ReportModelBase
     {
         public string Name { get; set; }
-
-        public string Queue { get; set; }
-
-        public string Window { get; set; }
 
         public string Date { get; set; }
 
@@ -25,17 +21,16 @@ namespace Conversus.Core.DomainModel
         public string Status { get; set; }
     }
 
-    public class ReportByClientsModel
+    public class ReportByOperatorsModel : ReportModelBase
     {
-        public string Name { get; set; }
-
         public string Queue { get; set; }
 
-        public string Date { get; set; }
+        public string Window { get; set; }
+    }
 
-        public string Time { get; set; }
-
-        public string Status { get; set; }
+    public class ReportByClientsModel : ReportModelBase
+    {
+        public string Queue { get; set; }
 
         public string PIN { get; set; }
 
