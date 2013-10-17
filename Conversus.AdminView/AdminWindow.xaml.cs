@@ -214,8 +214,11 @@ namespace Conversus.AdminView
 
         private void dellButton_Click(object sender, RoutedEventArgs e)
         {
-            if (operatorListGrid.SelectedItem != null)
-                ServiceHelper.Instance.OperatorService.Delete(((OperatorInfo) operatorListGrid.SelectedItem).Id);
+            if (operatorListGrid.SelectedItem == null)
+                return;
+
+            ServiceHelper.Instance.OperatorService.Delete(((OperatorInfo) operatorListGrid.SelectedItem).Id);
+            ReloadOperatorsList();
         }
 
         private void operatorListGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

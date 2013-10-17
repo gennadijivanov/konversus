@@ -114,6 +114,8 @@ namespace Conversus.Storage.Impl
                 {
                     db.Operators.DeleteObject(clientRecord);
                 }
+
+                db.SaveChanges();
             }
         }
 
