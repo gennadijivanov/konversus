@@ -29,6 +29,9 @@ namespace Conversus.Service.Contract
         void ChangeStatus(Guid clientId, ClientStatus status);
 
         [OperationContract]
+        ClientInfo GetPerformingClient(Guid operatorId);
+
+        [OperationContract]
         void SetAllRegisteredAsAbsent();
 
         /// <summary>

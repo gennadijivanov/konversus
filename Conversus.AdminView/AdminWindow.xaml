@@ -48,6 +48,7 @@
                             Height="50" Width="210" 
                             Click="editButton_Click" 
                             Margin="0,0,0,0">Редактировать</Button>
+                    <Button Content="Kick ass" Grid.Row="1" Height="53" HorizontalAlignment="Left" Margin="158,30,0,0" Name="kickButton" VerticalAlignment="Top" Width="132" Click="kickButton_Click" Visibility="Collapsed" Grid.ColumnSpan="2" />
                 </Grid>
             </TabItem>
             <TabItem Header="Отчеты" Name="TabItemReports" IsEnabled="False">
