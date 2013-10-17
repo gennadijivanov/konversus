@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Пульт оператора")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Иванов, Воронин и партнеры")]
-[assembly: AssemblyProduct("Система управления очередью")]
-[assembly: AssemblyCopyright("Copyright © Иванов, Воронин и партнеры 2012")]
+[assembly: AssemblyCompany("EMS Media")]
+[assembly: AssemblyProduct("СУО ИМС")]
+[assembly: AssemblyCopyright("Copyright © EMS Media 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

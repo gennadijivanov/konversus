@@ -1550,7 +1550,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_13EE25262D9C4A8B81C7C3FF26B214C3"
                     {
-                    "Name" = "8:IMS media"
+                    "Name" = "8:EMS media"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -1599,7 +1599,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:СУО. Сервер"
+        "ProductName" = "8:СУО ИМС. Сервер"
         "ProductCode" = "8:{F7A721F2-FCEA-4654-9B0A-9B15CC515E55}"
         "PackageCode" = "8:{4A4BCCC6-4A5E-4863-80C9-4659A0CFB82C}"
         "UpgradeCode" = "8:{B1B5645F-7073-47B5-929C-1C3E3B516557}"
@@ -1609,12 +1609,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:IMS media"
+        "Manufacturer" = "8:EMS media"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:СУО. Сервер"
+        "Title" = "8:СУО ИМС. Сервер"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Иванов, Воронин и партнеры"
+        "ARPCONTACT" = "8:EMS media"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1723,7 +1723,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_53967AF45BE34152B3BC90A5567BA7F5"
             {
-            "Name" = "8:СУО. Планировщик"
+            "Name" = "8:СУО ИМС. Планировщик"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -1737,7 +1737,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5CB46FC59164491E93AF4A3BC193785E"
             {
-            "Name" = "8:СУО. Сервер"
+            "Name" = "8:СУО ИМС. Сервер"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -1751,7 +1751,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F86DCA45E1674641B9CA9551320C0028"
             {
-            "Name" = "8:СУО. Сервер"
+            "Name" = "8:СУО ИМС. Сервер"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
