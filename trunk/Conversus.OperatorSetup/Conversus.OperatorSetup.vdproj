@@ -528,7 +528,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_0F403CFAEC0A4F168EA47C2D9FF5E81C"
                     {
-                    "Name" = "8:IMS media"
+                    "Name" = "8:EMS media"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -554,7 +554,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:СУО. Пульт оператора"
+        "ProductName" = "8:СУО ИМС. Пульт оператора"
         "ProductCode" = "8:{4868AE34-E044-4E35-B081-FFBE49DDC13D}"
         "PackageCode" = "8:{9AC73824-7415-4533-BA29-EE5BBDB4E85A}"
         "UpgradeCode" = "8:{2F087502-F670-48E6-AA30-05DA2DD9E3CF}"
@@ -564,12 +564,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:IMS media"
+        "Manufacturer" = "8:EMS media"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:СУО. Пульт оператора"
+        "Title" = "8:СУО ИМС. Пульт оператора"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Иванов, Воронин и партнеры"
+        "ARPCONTACT" = "8:EMS media"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -678,7 +678,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_235B13F5EDEC412284A564059C5ABBB7"
             {
-            "Name" = "8:СУО. Пульт оператора"
+            "Name" = "8:СУО ИМС. Пульт оператора"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -692,7 +692,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8621272A2F3A4DC787A5A5E16CC73FB1"
             {
-            "Name" = "8:СУО. Пульт оператора"
+            "Name" = "8:СУО ИМС. Пульт оператора"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"

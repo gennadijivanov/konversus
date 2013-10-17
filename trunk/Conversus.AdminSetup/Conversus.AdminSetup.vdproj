@@ -609,7 +609,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_D0C1ABA8E5484FC9802DC825A18A058C"
                     {
-                    "Name" = "8:IMS media"
+                    "Name" = "8:EMS media"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -646,7 +646,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:СУО. Пульт администратора"
+        "ProductName" = "8:СУО ИМС. Пульт администратора"
         "ProductCode" = "8:{580D4BAE-BE96-4F4C-B86E-91B876B5E0E3}"
         "PackageCode" = "8:{4544BCA8-9E0A-463D-8F24-582C231B188C}"
         "UpgradeCode" = "8:{64E76066-5D8F-4232-81DF-5C679363BCA7}"
@@ -656,12 +656,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:IMS media"
+        "Manufacturer" = "8:EMS media"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:СУО. Пульт администратора"
+        "Title" = "8:СУО ИМС. Пульт администратора"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Иванов, Воронин и партнеры"
+        "ARPCONTACT" = "8:EMS media"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -770,7 +770,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D6A699525ADE43BE9FA5DD81ECB81391"
             {
-            "Name" = "8:СУО. Пульт администратора"
+            "Name" = "8:СУО ИМС. Пульт администратора"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -784,7 +784,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E26CFD5D3DF8435698426EA99C76F0DA"
             {
-            "Name" = "8:СУО. Пульт администратора"
+            "Name" = "8:СУО ИМС. Пульт администратора"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
