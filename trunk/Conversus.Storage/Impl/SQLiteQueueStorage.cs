@@ -100,7 +100,10 @@ namespace Conversus.Storage.Impl
             {
                 var queue = db.Queues.SingleOrDefault(c => c.Id == id);
                 if (queue != null)
+                {
                     db.Queues.DeleteObject(queue);
+                    db.SaveChanges();
+                }
             }
         }
 

@@ -35,8 +35,7 @@
                     <Button Name="registerButton"
                             Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" 
                             Height="50" Width="149" Click="registerButton_Click" FontSize="25">Добавить</Button>
-                    <Button Name="deleteButton" Visibility="Hidden"
-                            IsEnabled="False" Grid.Row="1" 
+                    <Button Name="deleteButton" Visibility="Hidden" Grid.Row="1" 
                             VerticalAlignment="Center" HorizontalAlignment="Left" 
                             Style="{StaticResource inputBoardBtnStyle}" 
                             Height="50" Width="136" 
