@@ -37,18 +37,18 @@
                             Height="50" Width="149" Click="registerButton_Click" FontSize="25">Добавить</Button>
                     <Button Name="deleteButton" Visibility="Hidden" Grid.Row="1" 
                             VerticalAlignment="Center" HorizontalAlignment="Left" 
-                            Style="{StaticResource inputBoardBtnStyle}" 
+                            FontSize="25" 
                             Height="50" Width="136" 
                             Click="dellButton_Click" 
                             Margin="0,9,0,11">Удалить</Button>
                     <Button Name="editButton" Visibility="Collapsed"
                             Grid.Row="1"  Grid.Column="1"
                             VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            Style="{StaticResource inputBoardBtnStyle}" 
+                            FontSize="25" 
                             Height="50" Width="210" 
                             Click="editButton_Click" 
                             Margin="0,0,0,0">Редактировать</Button>
-                    <Button Content="Kick ass" Grid.Row="1" Height="53" HorizontalAlignment="Left" Margin="158,30,0,0" Name="kickButton" VerticalAlignment="Top" Width="132" Click="kickButton_Click" Visibility="Collapsed" Grid.ColumnSpan="2" />
+                    <Button Content="Разлогинить" Grid.Row="1" Height="53" HorizontalAlignment="Left" Margin="158,30,0,0" Name="kickButton" VerticalAlignment="Top" Width="132" Click="kickButton_Click" Visibility="Collapsed" Grid.ColumnSpan="2" />
                 </Grid>
             </TabItem>
             <TabItem Header="Отчеты" Name="TabItemReports" IsEnabled="False">
@@ -71,8 +71,8 @@
                     <wpfx:DateTimePicker Name="fromDateTime" Grid.Column="1" Grid.Row="1" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center" Format="FullDateTime"></wpfx:DateTimePicker>
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource loginLabelStyle}">ПО:</Label>
                     <wpfx:DateTimePicker Name="toDateTime" Grid.Column="1" Grid.Row="2" Height="30" ShowButtonSpinner="False" FontFamily="Tahoma" Padding="10" FontSize="18" TextAlignment="Center" Format="FullDateTime"></wpfx:DateTimePicker>
-                    <Button Grid.Column="1" Name="exportButton" Grid.Row="4" IsEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="250" Click="exportButton_Click">Экспорт в EXCEL</Button>
-                    <Button Grid.Column="0" Name="buildReportButton" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Style="{StaticResource inputBoardBtnStyle}" Height="50" Width="230" Click="buildReportButton_Click">Сформировать</Button>
+                    <Button Grid.Column="1" Name="exportButton" Grid.Row="4" IsEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Height="50" Width="250" Click="exportButton_Click">Экспорт в EXCEL</Button>
+                    <Button Grid.Column="0" Name="buildReportButton" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Height="50" FontSize="25" Width="230" Click="buildReportButton_Click">Сформировать</Button>
                     <DataGrid Name="reportGrid" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" ColumnWidth="Auto" ></DataGrid>
                 </Grid>
             </TabItem>
@@ -120,7 +120,7 @@
 
                         <Button Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" 
                         HorizontalAlignment="Right" 
-                        Style="{StaticResource inputBoardBtnStyle}" 
+                        FontSize="25"
                         Height="50" Width="270" Click="Button_Click">Активировать</Button>
                     </Grid>
             </TabItem>

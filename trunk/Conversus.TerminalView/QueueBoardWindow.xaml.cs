@@ -53,7 +53,7 @@ namespace Conversus.TerminalView
                 var storyBoard = (Storyboard)TryFindResource("newVisitorAnimation");
                 if (storyBoard != null) storyBoard.Begin();
 
-                callPopupLabel.Content = client.Ticket + " => " + client.Operator.CurrentWindow;
+                callPopupLabel.Content = client.Ticket + " → " + client.Operator.CurrentWindow;
 
                 SetQueueData();
 
